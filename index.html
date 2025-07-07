@@ -8,83 +8,110 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background: #f9f9f9;
-      color: #222;
-      line-height: 1.6;
+      background: #ffffff;
+      color: #111;
+      line-height: 1.7;
     }
-    header {
+    .header {
+      background-color: #000;
+      color: #fff;
+      padding: 1rem;
       text-align: center;
-      background: #003366;
-      color: white;
-      padding: 2rem 1rem;
     }
-    img.profile {
-      width: 200px;
-      height: auto;
+    .header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    .intro {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem;
+      align-items: center;
+    }
+    .intro img {
+      width: 260px;
       border-radius: 8px;
-      margin-top: 1rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      margin-right: 2rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.15);
     }
-    .container {
+    .intro-text {
+      flex: 1;
+      min-width: 250px;
+    }
+    .section {
       max-width: 900px;
-      margin: auto;
-      padding: 2rem;
-      background: white;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin: 2rem auto;
+      padding: 1rem;
     }
-    h1, h2 {
-      color: #003366;
+    h2 {
+      border-left: 5px solid #d4af37;
+      padding-left: 0.5rem;
+      margin-bottom: 0.8rem;
+      color: #000;
+    }
+    ul {
+      padding-left: 1.5rem;
     }
     a {
-      color: #0066cc;
+      color: #d4af37;
       text-decoration: none;
     }
     a:hover {
       text-decoration: underline;
     }
-    .downloads ul {
-      padding-left: 1.2rem;
-    }
     .kontakt {
-      background: #f1f1f1;
+      background: #f5f5f5;
       padding: 1rem;
-      margin-top: 2rem;
-      border-left: 4px solid #003366;
+      border-left: 4px solid #d4af37;
+    }
+    @media screen and (max-width: 768px) {
+      .intro {
+        flex-direction: column;
+        text-align: center;
+      }
+      .intro img {
+        margin: 0 0 1rem 0;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
+  <div class="header">
     <h1>Analysis I – Tutorium bei Mirkan</h1>
-    <img src="Mirkan-Tafel-Hintergrund.JPEG" alt="Tutor Mirkan" class="profile">
-  </header>
-
-  <div class="container">
-    <h2>Willkommen!</h2>
-    <p>
-      Mein Name ist <strong>Mirkan Günkaya</strong>. Ich studiere Mathematik an der LMU und begleite euch dieses Semester als Tutor für die Vorlesung <strong>Analysis I</strong>.
-      Der Einstieg in die Mathematik kann herausfordernd sein – genau deshalb soll dieses Tutorium und diese Seite euch helfen: mit Erklärungen, Materialien, Tipps und persönlichem Austausch.
-    </p>
-    <p>
-      Hier findest du regelmäßig aktualisierte <strong>Materialien, Hinweise und Tipps</strong>, um dir das Lernen zu erleichtern. Auch meine eigenen Notizen und Aufgabenblätter stelle ich zur Verfügung.
-    </p>
-    <p>
-      Falls du Fragen hast oder Vorschläge für diese Seite, kannst du mir jederzeit schreiben. Ich freue mich, euch im Tutorium zu begleiten – gemeinsam packen wir das!
-    </p>
-
-    <div class="downloads">
-      <h2>📂 Materialien</h2>
-      <ul>
-        <li><a href="#">Mitschrift Woche 1 (PDF)</a></li>
-        <li><a href="#">Übungsblatt 1 (PDF)</a></li>
-        <li><a href="#">Zusätzliche Hinweise / Literatur (PDF)</a></li>
-      </ul>
-    </div>
-
-    <div class="kontakt">
-      <h2>📧 Kontakt</h2>
-      <p>Du erreichst mich unter: <a href="mailto:M.Guenkaya@campus.lmu.de">M.Guenkaya@campus.lmu.de</a></p>
-    </div>
   </div>
+
+  <section class="intro">
+    <img src="Mirkan-Tafel-Hintergrund.JPEG" alt="Mirkan Günkaya">
+    <div class="intro-text">
+      <p>
+        Mein Name ist Mirkan Günkaya. Ich studiere Mathematik an der LMU München und leite dieses Semester das Tutorium zur Vorlesung Analysis I. Als jemand, der selbst durch alle Phasen dieses Studiums gegangen ist – mit Höhen, Tiefen, Verständnislücken und Aha-Momenten – weiß ich genau, wie wertvoll ein gutes Tutorium sein kann.
+      </p>
+      <p>
+        Ich möchte dir auf dieser Seite nicht nur Materialien und Mitschriften zur Verfügung stellen, sondern auch eine Anlaufstelle bieten, wenn du beim Lernen einmal nicht weiterkommst. Du sollst wissen: Fragen sind hier willkommen, und es ist völlig normal, nicht alles sofort zu verstehen. Wichtig ist, dass man dranbleibt – und genau dabei möchte ich dich unterstützen.
+      </p>
+      <p>
+        Du kannst mich jederzeit per E-Mail kontaktieren. Ich freue mich auf die gemeinsame Arbeit mit euch und hoffe, dass wir im Tutorium eine produktive, offene und angenehme Lernatmosphäre schaffen können.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>📂 Materialien</h2>
+    <ul>
+      <li><a href="#">Mitschrift Woche 1 (PDF)</a></li>
+      <li><a href="#">Übungsblatt 1 (PDF)</a></li>
+      <li><a href="#">Zusätzliche Hinweise / Literatur (PDF)</a></li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>📧 Kontakt</h2>
+    <div class="kontakt">
+      <p>Du erreichst mich per E-Mail unter:</p>
+      <p><a href="mailto:M.Guenkaya@campus.lmu.de">M.Guenkaya@campus.lmu.de</a></p>
+    </div>
+  </section>
 </body>
 </html>
