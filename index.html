@@ -6,98 +6,46 @@
   <title>Analysis I – Tutorium bei Mirkan</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      background: #ffffff;
+      font-family: Arial, sans-serif;
+      background: white;
       color: #111;
-      line-height: 1.7;
     }
     nav {
-      background: #000;
+      background-color: #000;
       padding: 1rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
       display: flex;
       justify-content: center;
       gap: 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
     nav a {
-      color: #fff;
+      color: white;
       text-decoration: none;
       font-weight: bold;
     }
     nav a:hover {
       color: #d4af37;
     }
-    .header {
-      background-color: #000;
-      color: #fff;
-      padding: 2rem;
-      text-align: center;
-    }
-    .header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
     .intro {
       display: flex;
       flex-wrap: wrap;
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 1rem;
+      max-width: 1100px;
+      margin: 3rem auto;
+      padding: 2rem;
       align-items: center;
     }
     .intro img {
-      width: 260px;
-      border-radius: 8px;
+      width: 300px;
+      border-radius: 10px;
       margin-right: 2rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.15);
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
     }
-    .intro-text {
+    .text-block {
       flex: 1;
-      min-width: 250px;
-    }
-    .section {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 1rem;
-    }
-    h2 {
-      border-left: 5px solid #d4af37;
-      padding-left: 0.5rem;
-      margin-bottom: 0.8rem;
-      color: #000;
-    }
-    ul {
-      padding-left: 1.5rem;
-    }
-    a {
-      color: #d4af37;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .kontakt {
-      background: #f5f5f5;
-      padding: 1rem;
-      border-left: 4px solid #d4af37;
-    }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      background: #000;
-      color: white;
-    }
-    .qr {
-      text-align: center;
-      margin-top: 2rem;
-    }
-    .qr img {
-      width: 150px;
-      margin-top: 0.5rem;
+      min-width: 280px;
     }
     @media screen and (max-width: 768px) {
       .intro {
@@ -105,7 +53,7 @@
         text-align: center;
       }
       .intro img {
-        margin: 0 0 1rem 0;
+        margin: 0 0 1.5rem 0;
       }
     }
   </style>
@@ -113,65 +61,29 @@
 <body>
 
   <nav>
-    <a href="#about">Über mich</a>
-    <a href="#materialien">Materialien</a>
-    <a href="#kontakt">Kontakt</a>
+    <a href="materialien.html">Materialien</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="datenschutz.html">Datenschutz</a>
   </nav>
 
-  <div class="header">
-    <h1>Analysis I – Tutorium bei Mirkan</h1>
-  </div>
-
-  <section class="intro" id="about">
+  <section class="intro">
     <img src="Mirkan-Tafel-Hintergrund.JPEG" alt="Mirkan Günkaya">
-    <div class="intro-text">
+    <div class="text-block">
       <p>
-        Mein Name ist Mirkan Günkaya. Ich studiere Mathematik an der LMU München und leite dieses Semester das Tutorium zur Vorlesung Analysis I. Als jemand, der selbst durch alle Phasen dieses Studiums gegangen ist – mit Höhen, Tiefen, Verständnislücken und Aha-Momenten – weiß ich genau, wie wertvoll ein gutes Tutorium sein kann.
+        Willkommen auf meiner Webseite zum Analysis I Tutorium an der LMU München.  
+        Mein Name ist Mirkan Günkaya. Ich studiere Mathematik an der LMU und habe in den letzten Jahren viele Erfahrungen gesammelt, wie man mathematische Inhalte verständlich und strukturiert vermittelt.
       </p>
       <p>
-        Ich möchte dir auf dieser Seite nicht nur Materialien und Mitschriften zur Verfügung stellen, sondern auch eine Anlaufstelle bieten, wenn du beim Lernen einmal nicht weiterkommst. Du sollst wissen: Fragen sind hier willkommen, und es ist völlig normal, nicht alles sofort zu verstehen. Wichtig ist, dass man dranbleibt – und genau dabei möchte ich dich unterstützen.
+        Analysis I gehört zu den anspruchsvollsten, aber auch grundlegendsten Veranstaltungen im Mathematikstudium. Viele Studierende kämpfen mit dem Einstieg, mit formaler Sprache, Beweisideen und dem Umgang mit abstrakten Konzepten.
       </p>
       <p>
-        Du kannst mich jederzeit per E-Mail kontaktieren. Ich freue mich auf die gemeinsame Arbeit mit euch und hoffe, dass wir im Tutorium eine produktive, offene und angenehme Lernatmosphäre schaffen können.
+        In meinem Tutorium möchte ich euch dabei unterstützen, einen klaren Zugang zur Analysis zu bekommen. Ich lege Wert auf Struktur, Wiederholung und Verständnis. Auf dieser Webseite stelle ich euch alle Materialien zur Verfügung, die euch beim Lernen helfen können: Mitschriften, Hinweise, Aufgaben und vieles mehr.
+      </p>
+      <p>
+        Bei Fragen oder Schwierigkeiten könnt ihr mich jederzeit kontaktieren – gemeinsam schaffen wir das!
       </p>
     </div>
   </section>
-
-  <section class="section" id="materialien">
-    <h2>📂 Materialien</h2>
-    <ul>
-      <li><a href="Mitschrift-Woche-1.pdf" download>Mitschrift Woche 1 (PDF)</a></li>
-      <li><a href="Uebungsblatt-1.pdf" download>Übungsblatt 1 (PDF)</a></li>
-      <li><a href="Hinweise-Literatur.pdf" download>Zusätzliche Hinweise / Literatur (PDF)</a></li>
-    </ul>
-  </section>
-
-  <section class="section">
-    <h2>🧠 Tipps & FAQ</h2>
-    <ul>
-      <li>Grenzwertdefinition mit ε-δ ist zentral. Übe sie intensiv.</li>
-      <li>Der Satz von Bolzano und Zwischenwertsatz kommt oft in der Klausur.</li>
-      <li>Versuch, jede Theorie mit einem eigenen Beispiel zu verknüpfen.</li>
-    </ul>
-  </section>
-
-  <section class="section" id="kontakt">
-    <h2>📧 Kontakt</h2>
-    <div class="kontakt">
-      <p>Du erreichst mich per E-Mail unter:</p>
-      <p><a href="mailto:M.Guenkaya@campus.lmu.de">M.Guenkaya@campus.lmu.de</a></p>
-    </div>
-  </section>
-
-  <section class="section qr">
-    <h2>🔗 QR-Code zur Webseite</h2>
-    <p>Scanne diesen Code, um die Seite direkt auf dem Handy zu öffnen:</p>
-    <img src="analysis_tutorium_qr.png" alt="QR-Code">
-  </section>
-
-  <footer>
-    © 2025 Mirkan Günkaya · Analysis I Tutorium · LMU München
-  </footer>
 
 </body>
 </html>
