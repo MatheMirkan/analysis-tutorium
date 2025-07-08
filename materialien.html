@@ -1,120 +1,85 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <title>Materialien – Analysis I Tutorium</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #ffffff;
-            color: #000000;
-            margin: 0;
-            padding: 0 20px;
-        }
-
-        .navbar {
-            background-color: #000;
-            padding: 1rem;
-            text-align: center;
-        }
-
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-        }
-
-        h1 {
-            text-align: center;
-            margin-top: 2rem;
-            color: #bfa14c;
-        }
-
-        .section {
-            margin-bottom: 3rem;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .section h2 {
-            color: #000;
-            border-bottom: 2px solid #bfa14c;
-            padding-bottom: 5px;
-        }
-
-        .section p {
-            margin-top: 0.5rem;
-            font-size: 16px;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            margin: 8px 0;
-        }
-
-        a.download-link {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        a.download-link:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>Materialien – Analysis Tutorium</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+    }
+    .navbar {
+      background-color: black;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .navbar a:hover {
+      text-decoration: underline;
+    }
+    .main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+    h1 {
+      text-align: center;
+      color: goldenrod;
+    }
+    h2 {
+      border-bottom: 2px solid goldenrod;
+      padding-bottom: 0.3rem;
+      margin-top: 2rem;
+    }
+    p {
+      line-height: 1.6;
+    }
+    a {
+      color: #1a0dab;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
 
-<nav>
+  <div class="navbar">
     <a href="index.html">Startseite</a>
     <a href="materialien.html">Materialien</a>
     <a href="kontakt.html">Kontakt</a>
     <a href="datenschutz.html">Datenschutz</a>
     <a href="tipps_faq.html">Tipps & FAQ</a>
-</nav>
+  </div>
 
+  <div class="main">
     <h1>Materialien</h1>
 
-    <div class="section">
-        <h2>Alte Skripte</h2>
-        <p>Hier findest du frühere Skripte zur Veranstaltung Analysis I, die dir bei der Wiederholung und Vertiefung helfen können.</p>
-        <ul>
-            <li><a href="skript_analysis_2022.pdf" class="download-link">Skript Analysis I – Wintersemester 2022</a></li>
-            <!-- Weitere Dateien hier -->
-        </ul>
-    </div>
+    <h2>Alte Skripte</h2>
+    <p>Hier findest du frühere Skripte zur Veranstaltung Analysis I, die dir bei der Wiederholung und Vertiefung helfen können.</p>
+    <p><a href="skript_analysis_ws22.pdf" target="_blank">Skript Analysis I – Wintersemester 2022</a></p>
 
-    <div class="section">
-        <h2>Alte Übungsblätter & Lösungen</h2>
-        <p>Diese Sammlung umfasst Aufgaben aus vergangenen Semestern mit dazugehörigen Lösungen zur gezielten Vorbereitung.</p>
-        <ul>
-            <li><a href="Übungsblatt 0.pdf" class="download-link">Übungsblatt 0 (mit Lösung)</a></li>
-            <!-- Weitere Dateien hier -->
-        </ul>
-    </div>
+    <h2>Alte Übungsblätter & Lösungen</h2>
+    <p>Diese Sammlung umfasst Aufgaben aus vergangenen Semestern mit dazugehörigen Lösungen zur gezielten Vorbereitung.</p>
+    <p><a href="Übungsblatt 0.pdf" target="_blank">Übungsblatt 0 (mit Lösung)</a></p>
 
-    <div class="section">
-        <h2>Altklausuren</h2>
-        <p>Hier findest du Altklausuren zur Vorbereitung auf die Prüfung. Nutze sie, um dein Wissen unter realen Bedingungen zu testen.</p>
-        <ul>
-            <li><a href="altklausur_ws2021.pdf" class="download-link">Klausur Analysis I – Wintersemester 2021</a></li>
-            <!-- Weitere Dateien hier -->
-        </ul>
-    </div>
+    <h2>Altklausuren</h2>
+    <p>Hier findest du Altklausuren zur Vorbereitung auf die Prüfung. Nutze sie, um dein Wissen unter realen Bedingungen zu testen.</p>
+    <p><a href="altklausur_ws21.pdf" target="_blank">Klausur Analysis I – Wintersemester 2021</a></p>
 
-    <div class="section">
-        <h2>Hilfsmaterialien</h2>
-        <p>Zusätzliche Materialien wie Formelsammlungen, Tipps zur Beweistechnik und Verständnisaufgaben findest du hier.</p>
-        <ul>
-            <li><a href="beweistechniken_tipps.pdf" class="download-link">Beweistechniken – Übersicht & Tipps</a></li>
-            <!-- Weitere Dateien hier -->
-        </ul>
-    </div>
+    <h2>Hilfsmaterialien</h2>
+    <p>Zusätzliche Materialien wie Formelsammlungen, Tipps zur Beweistechnik und Verständnisaufgaben findest du hier.</p>
+    <p><a href="beweistechniken.pdf" target="_blank">Beweistechniken – Übersicht & Tipps</a></p>
+  </div>
 
 </body>
 </html>
