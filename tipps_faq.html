@@ -128,36 +128,26 @@
 
   <ul>
     <li><strong>Präzise und klare Argumentation in ganzen deutschen Sätzen.</strong><br>
-    Beweise bestehen aus logisch argumentierenden vollständigen Sätzen mit mathematischen Formeln. Eine bloße Aneinanderreihung von Formeln ist kein Beweis. Falsche oder fehlende logische Argumentationen führen zu hohem Punktabzug – im schlimmsten Fall zu 0 Punkten. Formulieren Sie also sauber. Beispiel: Bei einem Induktionsbeweis über <code>∀n ∈ ℕ: ϕ(n)</code> genügt <code>ϕ(n)</code> als Induktionsvoraussetzung nicht, wenn Sie im Induktionsschritt auch <code>ϕ(n−1)</code> verwenden wollen – erweitern Sie die Voraussetzung entsprechend.</li>
-
+    Beweise bestehen aus logisch argumentierenden vollstandigen deutschen Satzen, die mit mathematischen Formeln angereichert sind. Eine bloße Aneinanderreihung von Formeln ist kein Beweis. 
+    Falsche Logik oder gar fehlende logische Argumentationen sind schwere Fehler; sie fuhren in der Klausur zu hohem Punktabzug, in schweren Fallen sogar zum Totalverlust aller Punkte der betrofenen Aufgabe. Argumentieren Sie also prazise und klar! 
+      
     <li><strong>Bewusstsein über das sich verändernde Beweisziel.</strong><br>
-    Dokumentieren Sie an passenden Stellen, was gerade zu zeigen ist („Zu zeigen ist …“, „Wir zeigen nun …“). Das Ziel ändert sich Schritt für Schritt durch logische Schlüsse. Markieren Sie das Beweisende mit z. B. „Das war zu zeigen“, „∎“ oder „q.e.d.“.</li>
-
+    Seien Sie sich beim Beweisen bewusst, was an jeder Stelle das momentante Beweisziel, die Behauptung , ist. Sie sollen dies an wichtigen Stellen im Beweis dokumentieren, z.B. im Stil: Zu zeigen ist hier: Aussage oder Noch zu zeigen: Aussageoder Wir zeigen nun: Zwischenbehauptung . 
+    Das Beweisziel andert sich im Verlauf des Beweises so lange, bis nichts mehr davon ubrig ist. Machen Sie sich bewusst, durch welche logischen Schlusse sich das Beweisziel geandert hat, zum Beispiel durch die Verwendung verschiedener (aussagenlogischer oder pradikatenlogischer) Herleitungsregeln. 
+    Dokumentieren Sie diese logische Struktur des Beweises. Markieren Sie das Beweisende, z.B. mit den Worten Das war zu zeigen oder kurz klassisch mit q.e.d. ( quod erat demonstrandum ).
+      
     <li><strong>Dokumentation der gegebenen Aussagen.</strong><br>
-    Machen Sie kenntlich, welche Aussagen gerade gegeben sind. Schreiben Sie z. B.: „Gegeben ist …“, „Wegen (*) folgt …“, „Wir nehmen an: …“. Verwenden Sie Markierungen oder Formelnummern zur Klarheit.</li>
-
-    <li><strong>Dokumentation der verwendeten Variablen und Objekte.</strong><br>
-    Variablen müssen eingeführt und gebunden sein. Schreiben Sie z. B.: „Es sei <code>ε &gt; 0</code> gegeben“, „Wir wählen <code>δ := …</code>“. Verwenden Sie Quantoren oder gleichwertige Formulierungen, z. B. <code>∀x ∈ ℝ: …</code>. Achten Sie darauf, dass keine freie Variable ohne Einbindung verwendet wird!</li>
-
-    <li><strong>Typische Fehler bei Variablenbindung vermeiden.</strong><br>
-    In Ausdrücken wie <code>∑<sub>k=1</sub><sup>n</sup> f(k)</code> oder <code>∫<sub>a</sub><sup>b</sup> f(x) dx</code> ist jeweils nur <code>k</code> bzw. <code>x</code> gebunden – <code>n</code>, <code>a</code>, <code>b</code> und <code>f</code> sind frei. Auch Mengenschreibweisen binden Variablen, z. B. <code>{x ∈ ℝ | a &lt; x &lt; b}</code>. Freie, nicht eingeführte Variablen sind ein schwerer Fehler!</li>
-
+    Die Liste der gegebenen Aussagen ändert sich im Beweisverlauf ebenfalls standig. Machen Sie sich auch bewusst, welche relevanten Aussagen an der jeweiligen Stelle im Beweis gegeben sind, sei es durch Voraussetzungen, durch Annahmen in den vorhergehenden Beweisteilen oder durch bereits bewiesene Zwischenbehauptungen. 
+    An wichtigen Stellen sollen Sie das auch im Beweistext dokumentieren, z.B. mit den Worten Wegen Formelnummer wissen wir Aussage oder Gegeben ist Aussage oder Damit ist Aussage gezeigt . Besonders wichtig sind solche Dokumentationen am Beweisanfang, am Beweisende und bei Zasuren im Beweis, an denen Aussagen als neu gegeben hinzukommen, zum Beispiel durch die Einfuhrung von Annahmen. 
+    Die Einfuhrung einer Annahme konnen Sie z.B. mit den Worten Wir nehmen an: Aussage oder Es gelte Aussage (Konjunktiv!) dokumentieren. Sie konnen wichtige Aussagen durch Markierungen, um sie spater leichter zitieren zu konnen.
+      
     <li><strong>Seien Sie kritisch gegenüber Ihren eigenen Rechnungen.</strong><br>
-    Prüfen Sie durch einfache Beispiele, Spezialfälle, Skizzen oder Plausibilität, ob ein Rechenergebnis Sinn ergibt. Das spart Zeit und verhindert Folgefehler. Konsistenzchecks sind auch in Klausuren wertvoll!</li>
+    Fuhren Sie laufend Konsistenzchecks aus: Prufen Sie zum Beispiel einfache Spezialfalle (z.B. Variablen gleich 0 oder 1 einsetzen, wenn sinnvoll); uberlegen Sie sich zum Beispiel in Gedanken, ob das asymptotische Verhalten richtig sein kann. Veranschaulichen Sie sich das Rechenergebnis wenn moglich, z.B. mit geometrischer Anschauung oder mit einer Skizze, und prufen Sie, ob das Ergebnis konsistent mit Ihrer anschaulichen Erwartung ist. 
+    Auch in der Klausur ist das keine verschwendete Zeit! Auf diese Weise kann man namlich die meisten Rechenfehler schon fruh entdecken. Manchmal sieht man in Klausurbearbeitungen schon am Beginn der Rechnung eine Folge von Rechenfehlern, die den Sinn der Aufgabe vollig entstellen, die aber mit einfachen Konsistenzchecks leicht zu nden gewesen waren. 
+    Manchmal fuhren solche Fehler in der Klausur leider zu seitenlangen sinnlosen Rechnungen, die 0 Punkte wert sind, aber viel wertvolle Zeit verschwenden.
+      
 
-    <li><strong>Verwenden Sie Funktionen nur im definierten Bereich.</strong><br>
-    Fehler wie Division durch 0 oder <code>&lt;</code>-Vergleiche bei komplexen Zahlen sind gravierend – vermeiden Sie sie!</li>
-
-    <li><strong>Keine falschen Rechenregeln erfinden!</strong><br>
-    Beispiele für häufige Fehler:
-      <ul>
-        <li>Brüche falsch addieren: <code>1/2 + 1/3 ≠ (1+1)/(2+3)</code></li>
-        <li>Trigonometrie falsch verwenden: <code>sin(x + y) ≠ sin(x) + sin(y)</code></li>
-        <li>Exponentialregeln falsch: <code>e<sup>a+b</sup> ≠ e<sup>a</sup> · e<sup>b</sup></code> für komplexe Zahlen</li>
-        <li>Transformationsformel ohne innere Ableitung ist falsch!</li>
-      </ul>
-      Solche Fehler führen häufig zu 0 Punkten in Klausuren.
-    </li>
+    <li><strong>Erfinden Sie keine falschen Rechenregeln! </strong><br>
   </ul>
 </section>
 
