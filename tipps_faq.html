@@ -116,16 +116,51 @@
       <p>Das ist ganz normal. Nutze die angebotenen Materialien unter <a href="materialien.html">Hilfsmaterialien</a>, um dich mit den grundlegenden Beweismethoden vertraut zu machen. Wir bauen das gemeinsam auf.</p>
     </div>
 
-    <h2>Hinweise von Prof. F. Merkl</h2>
+    <section id="beweishinweise">
+  <h2>Wichtige Hinweise zum Beweisen und Rechnen bei Übungsaufgaben und Klausuraufgaben</h2>
+  <p><strong>F. Merkl, 11.11.2020</strong></p>
+  <blockquote>
+    „Man könnte den ganzen Sinn des Buches etwa in die Worte fassen: Was sich überhaupt sagen lässt, lässt sich klar sagen; und wovon man nicht reden kann, darüber muss man schweigen.“<br>
+    <em>– Ludwig Wittgenstein, Tractatus logico-philosophicus</em>
+  </blockquote>
 
-<div class="merkl-tipps" style="background: #f6f6f6; padding: 1.5rem; border-left: 5px solid #bfa133; margin-top: 1rem;">
-  <p>„Beweise bestehen aus logisch argumentierenden vollständigen deutschen Sätzen, die mit mathematischen Formeln angereichert sind. Eine bloße Aneinanderreihung von Formeln ist kein Beweis.“</p>
-  <p>„Seien Sie sich an jeder Stelle des Beweises bewusst, was das aktuelle Beweisziel ist – und dokumentieren Sie es deutlich.“</p>
-  <p>„Machen Sie sich bewusst, welche Aussagen und Objekte gerade gegeben sind – und halten Sie dies sprachlich fest, insbesondere bei Beweisanfang, Beweisende und neuen Annahmen.“</p>
-  <p>„Führen Sie Konsistenzchecks durch! Prüfen Sie Spezialfälle, überlegen Sie sich das asymptotische Verhalten, und nutzen Sie geometrische Anschauung, wenn möglich.“</p>
-  <p>„Verwenden Sie keine Rechenregeln außerhalb ihres Gültigkeitsbereichs – das betrifft insbesondere Division durch Null, falsche Bruchadditionen oder Vereinfachungen mit sin, cos, log, exp.“</p>
-  <p style="margin-top: 1rem;"><strong>Quelle:</strong> F. Merkl – Hinweise zum Beweisen und Rechnen (2020)</p>
-</div>
+  <p>Der folgende Text soll Ihnen Hinweise geben, wie Sie sehr häufige Anfängerfehler beim Beweisen und Rechnen vermeiden können. Die Berücksichtigung dieser Hinweise hilft Ihnen nicht nur bei der GOP, sondern bei Ihrem gesamten weiteren Mathematikstudium!</p>
+
+  <ul>
+    <li><strong>Präzise und klare Argumentation in ganzen deutschen Sätzen.</strong><br>
+    Beweise bestehen aus logisch argumentierenden vollständigen Sätzen mit mathematischen Formeln. Eine bloße Aneinanderreihung von Formeln ist kein Beweis. Falsche oder fehlende logische Argumentationen führen zu hohem Punktabzug – im schlimmsten Fall zu 0 Punkten. Formulieren Sie also sauber. Beispiel: Bei einem Induktionsbeweis über <code>∀n ∈ ℕ: ϕ(n)</code> genügt <code>ϕ(n)</code> als Induktionsvoraussetzung nicht, wenn Sie im Induktionsschritt auch <code>ϕ(n−1)</code> verwenden wollen – erweitern Sie die Voraussetzung entsprechend.</li>
+
+    <li><strong>Bewusstsein über das sich verändernde Beweisziel.</strong><br>
+    Dokumentieren Sie an passenden Stellen, was gerade zu zeigen ist („Zu zeigen ist …“, „Wir zeigen nun …“). Das Ziel ändert sich Schritt für Schritt durch logische Schlüsse. Markieren Sie das Beweisende mit z. B. „Das war zu zeigen“, „∎“ oder „q.e.d.“.</li>
+
+    <li><strong>Dokumentation der gegebenen Aussagen.</strong><br>
+    Machen Sie kenntlich, welche Aussagen gerade gegeben sind. Schreiben Sie z. B.: „Gegeben ist …“, „Wegen (*) folgt …“, „Wir nehmen an: …“. Verwenden Sie Markierungen oder Formelnummern zur Klarheit.</li>
+
+    <li><strong>Dokumentation der verwendeten Variablen und Objekte.</strong><br>
+    Variablen müssen eingeführt und gebunden sein. Schreiben Sie z. B.: „Es sei <code>ε &gt; 0</code> gegeben“, „Wir wählen <code>δ := …</code>“. Verwenden Sie Quantoren oder gleichwertige Formulierungen, z. B. <code>∀x ∈ ℝ: …</code>. Achten Sie darauf, dass keine freie Variable ohne Einbindung verwendet wird!</li>
+
+    <li><strong>Typische Fehler bei Variablenbindung vermeiden.</strong><br>
+    In Ausdrücken wie <code>∑<sub>k=1</sub><sup>n</sup> f(k)</code> oder <code>∫<sub>a</sub><sup>b</sup> f(x) dx</code> ist jeweils nur <code>k</code> bzw. <code>x</code> gebunden – <code>n</code>, <code>a</code>, <code>b</code> und <code>f</code> sind frei. Auch Mengenschreibweisen binden Variablen, z. B. <code>{x ∈ ℝ | a &lt; x &lt; b}</code>. Freie, nicht eingeführte Variablen sind ein schwerer Fehler!</li>
+
+    <li><strong>Seien Sie kritisch gegenüber Ihren eigenen Rechnungen.</strong><br>
+    Prüfen Sie durch einfache Beispiele, Spezialfälle, Skizzen oder Plausibilität, ob ein Rechenergebnis Sinn ergibt. Das spart Zeit und verhindert Folgefehler. Konsistenzchecks sind auch in Klausuren wertvoll!</li>
+
+    <li><strong>Verwenden Sie Funktionen nur im definierten Bereich.</strong><br>
+    Fehler wie Division durch 0 oder <code>&lt;</code>-Vergleiche bei komplexen Zahlen sind gravierend – vermeiden Sie sie!</li>
+
+    <li><strong>Keine falschen Rechenregeln erfinden!</strong><br>
+    Beispiele für häufige Fehler:
+      <ul>
+        <li>Brüche falsch addieren: <code>1/2 + 1/3 ≠ (1+1)/(2+3)</code></li>
+        <li>Trigonometrie falsch verwenden: <code>sin(x + y) ≠ sin(x) + sin(y)</code></li>
+        <li>Exponentialregeln falsch: <code>e<sup>a+b</sup> ≠ e<sup>a</sup> · e<sup>b</sup></code> für komplexe Zahlen</li>
+        <li>Transformationsformel ohne innere Ableitung ist falsch!</li>
+      </ul>
+      Solche Fehler führen häufig zu 0 Punkten in Klausuren.
+    </li>
+  </ul>
+</section>
+
 
 
     <footer>
