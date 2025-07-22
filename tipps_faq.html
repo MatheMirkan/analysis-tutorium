@@ -168,6 +168,55 @@
   </ul>
 </section>
 
+<section class="max-w-2xl mx-auto p-6 bg-white rounded-xl shadow-md mt-10">
+  <h2 class="text-2xl font-bold mb-4">Anonyme Frage stellen</h2>
+  <p class="mb-4 text-gray-700">
+    Du hast eine Frage zum Tutorium oder zu Analysis I, möchtest aber anonym bleiben?
+    Dann kannst du sie hier stellen – ich werde versuchen, möglichst viele davon zu beantworten
+    oder in den Materialien aufzugreifen.
+  </p>
+
+  <form id="frageFormular" action="https://formsubmit.io/send/M.Guenkaya@campus.lmu.de" method="POST" class="space-y-4">
+    <input name="_email" type="hidden" value="false">
+    <input name="_formsubmit_id" type="text" style="display:none">
+    <input name="_redirect" type="hidden" value="">
+
+    <label for="frage" class="block text-sm font-medium text-gray-700">Deine Frage</label>
+    <textarea id="frage" name="Frage" required rows="5" class="w-full border border-gray-300 p-2 rounded-md"></textarea>
+
+    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Frage absenden</button>
+  </form>
+
+  <p id="dankeNachricht" class="mt-4 text-green-600 font-semibold hidden">
+    Vielen Dank, deine Frage wurde anonym gesendet!
+  </p>
+</section>
+
+<script>
+  const formular = document.getElementById('frageFormular');
+  const danke = document.getElementById('dankeNachricht');
+
+  formular.addEventListener('submit', function (event) {
+    event.preventDefault(); // Unterdrückt Standard-Weiterleitung
+    const formData = new FormData(formular);
+
+    fetch(formular.action, {
+      method: "POST",
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        formular.reset();
+        danke.classList.remove('hidden');
+      } else {
+        alert("Es ist ein Fehler aufgetreten. Bitte versuch es später nochmal.");
+      }
+    });
+  });
+</script>
+
 
 
     <footer>
