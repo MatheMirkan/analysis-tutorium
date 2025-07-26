@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mirkan Günkaya – Analysis I Tutorium</title>
   <link rel="icon" type="image/png" href="/favicon.png">
-
+  <title>Mirkan Günkaya – Analysis I Tutorium</title>
   <style>
-    /* === Allgemeine Grundeinstellungen === */
+    /* Grundlayout */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -15,14 +14,14 @@
       color: #111;
     }
 
-    /* === Navigationsleiste === */
+    /* Navigationsleiste */
     .navbar {
       background-color: black;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1.5rem;
       padding: 1rem;
+      gap: 1.5rem;
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -33,10 +32,10 @@
       text-decoration: none;
       font-weight: bold;
       font-size: 1rem;
-      padding: 0.4rem 1rem;
+      padding: 0.3rem 0.8rem;
       border-radius: 4px;
-      min-width: 120px;
       text-align: center;
+      min-width: 130px;
       transition: background-color 0.2s ease, color 0.2s ease;
     }
 
@@ -45,10 +44,24 @@
       color: black;
     }
 
-    /* === Hauptinhalt === */
+    /* Bild unter der Navigation */
+    .hero-image {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0 1rem;
+    }
+
+    .hero-image img {
+      max-width: 90%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Hauptbereich */
     .main {
       max-width: 900px;
-      margin: 2.5rem auto;
+      margin: 0 auto;
       padding: 1rem;
       line-height: 1.7;
     }
@@ -57,7 +70,7 @@
       text-align: center;
       color: goldenrod;
       font-size: 2rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
 
     h2 {
@@ -89,9 +102,12 @@
       text-decoration: underline;
     }
 
-    /* === Responsive Handy-Ansicht (2 Zeilen) === */
+    /* Handy-Ansicht */
     @media (max-width: 768px) {
       .navbar {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 1rem;
         padding: 1rem 0.5rem;
       }
@@ -102,8 +118,8 @@
         font-size: 1.05rem;
       }
 
-      .main {
-        padding: 1rem;
+      .hero-image {
+        margin: 1.2rem 0 0.5rem;
       }
 
       h1 {
@@ -114,7 +130,7 @@
         font-size: 1.2rem;
       }
 
-      li {
+      p, li {
         font-size: 0.95rem;
       }
     }
@@ -122,18 +138,16 @@
 </head>
 
 <body>
-
   <div class="navbar">
-  <a href="index.html">Startseite</a>
-  <a href="materialien.html">Materialien</a>
-  <a href="kontakt.html">Kontakt</a>
-  <a href="datenschutz.html">Datenschutz</a>
-  <a href="tipps_faq.html">Tipps & FAQ</a>
-</div>
+    <a href="index.html">Startseite</a>
+    <a href="materialien.html">Materialien</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="datenschutz.html">Datenschutz</a>
+    <a href="tipps_faq.html">Tipps & FAQ</a>
+  </div>
 
-
-  <div class="intro-section">
-    <img src="Mirkan-Tafel-Hintergrund.JPEG" alt="Mirkan Günkaya" />
+  <div class="hero-image">
+    <img src="Mirkan-Tafel-Hintergrund.jpg" alt="Tafelbild" />
   </div>
 
   <div class="ueber-mich-text">
