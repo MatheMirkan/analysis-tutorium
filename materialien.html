@@ -3,6 +3,7 @@
 <head>
   <link rel="icon" type="image/png" href="/favicon.png">
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Materialien – Analysis Tutorium</title>
   <style>
     body {
@@ -11,49 +12,87 @@
       background-color: #ffffff;
       color: #000000;
     }
+
     .navbar {
       background-color: black;
       padding: 1rem;
       display: flex;
       justify-content: center;
-      gap: 2rem;
+      flex-wrap: wrap;
+      gap: 1.5rem;
     }
+
     .navbar a {
       color: white;
       text-decoration: none;
       font-weight: bold;
     }
+
     .navbar a:hover {
       text-decoration: underline;
     }
+
     .main {
       max-width: 900px;
       margin: 2rem auto;
       padding: 1rem;
     }
+
     h1 {
       text-align: center;
       color: goldenrod;
     }
+
     h2 {
       border-bottom: 2px solid goldenrod;
       padding-bottom: 0.3rem;
       margin-top: 2rem;
+      font-size: 1.2rem;
     }
+
     p {
       line-height: 1.6;
     }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+
+    li {
+      margin-bottom: 0.4rem;
+      line-height: 1.5;
+    }
+
     a {
       color: #1a0dab;
       text-decoration: none;
+      word-break: break-word;
     }
+
     a:hover {
       text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .main {
+        padding: 0.8rem;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      h2 {
+        font-size: 1.1rem;
+      }
+
+      li {
+        font-size: 0.95rem;
+      }
     }
   </style>
 </head>
 <body>
-
   <div class="navbar">
     <a href="index.html">Startseite</a>
     <a href="materialien.html">Materialien</a>
@@ -67,167 +106,54 @@
 
     <h2>Alte Skripte</h2>
     <p>Hier findest du frühere Skripte zur Veranstaltung Analysis I, die dir bei der Wiederholung und Vertiefung helfen können.</p>
-    <li>
-    <a href="analysis1-skript-peter-mueller.pdf" target="_blank" rel="noopener noreferrer">
-    Skript zur Vorlesung Analysis I – Prof. Dr. Peter Müller
-    </a>
-    </li>
-    <li>
-    <a href="analysis1-skript-franz-merkl.pdf" target="_blank" rel="noopener noreferrer">
-    Skript zur Vorlesung Analysis I – Prof. Dr. Franz Merkl
-    </a>
-    </li>
-    <li>
-    <a href="analysis1-skript-frank-rupert.pdf" target="_blank" rel="noopener noreferrer">
-    Skript zur Vorlesung Analysis I – Prof. Dr. Frank Rupert
-    </a>
-    </li>
-    <li>
-    <a href="analysis1-skript-lars-diening.pdf" target="_blank" rel="noopener noreferrer">
-    Skript zur Vorlesung Analysis I – Prof. Dr. Lars Diening
-    </a>
-    </li>
+    <ul>
+      <li><a href="analysis1-skript-peter-mueller.pdf">Skript zur Vorlesung Analysis I – Prof. Dr. Peter Müller</a></li>
+      <li><a href="analysis1-skript-franz-merkl.pdf">Skript zur Vorlesung Analysis I – Prof. Dr. Franz Merkl</a></li>
+      <li><a href="analysis1-skript-frank-rupert.pdf">Skript zur Vorlesung Analysis I – Prof. Dr. Frank Rupert</a></li>
+      <li><a href="analysis1-skript-lars-diening.pdf">Skript zur Vorlesung Analysis I – Prof. Dr. Lars Diening</a></li>
+    </ul>
 
     <h2>Bücher</h2>
     <p>Hier findest du nützliche Bücher zur Vorbereitung auf die Prüfung und hilfreiche Bücher für dein Verständnis.</p>
-    <li>
-    <a href="analysis-einer-veraenderlichen.pdf" target="_blank" rel="noopener noreferrer">
-    Analysis-Einer-Veränderlichen-Uwe-Storch
-    </a>
-    </li>
-    <li>
-    <a href="Analysis-1-Für-Dummies.pdf" target="_blank" rel="noopener noreferrer">
-    Analysis1 Für Dummies
-    </a>
-    </li>
-    <li>
-    <a href="aufgabensammlung-analysis-1.pdf" target="_blank" rel="noopener noreferrer">
-    Aufgabensammlung Analysis-1
-    </a>
-    </li>
-    <li>
-    <a href="beweisen-lernen.pdf" target="_blank" rel="noopener noreferrer">
-    Beweisen Lernen Schritt Für Schritt
-    </a>
-    </li>
-    <li>
-    <a href="beweisprozesse.pdf" target="_blank" rel="noopener noreferrer">
-    Beweisprozesse von Studierenden
-    </a>
-    </li>
-    <li>
-    <a href="busam-prüfungstrainer-analysis-1.pdf" target="_blank" rel="noopener noreferrer">
-    Prüfungstrainer Analysis-1 von Busam-Epp
-    </a>
-    </li>
-    <li>
-    <a href="differenzialrechnungen.pdf" target="_blank" rel="noopener noreferrer">
-    Differenzialrechnungen leicht von Jochen Balla
-    </a>
-    </li>
-    <li>
-    <a href="forster-analysis-1.pdf" target="_blank" rel="noopener noreferrer">
-    Analysis-1 von Otto Forster
-    </a>
-    </li>
-    <li>
-    <a href="forster-übungsbuch-analysis-1.pdf" target="_blank" rel="noopener noreferrer">
-    Übungsbuch Analysis-1 von Otto Forster
-    </a>
-    </li>
-    <li>
-    <a href="integralrechnung.pdf" target="_blank" rel="noopener noreferrer">
-    Integralrechnung leicht von Jochen Balla
-    </a>
-    </li>
-    <li>
-    <a href="lernbuch-analysis-1.pdf" target="_blank" rel="noopener noreferrer">
-    Lernbuch Analysis-1
-    </a>
-    </li>
-    <li>
-    <a href="lernen-aus-musterlösungen-analysis-1.pdf" target="_blank" rel="noopener noreferrer">
-    Lernen aus Musterlösungen Analysis-1
-    </a>
-    </li>
-    <li>
-    <a href="mathematik-für-das-erste-semester.pdf" target="_blank" rel="noopener noreferrer">
-    Mathematik für das erste Semester
-    </a>
-    </li>
-    <li>
-    <a href="mathematik-start.pdf" target="_blank" rel="noopener noreferrer">
-    Mathematik Start von Andreas Keller
-    </a>
-    </li>
-    <li>
-    <a href="mathematische-begriffe.pdf" target="_blank" rel="noopener noreferrer">
-    Mathematische Begriffe
-    </a>
-    </li>
-    <li>
-    <a href="mathematisches-argumentieren.pdf" target="_blank" rel="noopener noreferrer">
-    Mathematisches Argumentieren,Begründen,Beweisen
-    </a>
-    </li>
-    <li>
-    <a href="mathematisches-problem-lösen.pdf" target="_blank" rel="noopener noreferrer">
-    Mathematisches Problemlösen
-    </a>
-    </li>
-    <li>
-    <a href="übungsbuch-analysis-1.pdf" target="_blank" rel="noopener noreferrer">
-    Übungsbuch Analysis-1 von Anton Deitmar
-    </a>
-    </li>
-    <li>
-    <a href="verständnisaufgaben-analysis.pdf" target="_blank" rel="noopener noreferrer">
-    Verständnisaufgaben zur Analysis
-    </a>
-    </li>
-    <li>
-    <a href="zahlen.pdf" target="_blank" rel="noopener noreferrer">
-    Zahlen
-    </a>
-    </li>
-    
+    <ul>
+      <li><a href="analysis-einer-veraenderlichen.pdf">Analysis-Einer-Veränderlichen-Uwe-Storch</a></li>
+      <li><a href="Analysis-1-Für-Dummies.pdf">Analysis1 Für Dummies</a></li>
+      <li><a href="aufgabensammlung-analysis-1.pdf">Aufgabensammlung Analysis-1</a></li>
+      <li><a href="beweisen-lernen.pdf">Beweisen Lernen Schritt Für Schritt</a></li>
+      <li><a href="beweisprozesse.pdf">Beweisprozesse von Studierenden</a></li>
+      <li><a href="busam-prüfungstrainer-analysis-1.pdf">Prüfungstrainer Analysis-1 von Busam-Epp</a></li>
+      <li><a href="differenzialrechnungen.pdf">Differenzialrechnungen leicht von Jochen Balla</a></li>
+      <li><a href="forster-analysis-1.pdf">Analysis-1 von Otto Forster</a></li>
+      <li><a href="forster-übungsbuch-analysis-1.pdf">Übungsbuch Analysis-1 von Otto Forster</a></li>
+      <li><a href="integralrechnung.pdf">Integralrechnung leicht von Jochen Balla</a></li>
+      <li><a href="lernbuch-analysis-1.pdf">Lernbuch Analysis-1</a></li>
+      <li><a href="lernen-aus-musterlösungen-analysis-1.pdf">Lernen aus Musterlösungen Analysis-1</a></li>
+      <li><a href="mathematik-für-das-erste-semester.pdf">Mathematik für das erste Semester</a></li>
+      <li><a href="mathematik-start.pdf">Mathematik Start von Andreas Keller</a></li>
+      <li><a href="mathematische-begriffe.pdf">Mathematische Begriffe</a></li>
+      <li><a href="mathematisches-argumentieren.pdf">Mathematisches Argumentieren,Begründen,Beweisen</a></li>
+      <li><a href="mathematisches-problem-lösen.pdf">Mathematisches Problemlösen</a></li>
+      <li><a href="übungsbuch-analysis-1.pdf">Übungsbuch Analysis-1 von Anton Deitmar</a></li>
+      <li><a href="verständnisaufgaben-analysis.pdf">Verständnisaufgaben zur Analysis</a></li>
+      <li><a href="zahlen.pdf">Zahlen</a></li>
+
+    </ul>
+
     <h2>Alte Übungsblätter & Lösungen</h2>
     <p>Diese Sammlung umfasst Aufgaben aus vergangenen Semestern mit dazugehörigen Lösungen zur gezielten Vorbereitung.</p>
-    <li>
-    <a href="/downloads/WS1617-Merkl.zip" download>
-    Alle Lösungen von Franz Merkl Wintersemester 2016/2017 - ZIP
-    </a>
-    </li>
-    <li>
-    <a href="/downloads/WS2021-Merkl.zip" download>
-    Alle Lösungen von Franz Merkl Wintersemester 2020/2021 - ZIP
-    </a>
-    </li>
-    <li>
-    <a href="/downloads/WS2122-Rupert.zip" download>
-    Alle Lösungen von Frank Rupert Wintersemester 2021/2022 - ZIP
-    </a>
-    </li>
-    <li>
-    <a href="/downloads/lösung-aktivierungselemente-merkl.zip" download>
-    Alle Lösungen von Aktivierungselemente von Franz Merkl - ZIP
-    </a>
-    </li>
-    <li>
-    <a href="/downloads/martin-schottenloher.zip" download>
-    Alles von Martin Schottenloher Wintersemester 2006/2007 - ZIP
-    </a>
-    </li>
-    <li>
-    <a href="uebungsskript.pdf" target="_blank" rel="noopener noreferrer">
-    Übungsskript von Erdmann
-    </a>
-    </li>
+    <ul>
+      <li><a href="/downloads/WS1617-Merkl.zip" download>Alle Lösungen von Franz Merkl WS 2016/2017 - ZIP</a></li>
+      <li><a href="/downloads/WS2021-Merkl.zip" download>Alle Lösungen von Franz Merkl WS 2020/2021 - ZIP</a></li>
+      <li><a href="/downloads/WS2122-Rupert.zip" download>Alle Lösungen von Frank Rupert WS 2021/2022 - ZIP</a></li>
+      <li><a href="/downloads/lösung-aktivierungselemente-merkl.zip" download>Alle Lösungen von Aktivierungselemente von Franz Merkl - ZIP</a></li>
+      <li><a href="/downloads/martin-schottenloher.zip" download>Alles von Martin Schottenloher Wintersemester 2006/2007 - ZIP</a></li>
+      <li><a href="uebungsskript.pdf" target="_blank" rel="noopener noreferrer">Übungsskript von Erdmann</a></li>
+    </ul>
 
     <h2>Altklausuren</h2>
     <p>Hier findest du Altklausuren zur Vorbereitung auf die Prüfung. Nutze sie, um dein Wissen unter realen Bedingungen zu testen.</p>
-    
-    <li><a href="Klausur-1-Merkl.pdf" target="_blank">Klausur-1-Merkl</a></li>
+    <ul>
+      <li><a href="Klausur-1-Merkl.pdf" target="_blank">Klausur-1-Merkl</a></li>
     <li><a href="Klausur-2-Steinlein.pdf" target="_blank">Klausur-2-Steinlein</a></li>
     <li><a href="Klausur-3-Steinlein.pdf" target="_blank">Klausur-3-Steinlein</a></li>
     <li><a href="Klausur-4-Donder.pdf" target="_blank">Klausur-4-Donder</a></li>
@@ -266,9 +192,12 @@
     <li><a href="Klausur-34-Garcke.pdf" target="_blank">Klausur-34-Garcke</a></li>
     <li><a href="Klausur-35-Rupert.pdf" target="_blank">Klausur-35-Rupert</a></li>
 
+    </ul>
+
     <h2>Hilfsmaterialien</h2>
     <p>Zusätzliche Materialien wie Formelsammlungen, Tipps zur Beweistechnik und Verständnisaufgaben findest du hier.</p>
-    <li><a href="Analysis-Aufgaben-Lösungen.pdf" target="_blank">Analysis-Aufgaben-Lösungen</a></li>
+    <ul>
+      <li><a href="Analysis-Aufgaben-Lösungen.pdf" target="_blank">Analysis-Aufgaben-Lösungen</a></li>
     <li><a href="Erklärung + Aufgabe + Musterlösung.pdf" target="_blank">Erklärung + Aufgabe + Musterlösung</a></li>
     <li><a href="Examination-questions.pdf" target="_blank">Examination-questions</a></li>
     <li><a href="Exponentialfunktion.pdf" target="_blank">Exponentialfunktion</a></li>
@@ -313,7 +242,8 @@
     <li><a href="Zusammenfassung-Analysis-1-B.pdf" target="_blank">Zusammenfassung-Analysis-1-B</a></li>
     <li><a href="Zusammenfassung-Analysis-1-C.pdf" target="_blank">Zusammenfassung-Analysis-1-C</a></li>
     <li><a href="Zusammenfassung-Analysis-1-D.pdf" target="_blank">Zusammenfassung-Analysis-1-D</a></li>
-  </div>
 
+    </ul>
+  </div>
 </body>
 </html>
