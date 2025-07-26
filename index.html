@@ -20,16 +20,26 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
   }
 
   .navbar a {
     color: white;
     text-decoration: none;
     font-weight: bold;
+    font-size: 1rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    text-align: center;
+    min-width: 130px;
   }
 
   .navbar a:hover {
-    text-decoration: underline;
+    background-color: goldenrod;
+    color: black;
+    transition: 0.2s ease;
   }
 
   .intro-section {
@@ -67,17 +77,18 @@
     text-align: justify;
   }
 
-  /* Responsive Styles */
   @media (max-width: 768px) {
     .navbar {
-      flex-direction: column;
-      align-items: center;
-      padding: 1.2rem 0.8rem;
+      flex-direction: row;
+      justify-content: center;
       gap: 1rem;
+      flex-wrap: wrap;
+      padding: 1.2rem 0.8rem;
     }
 
     .navbar a {
       font-size: 1.05rem;
+      min-width: 40%;
     }
 
     .intro-section {
@@ -96,6 +107,7 @@
     }
   }
 </style>
+
 
 </head>
 <body>
