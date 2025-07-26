@@ -9,10 +9,10 @@ body {
 /* Navigation */
 .navbar {
   background-color: black;
-  padding: 1rem;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: center;
+  padding: 1rem;
   gap: 1.5rem;
   position: sticky;
   top: 0;
@@ -20,6 +20,7 @@ body {
 }
 
 .navbar a {
+  display: inline-block;
   color: white;
   text-decoration: none;
   font-weight: bold;
@@ -118,15 +119,23 @@ footer {
 /* Responsive Design */
 @media (max-width: 768px) {
   .navbar {
-    flex-direction: column;
-    align-items: center;
-    padding: 1.2rem 0.8rem;
-    gap: 1rem;
+    padding: 1rem 0.5rem;
+    gap: 0.6rem;
   }
 
   .navbar a {
-    font-size: 1.05rem;
-    min-width: 40%;
+    display: inline-block;
+    flex: 1 1 30%;
+    max-width: 33%;
+    min-width: unset;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .navbar a:nth-child(4),
+  .navbar a:nth-child(5) {
+    flex: 1 1 45%;
+    max-width: 45%;
   }
 
   .container {
@@ -151,28 +160,5 @@ footer {
 
   .gold-box {
     padding: 1rem;
-  }
-}
-@media screen and (max-width: 600px) {
-  .navigation {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    padding: 10px;
-  }
-
-  .navigation a {
-    flex: 1 1 30%;
-    text-align: center;
-    font-size: 1rem;
-    color: white;
-    text-decoration: none;
-  }
-
-  /* Damit die zwei Zeilen entstehen: */
-  .navigation a:nth-child(4),
-  .navigation a:nth-child(5) {
-    flex-basis: 45%;
   }
 }
