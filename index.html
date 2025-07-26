@@ -12,115 +12,148 @@
       background: white;
       color: #111;
     }
+
     nav {
       background-color: #000;
       padding: 1rem;
       display: flex;
       justify-content: center;
-      gap: 2rem;
+      flex-wrap: wrap;
+      gap: 1.5rem;
       position: sticky;
       top: 0;
       z-index: 1000;
     }
+
     nav a {
       color: white;
       text-decoration: none;
       font-weight: bold;
     }
+
     nav a:hover {
       color: #d4af37;
     }
-    .intro {
+
+    .intro-section {
       display: flex;
       flex-wrap: wrap;
-      max-width: 1100px;
-      margin: 3rem auto;
-      padding: 2rem;
+      justify-content: center;
       align-items: center;
+      max-width: 1100px;
+      margin: 3rem auto 2rem auto;
+      padding: 0 1rem;
     }
-    .intro img {
-     width: 35%;
-    min-width: 320px;
-    max-width: 420px;
-    border-radius: 10px;
-    margin-right: 2rem;
-    box-shadow: 0 0 12px rgba(0,0,0,0.25);
+
+    .intro-section img {
+      width: 35%;
+      min-width: 280px;
+      max-width: 420px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+      margin-bottom: 1.5rem;
     }
 
     .text-block {
       flex: 1;
       min-width: 280px;
+      padding: 0 1rem;
+      text-align: justify;
     }
-    @media screen and (max-width: 768px) {
-      .intro {
+
+    .ueber-mich-text {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.2rem 3rem 1.2rem;
+      font-size: 17px;
+      line-height: 1.7;
+      text-align: justify;
+    }
+
+    @media (max-width: 768px) {
+      .intro-section {
         flex-direction: column;
         text-align: center;
+        padding: 0 1rem;
       }
-      .intro img {
-        margin: 0 0 1.5rem 0;
+
+      .text-block {
+        padding: 0;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: center;
+        padding: 0.8rem;
+        gap: 1rem;
+      }
+
+      nav a {
+        margin: 0;
+      }
+
+      .ueber-mich-text {
+        font-size: 16px;
+        padding: 0 1rem 2.5rem 1rem;
       }
     }
   </style>
 </head>
 <body>
 
-<nav>
+  <nav>
     <a href="index.html">Startseite</a>
     <a href="materialien.html">Materialien</a>
     <a href="kontakt.html">Kontakt</a>
     <a href="datenschutz.html">Datenschutz</a>
     <a href="tipps_faq.html">Tipps & FAQ</a>
-</nav>
+  </nav>
 
+  <div class="intro-section">
+    <img src="Mirkan-Tafel-Hintergrund.JPEG" alt="Mirkan Günkaya" />
+  </div>
 
-  <div class="intro" style="margin-bottom: 2rem;">
-  <img src="Mirkan-Tafel-Hintergrund.JPEG" alt="Mirkan Günkaya" style="display: block; margin: 0 auto; width: 35%; max-width: 420px; min-width: 300px; border-radius: 10px; box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);" />
-</div>
-
-  <div class="ueber-mich-text" style="max-width: 900px; margin: 0 auto; font-size: 16px; line-height: 1.6;">
-  <p>
-    Herzlich willkommen auf meiner Seite. Mein Name ist Mirkan Deniz Günkaya, ich bin 26 Jahre alt und studiere Mathematik an der LMU München. 
-    Im kommenden Wintersemester 2025/2026 werde ich als Tutor in der Veranstaltung Analysis I tätig sein und die Studierenden beim Einstieg in die Hochschulmathematik begleiten.
-  </p>
-
-  <p>
-    In den vergangenen sechs Jahren habe ich umfassende Erfahrung in der individuellen Nachhilfe gesammelt und zahlreiche Schülerinnen, Schüler und Studierende erfolgreich in Mathematik unterstützt. Dabei lege ich besonderen Wert auf verständliche Erklärungen, methodische Klarheit und die gezielte Förderung individueller Lernwege.
-    Darüber hinaus bin ich für die SAP S/4HANA Cloud Plattform qualifiziert und als Sales-Berater offiziell zertifiziert.
-    Aktuell liegt mein Schwerpunkt auf dem Abschluss meines Mathematikstudiums. Im kommenden Semester werde ich meine Bachelorarbeit schreiben und mein Studium abschließen.
-  </p>
+  <div class="ueber-mich-text">
+    <p>
+      Herzlich willkommen auf meiner Seite. Mein Name ist Mirkan Deniz Günkaya, ich bin 26 Jahre alt und studiere Mathematik an der LMU München. 
+      Im kommenden Wintersemester 2025/2026 werde ich als Tutor in der Veranstaltung Analysis I tätig sein und die Studierenden beim Einstieg in die Hochschulmathematik begleiten.
+    </p>
 
     <p>
-  Bevor ich mich vollständig der Mathematik widmete, studierte ich zwei Jahre lang Physik. In dieser Zeit konnte ich ein tiefes Verständnis für naturwissenschaftliche Phänomene und die Struktur unserer Welt gewinnen.
-  Allerdings wurde mir zunehmend bewusst, dass mir die praktische Orientierung des Physikstudiums – etwa durch Labore, Versuchsprotokolle und experimentelle Anwendungen – auf Dauer nicht genügte.
-  Mein eigentliches Interesse galt der abstrakten und theoretischen Auseinandersetzung mit Problemen, dem strukturierten Aufbau von Beweisen und den gedanklichen Tiefen, die man nur in der reinen Mathematik findet.
-  Die Mathematik eröffnet einen Zugang zu einer Welt, in der Logik, Eleganz und Komplexität auf faszinierende Weise miteinander verwoben sind.
-  Diese Erkenntnis führte schließlich dazu, dass ich mein Studienfach wechselte – eine Entscheidung, die ich bis heute mit voller Überzeugung trage.
-</p>
+      In den vergangenen sechs Jahren habe ich umfassende Erfahrung in der individuellen Nachhilfe gesammelt und zahlreiche Schülerinnen, Schüler und Studierende erfolgreich in Mathematik unterstützt. Dabei lege ich besonderen Wert auf verständliche Erklärungen, methodische Klarheit und die gezielte Förderung individueller Lernwege.
+      Darüber hinaus bin ich für die SAP S/4HANA Cloud Plattform qualifiziert und als Sales-Berater offiziell zertifiziert.
+      Aktuell liegt mein Schwerpunkt auf dem Abschluss meines Mathematikstudiums. Im kommenden Semester werde ich meine Bachelorarbeit schreiben und mein Studium abschließen.
+    </p>
 
-  <p>
-    Die Veranstaltung Analysis I bildet den mathematischen Grundstein für viele weitere Bereiche im Studium. 
-    In dieser Vorlesung lernen die Studierenden die Grundlagen der Differential- und Integralrechnung sowie die präzise mathematische Denkweise kennen. 
-    Begriffe wie Stetigkeit, Grenzwerte, Folgen, Reihen und das Arbeiten mit dem sogenannten epsilon-delta-Kriterium sind zentrale Bestandteile. 
-    Diese Inhalte sind nicht nur theoretisch von Bedeutung, sondern bilden auch die Grundlage für weiterführende Module in Mathematik, Physik, Informatik und verwandten Disziplinen.
-  </p>
+    <p>
+      Bevor ich mich vollständig der Mathematik widmete, studierte ich zwei Jahre lang Physik. In dieser Zeit konnte ich ein tiefes Verständnis für naturwissenschaftliche Phänomene und die Struktur unserer Welt gewinnen.
+      Allerdings wurde mir zunehmend bewusst, dass mir die praktische Orientierung des Physikstudiums – etwa durch Labore, Versuchsprotokolle und experimentelle Anwendungen – auf Dauer nicht genügte.
+      Mein eigentliches Interesse galt der abstrakten und theoretischen Auseinandersetzung mit Problemen, dem strukturierten Aufbau von Beweisen und den gedanklichen Tiefen, die man nur in der reinen Mathematik findet.
+      Die Mathematik eröffnet einen Zugang zu einer Welt, in der Logik, Eleganz und Komplexität auf faszinierende Weise miteinander verwoben sind.
+      Diese Erkenntnis führte schließlich dazu, dass ich mein Studienfach wechselte – eine Entscheidung, die ich bis heute mit voller Überzeugung trage.
+    </p>
 
-  <p>
-    Vielen Studierenden fällt der Einstieg schwer, da sich die universitäre Mathematik stark vom Schulstoff unterscheidet. 
-    Deshalb ist es mir ein Anliegen, dich gezielt zu unterstützen. Ich möchte dir helfen, die Strukturen besser zu verstehen, Beweise nachvollziehen zu können und ein sicheres Fundament aufzubauen.
-  </p>
+    <p>
+      Die Veranstaltung Analysis I bildet den mathematischen Grundstein für viele weitere Bereiche im Studium. 
+      In dieser Vorlesung lernen die Studierenden die Grundlagen der Differential- und Integralrechnung sowie die präzise mathematische Denkweise kennen. 
+      Begriffe wie Stetigkeit, Grenzwerte, Folgen, Reihen und das Arbeiten mit dem sogenannten Epsilon-Delta-Kriterium sind zentrale Bestandteile. 
+      Diese Inhalte sind nicht nur theoretisch von Bedeutung, sondern bilden auch die Grundlage für weiterführende Module in Mathematik, Physik, Informatik und verwandten Disziplinen.
+    </p>
 
-  <p>
-    Auf dieser Seite findest du Materialien, Zusammenfassungen und Hinweise zur Veranstaltung Analysis I. 
-    Mein Ziel ist es, dich bestmöglich zu begleiten und dir bei deiner Vorbereitung auf Übungen und Prüfungen zu helfen.
-  </p>
+    <p>
+      Vielen Studierenden fällt der Einstieg schwer, da sich die universitäre Mathematik stark vom Schulstoff unterscheidet. 
+      Deshalb ist es mir ein Anliegen, dich gezielt zu unterstützen. Ich möchte dir helfen, die Strukturen besser zu verstehen, Beweise nachvollziehen zu können und ein sicheres Fundament aufzubauen.
+    </p>
 
-  <p>
-    Ich freue mich, dich im Tutorium zu unterstützen und wünsche dir viel Erfolg beim Studium.
-  </p>
-</div>
+    <p>
+      Auf dieser Seite findest du Materialien, Zusammenfassungen und Hinweise zur Veranstaltung Analysis I. 
+      Mein Ziel ist es, dich bestmöglich zu begleiten und dir bei deiner Vorbereitung auf Übungen und Prüfungen zu helfen.
+    </p>
 
-
-  </section>
+    <p>
+      Ich freue mich, dich im Tutorium zu unterstützen und wünsche dir viel Erfolg beim Studium.
+    </p>
+  </div>
 
 </body>
 </html>
