@@ -78,18 +78,28 @@
     text-align: justify;
   }
 
+  /* Mobile-Ansicht anpassen */
   @media (max-width: 768px) {
     .navbar {
-      flex-direction: row;
-      justify-content: center;
-      gap: 1rem;
+      display: flex;
       flex-wrap: wrap;
-      padding: 1.2rem 0.8rem;
+      justify-content: center;
+      gap: 0.8rem;
+      padding: 1rem 0.5rem;
     }
 
     .navbar a {
-      font-size: 1.05rem;
-      min-width: 40%;
+      flex: 1 1 30%;
+      min-width: unset;
+      max-width: 33%;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .navbar a:nth-child(4),
+    .navbar a:nth-child(5) {
+      flex: 1 1 45%;
+      max-width: 45%;
     }
 
     .intro-section {
@@ -105,9 +115,12 @@
     .ueber-mich-text {
       font-size: 16px;
       padding: 0 1rem 2.5rem 1rem;
+      text-align: justify;
+      hyphens: auto;
     }
   }
 </style>
+
 
 
 </head>
