@@ -1,130 +1,126 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <link rel="icon" type="image/png" href="/favicon.png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mirkan Günkaya – Analysis I Tutorium</title>
+  <link rel="icon" type="image/png" href="/favicon.png">
+
   <style>
-  /* Allgemeine Grundeinstellungen */
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-    color: #111;
-  }
+    /* === Allgemeine Grundeinstellungen === */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #111;
+    }
 
-  /* Navigationsleiste */
-  .navbar {
-    background-color: black;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 1rem;
-    gap: 1.5rem;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-
-  .navbar a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1rem;
-    padding: 0.3rem 0.8rem;
-    border-radius: 4px;
-    text-align: center;
-    min-width: 130px;
-    transition: background-color 0.2s ease, color 0.2s ease;
-  }
-
-  .navbar a:hover {
-    background-color: goldenrod;
-    color: black;
-  }
-
-  /* Hauptinhalt */
-  .main {
-    max-width: 900px;
-    margin: 2.5rem auto;
-    padding: 1rem;
-    line-height: 1.7;
-  }
-
-  h1 {
-    text-align: center;
-    color: goldenrod;
-    font-size: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  h2 {
-    color: goldenrod;
-    font-size: 1.4rem;
-    margin-top: 2rem;
-    border-bottom: 2px solid goldenrod;
-    padding-bottom: 0.3rem;
-  }
-
-  p {
-    font-size: 1rem;
-    line-height: 1.6;
-    text-align: justify;
-  }
-
-  ul {
-    padding-left: 1.5rem;
-  }
-
-  li {
-    margin-bottom: 0.5rem;
-    line-height: 1.5;
-  }
-
-  a {
-    color: #1a0dab;
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
-
-  /* Responsive – Handyansicht */
-  @media (max-width: 768px) {
+    /* === Navigationsleiste === */
     .navbar {
-      flex-direction: row;
+      background-color: black;
+      display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      padding: 1.2rem 0.8rem;
-      gap: 1rem;
+      gap: 1.5rem;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     .navbar a {
-      flex: 1 1 45%;
-      max-width: 45%;
-      font-size: 1.05rem;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      padding: 0.4rem 1rem;
+      border-radius: 4px;
+      min-width: 120px;
+      text-align: center;
+      transition: background-color 0.2s ease, color 0.2s ease;
     }
 
+    .navbar a:hover {
+      background-color: goldenrod;
+      color: black;
+    }
+
+    /* === Hauptinhalt === */
     .main {
+      max-width: 900px;
+      margin: 2.5rem auto;
       padding: 1rem;
+      line-height: 1.7;
     }
 
     h1 {
-      font-size: 1.6rem;
+      text-align: center;
+      color: goldenrod;
+      font-size: 2rem;
+      margin-bottom: 2rem;
     }
 
     h2 {
-      font-size: 1.2rem;
+      color: goldenrod;
+      font-size: 1.4rem;
+      margin-top: 2rem;
+      border-bottom: 2px solid goldenrod;
+      padding-bottom: 0.3rem;
+    }
+
+    p {
+      font-size: 1rem;
+      text-align: justify;
+    }
+
+    ul {
+      padding-left: 1.5rem;
     }
 
     li {
-      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
     }
-  }
-</style>
 
+    a {
+      color: #1a0dab;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* === Responsive Handy-Ansicht (2 Zeilen) === */
+    @media (max-width: 768px) {
+      .navbar {
+        gap: 1rem;
+        padding: 1rem 0.5rem;
+      }
+
+      .navbar a {
+        flex: 1 1 45%;
+        max-width: 45%;
+        font-size: 1.05rem;
+      }
+
+      .main {
+        padding: 1rem;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+      }
+
+      li {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
   <div class="navbar">
