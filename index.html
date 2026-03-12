@@ -1,46 +1,199 @@
+Index-Hauptdatei
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<title>Wartungsmodus</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/JPEG" href="/favicon.png">
+  <title>Mirkan Günkaya – Analysis I Tutorium</title>
+  <style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: white;
+    color: #111;
+  }
 
-<style>
-body{
-    margin:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:#f5f5f5;
-    font-family:Arial, sans-serif;
-}
+  .navbar {
+    background-color: black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0.5rem;
+    gap: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
 
-.container{
-    text-align:center;
-}
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    text-align: center;
+    flex: 1 1 auto;
+    max-width: 180px;
+    box-sizing: border-box;
+  }
 
-h1{
-    font-size:40px;
-    margin-bottom:20px;
-}
+  .navbar a:hover {
+    background-color: goldenrod;
+    color: black;
+    transition: 0.2s ease;
+  }
 
-p{
-    font-size:20px;
-    color:#555;
-}
+  .intro-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 1100px;
+    margin: 3rem auto 2rem auto;
+    padding: 0 1rem;
+  }
+
+  .intro-section img {
+    width: 35%;
+    min-width: 280px;
+    max-width: 420px;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+    margin-bottom: 1.5rem;
+  }
+
+  .text-block {
+    flex: 1;
+    min-width: 280px;
+    padding: 0 1rem;
+    text-align: justify;
+  }
+
+  .ueber-mich-text {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.2rem 3rem 1.2rem;
+    font-size: 17px;
+    line-height: 1.7;
+    text-align: justify;
+  }
+
+  /* Handyansicht */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .navbar a {
+      flex: 1 1 30%;
+      max-width: 30%;
+    }
+
+    /* Für die letzten beiden Links */
+    .navbar a:nth-child(4),
+    .navbar a:nth-child(5) {
+      flex: 1 1 45%;
+      max-width: 45%;
+    }
+
+    .intro-section {
+      flex-direction: column;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    .text-block {
+      padding: 0;
+    }
+
+    .ueber-mich-text {
+      font-size: 16px;
+      padding: 0 1rem 2.5rem 1rem;
+      text-align: justify;
+      hyphens: auto;
+    }
+  }
 </style>
+
 
 </head>
 
 <body>
+  <div class="navbar">
+    <a href="index.html">Startseite</a>
+    <a href="materialien.html">Analysis-I</a>
+    <a href="materialien-2.html">Analysis-II</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="tipps_faq.html">Tipps, FAQ & Datenschutz</a>
+  </div>
 
-<div class="container">
-<h1>🔧 Webseite in Bearbeitung</h1>
-<p>
-Diese Webseite wird derzeit überarbeitet und verbessert.<br>
-Bitte schauen Sie in einigen Tagen wieder vorbei.
-</p>
+  <div class="intro-section">
+  <img src="Mirkan-Tafel-Hintergrund.JPEG" alt="Tafelbild" />
 </div>
+
+
+  <div class="ueber-mich-text">
+    <p>
+Im Wintersemester 2025/2026 war ich als Tutor in der Veranstaltung Analysis I tätig. 
+Im Sommersemester 2026 werde ich zudem die Tutorentätigkeit in der Veranstaltung Analysis II übernehmen. 
+In beiden Veranstaltungen unterstütze ich die Studierenden beim erfolgreichen Einstieg in die Hochschulmathematik und begleite sie fachlich sowie methodisch durch die zentralen Inhalte der Vorlesung.
+</p>
+
+<p>
+Die Arbeit als Tutor hat mir im vergangenen Semester außerordentlich viel Freude bereitet. 
+Es ist für mich besonders motivierend zu sehen, wie Studierende nach und nach ein tieferes Verständnis für mathematische Strukturen entwickeln und zunehmend sicherer im Umgang mit Beweisen und abstrakten Konzepten werden. 
+Gerade deshalb freue ich mich sehr darauf, auch im kommenden Semester weiterhin als Tutor tätig zu sein und noch mehr Studierende auf ihrem Weg durch die Analysis zu begleiten.
+</p>
+
+<p>
+Derzeit befinde ich mich im letzten Semester meines Bachelorstudiums der Mathematik an der Ludwig-Maximilians-Universität München. 
+Im kommenden Semester werde ich meine Bachelorarbeit schreiben und damit mein Studium abschließen. 
+Neben meinem Studium habe ich in den vergangenen sechs Jahren umfangreiche Erfahrung in der individuellen Nachhilfe gesammelt und zahlreiche Schülerinnen, Schüler sowie Studierende erfolgreich in Mathematik unterstützt.
+</p>
+
+<p>
+In meiner Lehrtätigkeit lege ich besonderen Wert auf verständliche Erklärungen, methodische Klarheit und eine strukturierte Herangehensweise an mathematische Probleme. 
+Mein Ziel ist es, komplexe Inhalte möglichst transparent zu vermitteln und Studierende dabei zu unterstützen, eigene Lösungsstrategien zu entwickeln und mathematische Zusammenhänge wirklich zu verstehen.
+</p>
+
+<p>
+Bevor ich mich vollständig der Mathematik widmete, studierte ich zwei Jahre lang Physik. 
+In dieser Zeit konnte ich ein tiefes Verständnis für naturwissenschaftliche Zusammenhänge und die Struktur unserer Welt gewinnen. 
+Allerdings wurde mir zunehmend bewusst, dass mich vor allem die theoretischen und abstrakten Aspekte der Wissenschaft faszinieren: 
+das präzise Formulieren von Problemen, das Entwickeln eleganter Argumente und das strukturierte Aufbauen mathematischer Beweise.
+</p>
+
+<p>
+Die Mathematik eröffnet eine Welt, in der Logik, Struktur und Eleganz auf einzigartige Weise miteinander verbunden sind. 
+Diese Erkenntnis führte schließlich dazu, dass ich mein Studienfach wechselte und mich vollständig der Mathematik widmete – eine Entscheidung, die ich bis heute mit großer Überzeugung trage.
+</p>
+
+<p>
+Die Veranstaltung Analysis I bildet den mathematischen Grundstein für viele weitere Bereiche des Studiums. 
+Hier lernen Studierende die Grundlagen der Differential- und Integralrechnung sowie die präzise mathematische Denkweise kennen. 
+Begriffe wie Grenzwerte, Folgen, Reihen, Stetigkeit oder das Arbeiten mit dem Epsilon-Delta-Kriterium sind zentrale Bestandteile dieser Vorlesung. 
+Diese Konzepte bilden die Grundlage für zahlreiche weiterführende Veranstaltungen in Mathematik, Physik, Informatik und vielen anderen Disziplinen.
+</p>
+
+<p>
+Der Einstieg in die universitäre Mathematik stellt für viele Studierende eine besondere Herausforderung dar, da sich die mathematische Arbeitsweise deutlich vom Schulunterricht unterscheidet. 
+Gerade deshalb ist es mir ein großes Anliegen, Studierende gezielt zu unterstützen, Verständnis für die zugrunde liegenden Strukturen zu entwickeln und ein solides mathematisches Fundament aufzubauen.
+</p>
+
+<p>
+Auf dieser Seite findest du Materialien, Hinweise und zusätzliche Erläuterungen zur Veranstaltung Analysis I. 
+Mein Ziel ist es, dich bestmöglich bei der Vorbereitung auf Übungen, Tutorien und Prüfungen zu unterstützen.
+</p>
+
+<p>
+Ich freue mich sehr darauf, dich im Tutorium kennenzulernen und dich auf deinem mathematischen Weg begleiten zu dürfen.
+</p>
+  </div>
 
 </body>
 </html>
