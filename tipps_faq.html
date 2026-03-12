@@ -18,93 +18,129 @@
 
     .navbar {
       background-color: black;
-      padding: 1rem;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1.5rem;
+      width: 100%;
       position: sticky;
       top: 0;
       z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+    }
+
+    .navbar-inner {
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 1.15rem 2.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: nowrap;
+      gap: 3.4rem;
+      box-sizing: border-box;
     }
 
     .navbar a {
       color: white;
       text-decoration: none;
-      font-weight: bold;
-      font-size: 1rem;
-      padding: 0.3rem 0.8rem;
-      border-radius: 4px;
+      font-weight: 700;
+      font-size: 1.12rem;
+      letter-spacing: 0.2px;
+      padding: 0.65rem 1.15rem;
+      border-radius: 8px;
       text-align: center;
-      flex: 1 1 auto;
-      max-width: 180px;
+      white-space: nowrap;
       box-sizing: border-box;
-      transition: background-color 0.2s ease, color 0.2s ease;
+      flex: 0 0 auto;
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
     }
 
     .navbar a:hover {
       background-color: goldenrod;
       color: black;
+      transform: translateY(-1px);
+    }
+
+    .page-wrapper {
+      max-width: 1100px;
+      margin: 4rem auto 3.5rem auto;
+      padding: 0 1.4rem;
+      box-sizing: border-box;
     }
 
     .container {
-      max-width: 900px;
-      margin: 2.5rem auto;
-      padding: 0 1.2rem 2rem 1.2rem;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     h1 {
       text-align: center;
       color: #bfa133;
       margin-bottom: 1rem;
-      font-size: 2rem;
+      font-size: 2.2rem;
+      letter-spacing: 0.3px;
     }
 
     h2 {
       color: #bfa133;
-      margin-top: 2rem;
-      margin-bottom: 0.8rem;
+      margin-top: 2.2rem;
+      margin-bottom: 0.9rem;
+      font-size: 1.45rem;
     }
 
     h3 {
       color: #111;
-      margin-top: 1.5rem;
+      margin-top: 0;
+      margin-bottom: 0.7rem;
+      font-size: 1.12rem;
     }
 
     p {
       margin-bottom: 1rem;
+      line-height: 1.8;
+      text-align: justify;
+      font-size: 1.03rem;
     }
 
     ul {
       padding-left: 1.5rem;
     }
 
+    li {
+      margin-bottom: 0.7rem;
+      line-height: 1.7;
+    }
+
     hr {
       border: none;
       border-top: 1px solid #ddd;
-      margin: 2rem 0;
+      margin: 2.5rem 0;
     }
 
     .intro-box {
       border: 3px solid goldenrod;
       background-color: #fffdf0;
-      padding: 22px;
-      border-radius: 12px;
-      margin: 2rem 0 2.5rem 0;
+      padding: 1.6rem 1.7rem;
+      border-radius: 14px;
+      margin: 2rem 0 2.6rem 0;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
     }
 
     .gold-box {
       border: 3px solid goldenrod;
       background-color: #fffdf0;
-      padding: 20px;
-      border-radius: 10px;
-      margin: 30px 0;
+      padding: 1.6rem 1.7rem;
+      border-radius: 14px;
+      margin: 2rem 0;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
     }
 
     .gold-box blockquote {
       font-style: italic;
       color: #555;
-      margin-left: 20px;
+      margin: 0 0 1.5rem 0;
+      padding-left: 1rem;
+      border-left: 4px solid goldenrod;
+      line-height: 1.7;
     }
 
     .gold-box h2 {
@@ -115,10 +151,10 @@
     .section-card {
       background: #fff;
       border-left: 5px solid #d4af37;
-      padding: 1rem 1.2rem;
+      padding: 1.2rem 1.3rem;
       margin: 1.2rem 0;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-      border-radius: 8px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+      border-radius: 10px;
     }
 
     .quick-nav {
@@ -126,42 +162,63 @@
       flex-wrap: wrap;
       gap: 0.8rem;
       justify-content: center;
-      margin: 1.5rem 0 2.5rem 0;
+      margin: 1.7rem 0 2.7rem 0;
     }
 
     .quick-nav a {
       text-decoration: none;
       color: black;
       border: 2px solid goldenrod;
-      padding: 0.55rem 1rem;
+      padding: 0.65rem 1.1rem;
       border-radius: 999px;
       font-weight: bold;
       background-color: #fffdf0;
-      transition: 0.2s ease;
+      transition: background-color 0.2s ease, transform 0.2s ease;
     }
 
     .quick-nav a:hover {
       background-color: goldenrod;
       color: black;
+      transform: translateY(-1px);
+    }
+
+    .proof-list li {
+      margin-bottom: 1rem;
     }
 
     footer {
-      margin-top: 3rem;
+      margin-top: 3.5rem;
       text-align: center;
       color: gray;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
+      padding-bottom: 1rem;
+    }
+
+    @media (max-width: 1100px) {
+      .navbar-inner {
+        gap: 2rem;
+        padding: 1rem 1.5rem;
+      }
+
+      .navbar a {
+        font-size: 1rem;
+        padding: 0.55rem 0.85rem;
+      }
     }
 
     @media (max-width: 768px) {
-      .navbar {
-        padding: 1.2rem 0.8rem;
-        gap: 0.6rem;
+      .navbar-inner {
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        padding: 1rem 0.8rem;
       }
 
       .navbar a {
         flex: 1 1 30%;
         max-width: 30%;
-        font-size: 1.02rem;
+        white-space: normal;
+        font-size: 0.98rem;
+        padding: 0.55rem 0.55rem;
       }
 
       .navbar a:nth-child(4),
@@ -170,16 +227,27 @@
         max-width: 45%;
       }
 
-      .container {
-        padding: 0 1rem 2rem 1rem;
+      .page-wrapper {
+        margin: 3rem auto 2.5rem auto;
+        padding: 0 1rem;
       }
 
       h1 {
-        font-size: 1.6rem;
+        font-size: 1.7rem;
       }
 
       h2 {
-        font-size: 1.3rem;
+        font-size: 1.28rem;
+      }
+
+      h3 {
+        font-size: 1.05rem;
+      }
+
+      p,
+      li {
+        font-size: 0.98rem;
+        line-height: 1.75;
       }
 
       .gold-box,
@@ -187,299 +255,343 @@
       .section-card {
         padding: 1rem;
       }
+
+      .quick-nav a {
+        padding: 0.55rem 0.9rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="navbar">
-    <a href="index.html">Startseite</a>
-    <a href="materialien.html">Analysis-I</a>
-    <a href="materialien-2.html">Analysis-II</a>
-    <a href="kontakt.html">Kontakt</a>
-    <a href="tipps_datenschutz.html">Tipps & Datenschutz</a>
-  </div>
-
-  <div class="container">
-    <h1>Tipps & Datenschutz</h1>
-
-    <div class="intro-box">
-      <p>
-        Auf dieser Seite findest du sowohl persönliche Hinweise zum Mathematikstudium
-        als auch die rechtlichen und organisatorischen Informationen zur Nutzung dieser Webseite.
-        Ziel ist es, Studierenden eine hilfreiche, klare und zugleich transparente Orientierung zu geben.
-      </p>
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html">Startseite</a>
+      <a href="materialien.html">Analysis-I</a>
+      <a href="materialien-2.html">Analysis-II</a>
+      <a href="kontakt.html">Kontakt</a>
+      <a href="tipps_datenschutz.html">Tipps & Datenschutz</a>
     </div>
+  </nav>
 
-    <div class="quick-nav">
-      <a href="#tipps">Tipps für das Studium</a>
-      <a href="#beweishinweise">Hinweise zum Beweisen</a>
-      <a href="#datenschutz">Datenschutz</a>
+  <div class="page-wrapper">
+    <div class="container">
+      <h1>Tipps & Datenschutz</h1>
+
+      <div class="intro-box">
+        <p>
+          Auf dieser Seite findest du sowohl persönliche Hinweise zum Mathematikstudium
+          als auch rechtliche und organisatorische Informationen zur Nutzung dieser Webseite.
+          Ziel ist es, Studierenden eine hilfreiche, klare und zugleich transparente Orientierung
+          zu geben – fachlich, methodisch und organisatorisch.
+        </p>
+      </div>
+
+      <div class="quick-nav">
+        <a href="#tipps">Tipps für das Studium</a>
+        <a href="#beweishinweise">Hinweise zum Beweisen</a>
+        <a href="#datenschutz">Datenschutz</a>
+      </div>
+
+      <hr>
+
+      <section id="tipps">
+        <h2>Tipps für dein Mathematikstudium – ehrlich, hilfreich, menschlich</h2>
+
+        <p>
+          Das Mathematikstudium ist kein einfacher Weg. Es gehört zu den Studiengängen,
+          die besonders viel Ausdauer, Präzision, Frustrationstoleranz und geistige Disziplin verlangen.
+          Gleichzeitig ist es aber auch ein Fach, das ein außergewöhnlich tiefes und schönes Verständnis
+          von Strukturen, Zusammenhängen und logischem Denken vermittelt. Die folgenden Hinweise sollen
+          dir helfen, typische Fehler zu vermeiden und deinen eigenen Arbeitsstil besser zu entwickeln.
+        </p>
+
+        <div class="section-card">
+          <h3>1. Mathematik baut aufeinander auf – bleib kontinuierlich dran</h3>
+          <p>
+            Universitätsmathematik ist stark kumulativ aufgebaut. Neue Begriffe, Sätze und Methoden
+            setzen fast immer frühere Inhalte voraus. Wenn Grundlagen unklar bleiben, entstehen später
+            schnell größere Verständnisprobleme. Deshalb ist regelmäßiges Mitlernen oft wichtiger
+            als punktuelle Lernphasen kurz vor der Klausur.
+          </p>
+        </div>
+
+        <div class="section-card">
+          <h3>2. Austausch hilft – aber eigenes Denken bleibt unverzichtbar</h3>
+          <p>
+            Lerngruppen, Tutorien und Gespräche mit Kommilitoninnen und Kommilitonen sind sehr wertvoll.
+            Dennoch darf Mathematik nicht nur gemeinsam konsumiert werden. Wirkliches Verständnis entsteht
+            oft erst dann, wenn du ein Argument selbst formulierst, einen Beweis selbst schreibst oder
+            eine Aufgabe zunächst allein durchdenkst.
+          </p>
+        </div>
+
+        <div class="section-card">
+          <h3>3. Verwirrung ist kein Zeichen von Unfähigkeit</h3>
+          <p>
+            Gerade zu Beginn wirkt Hochschulmathematik oft fremd und ungewohnt. Die Sprache ist präziser,
+            abstrakter und logischer als in der Schule. Dass man nicht sofort alles versteht, ist normal.
+            Entscheidend ist nicht, ob etwas beim ersten Lesen klar ist, sondern ob man bereit ist,
+            mehrmals geduldig an denselben Inhalt zurückzukehren.
+          </p>
+        </div>
+
+        <div class="section-card">
+          <h3>4. Definitionen sind der Kern der Mathematik</h3>
+          <p>
+            Viele Schwierigkeiten entstehen nicht bei großen Sätzen, sondern bei unscharf verstandenen
+            Definitionen. Wer eine Definition wirklich versteht, erkennt meist auch schneller,
+            welche Werkzeuge in einer Aufgabe sinnvoll sind. Frage dich daher bei jedem neuen Begriff:
+            Was bedeutet er genau? Welche Bestandteile hat die Definition? Was wäre ein typisches Beispiel
+            und was ein Gegenbeispiel?
+          </p>
+        </div>
+
+        <div class="section-card">
+          <h3>5. Übungsblätter sind nicht Beiwerk, sondern Training</h3>
+          <p>
+            Die Übungsblätter sind oft der Ort, an dem das eigentliche Lernen stattfindet.
+            Erst beim Bearbeiten von Aufgaben merkst du, ob du Definitionen anwenden, Aussagen korrekt
+            interpretieren und Beweise sinnvoll strukturieren kannst. Ein unvollständiger, aber eigener
+            Ansatz ist fast immer wertvoller als ein nur passiv gelesener Lösungsweg.
+          </p>
+        </div>
+
+        <div class="section-card">
+          <h3>6. Sauberes Schreiben ist Teil des Denkens</h3>
+          <p>
+            In Mathematik ist die äußere Form nicht bloß Kosmetik. Eine klare Notation,
+            sinnvolle Zwischenüberschriften, sauber benannte Mengen und logisch getrennte Schritte
+            helfen nicht nur der lesenden Person, sondern auch dir selbst. Wer klar schreibt,
+            denkt meistens auch klarer.
+          </p>
+        </div>
+
+        <div class="section-card">
+          <h3>7. Pausen sind wichtig – aber längere Unterbrechungen rächen sich</h3>
+          <p>
+            Erholung gehört zu einem gesunden Studium dazu. Gleichzeitig verzeiht Mathematik
+            längere Phasen völliger Inaktivität oft nur schwer, weil Denkgewohnheiten,
+            Begriffsverständnis und Beweistechniken schnell an Schärfe verlieren.
+            Kleine, regelmäßige Arbeitseinheiten sind meist deutlich wirksamer als seltene Marathon-Sitzungen.
+          </p>
+        </div>
+
+        <div class="section-card">
+          <h3>8. Kurzfristiges Auswendiglernen reicht fast nie aus</h3>
+          <p>
+            Mathematik verlangt in Klausuren nicht nur Wiedererkennen, sondern aktives Anwenden,
+            Übertragen und Strukturieren. Reines Auswendiglernen ohne echtes Verständnis trägt deshalb
+            oft nicht weit. Natürlich darf man Definitionen und Standardsätze lernen – aber erst,
+            wenn sie inhaltlich eingeordnet wurden.
+          </p>
+        </div>
+
+        <div class="section-card">
+          <h3>9. Lautes Erklären ist ein starkes Werkzeug</h3>
+          <p>
+            Wenn du versuchst, einen Satz, einen Beweis oder eine Lösung laut zu erklären,
+            bemerkst du sofort, welche Stellen noch unklar sind. Was man nicht verständlich formulieren kann,
+            hat man oft noch nicht tief genug verstanden. Diese Methode ist einfach, aber sehr effektiv.
+          </p>
+        </div>
+
+        <div class="section-card">
+          <h3>10. Frust gehört zum Prozess dazu</h3>
+          <p>
+            Mathematik besteht nicht nur aus Aha-Momenten, sondern auch aus Sackgassen,
+            Zweifeln und längeren Phasen scheinbarer Orientierungslosigkeit. Das ist kein Fehler
+            des Studiums, sondern Teil des Lernprozesses. Fortschritt entsteht oft gerade dadurch,
+            dass man an schwierigen Gedanken arbeitet, sie sortiert und Schritt für Schritt präzisiert.
+          </p>
+        </div>
+      </section>
+
+      <section id="beweishinweise">
+        <div class="gold-box">
+          <h2>Wichtige Hinweise zum Beweisen</h2>
+
+          <blockquote>
+            „Was sich überhaupt sagen lässt, lässt sich klar sagen.“<br>
+            <em>– in Anlehnung an Ludwig Wittgenstein</em>
+          </blockquote>
+
+          <p>
+            Dieser Abschnitt soll helfen, typische Anfängerfehler beim Beweisen zu vermeiden.
+            Ein mathematischer Beweis ist keine lose Sammlung von Formeln, sondern eine logisch
+            strukturierte Argumentation. Ziel eines Beweises ist es, eine Aussage aus den gegebenen
+            Voraussetzungen mit klaren, nachvollziehbaren und korrekt begründeten Schritten herzuleiten.
+          </p>
+
+          <ul class="proof-list">
+            <li>
+              <strong>Formuliere in vollständigen, mathematisch präzisen Sätzen.</strong><br>
+              Ein Beweis besteht aus Sprache und Symbolik. Formeln allein genügen in der Regel nicht.
+              Schreibe daher nicht nur hin, was du rechnest, sondern auch, warum der jeweilige Schritt
+              zulässig ist und welches Zwischenziel du damit verfolgst.
+            </li>
+
+            <li>
+              <strong>Kenne zu jedem Zeitpunkt das konkrete Beweisziel.</strong><br>
+              Frage dich fortlaufend: Was muss eigentlich gezeigt werden? Geht es darum, eine Inklusion,
+              eine Gleichheit, eine Stetigkeit, eine Messbarkeit, eine Beschränktheit oder eine Existenz
+              nachzuweisen? Wer das Ziel nicht klar vor Augen hat, argumentiert oft unsystematisch.
+            </li>
+
+            <li>
+              <strong>Arbeite bewusst mit den Voraussetzungen.</strong><br>
+              Markiere dir, was gegeben ist. Sehr viele Beweise scheitern nicht an fehlender Kreativität,
+              sondern daran, dass vorhandene Annahmen gar nicht aktiv benutzt werden. Prüfe deshalb:
+              Welche Definitionen, Voraussetzungen oder bereits bewiesenen Aussagen stehen mir gerade zur Verfügung?
+            </li>
+
+            <li>
+              <strong>Verwende Definitionen nicht nur oberflächlich, sondern vollständig.</strong><br>
+              Wenn du beispielsweise zeigen willst, dass eine Funktion stetig, eine Menge offen oder
+              eine Abbildung messbar ist, musst du die zugrunde liegende Definition exakt kennen
+              und sauber entfalten. Viele Fehler entstehen dadurch, dass man nur eine vage Vorstellung
+              der Definition hat, aber nicht ihre genaue logische Struktur.
+            </li>
+
+            <li>
+              <strong>Trenne sauber zwischen „es gilt“ und „es ist zu zeigen“.</strong><br>
+              Schreibe keine Aussage so hin, als wäre sie bereits bewiesen, obwohl sie gerade erst
+              gezeigt werden soll. Besonders bei Äquivalenzumformungen, Mengengleichheiten oder
+              Implikationen ist sauberes logisches Arbeiten zentral.
+            </li>
+
+            <li>
+              <strong>Bei Gleichheiten: Zeige beide Richtungen, falls nötig.</strong><br>
+              Wenn du eine Mengengleichheit oder eine Aussage der Form „genau dann, wenn“ beweisen willst,
+              musst du häufig beide Implikationen getrennt zeigen. Es reicht nicht, nur eine Richtung
+              sauber zu argumentieren und die andere stillschweigend zu erwarten.
+            </li>
+
+            <li>
+              <strong>Führe nicht nur Rechnungen aus, sondern begründe Übergänge.</strong><br>
+              Gerade in Analysis und Linearer Algebra werden oft Rechenschritte notiert,
+              ohne dass klar ist, warum sie erlaubt sind. Begründe also, wenn du einen Grenzübergang,
+              eine Umordnung, eine Abschätzung, einen Satz oder eine bekannte Eigenschaft verwendest.
+            </li>
+
+            <li>
+              <strong>Prüfe, ob dein Ansatz zur Struktur der Aussage passt.</strong><br>
+              Manche Aussagen beweist man direkt, manche per Widerspruch, manche über Kontraposition,
+              manche durch Induktion oder durch Zerlegung in Einzelschritte. Die richtige Beweismethode
+              hängt stark von der Form der Aussage ab. Ein guter erster Schritt ist daher:
+              Welche Art von Aussage liegt überhaupt vor?
+            </li>
+
+            <li>
+              <strong>Benutze Beispiele nur zur Orientierung, nicht als Beweis.</strong><br>
+              Ein Beispiel kann helfen, eine Vermutung zu verstehen oder die richtige Idee zu finden.
+              Es beweist aber keine allgemeine Aussage. Verwechsle daher heuristische Einsicht
+              nie mit einem vollständigen mathematischen Nachweis.
+            </li>
+
+            <li>
+              <strong>Achte auf Quantoren und logische Reihenfolge.</strong><br>
+              Begriffe wie „für alle“, „es existiert“, „genau dann, wenn“, „höchstens“, „mindestens“
+              oder „fast überall“ sind mathematisch hochrelevant. Eine kleine Unachtsamkeit bei Quantoren
+              kann den gesamten Sinn einer Aussage verändern.
+            </li>
+
+            <li>
+              <strong>Saubere Notation ist keine Nebensache.</strong><br>
+              Definiere verwendete Objekte, benenne Mengen korrekt und führe Symbole konsistent ein.
+              Es sollte immer klar sein, was fest gewählt wurde, was beliebig ist und was neu eingeführt wird.
+            </li>
+
+            <li>
+              <strong>Beende einen Beweis bewusst.</strong><br>
+              Ein Beweis sollte mit einem klaren Abschluss enden. Formulierungen wie
+              „Damit ist die Behauptung gezeigt“ oder „Somit folgt die gewünschte Aussage“
+              helfen dabei, die Argumentation sauber abzurunden.
+            </li>
+
+            <li>
+              <strong>Kontrolliere dein Ergebnis kritisch.</strong><br>
+              Frage dich nach dem Schreiben: Ist die Aussage wirklich für alle betrachteten Fälle gezeigt?
+              Wurde irgendwo etwas stillschweigend vorausgesetzt? Wurden Sonderfälle übersehen?
+              Passt das Resultat zu einfachen Beispielen oder bekannten Grenzfällen?
+            </li>
+
+            <li>
+              <strong>Beweise entstehen oft nicht linear.</strong><br>
+              Es ist völlig normal, dass man zunächst Skizzen, Nebenrechnungen oder unordentliche Ideen hat.
+              Entscheidend ist, diese Gedanken anschließend in eine klare, lesbare Endform zu überführen.
+              Rohdenken ist erlaubt – Abgabeformat ist Präzision.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <hr>
+
+      <section id="datenschutz">
+        <h2>Datenschutz & Nutzungsbedingungen</h2>
+
+        <div class="section-card">
+          <p>
+            Diese Webseite dient ausschließlich der Unterstützung von Studierenden im Rahmen
+            des Analysis-Tutoriums an der LMU München. Sie verfolgt keine kommerzielle Absicht
+            und stellt Inhalte zu Lern- und Orientierungszwecken bereit.
+          </p>
+        </div>
+
+        <div class="section-card">
+          <p><strong>1. Keine Datenerhebung:</strong><br>
+            Diese Webseite verwendet keine Cookies, keine Webanalyse-Tools und keine Kontaktformulare.
+            Es werden keine personenbezogenen Daten aktiv erhoben, gespeichert oder verarbeitet.
+            Die Nutzung der Seite ist daher grundsätzlich anonym.
+          </p>
+        </div>
+
+        <div class="section-card">
+          <p><strong>2. Zweck der Inhalte:</strong><br>
+            Sämtliche bereitgestellten Materialien dienen ausschließlich dem Selbststudium
+            und der fachlichen Unterstützung. Eine kommerzielle oder anderweitig zweckfremde Nutzung
+            ist nicht gestattet.
+          </p>
+        </div>
+
+        <div class="section-card">
+          <p><strong>3. Urheberrecht & Weitergabe:</strong><br>
+            Alle Inhalte dieser Webseite unterliegen – soweit nicht anders gekennzeichnet –
+            dem Urheberrecht des Seitenbetreibers. Eine unautorisierte Vervielfältigung,
+            Veränderung oder öffentliche Weitergabe ist nicht gestattet.
+          </p>
+        </div>
+
+        <div class="section-card">
+          <p><strong>4. Haftungsausschluss:</strong><br>
+            Die Inhalte wurden nach bestem Wissen erstellt. Dennoch wird keine Gewähr
+            für Richtigkeit, Vollständigkeit oder Aktualität übernommen. Die Nutzung erfolgt
+            auf eigenes Risiko. Diese Webseite ist kein offizielles Angebot der LMU München.
+          </p>
+        </div>
+
+        <div class="section-card">
+          <p><strong>5. Kontakt:</strong><br>
+            Bei datenschutzrechtlichen Fragen oder Fragen zu Nutzungsrechten:
+            <a href="mailto:M.Guenkaya@campus.lmu.de">M.Guenkaya@campus.lmu.de</a>
+          </p>
+        </div>
+
+        <div class="section-card">
+          <p><strong>6. Weiteres:</strong><br>
+            Weitere Hinweise findest du hier:
+          </p>
+          <ul>
+            <li><a href="Datenschutz-Weiteres.pdf" target="_blank">Datenschutz-Weiteres</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <footer>
+        Letzte Aktualisierung: März 2026 · Analysis Tutorium – Mirkan Günkaya
+      </footer>
     </div>
-
-    <hr>
-
-    <section id="tipps">
-      <h2>Tipps für dein Mathematikstudium – ehrlich, hilfreich, menschlich</h2>
-
-      <p>
-        Das Mathematikstudium ist kein Spaziergang. Es ist eines der anspruchsvollsten
-        und zugleich faszinierendsten Studienfächer überhaupt. Es verlangt nicht nur
-        logisches Denken und Ausdauer, sondern auch eine gewisse Demut vor der Tiefe der Inhalte.
-        Hier sind einige Gedanken, Tipps und persönliche Ratschläge, die dir vielleicht helfen,
-        deinen Weg besser zu finden:
-      </p>
-
-      <div class="section-card">
-        <h3>📌 1. Mathematik baut aufeinander auf – bleib am Ball</h3>
-        <p>
-          Uni-Mathematik ist wie ein Bauwerk: Alles baut aufeinander auf.
-          Wer die Grundlagen einer Vorlesung nicht versteht, wird es in der nächsten noch schwerer haben.
-          Deshalb ist es essenziell, kontinuierlich mitzulernen und nicht den Anschluss zu verlieren.
-          Versuche, regelmäßig in die Vorlesung zu gehen, aufmerksam zuzuhören und Fragen zu stellen.
-        </p>
-      </div>
-
-      <div class="section-card">
-        <h3>🤝 2. Du musst das Studium nicht alleine schaffen</h3>
-        <p>
-          Mathematik ist keine Einzeldisziplin. Der Austausch mit anderen ist oft entscheidend.
-          Gründe oder suche dir eine Lerngruppe, stelle Fragen im Tutorium oder in euren Gruppen.
-          Gleichzeitig ist es extrem wichtig, dass du auch lernst, alleine zu denken und Probleme
-          selbstständig zu durchdringen. Die Balance aus Austausch und stillem, fokussierten Lernen
-          ist der Schlüssel.
-        </p>
-      </div>
-
-      <div class="section-card">
-        <h3>🧠 3. Es ist okay, am Anfang wenig zu verstehen</h3>
-        <p>
-          Niemand versteht am Anfang alles – wirklich niemand. Gerade die abstrakte Sprache
-          und die neue Denkweise sind für viele eine große Herausforderung. Das ist völlig normal.
-          Mathematik ist kein Sprint, sondern ein Marathon. Wer dranbleibt, entwickelt mit der Zeit
-          ein tieferes Verständnis.
-        </p>
-      </div>
-
-      <div class="section-card">
-        <h3>📖 4. Das Skript ist dein bester Freund</h3>
-        <p>
-          Lies das Skript regelmäßig – nicht nur oberflächlich, sondern mit dem Ziel,
-          Definitionen, Sätze und Lemmas wirklich zu verstehen. Nimm dir Zeit, Beweise
-          aus der Vorlesung selbst durchzugehen oder sogar selbst zu rekonstruieren.
-          Genau darin liegt oft der Schlüssel zum Verständnis.
-        </p>
-      </div>
-
-      <div class="section-card">
-        <h3>📝 5. Die Übungsblätter sind der wahre Prüfstein</h3>
-        <p>
-          Übungsaufgaben sind das Herzstück des Studiums. Sie sind nicht bloß Zusatzmaterial,
-          sondern essenziell, um den Stoff zu durchdringen. Mach so viele Aufgaben wie möglich,
-          auch wenn du nicht sofort alles verstehst. Selbst ein unvollständiger Ansatz ist besser
-          als gar keiner.
-        </p>
-      </div>
-
-      <div class="section-card">
-        <h3>🍻 6. Studium ist auch Leben – gönn dir Pausen</h3>
-        <p>
-          Vergiss nicht: Das Studium ist auch eine einmalige Lebensphase.
-          Lerne hart, ja – aber lebe auch. Niemand kann dauerhaft wie ein Roboter funktionieren.
-          Gute Pausen helfen dir, langfristig konzentriert und gesund zu bleiben.
-        </p>
-      </div>
-
-      <div class="section-card">
-        <h3>⚖️ 7. Aber: Mathematik verzeiht keine langen Pausen</h3>
-        <p>
-          So wichtig Pausen sind – Mathematik verzeiht kein langes Loslassen.
-          Wenn du mehrere Wochen nichts machst, häufen sich die Lücken.
-          Daher gilt: Lern regelmäßig, dann darfst du auch regelmäßig genießen.
-        </p>
-      </div>
-
-      <div class="section-card">
-        <h3>❗ 8. Real Talk: Klausurlernen in letzter Minute? Keine Chance.</h3>
-        <p>
-          Universitätsmathematik ist nicht mit Schulmathematik vergleichbar.
-          Sie ist abstrakter, tiefer und anspruchsvoller. Wer dauerhaft erst kurz vor der Prüfung
-          anfängt, wird es sehr schwer haben. Fang früh an, arbeite sauber und kontinuierlich.
-        </p>
-      </div>
-
-      <div class="section-card">
-        <h3>💬 9. Sprich über Mathematik – laut denken hilft</h3>
-        <p>
-          Viele Aha-Momente entstehen, wenn man versucht, etwas jemand anderem zu erklären.
-          Das zwingt dich dazu, klar und präzise zu formulieren – und zeigt dir gleichzeitig,
-          wo deine eigenen Lücken sind.
-        </p>
-      </div>
-
-      <div class="section-card">
-        <h3>🧩 10. Akzeptiere, dass Mathematik auch Frust bedeutet</h3>
-        <p>
-          Manchmal wirst du tagelang an einem Problem sitzen und trotzdem nicht weiterkommen.
-          Das ist normal. Mathematik besteht aus vielen Phasen der Verwirrung – aber gerade diese
-          Phasen gehören zum Lernprozess dazu. Wichtig ist, dass du weitermachst.
-        </p>
-      </div>
-    </section>
-
-    <section id="beweishinweise">
-      <div class="gold-box">
-        <h2>Wichtige Hinweise zum Beweisen</h2>
-
-        <blockquote>
-          „Was sich überhaupt sagen lässt, lässt sich klar sagen.“<br>
-          <em>– in Anlehnung an Ludwig Wittgenstein</em>
-        </blockquote>
-
-        <p>
-          Der folgende Abschnitt soll helfen, sehr häufige Anfängerfehler beim Beweisen
-          und Rechnen zu vermeiden. Diese Hinweise sind nicht nur für eine einzelne Klausur wichtig,
-          sondern für das gesamte weitere Mathematikstudium.
-        </p>
-
-        <ul>
-          <li>
-            <strong>Präzise und klare Argumentation in ganzen deutschen Sätzen.</strong><br>
-            Beweise bestehen aus logisch aufgebauten vollständigen Sätzen, die mit mathematischen
-            Formeln angereichert sind. Eine bloße Aneinanderreihung von Formeln ist kein Beweis.
-          </li>
-          <br>
-          <li>
-            <strong>Bewusstsein über das jeweilige Beweisziel.</strong><br>
-            Mache dir in jedem Schritt klar, was aktuell eigentlich zu zeigen ist.
-            Dokumentiere dies an wichtigen Stellen auch sprachlich.
-          </li>
-          <br>
-          <li>
-            <strong>Dokumentation der gegebenen Aussagen.</strong><br>
-            Halte fest, welche Voraussetzungen, Annahmen oder bereits bewiesenen Zwischenresultate
-            gerade zur Verfügung stehen.
-          </li>
-          <br>
-          <li>
-            <strong>Sei kritisch gegenüber deinen eigenen Rechnungen.</strong><br>
-            Führe Konsistenzchecks aus, prüfe Spezialfälle und frage dich,
-            ob das Ergebnis überhaupt plausibel sein kann.
-          </li>
-          <br>
-          <li>
-            <strong>Erfinde keine falschen Rechenregeln.</strong><br>
-            Gerade in der Hochschulmathematik ist sauberes Arbeiten entscheidend.
-            Eine scheinbar kleine Ungenauigkeit kann den ganzen Beweis entwerten.
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <hr>
-
-    <section id="datenschutz">
-      <h2>🔐 Datenschutz & Nutzungsbedingungen</h2>
-
-      <div class="section-card">
-        <p>
-          Diese Webseite dient ausschließlich der Unterstützung von Studierenden im Rahmen
-          des Analysis I Tutoriums an der LMU München. Sie verfolgt keinerlei kommerzielle Absicht
-          und erhebt keine personenbezogenen Daten. Alle Inhalte dieser Webseite sind ausschließlich
-          zu Lernzwecken bereitgestellt und dürfen nur unter Einhaltung der nachstehenden Bestimmungen
-          genutzt werden.
-        </p>
-      </div>
-
-      <div class="section-card">
-        <p><strong>1. Keine Datenerhebung:</strong><br>
-          Diese Webseite verwendet keine Cookies, keine Webanalyse-Tools und keine Kontaktformulare.
-          Es werden weder IP-Adressen, Geräteinformationen noch Standortdaten oder sonstige
-          personenbezogene Daten automatisiert erhoben, gespeichert oder verarbeitet.
-          Es erfolgt keinerlei Tracking oder Weitergabe von Nutzerdaten an Dritte.
-          Die Nutzung erfolgt vollständig anonym.
-        </p>
-      </div>
-
-      <div class="section-card">
-        <p><strong>2. Zweck der Inhalte:</strong><br>
-          Sämtliche zur Verfügung gestellten Materialien (z. B. PDF-Dateien, Aufgaben, Skripte,
-          Hinweise, Tipps oder begleitende Texte) sind ausschließlich zur individuellen Unterstützung
-          beim Selbststudium gedacht. Eine Nutzung zu anderen Zwecken – insbesondere zu kommerziellen,
-          institutionellen oder öffentlichen Präsentationszwecken – ist untersagt.
-        </p>
-      </div>
-
-      <div class="section-card">
-        <p><strong>3. Urheberrecht & Weitergabe:</strong><br>
-          Alle Inhalte dieser Webseite, einschließlich Texte, Dateien, Strukturen, Darstellungen
-          und Downloads, unterliegen dem Urheberrecht des Seitenbetreibers, sofern nicht anders
-          gekennzeichnet. Eine Weitergabe an Dritte – insbesondere durch Upload in soziale Netzwerke,
-          Lernplattformen oder öffentliche Foren – ist untersagt.
-        </p>
-
-        <p>
-          Es ist nicht gestattet, Inhalte zu verändern, zu kürzen, zu erweitern, zu kopieren
-          oder in andere Kontexte einzubetten – weder teilweise noch vollständig – ohne ausdrückliche
-          und schriftliche Genehmigung durch den Ersteller. Verstöße können rechtliche Schritte
-          nach sich ziehen.
-        </p>
-      </div>
-
-      <div class="section-card">
-        <p><strong>4. Keine Haftung:</strong><br>
-          Die auf dieser Seite bereitgestellten Informationen wurden nach bestem Wissen und Gewissen
-          erstellt. Dennoch wird keinerlei Garantie für Richtigkeit, Vollständigkeit, Aktualität
-          oder Anwendbarkeit der Inhalte übernommen. Die Nutzung der angebotenen Materialien erfolgt
-          auf eigenes Risiko. Der Betreiber übernimmt keine Haftung für direkte oder indirekte Schäden,
-          die durch die Nutzung der Inhalte entstehen.
-        </p>
-
-        <p>
-          Diese Seite ist kein offizielles Angebot der LMU München, sondern ein privat erstelltes
-          Unterstützungsangebot.
-        </p>
-      </div>
-
-      <div class="section-card">
-        <p><strong>5. Kontakt bei Fragen:</strong><br>
-          Bei datenschutzrechtlichen Fragen oder zur Klärung von Nutzungsrechten wenden Sie sich bitte an:<br>
-          <a href="mailto:M.Guenkaya@campus.lmu.de">M.Guenkaya@campus.lmu.de</a>
-        </p>
-
-        <p>
-          Bitte beachten Sie, dass aus rechtlichen Gründen keine individuelle Rechtsberatung erfolgen kann.
-          Es handelt sich bei dieser Seite um ein informelles Angebot ohne institutionellen Charakter.
-        </p>
-      </div>
-
-      <div class="section-card">
-        <p><strong>6. Geltung:</strong><br>
-          Durch das Aufrufen und Nutzen dieser Webseite erkennen Sie diese Datenschutz-
-          und Nutzungsbedingungen in vollem Umfang an. Falls Sie mit einzelnen oder allen Punkten
-          nicht einverstanden sind, wird darum gebeten, die Seite unverzüglich zu verlassen
-          und keine Inhalte herunterzuladen oder weiterzuleiten.
-        </p>
-
-        <p>
-          Der Betreiber behält sich vor, diese Bedingungen jederzeit und ohne Vorankündigung
-          zu ändern oder zu erweitern. Es gilt die jeweils aktuelle Fassung.
-        </p>
-      </div>
-
-      <div class="section-card">
-        <p><strong>7. Weiteres:</strong><br>
-          Weitere benötigte Datenschutz-Hinweise:
-        </p>
-        <ul>
-          <li><a href="Datenschutz-Weiteres.pdf" target="_blank">Datenschutz-Weiteres</a></li>
-        </ul>
-      </div>
-    </section>
-
-    <footer>
-      Letzte Aktualisierung: März 2026 · Analysis Tutorium – Mirkan Günkaya
-    </footer>
   </div>
 
 </body>
