@@ -15,13 +15,19 @@
 
   .navbar {
     background-color: black;
+    width: 100%;
+  }
+
+  .navbar-inner {
+    max-width: 1250px;
+    margin: 0 auto;
     padding: 1rem 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: nowrap;
     gap: 2.5rem;
-    overflow-x: auto;
+    box-sizing: border-box;
   }
 
   .navbar a {
@@ -51,6 +57,7 @@
     max-width: 1250px;
     margin: 3rem auto 2rem auto;
     padding: 0 2rem;
+    box-sizing: border-box;
   }
 
   .intro-section img {
@@ -76,15 +83,14 @@
     font-size: 17px;
     line-height: 1.8;
     text-align: justify;
+    box-sizing: border-box;
   }
 
-  /* Handyansicht */
   @media (max-width: 768px) {
-    .navbar {
+    .navbar-inner {
       flex-wrap: wrap;
       gap: 0.6rem;
       padding: 1rem 0.8rem;
-      overflow-x: visible;
     }
 
     .navbar a {
@@ -131,12 +137,14 @@
 
 <body>
   <div class="navbar">
+  <div class="navbar-inner">
     <a href="index.html">Startseite</a>
-    <a href="materialien.html">Analysis-I</a>
-    <a href="materialien-2.html">Analysis-II</a>
+    <a href="analysis1.html">Analysis-I</a>
+    <a href="analysis2.html">Analysis-II</a>
     <a href="kontakt.html">Kontakt</a>
-    <a href="tipps_faq.html">Tipps & Datenschutz</a>
+    <a href="tipps_datenschutz.html">Tipps & Datenschutz</a>
   </div>
+</div>
 
   <div class="intro-section">
   <img src="Mirkan-Tafel-Hintergrund.JPEG" alt="Tafelbild" />
