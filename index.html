@@ -14,26 +14,28 @@
   }
 
   .navbar {
-  background-color: black;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: nowrap;
-  gap: 2.5rem;
-}
+    background-color: black;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 2.5rem;
+    overflow-x: auto;
+  }
 
-.navbar a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1rem;
-  padding: 0.3rem 0.8rem;
-  border-radius: 4px;
-  text-align: center;
-  white-space: nowrap;
-  box-sizing: border-box;
-}
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    text-align: center;
+    white-space: nowrap;
+    box-sizing: border-box;
+    flex: 0 0 auto;
+  }
 
   .navbar a:hover {
     background-color: goldenrod;
@@ -46,9 +48,9 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    max-width: 1100px;
+    max-width: 1250px;
     margin: 3rem auto 2rem auto;
-    padding: 0 1rem;
+    padding: 0 2rem;
   }
 
   .intro-section img {
@@ -63,16 +65,16 @@
   .text-block {
     flex: 1;
     min-width: 280px;
-    padding: 0 1rem;
+    padding: 0 1.5rem;
     text-align: justify;
   }
 
   .ueber-mich-text {
-    max-width: 1100px;
+    max-width: 1250px;
     margin: 0 auto;
-    padding: 0 2rem 3rem 2rem;
+    padding: 0 2.5rem 3rem 2.5rem;
     font-size: 17px;
-    line-height: 1.7;
+    line-height: 1.8;
     text-align: justify;
   }
 
@@ -81,14 +83,18 @@
     .navbar {
       flex-wrap: wrap;
       gap: 0.6rem;
+      padding: 1rem 0.8rem;
+      overflow-x: visible;
     }
 
     .navbar a {
       flex: 1 1 30%;
       max-width: 30%;
+      white-space: normal;
+      font-size: 0.95rem;
+      padding: 0.4rem 0.5rem;
     }
 
-    /* Für die letzten beiden Links */
     .navbar a:nth-child(4),
     .navbar a:nth-child(5) {
       flex: 1 1 45%;
@@ -101,6 +107,11 @@
       padding: 0 1rem;
     }
 
+    .intro-section img {
+      width: 90%;
+      max-width: 400px;
+    }
+
     .text-block {
       padding: 0;
     }
@@ -110,6 +121,7 @@
       padding: 0 1rem 2.5rem 1rem;
       text-align: justify;
       hyphens: auto;
+      line-height: 1.7;
     }
   }
 </style>
