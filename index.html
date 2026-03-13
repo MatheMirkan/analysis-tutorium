@@ -103,46 +103,6 @@
       text-align: justify;
     }
 
-    .hero-buttons {
-      margin-top: 2rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .btn-primary,
-    .btn-secondary {
-      display: inline-block;
-      padding: 0.9rem 1.4rem;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1rem;
-      transition: all 0.22s ease;
-    }
-
-    .btn-primary {
-      background: #111;
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background: goldenrod;
-      color: black;
-      transform: translateY(-1px);
-    }
-
-    .btn-secondary {
-      background: white;
-      color: #111;
-      border: 1px solid #d5d5d5;
-    }
-
-    .btn-secondary:hover {
-      background: #efefef;
-      transform: translateY(-1px);
-    }
-
     .hero-image {
       flex: 0 0 400px;
       display: flex;
@@ -183,6 +143,12 @@
       gap: 1.4rem;
     }
 
+    .card-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
     .card {
       background: white;
       border-radius: 18px;
@@ -190,9 +156,11 @@
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
       border: 1px solid #ececec;
       transition: transform 0.22s ease, box-shadow 0.22s ease;
+      height: 100%;
+      cursor: pointer;
     }
 
-    .card:hover {
+    .card-link:hover .card {
       transform: translateY(-4px);
       box-shadow: 0 14px 30px rgba(0, 0, 0, 0.10);
     }
@@ -205,40 +173,35 @@
     }
 
     .card p {
-      margin-bottom: 1.3rem;
+      margin-bottom: 0;
       color: #444;
       font-size: 0.98rem;
       text-align: justify;
     }
 
-    .card a {
-      text-decoration: none;
-      font-weight: bold;
-      color: #8a6a10;
-    }
-
     .info-box {
-      max-width: 1000px;
+      max-width: 1240px;
       margin: 0 auto 4.5rem auto;
       background: white;
       border: 1px solid #ececec;
       border-radius: 20px;
-      padding: 2.2rem 2rem;
+      padding: 2.6rem 2.4rem;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
     }
 
     .info-box h2 {
       margin-top: 0;
-      margin-bottom: 1rem;
-      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+      font-size: 1.9rem;
       text-align: center;
     }
 
     .info-box p {
       margin: 0;
       color: #333;
-      font-size: 1.03rem;
+      font-size: 1.04rem;
       text-align: justify;
+      line-height: 1.9;
     }
 
     .footer {
@@ -290,10 +253,6 @@
         font-size: 2.15rem;
       }
 
-      .hero-buttons {
-        justify-content: center;
-      }
-
       .hero-image {
         flex: unset;
         width: 100%;
@@ -312,7 +271,7 @@
       }
 
       .info-box {
-        padding: 1.6rem 1.2rem;
+        padding: 1.8rem 1.2rem;
       }
 
       .navbar-inner {
@@ -354,11 +313,6 @@
         fachlich und methodisch zu unterstützen und eine übersichtliche zentrale
         Anlaufstelle für wichtige Inhalte des Tutoriums bereitzustellen.
       </p>
-
-      <div class="hero-buttons">
-        <a class="btn-primary" href="materialien.html">Zu Analysis I</a>
-        <a class="btn-secondary" href="kontakt.html">Kontakt & Über mich</a>
-      </div>
     </div>
 
     <div class="hero-image">
@@ -375,41 +329,45 @@
     </p>
 
     <div class="cards">
-      <div class="card">
-        <h3>Analysis I</h3>
-        <p>
-          Materialien, Hinweise, zusätzliche Inhalte und hilfreiche Verlinkungen
-          zur Veranstaltung Analysis I.
-        </p>
-        <a href="materialien.html">Zur Seite öffnen</a>
-      </div>
+      <a class="card-link" href="materialien.html">
+        <div class="card">
+          <h3>Analysis I</h3>
+          <p>
+            Materialien, Hinweise, zusätzliche Inhalte und hilfreiche Verlinkungen
+            zur Veranstaltung Analysis I.
+          </p>
+        </div>
+      </a>
 
-      <div class="card">
-        <h3>Analysis II</h3>
-        <p>
-          Ergänzende Inhalte und künftige Materialien zur Fortsetzung der Analysis
-          im folgenden Semester.
-        </p>
-        <a href="materialien-2.html">Zur Seite öffnen</a>
-      </div>
+      <a class="card-link" href="materialien-2.html">
+        <div class="card">
+          <h3>Analysis II</h3>
+          <p>
+            Ergänzende Inhalte und künftige Materialien zur Fortsetzung der Analysis
+            im folgenden Semester.
+          </p>
+        </div>
+      </a>
 
-      <div class="card">
-        <h3>Tipps & Datenschutz</h3>
-        <p>
-          Hinweise zum Lernen, zum Beweisen und allgemeine Informationen zur Nutzung
-          der Webseite sowie zum Datenschutz.
-        </p>
-        <a href="tipps_faq.html">Mehr erfahren</a>
-      </div>
+      <a class="card-link" href="tipps_faq.html">
+        <div class="card">
+          <h3>Tipps & Datenschutz</h3>
+          <p>
+            Hinweise zum Lernen, zum Beweisen und allgemeine Informationen zur Nutzung
+            der Webseite sowie zum Datenschutz.
+          </p>
+        </div>
+      </a>
 
-      <div class="card">
-        <h3>Kontakt</h3>
-        <p>
-          Kontaktmöglichkeiten, persönliche Informationen zu mir und Hinweise dazu,
-          wofür du dich an mich wenden kannst.
-        </p>
-        <a href="kontakt.html">Zur Kontaktseite</a>
-      </div>
+      <a class="card-link" href="kontakt.html">
+        <div class="card">
+          <h3>Kontakt</h3>
+          <p>
+            Kontaktmöglichkeiten, persönliche Informationen zu mir und Hinweise dazu,
+            wofür du dich an mich wenden kannst.
+          </p>
+        </div>
+      </a>
     </div>
   </section>
 
@@ -417,12 +375,31 @@
     <div class="info-box">
       <h2>Worum es im Tutorium geht</h2>
       <p>
-        Die Analysis bildet für viele Studierende einen der ersten intensiven Berührungspunkte
-        mit der universitären Mathematik. Im Mittelpunkt stehen dabei nicht nur Rechenverfahren,
-        sondern vor allem präzises Argumentieren, das Verstehen mathematischer Strukturen und
-        der sichere Umgang mit Definitionen, Sätzen und Beweisen. Diese Webseite soll dabei helfen,
-        zentrale Inhalte geordneter nachzubereiten, typische Schwierigkeiten besser einzuordnen
-        und den Übergang von schulischer zu universitärer Mathematik verständlicher zu gestalten.
+        Das Tutorium soll nicht nur eine Begleitveranstaltung zur Vorlesung sein, sondern
+        vor allem ein Ort, an dem mathematische Inhalte in Ruhe durchdrungen, eingeordnet
+        und aktiv nachvollzogen werden können. Gerade in der Analysis begegnen viele
+        Studierende zum ersten Mal einer Form von Mathematik, die deutlich stärker von
+        Definitionen, präziser Sprache, sauberen Begründungen und logischem Aufbau geprägt
+        ist als der Mathematikunterricht in der Schule. Deshalb steht im Tutorium nicht
+        allein das Lösen einzelner Aufgaben im Vordergrund, sondern insbesondere auch das
+        Verständnis dafür, wie mathematische Argumentationen aufgebaut sind, wie man mit
+        Definitionen sinnvoll arbeitet und wie man Schritt für Schritt lernt, Beweise zu
+        lesen, zu verstehen und schließlich selbst zu formulieren.
+        <br><br>
+        Die Veranstaltung Analysis bildet in vielen mathematischen, naturwissenschaftlichen
+        und technischen Studiengängen einen wesentlichen Grundbaustein. Themen wie Folgen,
+        Reihen, Grenzwerte, Stetigkeit, Differenzierbarkeit oder Integralrechnung sind
+        dabei nicht nur inhaltlich wichtig, sondern prägen auch die mathematische Denkweise,
+        die für das weitere Studium von zentraler Bedeutung ist. Das Tutorium soll deshalb
+        dabei helfen, die Vorlesungsinhalte besser zu strukturieren, typische Schwierigkeiten
+        frühzeitig zu erkennen und ein tragfähiges Fundament für den weiteren Studienverlauf
+        aufzubauen.
+        <br><br>
+        Diese Webseite ergänzt das Tutorium durch eine geordnete Sammlung von Materialien,
+        zusätzlichen Hinweisen und weiterführenden Erläuterungen. Sie soll Studierenden eine
+        zentrale Anlaufstelle bieten, um Inhalte nachzuarbeiten, sich gezielt auf Übungen
+        und Prüfungen vorzubereiten und den Übergang von schulischer Mathematik zu
+        universitärer Beweis- und Begriffsarbeit klarer und verständlicher zu gestalten.
       </p>
     </div>
   </section>
