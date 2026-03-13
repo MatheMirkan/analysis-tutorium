@@ -4,49 +4,55 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" type="image/JPEG" href="/favicon.png">
-  <title>Mirkan Günkaya – Analysis I Tutorium</title>
+  <title>Mirkan Günkaya – Analysis Tutorium</title>
+
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: white;
+      background: #f7f7f5;
       color: #111;
+      line-height: 1.7;
     }
 
     .navbar {
-      background-color: black;
+      background-color: #0d0d0d;
       width: 100%;
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
     }
 
     .navbar-inner {
       max-width: 1500px;
       margin: 0 auto;
-      padding: 1.15rem 2.5rem;
+      padding: 1.05rem 2.2rem;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-wrap: nowrap;
-      gap: 3.4rem;
-      box-sizing: border-box;
+      gap: 2.6rem;
     }
 
     .navbar a {
       color: white;
       text-decoration: none;
       font-weight: 700;
-      font-size: 1.12rem;
+      font-size: 1.05rem;
       letter-spacing: 0.2px;
-      padding: 0.65rem 1.15rem;
-      border-radius: 8px;
-      text-align: center;
+      padding: 0.65rem 1rem;
+      border-radius: 10px;
       white-space: nowrap;
-      box-sizing: border-box;
-      flex: 0 0 auto;
-      transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+      transition: background-color 0.22s ease, color 0.22s ease, transform 0.22s ease;
     }
 
     .navbar a:hover {
@@ -55,106 +61,272 @@
       transform: translateY(-1px);
     }
 
-    .intro-section {
+    .hero {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 5rem 2rem 4rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3.5rem;
+    }
+
+    .hero-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .hero-label {
+      display: inline-block;
+      margin-bottom: 1rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      background: #ece8dc;
+      color: #6c5311;
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .hero h1 {
+      margin: 0 0 1.2rem 0;
+      font-size: 3rem;
+      line-height: 1.15;
+      color: #111;
+    }
+
+    .hero p {
+      margin: 0 0 1.2rem 0;
+      font-size: 1.1rem;
+      color: #333;
+      max-width: 720px;
+      text-align: justify;
+    }
+
+    .hero-buttons {
+      margin-top: 2rem;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      max-width: 1250px;
-      margin: 4.5rem auto 2.5rem auto;
-      padding: 0 2rem;
-      box-sizing: border-box;
+      gap: 1rem;
     }
 
-    .intro-section img {
-      width: 35%;
-      min-width: 280px;
-      max-width: 420px;
+    .btn-primary,
+    .btn-secondary {
+      display: inline-block;
+      padding: 0.9rem 1.4rem;
       border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
-      margin-bottom: 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: all 0.22s ease;
     }
 
-    .text-block {
-      flex: 1;
-      min-width: 280px;
-      padding: 0 1.5rem;
-      text-align: justify;
+    .btn-primary {
+      background: #111;
+      color: white;
     }
 
-    .ueber-mich-text {
-      max-width: 1250px;
+    .btn-primary:hover {
+      background: goldenrod;
+      color: black;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #111;
+      border: 1px solid #d5d5d5;
+    }
+
+    .btn-secondary:hover {
+      background: #efefef;
+      transform: translateY(-1px);
+    }
+
+    .hero-image {
+      flex: 0 0 400px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 420px;
+      border-radius: 18px;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.16);
+      object-fit: cover;
+    }
+
+    .section {
+      max-width: 1320px;
       margin: 0 auto;
-      padding: 0 2.8rem 3.5rem 2.8rem;
-      font-size: 17px;
-      line-height: 1.9;
+      padding: 0 2rem 4.5rem 2rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin: 0 0 0.8rem 0;
+      text-align: center;
+    }
+
+    .section-subtitle {
+      max-width: 820px;
+      margin: 0 auto 2.5rem auto;
+      text-align: center;
+      color: #444;
+      font-size: 1.04rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.4rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 1.6rem 1.4rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      border: 1px solid #ececec;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.10);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 0.9rem;
+      font-size: 1.2rem;
+      color: #111;
+    }
+
+    .card p {
+      margin-bottom: 1.3rem;
+      color: #444;
+      font-size: 0.98rem;
       text-align: justify;
-      box-sizing: border-box;
     }
 
-    .ueber-mich-text p {
-      margin-bottom: 1.5rem;
+    .card a {
+      text-decoration: none;
+      font-weight: bold;
+      color: #8a6a10;
     }
 
-    @media (max-width: 1100px) {
-      .navbar-inner {
+    .info-box {
+      max-width: 1000px;
+      margin: 0 auto 4.5rem auto;
+      background: white;
+      border: 1px solid #ececec;
+      border-radius: 20px;
+      padding: 2.2rem 2rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    }
+
+    .info-box h2 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      text-align: center;
+    }
+
+    .info-box p {
+      margin: 0;
+      color: #333;
+      font-size: 1.03rem;
+      text-align: justify;
+    }
+
+    .footer {
+      background: #111;
+      color: #ddd;
+      text-align: center;
+      padding: 1.4rem 1rem;
+      font-size: 0.95rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 1150px) {
+      .hero {
         gap: 2rem;
-        padding: 1rem 1.5rem;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .navbar-inner {
+        gap: 1.4rem;
+        padding: 1rem 1.2rem;
       }
 
       .navbar a {
-        font-size: 1rem;
-        padding: 0.55rem 0.85rem;
+        font-size: 0.98rem;
+        padding: 0.55rem 0.8rem;
       }
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 820px) {
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 3.2rem 1rem 3rem 1rem;
+      }
+
+      .hero p {
+        text-align: justify;
+        font-size: 1rem;
+      }
+
+      .hero h1 {
+        font-size: 2.15rem;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .hero-image {
+        flex: unset;
+        width: 100%;
+      }
+
+      .hero-image img {
+        max-width: 390px;
+      }
+
+      .section {
+        padding: 0 1rem 3.2rem 1rem;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .info-box {
+        padding: 1.6rem 1.2rem;
+      }
+
       .navbar-inner {
         flex-wrap: wrap;
-        gap: 0.8rem;
-        padding: 1rem 0.8rem;
+        gap: 0.7rem;
+        justify-content: center;
       }
 
       .navbar a {
-        flex: 1 1 30%;
-        max-width: 30%;
         white-space: normal;
-        font-size: 0.98rem;
-        padding: 0.55rem 0.55rem;
-      }
-
-      .navbar a:nth-child(4),
-      .navbar a:nth-child(5) {
-        flex: 1 1 45%;
-        max-width: 45%;
-      }
-
-      .intro-section {
-        flex-direction: column;
         text-align: center;
-        margin: 3rem auto 2rem auto;
-        padding: 0 1rem;
-      }
-
-      .intro-section img {
-        width: 90%;
-        max-width: 400px;
-      }
-
-      .text-block {
-        padding: 0;
-      }
-
-      .ueber-mich-text {
-        font-size: 16px;
-        padding: 0 1rem 2.5rem 1rem;
-        text-align: justify;
-        hyphens: auto;
-        line-height: 1.75;
       }
     }
   </style>
-
 </head>
 
 <body>
@@ -168,68 +340,95 @@
     </div>
   </nav>
 
-  <div class="intro-section">
-  <img src="Mirkan-Tafel-Hintergrund.JPEG" alt="Tafelbild" />
-</div>
+  <section class="hero">
+    <div class="hero-text">
+      <div class="hero-label">Tutorium · Materialien · Hinweise</div>
+      <h1>Analysis Tutorium<br>an der LMU München</h1>
+      <p>
+        Willkommen auf meiner Webseite zum Tutorium in Analysis. Hier findest du
+        Materialien, organisatorische Hinweise, zusätzliche Erläuterungen sowie
+        weiterführende Hilfen zu den Veranstaltungen Analysis I und Analysis II.
+      </p>
+      <p>
+        Ziel dieser Seite ist es, Studierende beim Einstieg in die Hochschulmathematik
+        fachlich und methodisch zu unterstützen und eine übersichtliche zentrale
+        Anlaufstelle für wichtige Inhalte des Tutoriums bereitzustellen.
+      </p>
 
+      <div class="hero-buttons">
+        <a class="btn-primary" href="materialien.html">Zu Analysis I</a>
+        <a class="btn-secondary" href="kontakt.html">Kontakt & Über mich</a>
+      </div>
+    </div>
 
-  <div class="ueber-mich-text">
-    <p>
-Im Wintersemester 2025/2026 war ich als Tutor in der Veranstaltung Analysis I tätig. 
-Im Sommersemester 2026 werde ich zudem die Tutorentätigkeit in der Veranstaltung Analysis II übernehmen. 
-In beiden Veranstaltungen unterstütze ich die Studierenden beim erfolgreichen Einstieg in die Hochschulmathematik und begleite sie fachlich sowie methodisch durch die zentralen Inhalte der Vorlesung.
-</p>
+    <div class="hero-image">
+      <img src="Mirkan-Tafel-Hintergrund.JPEG" alt="Tafelbild von Mirkan Günkaya" />
+    </div>
+  </section>
 
-<p>
-Die Arbeit als Tutor hat mir im vergangenen Semester außerordentlich viel Freude bereitet. 
-Es ist für mich besonders motivierend zu sehen, wie Studierende nach und nach ein tieferes Verständnis für mathematische Strukturen entwickeln und zunehmend sicherer im Umgang mit Beweisen und abstrakten Konzepten werden. 
-Gerade deshalb freue ich mich sehr darauf, auch im kommenden Semester weiterhin als Tutor tätig zu sein und noch mehr Studierende auf ihrem Weg durch die Analysis zu begleiten.
-</p>
+  <section class="section">
+    <h2 class="section-title">Was du auf dieser Webseite findest</h2>
+    <p class="section-subtitle">
+      Die Seite bündelt zentrale Informationen, Materialien und ergänzende Hinweise
+      rund um das Tutorium und soll dir helfen, Inhalte strukturierter zu lernen
+      und mathematische Zusammenhänge klarer zu verstehen.
+    </p>
 
-<p>
-Derzeit befinde ich mich im letzten Semester meines Bachelorstudiums der Mathematik an der Ludwig-Maximilians-Universität München. 
-Im kommenden Semester werde ich meine Bachelorarbeit schreiben und damit mein Studium abschließen. 
-Neben meinem Studium habe ich in den vergangenen sechs Jahren umfangreiche Erfahrung in der individuellen Nachhilfe gesammelt und zahlreiche Schülerinnen, Schüler sowie Studierende erfolgreich in Mathematik unterstützt.
-</p>
+    <div class="cards">
+      <div class="card">
+        <h3>Analysis I</h3>
+        <p>
+          Materialien, Hinweise, zusätzliche Inhalte und hilfreiche Verlinkungen
+          zur Veranstaltung Analysis I.
+        </p>
+        <a href="materialien.html">Zur Seite öffnen</a>
+      </div>
 
-<p>
-In meiner Lehrtätigkeit lege ich besonderen Wert auf verständliche Erklärungen, methodische Klarheit und eine strukturierte Herangehensweise an mathematische Probleme. 
-Mein Ziel ist es, komplexe Inhalte möglichst transparent zu vermitteln und Studierende dabei zu unterstützen, eigene Lösungsstrategien zu entwickeln und mathematische Zusammenhänge wirklich zu verstehen.
-</p>
+      <div class="card">
+        <h3>Analysis II</h3>
+        <p>
+          Ergänzende Inhalte und künftige Materialien zur Fortsetzung der Analysis
+          im folgenden Semester.
+        </p>
+        <a href="materialien-2.html">Zur Seite öffnen</a>
+      </div>
 
-<p>
-Bevor ich mich vollständig der Mathematik widmete, studierte ich zwei Jahre lang Physik. 
-In dieser Zeit konnte ich ein tiefes Verständnis für naturwissenschaftliche Zusammenhänge und die Struktur unserer Welt gewinnen. 
-Allerdings wurde mir zunehmend bewusst, dass mich vor allem die theoretischen und abstrakten Aspekte der Wissenschaft faszinieren: 
-das präzise Formulieren von Problemen, das Entwickeln eleganter Argumente und das strukturierte Aufbauen mathematischer Beweise.
-</p>
+      <div class="card">
+        <h3>Tipps & Datenschutz</h3>
+        <p>
+          Hinweise zum Lernen, zum Beweisen und allgemeine Informationen zur Nutzung
+          der Webseite sowie zum Datenschutz.
+        </p>
+        <a href="tipps_faq.html">Mehr erfahren</a>
+      </div>
 
-<p>
-Die Mathematik eröffnet eine Welt, in der Logik, Struktur und Eleganz auf einzigartige Weise miteinander verbunden sind. 
-Diese Erkenntnis führte schließlich dazu, dass ich mein Studienfach wechselte und mich vollständig der Mathematik widmete – eine Entscheidung, die ich bis heute mit großer Überzeugung trage.
-</p>
+      <div class="card">
+        <h3>Kontakt</h3>
+        <p>
+          Kontaktmöglichkeiten, persönliche Informationen zu mir und Hinweise dazu,
+          wofür du dich an mich wenden kannst.
+        </p>
+        <a href="kontakt.html">Zur Kontaktseite</a>
+      </div>
+    </div>
+  </section>
 
-<p>
-Die Veranstaltung Analysis I bildet den mathematischen Grundstein für viele weitere Bereiche des Studiums. 
-Hier lernen Studierende die Grundlagen der Differential- und Integralrechnung sowie die präzise mathematische Denkweise kennen. 
-Begriffe wie Grenzwerte, Folgen, Reihen, Stetigkeit oder das Arbeiten mit dem Epsilon-Delta-Kriterium sind zentrale Bestandteile dieser Vorlesung. 
-Diese Konzepte bilden die Grundlage für zahlreiche weiterführende Veranstaltungen in Mathematik, Physik, Informatik und vielen anderen Disziplinen.
-</p>
+  <section class="section">
+    <div class="info-box">
+      <h2>Worum es im Tutorium geht</h2>
+      <p>
+        Die Analysis bildet für viele Studierende einen der ersten intensiven Berührungspunkte
+        mit der universitären Mathematik. Im Mittelpunkt stehen dabei nicht nur Rechenverfahren,
+        sondern vor allem präzises Argumentieren, das Verstehen mathematischer Strukturen und
+        der sichere Umgang mit Definitionen, Sätzen und Beweisen. Diese Webseite soll dabei helfen,
+        zentrale Inhalte geordneter nachzubereiten, typische Schwierigkeiten besser einzuordnen
+        und den Übergang von schulischer zu universitärer Mathematik verständlicher zu gestalten.
+      </p>
+    </div>
+  </section>
 
-<p>
-Der Einstieg in die universitäre Mathematik stellt für viele Studierende eine besondere Herausforderung dar, da sich die mathematische Arbeitsweise deutlich vom Schulunterricht unterscheidet. 
-Gerade deshalb ist es mir ein großes Anliegen, Studierende gezielt zu unterstützen, Verständnis für die zugrunde liegenden Strukturen zu entwickeln und ein solides mathematisches Fundament aufzubauen.
-</p>
-
-<p>
-Auf dieser Seite findest du Materialien, Hinweise und zusätzliche Erläuterungen zur Veranstaltung Analysis I. 
-Mein Ziel ist es, dich bestmöglich bei der Vorbereitung auf Übungen, Tutorien und Prüfungen zu unterstützen.
-</p>
-
-<p>
-Ich freue mich sehr darauf, dich im Tutorium kennenzulernen und dich auf deinem mathematischen Weg begleiten zu dürfen.
-</p>
-  </div>
-
+  <footer class="footer">
+    © Mirkan Deniz Günkaya – Analysis Tutorium
+  </footer>
 </body>
 </html>
