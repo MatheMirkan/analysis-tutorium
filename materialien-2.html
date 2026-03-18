@@ -1,166 +1,419 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="/favicon.png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Analysis-II – Analysis Tutorium</title>
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="stylesheet" href="style.css" />
 
   <style>
+    :root {
+      --bg: #f7f4ef;
+      --surface: rgba(255, 255, 255, 0.86);
+      --surface-strong: rgba(255, 255, 255, 0.96);
+      --text: #171717;
+      --muted: #5d5d5d;
+      --gold: #c69a2d;
+      --gold-soft: rgba(198, 154, 45, 0.12);
+      --bordeaux: #6f1d2c;
+      --line: rgba(20, 20, 20, 0.1);
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+      --shadow-soft: 0 10px 24px rgba(0, 0, 0, 0.06);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+      --max-width: 1380px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #ffffff;
-      color: #000000;
+      font-family: "Inter", "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(198, 154, 45, 0.1), transparent 30%),
+        radial-gradient(circle at top right, rgba(111, 29, 44, 0.08), transparent 28%),
+        linear-gradient(180deg, #fcfbf8 0%, #f4efe8 100%);
+    }
+
+    a {
+      color: inherit;
     }
 
     .navbar {
-      background-color: black;
-      width: 100%;
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+      backdrop-filter: blur(18px);
+      background: rgba(14, 14, 14, 0.9);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
     }
 
     .navbar-inner {
-      max-width: 1500px;
+      max-width: var(--max-width);
       margin: 0 auto;
-      padding: 1.15rem 2.5rem;
+      padding: 1rem 1.5rem;
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-wrap: nowrap;
-      gap: 3.4rem;
-      box-sizing: border-box;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
     .navbar a {
-      color: white;
+      color: #ffffff;
       text-decoration: none;
       font-weight: 700;
-      font-size: 1.12rem;
+      font-size: 1rem;
       letter-spacing: 0.2px;
-      padding: 0.65rem 1.15rem;
-      border-radius: 8px;
-      text-align: center;
-      white-space: nowrap;
-      box-sizing: border-box;
-      flex: 0 0 auto;
-      transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+      padding: 0.8rem 1.15rem;
+      border-radius: 999px;
+      transition: all 0.25s ease;
+      border: 1px solid transparent;
     }
 
     .navbar a:hover {
-      background-color: goldenrod;
-      color: black;
+      background: linear-gradient(135deg, var(--gold) 0%, #e2bb58 100%);
+      color: #111111;
       transform: translateY(-1px);
+      border-color: rgba(255, 255, 255, 0.25);
     }
 
-    .main {
-      max-width: 980px;
-      margin: 4rem auto 3rem auto;
-      padding: 0 1.4rem;
-      box-sizing: border-box;
+    .navbar a.active {
+      background: rgba(198, 154, 45, 0.16);
+      border-color: rgba(198, 154, 45, 0.35);
+      color: #f7e2a0;
     }
 
-    h1 {
-      text-align: center;
-      color: goldenrod;
-      margin-bottom: 2.4rem;
-      font-size: 2rem;
+    .page-shell {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2rem 1.2rem 4.5rem;
     }
 
-    h2 {
-      border-bottom: 2px solid goldenrod;
-      padding-bottom: 0.45rem;
-      margin-top: 2.4rem;
+    .hero {
+      position: relative;
+      overflow: hidden;
+      margin-top: 1.4rem;
+      padding: 3.2rem 2rem 2.4rem;
+      border-radius: 34px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.96) 0%, rgba(250,247,241,0.96) 55%, rgba(246,240,231,0.98) 100%);
+      border: 1px solid rgba(198, 154, 45, 0.18);
+      box-shadow: var(--shadow);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      right: -110px;
+      top: -120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(198, 154, 45, 0.16), transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: "∇f, Df, ∬, det";
+      position: absolute;
+      right: 2rem;
+      bottom: 1rem;
+      font-size: 4rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: rgba(111, 29, 44, 0.08);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.55rem 0.95rem;
+      border-radius: 999px;
+      background: var(--gold-soft);
+      color: var(--bordeaux);
+      border: 1px solid rgba(198, 154, 45, 0.22);
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero h1 {
+      margin: 0 0 1rem 0;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.08;
+      color: #141414;
+      letter-spacing: -0.03em;
+      max-width: 760px;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 920px;
+      font-size: 1.08rem;
+      line-height: 1.9;
+      color: var(--muted);
+    }
+
+    .hero-note {
+      margin-top: 1.4rem;
+      display: inline-block;
+      padding: 0.9rem 1rem;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(111, 29, 44, 0.12);
+      border-radius: 16px;
+      color: #404040;
+      font-size: 0.98rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .sections {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .section-card {
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.6);
+      border-radius: var(--radius-xl);
+      padding: 1.6rem 1.4rem 1.4rem;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      min-width: 0;
+    }
+
+    .section-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 34px rgba(0, 0, 0, 0.1);
+      border-color: rgba(198, 154, 45, 0.22);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.95rem;
       margin-bottom: 1rem;
-      font-size: 1.3rem;
     }
 
-    p {
-      line-height: 1.75;
-      text-align: justify;
-      font-size: 1.02rem;
-      margin-bottom: 1rem;
+    .section-icon {
+      flex: 0 0 auto;
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(198, 154, 45, 0.16), rgba(111, 29, 44, 0.1));
+      border: 1px solid rgba(198, 154, 45, 0.16);
+      font-size: 1.35rem;
     }
 
-    ul {
-      padding-left: 1.4rem;
-      margin-bottom: 1.2rem;
+    .section-head h2 {
+      margin: 0 0 0.35rem 0;
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+      color: #171717;
     }
 
-    li {
-      margin-bottom: 0.55rem;
-      line-height: 1.65;
-      font-size: 1rem;
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.98rem;
     }
 
-    .main a {
-      color: #1a0dab;
+    .material-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.15rem 0 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .material-list li {
+      margin: 0;
+    }
+
+    .material-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      width: 100%;
       text-decoration: none;
+      padding: 0.95rem 1rem;
+      border-radius: 16px;
+      background: var(--surface-strong);
+      border: 1px solid var(--line);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+    }
+
+    .material-link:hover {
+      transform: translateX(4px);
+      border-color: rgba(198, 154, 45, 0.35);
+      box-shadow: 0 12px 22px rgba(0, 0, 0, 0.08);
+      background: #fffdf9;
+    }
+
+    .material-main {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      min-width: 0;
+    }
+
+    .file-icon {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(198,154,45,0.18), rgba(111,29,44,0.1));
+      color: var(--bordeaux);
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .file-label {
+      min-width: 0;
+    }
+
+    .file-title {
+      display: block;
+      color: #171717;
+      font-weight: 700;
+      font-size: 0.99rem;
+      line-height: 1.45;
       word-break: break-word;
     }
 
-    .main a:hover {
-      text-decoration: underline;
+    .file-meta {
+      display: block;
+      margin-top: 0.18rem;
+      color: #777777;
+      font-size: 0.86rem;
+      line-height: 1.4;
+    }
+
+    .arrow {
+      flex: 0 0 auto;
+      color: var(--gold);
+      font-size: 1.15rem;
+      font-weight: 700;
+      transition: transform 0.22s ease;
+    }
+
+    .material-link:hover .arrow {
+      transform: translateX(3px);
+    }
+
+    .section-card.large {
+      grid-column: span 2;
+    }
+
+    .footer-note {
+      margin-top: 2rem;
+      padding: 1.2rem 1.3rem;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(20,20,20,0.08);
+      color: #4f4f4f;
+      line-height: 1.8;
+      font-size: 0.96rem;
+      box-shadow: var(--shadow-soft);
     }
 
     @media (max-width: 1100px) {
-      .navbar-inner {
-        gap: 2rem;
-        padding: 1rem 1.5rem;
+      .sections {
+        grid-template-columns: 1fr;
       }
 
-      .navbar a {
-        font-size: 1rem;
-        padding: 0.55rem 0.85rem;
+      .section-card.large {
+        grid-column: span 1;
       }
     }
 
     @media (max-width: 768px) {
-      .navbar-inner {
-        flex-wrap: wrap;
+      .page-shell {
+        padding: 1.2rem 0.85rem 3rem;
+      }
+
+      .hero {
+        padding: 2rem 1.2rem 1.6rem;
+        border-radius: 26px;
+      }
+
+      .hero::after {
+        font-size: 2.4rem;
+        right: 1rem;
+        bottom: 0.75rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 0.98rem;
+        line-height: 1.8;
+      }
+
+      .section-card {
+        padding: 1.2rem 1rem 1rem;
+        border-radius: 22px;
+      }
+
+      .section-head {
         gap: 0.8rem;
-        padding: 1rem 0.8rem;
+      }
+
+      .section-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 15px;
+      }
+
+      .section-head h2 {
+        font-size: 1.15rem;
+      }
+
+      .material-link {
+        padding: 0.9rem 0.9rem;
+      }
+
+      .file-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 11px;
+      }
+
+      .navbar-inner {
+        gap: 0.7rem;
+        padding: 0.9rem 0.75rem;
       }
 
       .navbar a {
-        flex: 1 1 30%;
-        max-width: 30%;
-        white-space: normal;
-        font-size: 0.98rem;
-        padding: 0.55rem 0.55rem;
-      }
-
-      .navbar a:nth-child(4),
-      .navbar a:nth-child(5) {
-        flex: 1 1 45%;
-        max-width: 45%;
-      }
-
-      .main {
-        margin: 3rem auto 2.2rem auto;
-        padding: 0 1rem;
-      }
-
-      h1 {
-        font-size: 1.6rem;
-        margin-bottom: 2rem;
-      }
-
-      h2 {
-        font-size: 1.12rem;
-      }
-
-      p {
-        font-size: 0.98rem;
-        line-height: 1.7;
-      }
-
-      li {
-        font-size: 0.96rem;
+        font-size: 0.95rem;
+        padding: 0.7rem 0.9rem;
       }
     }
   </style>
@@ -171,107 +424,284 @@
     <div class="navbar-inner">
       <a href="index.html">Startseite</a>
       <a href="materialien.html">Analysis-I</a>
-      <a href="materialien-2.html">Analysis-II</a>
+      <a href="materialien-2.html" class="active">Analysis-II</a>
       <a href="kontakt.html">Kontakt</a>
       <a href="tipps_faq.html">Tipps & Datenschutz</a>
     </div>
   </nav>
 
-  <div class="main">
-    <h1>Analysis-II Materialien</h1>
+  <main class="page-shell">
+    <section class="hero">
+      <div class="hero-badge">📗 Materialien · Vertiefung · Prüfungsvorbereitung</div>
+      <h1>Analysis-II Materialien</h1>
+      <p>
+        Hier findest du die Unterlagen zum Tutorium, ergänzende Erklärungen, alte Skripte, Bücher,
+        frühere Übungsblätter, Altklausuren und weitere Hilfsmaterialien zur Veranstaltung Analysis II.
+        Die Seite wird im Verlauf des Semesters nach und nach erweitert und soll dir beim Wiederholen,
+        Vertiefen und bei der Klausurvorbereitung helfen.
+      </p>
+      <div class="hero-note">
+        Alle Angaben sind ohne Gewähr. Manche Dateien stammen aus älteren Semestern oder aus ergänzenden Quellen
+        und sollen dir vor allem beim Verständnis, Üben und Wiederholen helfen.
+      </div>
+    </section>
 
-    <h2>Tutoriumsunterlagen</h2> 
-    Hier findest du alle Materialien, die wir im Tutorium besprochen haben – und alles Weitere, was dir beim Lernen hilft. 
-    Ich werde versuchen, nach und nach so viel wie möglich bereitzustellen. Bitte hab Verständnis dafür, dass das Pflegen dieser Seite viel Zeit kostet und nicht immer alles sofort verfügbar ist. (Alle Angaben ohne Gewähr)
-    <ul>
-      <li><a href="Tutorium-x.pdf">1.Tutorium - 20.04.2026</a></li>
-      
-    </ul>
-    
-    <h2>Alte Skripte</h2>
-    <p>Hier findest du frühere Skripte zur Veranstaltung Analysis II, die dir bei der Wiederholung und Vertiefung helfen können.</p>
-    <ul>
-      <li><a href="skript-merkl.pdf">Skript zur Vorlesung Analysis II – Prof. Dr. Franz Merkl</a></li>
-      <li><a href="AnalysisII-Skript-Georg-Tamme.pdf">Skript zur Vorlesung Analysis II – Georg Tamme</a></li>
-      <li><a href="Skript-Müller.pdf">Skript zur Vorlesung Analysis II – Prof. Dr. Peter Müller</a></li>
-    </ul>
+    <section class="sections">
+      <article class="section-card">
+        <div class="section-head">
+          <div class="section-icon">✍️</div>
+          <div>
+            <h2>Tutoriumsunterlagen</h2>
+            <p>
+              Alle Materialien, die wir im Tutorium besprochen haben, sowie zusätzliche Dateien,
+              die dich beim Verständnis und bei der Klausurvorbereitung unterstützen können.
+            </p>
+          </div>
+        </div>
 
-    <h2>Bücher</h2>
-    <p>Hier findest du nützliche Bücher zur Vorbereitung auf die Prüfung und hilfreiche Bücher für dein Verständnis.</p>
-    <ul>
-      <li><a href="Ana-2-Hebestreit-Übungsbuch.pdf">Analysis 2 von Hebestreit (Übungsbuch)</a></li>
-      <li><a href="Analysis-II-Forster.pdf">Analysis II von Prof. Dr. Otto Forster</a></li>
-      <li><a href="Analysis-II-Tretter.pdf">Analysis II von Tretter</a></li>
-      <li><a href="Analysis-II-von-Amann-Escher.pdf">Analysis II von Amann und Escher</a></li>
+        <ul class="material-list">
+          <li>
+            <a class="material-link" href="Tutorium-x.pdf">
+              <span class="material-main">
+                <span class="file-icon">PDF</span>
+                <span class="file-label">
+                  <span class="file-title">1. Tutorium – 20.04.2026</span>
+                  <span class="file-meta">Tutoriumsunterlage</span>
+                </span>
+              </span>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+        </ul>
+      </article>
 
-    </ul>
+      <article class="section-card">
+        <div class="section-head">
+          <div class="section-icon">📚</div>
+          <div>
+            <h2>Alte Skripte</h2>
+            <p>
+              Frühere Vorlesungsskripte zur Analysis II, die sich gut zum Wiederholen,
+              Vergleichen und Vertiefen der Inhalte eignen.
+            </p>
+          </div>
+        </div>
 
-    <h2>Alte Übungsblätter & Lösungen</h2>
-    <p>Diese Sammlung umfasst Aufgaben aus vergangenen Semestern mit dazugehörigen Lösungen zur gezielten Vorbereitung.</p>
-    <ul>
-      <li><a href="Merkl-Übung-Ana-2-Lösunge.zip" download>Alle Übungsblätter Lösungen von Franz Merkl SoSe13 - ZIP</a></li>
-    </ul>
+        <ul class="material-list">
+          <li>
+            <a class="material-link" href="skript-merkl.pdf">
+              <span class="material-main">
+                <span class="file-icon">PDF</span>
+                <span class="file-label">
+                  <span class="file-title">Skript zur Vorlesung Analysis II – Prof. Dr. Franz Merkl</span>
+                  <span class="file-meta">Altes Skript</span>
+                </span>
+              </span>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+          <li>
+            <a class="material-link" href="AnalysisII-Skript-Georg-Tamme.pdf">
+              <span class="material-main">
+                <span class="file-icon">PDF</span>
+                <span class="file-label">
+                  <span class="file-title">Skript zur Vorlesung Analysis II – Georg Tamme</span>
+                  <span class="file-meta">Altes Skript</span>
+                </span>
+              </span>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+          <li>
+            <a class="material-link" href="Skript-Müller.pdf">
+              <span class="material-main">
+                <span class="file-icon">PDF</span>
+                <span class="file-label">
+                  <span class="file-title">Skript zur Vorlesung Analysis II – Prof. Dr. Peter Müller</span>
+                  <span class="file-meta">Altes Skript</span>
+                </span>
+              </span>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+        </ul>
+      </article>
 
-    <h2>Altklausuren</h2>
-    <p>Hier findest du Altklausuren zur Vorbereitung auf die Prüfung. Nutze sie, um dein Wissen unter realen Bedingungen zu testen.</p>
-    <ul>
-      <li><a href="Ana-2-Klausur-1.pdf" target="_blank">Ana-2-Klausur-1</a></li>
-      <li><a href="Ana-2-Klausur-2.pdf" target="_blank">Ana-2-Klausur-2</a></li>
-      <li><a href="Ana-2-Klausur-3.pdf" target="_blank">Ana-2-Klausur-3</a></li>
-      <li><a href="Ana-2-Klausur-4-Schottenloher.pdf" target="_blank">Ana-2-Klausur-4-Schottenloher</a></li>
-      <li><a href="Ana-2-Klausur-5-Steinlein.pdf" target="_blank">Ana-2-Klausur-5-Steinlein</a></li>
-      <li><a href="Ana-2-Klausur-6-Steinlein.pdf" target="_blank">Ana-2-Klausur-6-Steinlein</a></li>
-      <li><a href="Ana-2-Klausur-7-Hanke.pdf" target="_blank">Ana-2-Klausur-7-Hanke</a></li>
-      <li><a href="Ana-2-Klausur-8-Hanke.pdf" target="_blank">Ana-2-Klausur-8-Hanke</a></li>
-      <li><a href="Ana-2-Klausur-9-Müller.pdf" target="_blank">Ana-2-Klausur-9-Müller</a></li>
-      <li><a href="Ana-2-Klausur-10-Donder.pdf" target="_blank">Ana-2-Klausur-10-Donder</a></li>
-      <li><a href="Ana-2-Klausur-11-Müller.pdf" target="_blank">Ana-2-Klausur-11-Müller</a></li>
-      <li><a href="Ana-2-Klausur-12-Pickl.pdf" target="_blank">Ana-2-Klausur-12-Pickl</a></li>
-      <li><a href="Ana-2-Klausur-13-Merkl.pdf" target="_blank">Ana-2-Klausur-13-Merkl</a></li>
-      <li><a href="Ana-2-Klausur-14-Merkl.pdf" target="_blank">Ana-2-Klausur-14-Merkl</a></li>
-      <li><a href="Ana-2-Klausur-15-Diening.pdf" target="_blank">Ana-2-Klausur-15-Diening</a></li>
-      <li><a href="Ana-2-Klausur-16-Müller.pdf" target="_blank">Ana-2-Klausur-16-Müller</a></li>
-      <li><a href="Ana-2-Klausur-17-Müller.pdf" target="_blank">Ana-2-Klausur-17-Müller</a></li>
-      <li><a href="Ana-2-Klausur-18-Leeb.pdf" target="_blank">Ana-2-Klausur-18-Leeb</a></li>
-      <li><a href="Ana-2-Klausur-19-Müller.pdf" target="_blank">Ana-2-Klausur-19-Müller</a></li>
-      <li><a href="Ana-2-Klausur-20-Merkl.pdf" target="_blank">Ana-2-Klausur-20-Merkl</a></li>
-      <li><a href="Ana-2-Klausur-21-Merkl.pdf" target="_blank">Ana-2-Klausur-21-Merkl</a></li>
-      <li><a href="Ana-2-Klausur-22-Merkl.pdf" target="_blank">Ana-2-Klausur-22-Merkl</a></li>
-      <li><a href="Ana-2-Klausur-23.pdf" target="_blank">Ana-2-Klausur-23</a></li>
-      <li><a href="Ana-2-Klausur-24-Merkl.pdf" target="_blank">Ana-2-Klausur-24-Merkl</a></li>
-      <li><a href="Ana-2-Klausur-26-Merkl.pdf" target="_blank">Ana-2-Klausur-26-Merkl</a></li>
-      <li><a href="Ana-2-Klausur-27-Merkl.pdf" target="_blank">Ana-2-Klausur-27-Merkl</a></li>
-      <li><a href="Ana-2-Klausur-28.pdf" target="_blank">Ana-2-Klausur-28</a></li>
-      <li><a href="Ana-2-Klausur-29.pdf" target="_blank">Ana-2-Klausur-29</a></li>
-      <li><a href="Ana-2-Klausur-30.pdf" target="_blank">Ana-2-Klausur-30</a></li>
-      <li><a href="Ana-2-Klausur-31.pdf" target="_blank">Ana-2-Klausur-31</a></li>
-      <li><a href="Ana-2-Klausur-32.pdf" target="_blank">Ana-2-Klausur-32</a></li>
-      <li><a href="Ana-2-Klausur-33.pdf" target="_blank">Ana-2-Klausur-33</a></li>
-      <li><a href="Ana-2-Klausur-34-Merkl.pdf" target="_blank">Ana-2-Klausur-34-Merkl</a></li>
-      
-    </ul>
+      <article class="section-card">
+        <div class="section-head">
+          <div class="section-icon">📖</div>
+          <div>
+            <h2>Bücher</h2>
+            <p>
+              Nützliche Bücher zur Prüfungsvorbereitung, zur Wiederholung der Grundlagen
+              und zum tieferen Verständnis der zentralen Themen aus Analysis II.
+            </p>
+          </div>
+        </div>
 
-    <h2>Hilfsmaterialien</h2>
-    <p>Zusätzliche Materialien wie Formelsammlungen, Tipps zur Beweistechnik und Verständnisaufgaben findest du hier.</p>
-    <ul>
-      <li><a href="farbskalengraphiken.pdf" target="_blank">Farb Skalen Graphiken</a></li>
-      <li><a href="flaechen-im-raum.pdf" target="_blank">Flächen im Raum</a></li>
-      <li><a href="linearisierung.pdf" target="_blank">Linearisierung</a></li>
-      <li><a href="sattel.pdf" target="_blank">Sattel</a></li>
-      <li><a href="vektorfeld.pdf" target="_blank">Vektorfelder</a></li>
-      <li><a href="lsg-aktivierungselemente1.1.pdf" target="_blank">Lösungen von Aktivierungselementen 1.1</a></li>
-      <li><a href="lsg-aktivierungselemente1.2.pdf" target="_blank">Lösungen von Aktivierungselementen 1.2</a></li>
-      <li><a href="lsg-aktivierungselemente1.3.pdf" target="_blank">Lösungen von Aktivierungselementen 1.3</a></li>
-      <li><a href="lsg-aktivierungselemente1.5.pdf" target="_blank">Lösungen von Aktivierungselementen 1.5</a></li>
-      <li><a href="Ana-2-Zusammenfassung-1.pdf" target="_blank">Ana-2-Zusammenfassung-1</a></li>
-      <li><a href="Ana-2-Zusammenfassung-2.pdf" target="_blank">Ana-2-Zusammenfassung-2</a></li>
-      <li><a href="Ana-2-Zusammenfassung-3.pdf" target="_blank">Ana-2-Zusammenfassung-3</a></li>
-      <li><a href="Ana-2-Zusammenfassung-4.pdf" target="_blank">Ana-2-Zusammenfassung-4</a></li>
-   </ul>
-  </div>
+        <ul class="material-list">
+          <li>
+            <a class="material-link" href="Ana-2-Hebestreit-Übungsbuch.pdf">
+              <span class="material-main">
+                <span class="file-icon">PDF</span>
+                <span class="file-label">
+                  <span class="file-title">Analysis 2 von Hebestreit</span>
+                  <span class="file-meta">Übungsbuch</span>
+                </span>
+              </span>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+          <li>
+            <a class="material-link" href="Analysis-II-Forster.pdf">
+              <span class="material-main">
+                <span class="file-icon">PDF</span>
+                <span class="file-label">
+                  <span class="file-title">Analysis II von Prof. Dr. Otto Forster</span>
+                  <span class="file-meta">Buch</span>
+                </span>
+              </span>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+          <li>
+            <a class="material-link" href="Analysis-II-Tretter.pdf">
+              <span class="material-main">
+                <span class="file-icon">PDF</span>
+                <span class="file-label">
+                  <span class="file-title">Analysis II von Tretter</span>
+                  <span class="file-meta">Buch</span>
+                </span>
+              </span>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+          <li>
+            <a class="material-link" href="Analysis-II-von-Amann-Escher.pdf">
+              <span class="material-main">
+                <span class="file-icon">PDF</span>
+                <span class="file-label">
+                  <span class="file-title">Analysis II von Amann und Escher</span>
+                  <span class="file-meta">Buch</span>
+                </span>
+              </span>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+        </ul>
+      </article>
+
+      <article class="section-card">
+        <div class="section-head">
+          <div class="section-icon">🗂️</div>
+          <div>
+            <h2>Alte Übungsblätter &amp; Lösungen</h2>
+            <p>
+              Aufgaben und Lösungssammlungen aus früheren Semestern zur gezielten Vorbereitung,
+              zum Nachrechnen und zum eigenständigen Üben.
+            </p>
+          </div>
+        </div>
+
+        <ul class="material-list">
+          <li>
+            <a class="material-link" href="Merkl-Übung-Ana-2-Lösunge.zip" download>
+              <span class="material-main">
+                <span class="file-icon">ZIP</span>
+                <span class="file-label">
+                  <span class="file-title">Alle Übungsblätter und Lösungen von Franz Merkl – SoSe 2013</span>
+                  <span class="file-meta">ZIP-Archiv</span>
+                </span>
+              </span>
+              <span class="arrow">↓</span>
+            </a>
+          </li>
+        </ul>
+      </article>
+
+      <article class="section-card large">
+        <div class="section-head">
+          <div class="section-icon">📝</div>
+          <div>
+            <h2>Altklausuren</h2>
+            <p>
+              Eine umfangreiche Sammlung früherer Klausuren, mit der du typische Aufgabenformate,
+              Fragestellungen und das allgemeine Klausurniveau in Analysis II besser einschätzen kannst.
+            </p>
+          </div>
+        </div>
+
+        <ul class="material-list">
+          <li><a class="material-link" href="Ana-2-Klausur-1.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 1</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-2.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 2</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-3.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 3</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-4-Schottenloher.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 4 – Schottenloher</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-5-Steinlein.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 5 – Steinlein</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-6-Steinlein.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 6 – Steinlein</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-7-Hanke.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 7 – Hanke</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-8-Hanke.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 8 – Hanke</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-9-Müller.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 9 – Müller</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-10-Donder.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 10 – Donder</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-11-Müller.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 11 – Müller</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-12-Pickl.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 12 – Pickl</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-13-Merkl.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 13 – Merkl</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-14-Merkl.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 14 – Merkl</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-15-Diening.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 15 – Diening</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-16-Müller.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 16 – Müller</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-17-Müller.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 17 – Müller</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-18-Leeb.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 18 – Leeb</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-19-Müller.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 19 – Müller</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-20-Merkl.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 20 – Merkl</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-21-Merkl.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 21 – Merkl</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-22-Merkl.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 22 – Merkl</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-23.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 23</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-24-Merkl.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 24 – Merkl</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-26-Merkl.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 26 – Merkl</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-27-Merkl.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 27 – Merkl</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-28.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 28</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-29.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 29</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-30.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 30</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-31.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 31</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-32.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 32</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-33.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 33</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Klausur-34-Merkl.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Klausur 34 – Merkl</span><span class="file-meta">Altklausur</span></span></span><span class="arrow">→</span></a></li>
+        </ul>
+      </article>
+
+      <article class="section-card large">
+        <div class="section-head">
+          <div class="section-icon">🧠</div>
+          <div>
+            <h2>Hilfsmaterialien</h2>
+            <p>
+              Zusätzliche Materialien wie Formelsammlungen, Erklärblätter, Visualisierungen,
+              Lösungen und thematische Zusammenfassungen zur gezielten Vertiefung.
+            </p>
+          </div>
+        </div>
+
+        <ul class="material-list">
+          <li><a class="material-link" href="farbskalengraphiken.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Farb-Skalen-Graphiken</span><span class="file-meta">Visualisierung</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="flaechen-im-raum.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Flächen im Raum</span><span class="file-meta">Themenblatt</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="linearisierung.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Linearisierung</span><span class="file-meta">Themenblatt</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="sattel.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Sattel</span><span class="file-meta">Themenblatt</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="vektorfeld.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Vektorfelder</span><span class="file-meta">Themenblatt</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="lsg-aktivierungselemente1.1.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Lösungen von Aktivierungselementen 1.1</span><span class="file-meta">Lösungen</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="lsg-aktivierungselemente1.2.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Lösungen von Aktivierungselementen 1.2</span><span class="file-meta">Lösungen</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="lsg-aktivierungselemente1.3.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Lösungen von Aktivierungselementen 1.3</span><span class="file-meta">Lösungen</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="lsg-aktivierungselemente1.5.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Lösungen von Aktivierungselementen 1.5</span><span class="file-meta">Lösungen</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Zusammenfassung-1.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Zusammenfassung 1</span><span class="file-meta">Zusammenfassung</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Zusammenfassung-2.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Zusammenfassung 2</span><span class="file-meta">Zusammenfassung</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Zusammenfassung-3.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Zusammenfassung 3</span><span class="file-meta">Zusammenfassung</span></span></span><span class="arrow">→</span></a></li>
+          <li><a class="material-link" href="Ana-2-Zusammenfassung-4.pdf" target="_blank"><span class="material-main"><span class="file-icon">PDF</span><span class="file-label"><span class="file-title">Ana-2-Zusammenfassung 4</span><span class="file-meta">Zusammenfassung</span></span></span><span class="arrow">→</span></a></li>
+        </ul>
+      </article>
+    </section>
+
+    <div class="footer-note">
+      Diese Seite ist bewusst als umfangreiche Materialsammlung aufgebaut. Du findest hier sowohl Unterlagen aus dem Tutorium
+      als auch ergänzende externe oder ältere Materialien, die dir beim Lernen helfen können.
+    </div>
+  </main>
 </body>
 </html>
-
-
-
-
