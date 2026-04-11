@@ -277,49 +277,35 @@
       justify-content: center;
     }
 
-    .info-list {
-      list-style: none;
-      padding: 0;
-      margin: 1rem 0 0 0;
-      display: grid;
-      gap: 0.8rem;
+        .info-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
     }
 
-    .info-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.8rem;
-      padding: 0.95rem 1rem;
-      border-radius: 16px;
+    .info-copy {
+      margin-top: 1rem;
+      padding: 1.2rem 1.25rem;
+      border-radius: 18px;
       background: var(--surface-strong);
       border: 1px solid rgba(41, 68, 58, 0.08);
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
     }
 
-    .info-icon {
-      width: 38px;
-      height: 38px;
-      flex: 0 0 auto;
-      display: grid;
-      place-items: center;
-      border-radius: 12px;
-      background: linear-gradient(135deg, rgba(185,150,61,0.16), rgba(90,30,45,0.08));
-      color: var(--bordeaux);
-      font-weight: 800;
+    .info-copy p {
+      margin: 0;
+      color: var(--text-soft);
       font-size: 1rem;
+      line-height: 1.9;
     }
 
-    .info-text strong {
-      display: block;
-      margin-bottom: 0.15rem;
-      font-size: 0.98rem;
-      color: var(--text);
+    .info-copy p + p {
+      margin-top: 0.9rem;
     }
 
-    .info-text span {
-      color: var(--muted);
-      font-size: 0.93rem;
-      line-height: 1.65;
+    .info-copy strong {
+      color: var(--bordeaux);
+      font-weight: 700;
     }
 
     .about-card {
@@ -534,33 +520,27 @@
           </div>
         </div>
 
-        <div class="info-card">
-          <h2>Wofür du mir schreiben kannst</h2>
-          <ul class="info-list">
-            <li>
-              <div class="info-icon">1</div>
-              <div class="info-text">
-                <strong>Fragen zum Tutorium</strong>
-                <span>Zum Beispiel zu Inhalten, Unterlagen, organisatorischen Abläufen oder zum Aufbau der Sitzungen.</span>
-              </div>
-            </li>
-            <li>
-              <div class="info-icon">2</div>
-              <div class="info-text">
-                <strong>Fragen zu Materialien</strong>
-                <span>Etwa wenn ein Dokument fehlt, ein Link nicht funktioniert oder du bei einem Thema Unterstützung brauchst.</span>
-              </div>
-            </li>
-            <li>
-              <div class="info-icon">3</div>
-              <div class="info-text">
-                <strong>Hinweise und Feedback</strong>
-                <span>Auch konstruktive Rückmeldungen zur Webseite oder zu den bereitgestellten Inhalten sind sehr willkommen.</span>
-              </div>
-            </li>
-          </ul>
+                <div class="info-card">
+          <h2>Wann du mir schreiben kannst</h2>
+          <div class="info-copy">
+            <p>
+              Du kannst mir gerne schreiben, wenn du mehr Informationen über das Tutorium,
+              über die Veranstaltungen Analysis I und Analysis II oder allgemein über meine Arbeit
+              und diese Webseite erfahren möchtest.
+            </p>
+
+            <p>
+              Auch wenn du im Studium Unterstützung brauchst, bei einem Thema Verständnisprobleme hast,
+              bei einer Aufgabe nicht weiterkommst oder dir bei mathematischen Inhalten mehr Orientierung
+              und Klarheit wünschst, darfst du dich jederzeit gerne melden.
+            </p>
+
+            <p>
+              Ebenso freue ich mich über Hinweise zu Materialien, Rückmeldungen zur Webseite oder kurze
+              Nachrichten, wenn ein Dokument fehlt oder ein Link einmal nicht funktionieren sollte.
+            </p>
+          </div>
         </div>
-      </div>
     </section>
 
     <section class="about-card">
