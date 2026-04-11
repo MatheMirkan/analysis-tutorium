@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tipps & Datenschutz – Analysis Tutorium</title>
+  <title>Tipps, Impressum & Datenschutz – Analysis Tutorium</title>
   <link rel="icon" type="image/png" href="/favicon.png" />
 
   <style>
@@ -160,7 +160,7 @@
       line-height: 1.08;
       color: var(--bordeaux);
       letter-spacing: -0.03em;
-      max-width: 780px;
+      max-width: 860px;
     }
 
     .hero p {
@@ -260,7 +260,9 @@
 
     .intro-panel,
     .proof-box,
-    .legal-box {
+    .legal-box,
+    .impressum-box,
+    .notice-box {
       background: var(--surface);
       border: 1px solid var(--line-soft);
       border-radius: var(--radius-xl);
@@ -271,7 +273,9 @@
 
     .intro-panel::before,
     .proof-box::before,
-    .legal-box::before {
+    .legal-box::before,
+    .impressum-box::before,
+    .notice-box::before {
       content: "";
       position: absolute;
       left: 0;
@@ -332,7 +336,9 @@
       text-align: justify;
     }
 
-    .proof-box {
+    .proof-box,
+    .impressum-box,
+    .legal-box {
       padding: 1.7rem 1.5rem;
       margin-top: 1.8rem;
     }
@@ -348,7 +354,9 @@
       line-height: 1.8;
     }
 
-    .proof-box p {
+    .proof-box p,
+    .impressum-intro,
+    .legal-intro {
       color: var(--text-soft);
       font-size: 1rem;
       line-height: 1.9;
@@ -380,24 +388,14 @@
       margin-bottom: 0.3rem;
     }
 
-    .legal-box {
-      padding: 1.7rem 1.5rem;
-      margin-top: 1.8rem;
-    }
-
-    .legal-intro {
-      margin-bottom: 1.4rem;
-      color: var(--text-soft);
-      line-height: 1.9;
-      text-align: justify;
-    }
-
-    .legal-grid {
+    .legal-grid,
+    .impressum-grid {
       display: grid;
       gap: 1rem;
     }
 
-    .legal-card {
+    .legal-card,
+    .impressum-card {
       background: rgba(255,255,255,0.94);
       border: 1px solid rgba(41, 68, 58, 0.08);
       border-radius: 18px;
@@ -405,14 +403,16 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.04);
     }
 
-    .legal-card h3 {
+    .legal-card h3,
+    .impressum-card h3 {
       margin: 0 0 0.55rem 0;
       color: var(--green);
       font-size: 1.05rem;
       line-height: 1.4;
     }
 
-    .legal-card p {
+    .legal-card p,
+    .impressum-card p {
       margin: 0 0 0.8rem 0;
       color: var(--text-soft);
       font-size: 0.97rem;
@@ -420,19 +420,52 @@
       text-align: justify;
     }
 
-    .legal-card p:last-child {
+    .legal-card p:last-child,
+    .impressum-card p:last-child {
       margin-bottom: 0;
     }
 
-    .legal-card ul {
+    .legal-card ul,
+    .impressum-card ul {
       margin: 0.3rem 0 0.2rem 1.2rem;
       padding: 0;
       color: var(--text-soft);
     }
 
-    .legal-card li {
+    .legal-card li,
+    .impressum-card li {
       margin-bottom: 0.55rem;
       line-height: 1.75;
+    }
+
+    .notice-box {
+      margin-top: 1.3rem;
+      padding: 1.1rem 1rem;
+    }
+
+    .notice-box p {
+      margin: 0;
+      color: var(--text-soft);
+      line-height: 1.85;
+      font-size: 0.97rem;
+      text-align: justify;
+    }
+
+    .highlight-line {
+      color: var(--bordeaux);
+      font-weight: 700;
+    }
+
+    .address-block {
+      line-height: 1.9;
+      color: var(--text-soft);
+    }
+
+    .subsection-title {
+      margin: 2rem 0 0.8rem 0;
+      color: var(--bordeaux);
+      font-size: 1.2rem;
+      letter-spacing: -0.01em;
     }
 
     .footer {
@@ -440,9 +473,26 @@
       background: var(--bordeaux-dark);
       color: #e7e1d5;
       text-align: center;
-      padding: 1.45rem 1rem;
+      padding: 1.6rem 1rem;
       font-size: 0.95rem;
       border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.2rem;
+      margin-top: 0.6rem;
+    }
+
+    .footer-links a {
+      color: #f0e7d3;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
     }
 
     @media (max-width: 980px) {
@@ -469,24 +519,31 @@
       .section-header p,
       .intro-panel p,
       .proof-box p,
+      .impressum-intro,
       .legal-intro,
       .tip-card p,
       .legal-card p,
-      .legal-card li {
+      .impressum-card p,
+      .legal-card li,
+      .impressum-card li,
+      .notice-box p {
         font-size: 0.98rem;
         line-height: 1.8;
       }
 
       .intro-panel,
       .proof-box,
-      .legal-box {
+      .legal-box,
+      .impressum-box,
+      .notice-box {
         padding: 1.2rem 1rem;
         border-radius: 24px;
       }
 
       .tip-card,
       .proof-list li,
-      .legal-card {
+      .legal-card,
+      .impressum-card {
         padding: 0.95rem 0.9rem;
       }
 
@@ -525,23 +582,24 @@
 
   <main class="page-shell">
     <section class="hero">
-      <div class="hero-badge">Tipps · Orientierung · Datenschutz</div>
-      <h1>Tipps & Datenschutz</h1>
+      <div class="hero-badge">Tipps · Impressum · Datenschutz</div>
+      <h1>Tipps, Impressum & Datenschutz</h1>
       <p>
         Diese Seite bündelt persönliche Hinweise zum Mathematikstudium, Gedanken zum Beweisen
-        und organisatorische beziehungsweise rechtliche Informationen zur Nutzung dieser Webseite.
-        Ziel ist es, Studierenden nicht nur fachlich, sondern auch methodisch und orientierend
-        eine klare, ruhige und hilfreiche Anlaufstelle zu bieten.
+        sowie organisatorische, rechtliche und datenschutzbezogene Informationen zur Nutzung
+        dieser Webseite. Ziel ist es, Studierenden nicht nur fachlich, sondern auch methodisch
+        und orientierend eine klare, ruhige und hilfreiche Anlaufstelle zu bieten.
       </p>
       <div class="hero-note">
         Die Hinweise auf dieser Seite sollen unterstützen, strukturieren und Orientierung geben.
-        Sie ersetzen jedoch keine offiziellen Informationen der Universität.
+        Sie ersetzen jedoch keine offiziellen Informationen der Universität und keine rechtliche Beratung im Einzelfall.
       </div>
     </section>
 
     <div class="quick-nav">
       <a href="#tipps">Tipps für das Studium</a>
       <a href="#beweishinweise">Hinweise zum Beweisen</a>
+      <a href="#impressum">Impressum</a>
       <a href="#datenschutz">Datenschutz & Nutzung</a>
     </div>
 
@@ -768,211 +826,380 @@
         </div>
       </section>
 
+      <section id="impressum" class="section-shell">
+        <div class="section-header">
+          <div class="section-kicker">Pflichtangaben · Transparenz · Erreichbarkeit</div>
+          <h2>Impressum</h2>
+          <p>
+            Nach außen erkennbare, nicht rein private Webseiten sollten ein klar erreichbares Impressum enthalten.
+            Auf dieser Seite sind die Anbieterangaben daher deutlich getrennt vom Datenschutzbereich aufgeführt.
+          </p>
+        </div>
+
+        <div class="impressum-box">
+          <p class="impressum-intro">
+            Dieses Impressum gilt für die Webseite <strong>www.mirkan-analysis.de</strong> sowie für die zugehörigen
+            Unterseiten, soweit nicht auf einzelnen Unterseiten gesonderte Angaben gemacht werden. Bitte trage hier
+            unbedingt deine vollständige <span class="highlight-line">ladungsfähige Anschrift</span> ein; ein bloßes
+            Postfach genügt hierfür nicht.
+          </p>
+
+
+          <div class="impressum-grid">
+            <article class="impressum-card">
+              <h3>Angaben gemäß § 5 DDG</h3>
+              <p class="address-block">
+                Mirkan Deniz Günkaya<br>
+                Deutschland
+              </p>
+              <p>
+                E-Mail:
+                <a href="mailto:M.Guenkaya@campus.lmu.de">M.Guenkaya@campus.lmu.de</a>
+              </p>
+            </article>
+
+            <article class="impressum-card">
+              <h3>Verantwortlich für redaktionelle Inhalte</h3>
+              <p>
+                Verantwortlich für die inhaltliche Betreuung dieser Webseite ist – soweit gesetzlich erforderlich –
+                Mirkan Deniz Günkaya, Anschrift wie oben.
+              </p>
+            </article>
+
+            <article class="impressum-card">
+              <h3>Charakter dieses Angebots</h3>
+              <p>
+                Diese Webseite ist ein ergänzendes Informations- und Unterstützungsangebot im Umfeld von Tutorium,
+                Studium und mathematischer Orientierung. Sie ist kein offizielles Verwaltungs-, Prüfungs- oder
+                Kommunikationsportal der Ludwig-Maximilians-Universität München.
+              </p>
+            </article>
+
+            <article class="impressum-card">
+              <h3>Kontakt für inhaltliche Hinweise</h3>
+              <p>
+                Wenn du sachliche Fehler, technische Probleme oder unklare Formulierungen auf dieser Webseite bemerkst,
+                freue ich mich über einen kurzen Hinweis per E-Mail. Dadurch kann die Seite fortlaufend verbessert
+                und aktualisiert werden.
+              </p>
+            </article>
+
+            <article class="impressum-card">
+              <h3>Zusätzliche Pflichtangaben bei Bedarf</h3>
+              <p>
+                Falls künftig weitere gesetzlich erforderliche Angaben einschlägig werden sollten – etwa eine
+                Umsatzsteuer-Identifikationsnummer, besondere berufsrechtliche Angaben oder zusätzliche
+                Aufsichtsbehördenhinweise –, ist dieses Impressum entsprechend zu ergänzen.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section id="datenschutz" class="section-shell">
         <div class="section-header">
-          <div class="section-kicker">Transparenz · Nutzung · Verantwortung</div>
+          <div class="section-kicker">Transparenz · Datenschutz · Nutzung</div>
           <h2>Datenschutz & Nutzungsbedingungen</h2>
           <p>
-            Diese Hinweise sollen transparent darüber informieren, wie diese Webseite einzuordnen ist,
-            welche Daten technisch anfallen können, wie die Inhalte genutzt werden dürfen und welche Grenzen
-            hinsichtlich Gewähr, Haftung und externer Verlinkungen gelten.
+            Die folgenden Hinweise informieren möglichst klar darüber, welche Daten beim Besuch dieser Webseite
+            technisch anfallen können, zu welchen Zwecken eine Verarbeitung erfolgt, welche Rechte betroffene
+            Personen haben und wie die bereitgestellten Inhalte genutzt werden dürfen.
           </p>
         </div>
 
         <div class="legal-box">
           <p class="legal-intro">
-            Diese Webseite ist als privates, ergänzendes Unterstützungsangebot für Studierende gedacht.
-            Sie verfolgt keine kommerzielle Zielsetzung und soll Inhalte möglichst datensparsam, übersichtlich
-            und sachlich zugänglich machen. Die folgenden Abschnitte fassen die wichtigsten Punkte in geordneter Form zusammen.
+            Der Schutz personenbezogener Daten ist ein wichtiges Anliegen. Diese Webseite ist grundsätzlich
+            datensparsam gestaltet und dient in erster Linie der Bereitstellung von Informationen, Materialien
+            und Orientierungshilfen. Gleichwohl können beim Aufruf einer Internetseite technisch notwendige
+            Daten verarbeitet werden. Die nachfolgenden Hinweise sollen dies transparent und nachvollziehbar
+            beschreiben.
           </p>
 
           <div class="legal-grid">
             <article class="legal-card">
-              <h3>1. Charakter der Webseite</h3>
+              <h3>1. Verantwortlicher</h3>
               <p>
-                Diese Webseite ist ein privates, ergänzendes Informations- und Unterstützungsangebot im Umfeld
-                des Analysis-Tutoriums. Sie ist kein offizielles Verwaltungs- oder Prüfungsportal der Universität
-                und ersetzt keine verbindlichen Hinweise offizieller Stellen.
+                Verantwortlich für die Datenverarbeitung auf dieser Webseite ist:
               </p>
-            </article>
-
-            <article class="legal-card">
-              <h3>2. Grundsatz der Datensparsamkeit</h3>
-              <p>
-                Die Seite ist so gestaltet, dass möglichst wenige personenbezogene Daten verarbeitet werden.
-                Es gibt insbesondere keine Benutzerkonten, keine Registrierungsbereiche und keine eigenen
-                Tracking- oder Analysefunktionen.
-              </p>
-            </article>
-
-            <article class="legal-card">
-              <h3>3. Keine aktive Datenerhebung durch den Seitenbetreiber</h3>
-              <p>
-                Über diese Webseite werden grundsätzlich keine personenbezogenen Daten aktiv abgefragt oder
-                systematisch gesammelt. Eine Kontaktaufnahme erfolgt, wenn überhaupt, freiwillig per E-Mail.
-              </p>
-            </article>
-
-            <article class="legal-card">
-              <h3>4. Technisch bedingte Datenverarbeitung</h3>
-              <p>
-                Beim Aufruf einer Webseite können durch Hosting-Infrastruktur oder Webserver technische Verbindungsdaten
-                verarbeitet werden, etwa IP-Adresse, Zeitpunkt des Zugriffs, Browsertyp oder ähnliche Informationen.
-                Solche Vorgänge dienen regelmäßig dem stabilen und sicheren Betrieb.
-              </p>
-            </article>
-
-            <article class="legal-card">
-              <h3>5. Server-Logfiles und Hosting</h3>
-              <p>
-                Es ist möglich, dass der Hosting-Anbieter serverseitige Logfiles verarbeitet. Auf konkrete Ausgestaltung,
-                Umfang und Speicherdauer solcher technischen Prozesse hat der Seitenbetreiber nicht in jedem Fall direkten Einfluss.
-              </p>
-            </article>
-
-            <article class="legal-card">
-              <h3>6. Keine Cookies zu Werbe- oder Analysezwecken</h3>
-              <p>
-                Nach aktuellem Stand werden auf dieser Webseite keine eigenen Cookies eingesetzt, die Nutzerverhalten
-                analysieren, Werbung personalisieren oder wiederkehrende Besuche über Sitzungen hinweg auswerten sollen.
-              </p>
-            </article>
-
-            <article class="legal-card">
-              <h3>7. Keine Webanalyse und kein bewusstes Tracking</h3>
-              <p>
-                Es werden keine absichtlich eingebundenen Tools zur Reichweitenmessung, Marketingoptimierung
-                oder Verhaltensanalyse verwendet. Die Seite ist auf inhaltliche Unterstützung ausgerichtet,
-                nicht auf Aufmerksamkeitstracking.
-              </p>
-            </article>
-
-            <article class="legal-card">
-              <h3>8. Kontaktaufnahme per E-Mail</h3>
-              <p>
-                Wenn du per E-Mail Kontakt aufnimmst, werden die von dir freiwillig übermittelten Daten nur
-                im Rahmen der jeweiligen Kommunikation genutzt. Bitte beachte, dass E-Mail-Kommunikation
-                grundsätzlich Sicherheitslücken aufweisen kann.
-              </p>
-            </article>
-
-            <article class="legal-card">
-              <h3>9. Dateien, Downloads und Materialien</h3>
-              <p>
-                Auf dieser Webseite können PDF-Dateien, ZIP-Dateien oder sonstige Lernunterlagen bereitgestellt werden.
-                Diese dienen ausschließlich Informations- und Lernzwecken. Eine Gewähr für ständige Verfügbarkeit,
-                Fehlerfreiheit oder technische Kompatibilität wird nicht übernommen.
-              </p>
-            </article>
-
-            <article class="legal-card">
-              <h3>10. Externe Links</h3>
-              <p>
-                Externe Verlinkungen führen in den Verantwortungsbereich anderer Anbieter. Für Inhalte, Verfügbarkeit
-                und Datenschutz externer Seiten sind ausschließlich deren jeweilige Betreiber verantwortlich.
-              </p>
-            </article>
-
-            <article class="legal-card">
-              <h3>11. Urheberrecht</h3>
-              <p>
-                Soweit nicht anders gekennzeichnet, unterliegen Texte, Strukturierungen, Zusammenstellungen,
-                Hinweise und selbst erstellte Materialien dem Urheberrecht des Seitenbetreibers. Eine weitergehende
-                Nutzung außerhalb der gesetzlichen Schranken ist ohne Zustimmung nicht gestattet.
-              </p>
-            </article>
-
-            <article class="legal-card">
-              <h3>12. Zulässige Nutzung</h3>
-              <p>
-                Die Inhalte sind zur persönlichen Information, zur individuellen Orientierung und zum eigenen
-                Selbststudium bestimmt. Nicht gestattet ist insbesondere die systematische Weiterverbreitung
-                als eigenes Material oder die Einbindung in kommerzielle Angebote.
-              </p>
-            </article>
-
-            <article class="legal-card">
-              <h3>13. Keine Gewähr für Richtigkeit und Vollständigkeit</h3>
-              <p>
-                Alle Inhalte werden mit Sorgfalt erstellt. Dennoch kann nicht garantiert werden, dass sämtliche
-                Informationen jederzeit vollständig, aktuell oder fehlerfrei sind. Die Nutzung erfolgt daher
-                auf eigene Verantwortung.
-              </p>
-            </article>
-
-            <article class="legal-card">
-              <h3>14. Kein Ersatz für offizielle oder individuelle Beratung</h3>
-              <p>
-                Diese Webseite ersetzt weder offizielle Informationen der Universität noch fachliche, rechtliche
-                oder datenschutzrechtliche Beratung. Bei verbindlichen Fragen sind stets die zuständigen offiziellen
-                Stellen maßgeblich.
-              </p>
-            </article>
-
-            <article class="legal-card">
-              <h3>15. Haftungsausschluss</h3>
-              <p>
-                Eine Haftung für direkte oder indirekte Schäden aus der Nutzung oder Nichtnutzung der Inhalte
-                ist grundsätzlich ausgeschlossen, soweit nicht gesetzlich zwingend gehaftet werden muss.
-              </p>
-            </article>
-
-            <article class="legal-card">
-              <h3>16. Sensible Daten</h3>
-              <p>
-                Es besteht kein Interesse daran, besonders sensible personenbezogene Daten zu erheben. Es wird daher
-                darum gebeten, im Rahmen einer Kontaktaufnahme keine unnötig sensiblen Informationen zu übermitteln.
-              </p>
-            </article>
-
-            <article class="legal-card">
-              <h3>17. Rechte betroffener Personen</h3>
-              <p>
-                Soweit im Einzelfall personenbezogene Daten verarbeitet werden, bestehen im Rahmen der gesetzlichen
-                Voraussetzungen grundsätzlich Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung
-                sowie gegebenenfalls Widerspruch.
-              </p>
-            </article>
-
-            <article class="legal-card">
-              <h3>18. Änderungen dieser Hinweise</h3>
-              <p>
-                Diese Datenschutz- und Nutzungshinweise können bei Bedarf angepasst oder aktualisiert werden,
-                etwa bei technischen oder rechtlichen Änderungen. Maßgeblich ist jeweils die auf dieser Seite
-                veröffentlichte aktuelle Fassung.
-              </p>
-            </article>
-
-            <article class="legal-card">
-              <h3>19. Kontakt</h3>
-              <p>
-                Bei Fragen zu Inhalten, Nutzungsrechten oder datenschutzbezogenen Aspekten kann die Kontaktaufnahme
-                über folgende Adresse erfolgen:
-              </p>
-              <p>
+              <p class="address-block">
+                Mirkan Deniz Günkaya<br>
+                <br>
+                Deutschland<br>
+                E-Mail:
                 <a href="mailto:M.Guenkaya@campus.lmu.de">M.Guenkaya@campus.lmu.de</a>
               </p>
             </article>
 
             <article class="legal-card">
-              <h3>20. Ergänzende Dokumente</h3>
+              <h3>2. Hosting der Webseite</h3>
               <p>
-                Soweit ergänzende Hinweise oder weitere Dokumente bereitgestellt werden, können diese zusätzliche
-                Informationen enthalten. Maßgeblich bleibt jedoch stets die jeweils aktuelle Fassung der Hinweise
-                auf dieser Seite.
+                Diese Webseite wird voraussichtlich über den Hosting-Anbieter Vercel bereitgestellt. Bei der
+                technischen Auslieferung einer Webseite können durch den Hoster und die eingesetzte Infrastruktur
+                Verbindungs- und Nutzungsdaten verarbeitet werden, die für den sicheren und stabilen Betrieb der
+                Seite erforderlich sind.
+              </p>
+              <p>
+                Hosting-Anbieter:
+                <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Vercel</a>
+              </p>
+            </article>
+
+            <article class="legal-card">
+              <h3>3. Server-Logfiles und technische Zugriffsdaten</h3>
+              <p>
+                Beim Aufruf dieser Webseite können technisch bedingt insbesondere folgende Daten in Server-Logfiles
+                oder vergleichbaren technischen Protokollen verarbeitet werden:
               </p>
               <ul>
-                <li><a href="Datenschutz-Weiteres.pdf" target="_blank">Datenschutz-Weiteres</a></li>
+                <li>IP-Adresse des anfragenden Endgeräts,</li>
+                <li>Datum und Uhrzeit des Zugriffs,</li>
+                <li>aufgerufene Datei oder URL,</li>
+                <li>Browsertyp und Browserversion,</li>
+                <li>Betriebssystem, Spracheinstellungen und Gerätetyp,</li>
+                <li>Referrer-URL, also die zuvor besuchte Seite, soweit übermittelt,</li>
+                <li>Statuscodes und sonstige technische Informationen zur Auslieferung.</li>
+              </ul>
+              <p>
+                Diese Verarbeitung dient insbesondere der technischen Bereitstellung, Stabilität, Fehlersuche,
+                Missbrauchserkennung und Systemsicherheit.
+              </p>
+            </article>
+
+            <article class="legal-card">
+              <h3>4. Zwecke und Rechtsgrundlagen der Verarbeitung</h3>
+              <p>
+                Personenbezogene Daten werden – soweit überhaupt verarbeitet – nur in dem Umfang verarbeitet,
+                wie dies für die Bereitstellung der Webseite, die Systemsicherheit, die Beantwortung von
+                Anfragen oder die Wahrung berechtigter Interessen erforderlich ist.
+              </p>
+              <p>
+                Rechtsgrundlagen können insbesondere sein:
+              </p>
+              <ul>
+                <li><strong>Art. 6 Abs. 1 lit. f DSGVO</strong> für den sicheren, stabilen und wirtschaftlichen Betrieb der Webseite,</li>
+                <li><strong>Art. 6 Abs. 1 lit. b DSGVO</strong>, soweit eine Kontaktaufnahme auf eine konkrete Anfrage, Zusammenarbeit oder organisatorische Durchführung gerichtet ist,</li>
+                <li><strong>Art. 6 Abs. 1 lit. c DSGVO</strong>, soweit eine gesetzliche Verpflichtung zur Verarbeitung besteht.</li>
               </ul>
             </article>
+
+            <article class="legal-card">
+              <h3>5. TLS-/SSL-Verschlüsselung</h3>
+              <p>
+                Diese Webseite sollte aus Sicherheitsgründen und zum Schutz vertraulicher Übertragungen über eine
+                verschlüsselte Verbindung ausgeliefert werden. Eine verschlüsselte Verbindung erkennst du in der Regel
+                an „https://“ in der Adresszeile deines Browsers.
+              </p>
+            </article>
+
+            <article class="legal-card">
+              <h3>6. Kontaktaufnahme per E-Mail</h3>
+              <p>
+                Wenn du per E-Mail Kontakt aufnimmst, werden die von dir freiwillig übermittelten Daten
+                ausschließlich zur Bearbeitung deines Anliegens, zur Beantwortung deiner Nachricht und – falls
+                erforderlich – zur weiteren Korrespondenz verarbeitet.
+              </p>
+              <p>
+                Bitte sende per E-Mail keine unnötig sensiblen personenbezogenen Daten. E-Mails können auf dem
+                Übertragungsweg Sicherheitsrisiken aufweisen; ein vollständig lückenloser Schutz vor dem Zugriff
+                Dritter kann bei unverschlüsselter Kommunikation nicht garantiert werden.
+              </p>
+            </article>
+
+            <article class="legal-card">
+              <h3>7. Cookies, Local Storage und ähnliche Technologien</h3>
+              <p>
+                Diese Webseite ist nach ihrem derzeitigen Grundaufbau so angelegt, dass keine eigenen Cookies
+                zu Werbe-, Profiling- oder klassischen Marketingzwecken gesetzt werden. Soweit technisch
+                erforderliche Mechanismen eingesetzt werden, dienen diese ausschließlich der sicheren und
+                funktionsfähigen Bereitstellung der Seite.
+              </p>
+              <p>
+                Falls künftig zustimmungsbedürftige Cookies, Einbindungen oder Tracking-Technologien ergänzt werden,
+                wird diese Datenschutzerklärung entsprechend aktualisiert und – soweit erforderlich – eine
+                Einwilligungslösung eingebunden.
+              </p>
+            </article>
+
+            <article class="legal-card">
+              <h3>8. Analyse- und Trackingdienste</h3>
+              <p>
+                Nach dem derzeitigen Stand dieser Seite werden keine bewusst eingebundenen Drittanbieter-Tools
+                zu Werbe-, Remarketing- oder Profilingzwecken genutzt. Es erfolgt insbesondere kein absichtliches
+                personenbezogenes Tracking zur Erstellung individueller Nutzerprofile.
+              </p>
+            </article>
+
+            <article class="legal-card">
+              <h3>9. Empfänger von Daten</h3>
+              <p>
+                Empfänger personenbezogener Daten können insbesondere technische Dienstleister sein, die für Hosting,
+                Auslieferung, Sicherheit oder Wartung der Webseite erforderlich sind. Eine Weitergabe erfolgt nur,
+                soweit dies technisch notwendig, gesetzlich erlaubt oder rechtlich geboten ist.
+              </p>
+            </article>
+
+            <article class="legal-card">
+              <h3>10. Drittlandtransfer</h3>
+              <p>
+                Soweit externe technische Dienstleister eingesetzt werden, kann eine Verarbeitung personenbezogener
+                Daten auch außerhalb der Europäischen Union beziehungsweise des Europäischen Wirtschaftsraums
+                nicht vollständig ausgeschlossen werden. Dies kann insbesondere bei US-amerikanischen Anbietern relevant sein.
+              </p>
+              <p>
+                Sofern eine solche Übermittlung stattfindet, soll sie nur auf einer datenschutzrechtlich zulässigen
+                Grundlage erfolgen, etwa auf Basis eines Angemessenheitsbeschlusses oder sonstiger geeigneter Garantien.
+              </p>
+            </article>
+
+            <article class="legal-card">
+              <h3>11. Speicherdauer</h3>
+              <p>
+                Personenbezogene Daten werden nicht länger gespeichert, als es für die jeweiligen Zwecke erforderlich ist.
+                Server-Logfiles werden grundsätzlich nur so lange aufbewahrt, wie dies für den sicheren Betrieb,
+                die Fehleranalyse oder die Abwehr von Missbrauch erforderlich ist.
+              </p>
+              <p>
+                Daten aus E-Mail-Anfragen werden gelöscht, sobald die jeweilige Kommunikation abgeschlossen ist
+                und keine gesetzlichen Aufbewahrungspflichten oder berechtigten Gründe für eine weitere Speicherung bestehen.
+              </p>
+            </article>
+
+            <article class="legal-card">
+              <h3>12. Rechte betroffener Personen</h3>
+              <p>
+                Soweit personenbezogene Daten verarbeitet werden, bestehen im Rahmen der gesetzlichen Voraussetzungen
+                insbesondere folgende Rechte:
+              </p>
+              <ul>
+                <li>Recht auf Auskunft,</li>
+                <li>Recht auf Berichtigung unrichtiger Daten,</li>
+                <li>Recht auf Löschung,</li>
+                <li>Recht auf Einschränkung der Verarbeitung,</li>
+                <li>Recht auf Widerspruch gegen bestimmte Verarbeitungen,</li>
+                <li>Recht auf Datenübertragbarkeit, soweit einschlägig.</li>
+              </ul>
+              <p>
+                Zur Ausübung dieser Rechte genügt eine formlose Nachricht an die oben genannte Kontaktadresse.
+              </p>
+            </article>
+
+            <article class="legal-card">
+              <h3>13. Beschwerderecht bei einer Aufsichtsbehörde</h3>
+              <p>
+                Betroffene Personen haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren,
+                wenn sie der Ansicht sind, dass die Verarbeitung ihrer personenbezogenen Daten nicht rechtmäßig erfolgt.
+              </p>
+            </article>
+
+            <article class="legal-card">
+              <h3>14. Externe Links</h3>
+              <p>
+                Diese Webseite kann Links zu externen Webseiten enthalten. Auf Inhalte, Datenschutzstandards und
+                sonstige rechtliche Ausgestaltung dieser fremden Seiten besteht kein Einfluss. Für den Inhalt der
+                verlinkten Seiten sind ausschließlich deren jeweilige Betreiber verantwortlich.
+              </p>
+            </article>
+
+            <article class="legal-card">
+              <h3>15. Downloads und bereitgestellte Materialien</h3>
+              <p>
+                Auf dieser Webseite können Skripte, PDF-Dateien, Hinweise oder sonstige Lernunterlagen zum Download
+                bereitgestellt werden. Diese Materialien dienen dem Selbststudium, der Orientierung und der freiwilligen
+                fachlichen Unterstützung. Eine Gewähr für ständige Verfügbarkeit, Vollständigkeit oder Fehlerfreiheit
+                wird nicht übernommen.
+              </p>
+            </article>
+
+            <article class="legal-card">
+              <h3>16. Datensparsamkeit und keine Nutzerkonten</h3>
+              <p>
+                Die Webseite ist grundsätzlich so konzipiert, dass keine Benutzerkonten, keine Login-Bereiche,
+                keine Kommentarfunktionen und keine aktiven Registrierungsprozesse erforderlich sind. Ziel ist
+                eine möglichst schlanke und datensparsame Bereitstellung der Inhalte.
+              </p>
+            </article>
           </div>
+
+          <h3 class="subsection-title">Nutzungsbedingungen und rechtliche Hinweise</h3>
+
+          <div class="legal-grid">
+            <article class="legal-card">
+              <h3>17. Charakter der Inhalte</h3>
+              <p>
+                Die auf dieser Webseite bereitgestellten Informationen, Hinweise, Materialien und Empfehlungen
+                dienen der fachlichen Orientierung, dem Selbststudium und der ergänzenden Unterstützung. Sie
+                ersetzen weder offizielle Bekanntmachungen der Universität noch verbindliche organisatorische
+                oder prüfungsrechtliche Mitteilungen.
+              </p>
+            </article>
+
+            <article class="legal-card">
+              <h3>18. Keine Gewähr für Aktualität, Richtigkeit und Vollständigkeit</h3>
+              <p>
+                Alle Inhalte werden mit großer Sorgfalt erstellt. Dennoch kann nicht garantiert werden, dass
+                sämtliche Informationen jederzeit vollständig, aktuell, rechtlich zutreffend oder fehlerfrei sind.
+                Die Nutzung der Inhalte erfolgt daher in eigener Verantwortung.
+              </p>
+            </article>
+
+            <article class="legal-card">
+              <h3>19. Urheberrecht und Nutzung der Materialien</h3>
+              <p>
+                Soweit nicht anders gekennzeichnet, unterliegen die auf dieser Webseite veröffentlichten Texte,
+                Zusammenstellungen, Gestaltungen und selbst erstellten Materialien dem Urheberrecht. Die Nutzung
+                zum persönlichen Lernen und zum individuellen Selbststudium ist ausdrücklich erlaubt.
+              </p>
+              <p>
+                Nicht gestattet ist insbesondere die unveränderte oder nur leicht veränderte Weiterveröffentlichung
+                als eigenes Material, die kommerzielle Verwertung ohne Zustimmung oder die systematische Übernahme
+                größerer Teile in andere Angebote.
+              </p>
+            </article>
+
+            <article class="legal-card">
+              <h3>20. Keine Haftung für externe Inhalte und technische Ausfälle</h3>
+              <p>
+                Für die Inhalte externer Verlinkungen, für vorübergehende Nichtverfügbarkeit, Datenverlust,
+                technische Störungen oder Inkompatibilitäten mit einzelnen Endgeräten oder Browsern wird – soweit
+                gesetzlich zulässig – keine Haftung übernommen.
+              </p>
+            </article>
+
+            <article class="legal-card">
+              <h3>21. Keine individuelle Rechts- oder Datenschutzberatung</h3>
+              <p>
+                Diese Seite enthält allgemeine Hinweise in verständlicher Form, stellt aber keine individuelle
+                Rechtsberatung, keine verbindliche Datenschutzberatung und keine anwaltliche Prüfung im Einzelfall dar.
+              </p>
+            </article>
+
+            <article class="legal-card">
+              <h3>22. Änderungen dieser Hinweise</h3>
+              <p>
+                Diese Hinweise können angepasst werden, wenn sich technische Funktionen, Inhalte, rechtliche
+                Anforderungen oder organisatorische Abläufe ändern. Maßgeblich ist jeweils die auf dieser Seite
+                veröffentlichte aktuelle Fassung.
+              </p>
+              <p>
+                <strong>Stand:</strong> 11.04.2026
+              </p>
+            </article>
+          </div>
+
         </div>
       </section>
     </div>
   </main>
 
   <footer class="footer">
-    © 2026 Mirkan Deniz Günkaya · Analysis Tutorium
+    <div>© 2026 Mirkan Deniz Günkaya · Analysis Tutorium</div>
+    <div class="footer-links">
+      <a href="index.html">Startseite</a>
+      <a href="#impressum">Impressum</a>
+      <a href="#datenschutz">Datenschutz</a>
+      <a href="kontakt.html">Kontakt</a>
+    </div>
   </footer>
 </body>
 </html>
