@@ -213,7 +213,6 @@
     }
 
     .contact-card h2,
-    .info-card h2,
     .about-card h2 {
       margin: 0 0 0.7rem 0;
       font-size: 1.5rem;
@@ -221,8 +220,7 @@
       color: var(--green);
     }
 
-    .contact-card p,
-    .info-card p {
+    .contact-card p {
       margin: 0;
       color: var(--text-soft);
       font-size: 1rem;
@@ -273,20 +271,14 @@
 
     .info-card {
       display: flex;
-      flex-direction: column;
+      align-items: center;
       justify-content: center;
     }
 
-        .info-card {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-    }
-
     .info-copy {
-      margin-top: 1rem;
-      padding: 1.2rem 1.25rem;
-      border-radius: 18px;
+      width: 100%;
+      padding: 1.35rem 1.35rem;
+      border-radius: 20px;
       background: var(--surface-strong);
       border: 1px solid rgba(41, 68, 58, 0.08);
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
@@ -295,17 +287,8 @@
     .info-copy p {
       margin: 0;
       color: var(--text-soft);
-      font-size: 1rem;
-      line-height: 1.9;
-    }
-
-    .info-copy p + p {
-      margin-top: 0.9rem;
-    }
-
-    .info-copy strong {
-      color: var(--bordeaux);
-      font-weight: 700;
+      font-size: 1.02rem;
+      line-height: 1.95;
     }
 
     .about-card {
@@ -478,6 +461,10 @@
       .mini-note {
         width: 100%;
       }
+
+      .info-copy {
+        padding: 1.15rem 1.1rem;
+      }
     }
   </style>
 </head>
@@ -520,27 +507,20 @@
           </div>
         </div>
 
-                <div class="info-card">
-          <h2>Wann du mir schreiben kannst</h2>
+        <div class="info-card">
           <div class="info-copy">
             <p>
-              Du kannst mir gerne schreiben, wenn du mehr Informationen über das Tutorium,
-              über die Veranstaltungen Analysis I und Analysis II oder allgemein über meine Arbeit
-              und diese Webseite erfahren möchtest.
-            </p>
-
-            <p>
-              Auch wenn du im Studium Unterstützung brauchst, bei einem Thema Verständnisprobleme hast,
-              bei einer Aufgabe nicht weiterkommst oder dir bei mathematischen Inhalten mehr Orientierung
-              und Klarheit wünschst, darfst du dich jederzeit gerne melden.
-            </p>
-
-            <p>
-              Ebenso freue ich mich über Hinweise zu Materialien, Rückmeldungen zur Webseite oder kurze
-              Nachrichten, wenn ein Dokument fehlt oder ein Link einmal nicht funktionieren sollte.
+              Brauchst du mehr Informationen von mir, möchtest du mehr über das Tutorium, die Veranstaltungen
+              Analysis I und Analysis II oder allgemein über diese Webseite erfahren, dann kannst du dich
+              jederzeit gerne bei mir melden. Auch wenn du Hilfe im Studium brauchst, bei einem Thema
+              Verständnisprobleme hast, bei einer Aufgabe nicht weiterkommst oder dir inhaltlich mehr
+              Orientierung und Klarheit wünschst, darfst du mir sehr gerne schreiben. Ebenso freue ich mich
+              über Rückmeldungen, Hinweise zu Materialien oder kurze Nachrichten, falls ein Dokument fehlen
+              oder ein Link einmal nicht funktionieren sollte.
             </p>
           </div>
         </div>
+      </div>
     </section>
 
     <section class="about-card">
