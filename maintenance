@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>In Bearbeitung</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f5f7fa;
+        }
+
+        .maintenance {
+            text-align: center;
+        }
+
+        .maintenance h1 {
+            font-size: 3rem;
+            animation: blink 1.5s infinite;
+        }
+
+        .maintenance p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        @keyframes blink {
+            0%,100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+    </style>
+</head>
+<body>
+    <div class="maintenance">
+        <h1>🚧 In Bearbeitung 🚧</h1>
+        <p>Wir arbeiten gerade an dieser Webseite.</p>
+    </div>
+</body>
+</html>
