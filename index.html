@@ -4,10 +4,10 @@
   <script>document.documentElement.classList.add('js');</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Analysis Tutorium an der LMU München – klare Erklärungen, Tafelbilder und Materialien zu Analysis I und II an einem Ort." />
+  <meta name="description" content="Persönliches Analysis Tutorium für Analysis I und II – klare Erklärungen, Tafelbilder und sorgfältig geordnete Materialien an einem Ort." />
   <meta name="theme-color" content="#f7f5f1" />
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <title>Mirkan Günkaya · Analysis Tutorium</title>
+  <title>Mirkan Deniz Günkaya · Analysis Tutorium</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -82,15 +82,12 @@
     .hero-title{font-size:clamp(2.9rem,6.6vw,5rem);font-weight:500;line-height:1.04}
     .hero-title em{font-style:italic;color:var(--gold)}
     .hero-lead{margin:1.7rem 0 0;font-size:1.12rem;line-height:1.85;color:var(--ink-soft);max-width:34em}
-    .hero-actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.1rem}
-    .hero-meta{margin:2rem 0 0;font-family:var(--sans);font-size:.8rem;letter-spacing:.04em;color:var(--ink-mute)}
+    .hero-meta{margin:2.2rem 0 0;font-family:var(--sans);font-size:.8rem;letter-spacing:.04em;color:var(--ink-mute)}
     .hero-meta span{white-space:nowrap}
     .hero-meta i{font-style:normal;margin:0 .55rem;color:var(--gold-soft)}
     .hero-visual figure{margin:0}
     .hero-frame{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--paper-2);box-shadow:var(--shadow)}
     .hero-frame img{width:100%;height:auto;display:block}
-    .figcap{margin-top:.85rem;display:inline-flex;align-items:center;gap:.6ch;font-family:var(--sans);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute)}
-    .figcap::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block}
 
     /* section heads */
     .sec{padding:clamp(2.6rem,5vw,4.4rem) 0}
@@ -119,13 +116,6 @@
     .about-rule{width:56px;height:1.5px;background:var(--gold);margin-top:1.3rem}
     .about-body p{color:var(--ink-soft);font-size:1.08rem;line-height:1.9;margin-bottom:1.4rem}
     .about-body p:last-child{margin-bottom:0}
-
-    /* cta */
-    .cta{border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center;padding:clamp(3rem,6vw,5rem) 0}
-    .cta .sec-accent{margin-top:0;margin-bottom:1.5rem}
-    .cta h2{font-size:clamp(2rem,4vw,3rem);font-weight:500;max-width:20ch;margin:0 auto}
-    .cta p{margin:1.1rem auto 0;color:var(--ink-soft);font-size:1.05rem;max-width:48ch;line-height:1.75}
-    .cta-actions{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:2rem}
 
     /* footer */
     .footer{border-top:1px solid var(--line);margin-top:clamp(3rem,6vw,5rem)}
@@ -175,8 +165,8 @@
 <body id="top">
   <header class="nav">
     <div class="wrap nav-inner">
-      <a class="brand" href="index.html" aria-label="Mirkan Günkaya – Startseite">
-        <span class="brand-name">Mirkan Günkaya</span>
+      <a class="brand" href="index.html" aria-label="Mirkan Deniz Günkaya – Startseite">
+        <span class="brand-name">Mirkan Deniz Günkaya</span>
         <span class="brand-sub">Analysis Tutorium</span>
       </a>
       <nav class="nav-links" id="navlinks" aria-label="Hauptnavigation">
@@ -197,17 +187,14 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div class="hero-copy reveal">
-          <p class="eyebrow">Analysis I &amp; II · Tutorium · LMU München</p>
+          <p class="eyebrow">Analysis I &amp; II · Tutorium</p>
           <h1 class="hero-title">Vom Schulstoff<br /><em>zum Beweis.</em></h1>
           <p class="hero-lead">
-            Dein Tutorium für Analysis I und II – mit klaren Erklärungen, nachvollziehbaren
-            Tafelbildern und Materialien an einem Ort. Damit Definitionen, Grenzwerte und
-            Beweise nicht zum Auswendiglernen werden, sondern wirklich Sinn ergeben.
+            Ein persönlicher Begleiter durch Analysis I und II – mit klaren Erklärungen,
+            nachvollziehbaren Tafelbildern und sorgfältig geordneten Materialien an einem Ort.
+            Damit aus abstrakten Definitionen, Grenzwerten und Beweisen kein bloßes Auswendiglernen
+            wird, sondern Schritt für Schritt ein echtes, tragfähiges Verständnis entsteht.
           </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="materialien.html">Zu den Materialien <span class="arr" aria-hidden="true">→</span></a>
-            <a class="btn btn-ghost" href="kontakt.html">Kontakt</a>
-          </div>
           <p class="hero-meta">
             <span>Analysis I</span><i aria-hidden="true">·</i><span>Analysis II</span><i aria-hidden="true">·</i><span>Tafelbilder</span><i aria-hidden="true">·</i><span>Klausurvorbereitung</span>
           </p>
@@ -216,9 +203,8 @@
         <div class="hero-visual reveal">
           <figure>
             <div class="hero-frame">
-              <img src="Mirkan-Tafel-Hintergrund.JPEG" alt="Tafelbild aus dem Analysis-Tutorium von Mirkan Günkaya" />
+              <img src="Mirkan-Tafel-Hintergrund.JPEG" alt="Tafelbild aus dem Analysis-Tutorium von Mirkan Deniz Günkaya" />
             </div>
-            <figcaption class="figcap">Tafelbild aus dem Tutorium</figcaption>
           </figure>
         </div>
       </div>
@@ -277,47 +263,27 @@
         </aside>
         <div class="about-body reveal">
           <p>
-            Das Tutorium soll nicht nur eine Begleitveranstaltung zur Vorlesung sein, sondern
-            vor allem ein Ort, an dem mathematische Inhalte in Ruhe durchdrungen, eingeordnet
-            und aktiv nachvollzogen werden können. Gerade in der Analysis begegnen viele
-            Studierende zum ersten Mal einer Form von Mathematik, die deutlich stärker von
-            Definitionen, präziser Sprache, sauberen Begründungen und logischem Aufbau geprägt
-            ist als der Mathematikunterricht in der Schule. Deshalb steht im Tutorium nicht
-            allein das Lösen einzelner Aufgaben im Vordergrund, sondern insbesondere auch das
-            Verständnis dafür, wie mathematische Argumentationen aufgebaut sind, wie man mit
-            Definitionen sinnvoll arbeitet und wie man Schritt für Schritt lernt, Beweise zu
-            lesen, zu verstehen und schließlich selbst zu formulieren.
+            Im Tutorium geht es mir vor allem darum, Mathematik wirklich verständlich zu machen.
+            Ich versuche immer wieder, ein Thema auf ganz unterschiedlichen Wegen zu erklären – denn
+            nicht jeder Gedanke erschließt sich über denselben Zugang. Dabei helfen mir oft anschauliche
+            Bilder und Visualisierungen, und ich gehe gerne zunächst in einfache, niedrige Dimensionen,
+            um eine Idee greifbar zu machen, bevor wir sie allgemein und abstrakt formulieren.
           </p>
           <p>
-            Die Veranstaltung Analysis bildet in vielen mathematischen, naturwissenschaftlichen
-            und technischen Studiengängen einen wesentlichen Grundbaustein. Themen wie Folgen,
-            Reihen, Grenzwerte, Stetigkeit, Differenzierbarkeit oder Integralrechnung sind
-            dabei nicht nur inhaltlich wichtig, sondern prägen auch die mathematische Denkweise,
-            die für das weitere Studium von zentraler Bedeutung ist. Das Tutorium soll deshalb
-            dabei helfen, die Vorlesungsinhalte besser zu strukturieren, typische Schwierigkeiten
-            frühzeitig zu erkennen und ein tragfähiges Fundament für den weiteren Studienverlauf
-            aufzubauen.
+            Besonders wichtig ist mir, dass man Beweise nicht einfach auswendig lernt, sondern versteht,
+            wie man überhaupt auf die entscheidenden Ideen kommt. Diese Ideenentwicklung ist für mich der
+            eigentliche Kern: zu erkennen, warum ein Ansatz funktioniert und wie man selbst darauf kommen
+            kann – das ist viel wertvoller, als einen fertigen Beweis nur von oben nach unten nachzuvollziehen.
+            Deshalb zerlege ich Aufgaben gerne in kleinere Teilschritte, sodass man ein Problem Stück für
+            Stück durchdringt und an jeder Stelle wirklich versteht, was passiert.
           </p>
           <p>
-            Diese Webseite ergänzt das Tutorium durch eine geordnete Sammlung von Materialien,
-            zusätzlichen Hinweisen und weiterführenden Erläuterungen. Sie soll Studierenden eine
-            zentrale Anlaufstelle bieten, um Inhalte nachzuarbeiten, sich gezielt auf Übungen
-            und Prüfungen vorzubereiten und den Übergang von schulischer Mathematik zu
-            universitärer Beweis- und Begriffsarbeit klarer und verständlicher zu gestalten.
+            Gleichzeitig behandle ich im Tutorium sehr gerne auch vertiefende Aspekte – nicht nur rein
+            innermathematisch, sondern bewusst auch mit Blick auf Anwendungen, damit Zusammenhänge noch
+            klarer und greifbarer werden. Dabei schlage ich immer wieder eine Brücke zwischen anschaulichem,
+            fast schulischem Denken und dem höheren, präzisen Niveau der Universität – gerade im ersten Teil
+            der Analysis –, sodass der Einstieg leichter gelingt und das Ganze trotzdem mathematisch sauber bleibt.
           </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta">
-      <div class="wrap">
-        <div class="sec-accent" aria-hidden="true"></div>
-        <h2>Bereit, tiefer in die Analysis einzusteigen?</h2>
-        <p>Schau dir die Materialien zu Analysis I und II an – oder schreib mir, wenn du eine Frage zum Tutorium hast.</p>
-        <div class="cta-actions">
-          <a class="btn btn-primary" href="materialien.html">Materialien ansehen <span class="arr" aria-hidden="true">→</span></a>
-          <a class="btn btn-ghost" href="kontakt.html">Kontakt aufnehmen</a>
         </div>
       </div>
     </section>
@@ -327,7 +293,7 @@
     <div class="wrap footer-inner">
       <div>
         <p class="footer-name">Mirkan Deniz Günkaya</p>
-        <p class="footer-tag">Analysis Tutorium · LMU München</p>
+        <p class="footer-tag">Analysis Tutorium</p>
       </div>
       <nav class="footer-nav" aria-label="Fußnavigation">
         <a href="index.html">Startseite</a>
