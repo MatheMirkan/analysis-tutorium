@@ -134,6 +134,17 @@
       html{scroll-behavior:auto}
       .js .reveal{opacity:1;transform:none}
     }
+  
+    /* ===== Mathe-Marginalien (Analysis I) ===== */
+    .marginalia{position:fixed;top:0;bottom:0;width:56px;z-index:0;pointer-events:none;display:flex;flex-direction:column;justify-content:space-evenly;align-items:center;padding:14vh 0;color:var(--ink)}
+    .marginalia.left{left:0}
+    .marginalia.right{right:0}
+    .marginalia .sym{font-family:var(--serif);font-style:italic;font-size:1.45rem;line-height:1;opacity:.16}
+    .marginalia .sk{width:42px;height:42px;opacity:.2}
+    .marginalia .sk svg{width:100%;height:100%;display:block;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+    .marginalia .sk svg circle{fill:currentColor;stroke:none}
+    @media (max-width:1024px){.marginalia{display:none}}
+    /* ===== /Mathe-Marginalien ===== */
   </style>
 </head>
 <body id="top">
@@ -255,5 +266,22 @@
       }
     })();
   </script>
+
+  <!-- ===== Mathe-Marginalien (Analysis I) ===== -->
+  <div class="marginalia left" aria-hidden="true">
+    <span class="sk" aria-hidden="true"><svg viewBox="0 0 48 48"><line x1="5" y1="15" x2="43" y2="15" stroke-dasharray="3 3"/><circle cx="10" cy="40" r="1.5"/><circle cx="16" cy="33" r="1.5"/><circle cx="23" cy="27" r="1.5"/><circle cx="30" cy="22" r="1.5"/><circle cx="37" cy="18.5" r="1.5"/><circle cx="43" cy="16.5" r="1.5"/></svg></span>
+    <span class="sym" aria-hidden="true">lim</span>
+    <span class="sk" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M6 38 Q24 4 42 30"/><line x1="9" y1="26" x2="41" y2="10"/><circle cx="25" cy="18" r="1.6"/></svg></span>
+    <span class="sym" aria-hidden="true">&#8721;</span>
+    <span class="sk" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M6 33 Q24 11 42 33"/><line x1="5" y1="40" x2="43" y2="40"/><rect x="8" y="30" width="6" height="10"/><rect x="15" y="25" width="6" height="15"/><rect x="22" y="22" width="6" height="18"/><rect x="29" y="25" width="6" height="15"/><rect x="36" y="30" width="6" height="10"/></svg></span>
+  </div>
+  <div class="marginalia right" aria-hidden="true">
+    <span class="sym" aria-hidden="true">&#949;</span>
+    <span class="sk" aria-hidden="true"><svg viewBox="0 0 48 48"><line x1="6" y1="19" x2="42" y2="19" stroke-dasharray="3 3"/><line x1="6" y1="29" x2="42" y2="29" stroke-dasharray="3 3"/><path d="M6 41 C18 39 24 28 42 24"/></svg></span>
+    <span class="sym" aria-hidden="true">&#948;</span>
+    <span class="sym" aria-hidden="true">&#8747;</span>
+    <span class="sym" aria-hidden="true">sup</span>
+  </div>
+  <!-- ===== /Mathe-Marginalien ===== -->
 </body>
 </html>
