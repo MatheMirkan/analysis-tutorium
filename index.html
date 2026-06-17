@@ -332,5 +332,38 @@
       }
     })();
   </script>
+
+  <!-- ===== Mathe-Marginalien (nur Startseite) ===== -->
+<style>
+  .marginalia{
+    position:fixed; top:0; bottom:0; width:52px;
+    z-index:0;                 /* hinter dem Inhalt */
+    pointer-events:none;       /* faengt keine Klicks ab */
+    display:flex; flex-direction:column;
+    justify-content:space-evenly; align-items:center;
+    padding:12vh 0;            /* haelt Abstand zu Kopf und Fuss */
+    font-family:"Cormorant Garamond", Georgia, serif;
+    font-style:italic;
+  }
+  .marginalia.left{ left:0; }
+  .marginalia.right{ right:0; }
+  .marginalia span{
+    font-size:1.5rem;
+    color:#211d18;             /* dein dunkler Textton */
+    opacity:.12;               /* Deckkraft = Stellschraube fuer "dezent" */
+    line-height:1;
+  }
+  /* auf schmalen Screens gibt es keine Seitenspalten -> ausblenden */
+  @media (max-width:760px){ .marginalia{ display:none; } }
+</style>
+
+<div class="marginalia left" aria-hidden="true">
+  <span>&#8747;</span><span>&#949;</span><span>&#8721;</span><span>&#8706;</span><span>lim</span><span>&#948;</span><span>&#8734;</span>
+</div>
+<div class="marginalia right" aria-hidden="true">
+  <span>&#8477;</span><span>&#8804;</span><span>&#8594;</span><span>&#8721;</span><span>f&#8242;</span><span>&#8730;</span><span>&#960;</span>
+</div>
+<!-- ===== /Mathe-Marginalien ===== -->
+  
 </body>
 </html>
