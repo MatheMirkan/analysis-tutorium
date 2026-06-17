@@ -134,6 +134,17 @@
       html{scroll-behavior:auto}
       .js .reveal{opacity:1;transform:none}
     }
+  
+    /* ===== Mathe-Marginalien (Analysis II) ===== */
+    .marginalia{position:fixed;top:0;bottom:0;width:56px;z-index:0;pointer-events:none;display:flex;flex-direction:column;justify-content:space-evenly;align-items:center;padding:14vh 0;color:var(--ink)}
+    .marginalia.left{left:0}
+    .marginalia.right{right:0}
+    .marginalia .sym{font-family:var(--serif);font-style:italic;font-size:1.45rem;line-height:1;opacity:.16}
+    .marginalia .sk{width:42px;height:42px;opacity:.2}
+    .marginalia .sk svg{width:100%;height:100%;display:block;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+    .marginalia .sk svg circle{fill:currentColor;stroke:none}
+    @media (max-width:1024px){.marginalia{display:none}}
+    /* ===== /Mathe-Marginalien ===== */
   </style>
 </head>
 <body id="top">
@@ -255,5 +266,22 @@
       }
     })();
   </script>
+
+  <!-- ===== Mathe-Marginalien (Analysis II) ===== -->
+  <div class="marginalia left" aria-hidden="true">
+    <span class="sk" aria-hidden="true"><svg viewBox="0 0 48 48"><ellipse cx="24" cy="24" rx="17" ry="11"/><ellipse cx="24" cy="24" rx="11" ry="7"/><ellipse cx="24" cy="24" rx="5" ry="3.2"/><circle cx="24" cy="24" r="1.2"/></svg></span>
+    <span class="sym" aria-hidden="true">&#8711;</span>
+    <span class="sk" aria-hidden="true"><svg viewBox="0 0 48 48"><defs><marker id="ahn" markerWidth="6" markerHeight="6" refX="4.5" refY="3" orient="auto"><path d="M1 1 L5 3 L1 5"/></marker></defs><path d="M10 30 L26 22 L40 28 L24 36 Z"/><line x1="25" y1="29" x2="30" y2="13" marker-end="url(#ahn)"/><circle cx="25" cy="29" r="1.3"/></svg></span>
+    <span class="sym" aria-hidden="true">&#8706;</span>
+    <span class="sk" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M14 15 C7 19 7 30 15 34 C24 39 37 35 39 26 C41 17 27 11 14 15 Z"/><rect x="22" y="22" width="6" height="6"/></svg></span>
+  </div>
+  <div class="marginalia right" aria-hidden="true">
+    <span class="sym" aria-hidden="true">&#8748;</span>
+    <span class="sk" aria-hidden="true"><svg viewBox="0 0 48 48"><defs><marker id="ahg" markerWidth="6" markerHeight="6" refX="4.5" refY="3" orient="auto"><path d="M1 1 L5 3 L1 5"/></marker></defs><line x1="9" y1="40" x2="16" y2="32" marker-end="url(#ahg)"/><line x1="21" y1="41" x2="28" y2="33" marker-end="url(#ahg)"/><line x1="33" y1="40" x2="40" y2="32" marker-end="url(#ahg)"/><line x1="15" y1="28" x2="22" y2="20" marker-end="url(#ahg)"/><line x1="27" y1="28" x2="34" y2="20" marker-end="url(#ahg)"/></svg></span>
+    <span class="sym" aria-hidden="true">&#8477;&#8319;</span>
+    <span class="sym" aria-hidden="true">&#8721;</span>
+    <span class="sym" aria-hidden="true">&#8706;</span>
+  </div>
+  <!-- ===== /Mathe-Marginalien ===== -->
 </body>
 </html>
