@@ -1,43 +1,30 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <title>In Bearbeitung</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: #f5f7fa;
-        }
-
-        .maintenance {
-            text-align: center;
-        }
-
-        .maintenance h1 {
-            font-size: 3rem;
-            animation: blink 1.5s infinite;
-        }
-
-        .maintenance p {
-            font-size: 1.2rem;
-            color: #666;
-        }
-
-        @keyframes blink {
-            0%,100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-    </style>
+  <script>document.documentElement.classList.add('js');</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>In Bearbeitung · Analysis Tutorium</title>
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#f7f5f1" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
+
 <body>
-    <div class="maintenance">
-        <h1>🚧 In Bearbeitung 🚧</h1>
-        <p>Wir arbeiten gerade an dieser Webseite.</p>
-    </div>
+  <main id="main">
+    <section class="notice" style="min-height:100vh">
+      <div class="wrap notice-box">
+        <img src="/assets/img/logo-512.png" width="96" height="96" alt="" aria-hidden="true" style="margin:0 auto 1.6rem" />
+        <p class="eyebrow">Analysis Tutorium</p>
+        <h1>Hier wird gerade <em style="font-style:italic;color:var(--gold)">gearbeitet.</em></h1>
+        <p>Diese Seite wird momentan überarbeitet und ist in Kürze wieder erreichbar. Vielen Dank für deine Geduld.</p>
+        <a class="btn btn-ghost" href="index.html">Zur Startseite <span class="arr" aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
 </body>
 </html>

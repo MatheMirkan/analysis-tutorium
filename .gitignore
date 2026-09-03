@@ -1,0 +1,4 @@
+# Lokale Werkzeuge / Systemdateien
+.claude/
+Thumbs.db
+.DS_Store
