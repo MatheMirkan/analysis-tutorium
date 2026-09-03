@@ -39,7 +39,7 @@ p{margin:0}
 h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.08;letter-spacing:.002em;text-wrap:balance}
 ::selection{background:#ece3cf}
 :focus-visible{outline:1.5px solid var(--gold);outline-offset:3px;border-radius:4px}
-section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
+section[id]{scroll-margin-top:18px}
 
 .skip{position:absolute;left:1rem;top:-3rem;z-index:1000;padding:.6rem 1rem;background:var(--ink);color:var(--paper);border-radius:8px;font-family:var(--sans);font-size:.85rem;transition:top .2s}
 .skip:focus{top:1rem}
@@ -59,7 +59,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
 .btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
 
 /* ---------- Navigation ---------- */
-.nav{position:sticky;top:0;z-index:100;background:rgba(247,245,241,.82);-webkit-backdrop-filter:saturate(1.2) blur(12px);backdrop-filter:saturate(1.2) blur(12px);border-bottom:1px solid var(--line)}
+.nav{position:relative;z-index:100;background:var(--paper);border-bottom:1px solid var(--line)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:var(--nav-h)}
 .brand{display:flex;align-items:center;gap:.85rem;line-height:1.02}
 .brand-mark{flex:none;width:34px;height:34px;opacity:.92;transition:opacity .2s}
@@ -111,7 +111,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
 
 /* ---------- Startseite: Philosophie ---------- */
 .about-grid{display:grid;grid-template-columns:.78fr 1.22fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
-.about-aside{position:sticky;top:calc(var(--nav-h) + 30px)}
+.about-aside{position:sticky;top:30px}
 .about-title{font-size:clamp(2rem,3.4vw,2.7rem);font-weight:500}
 .about-rule{width:56px;height:1.5px;background:var(--gold);margin-top:1.3rem}
 .about-body p{color:var(--ink-soft);font-size:1.08rem;line-height:1.9;margin-bottom:1.4rem}
@@ -251,8 +251,7 @@ main{padding-bottom:clamp(3rem,6vw,5rem)}
 .marginalia .sk{width:42px;height:42px;opacity:.2}
 .marginalia .sk svg{width:100%;height:100%;display:block;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .marginalia .sk svg circle{fill:currentColor;stroke:none}
-main,.nav{position:relative;z-index:1}
-.nav{position:sticky}
+main{position:relative;z-index:1}
 
 /* ---------- Intro-Overlay (nur Startseite) ---------- */
 body.intro-lock{overflow:hidden}
@@ -288,7 +287,7 @@ html:not(.js) .intro{display:none}
   .tips,.cgrid{grid-template-columns:1fr}
 }
 @media (max-width:820px){
-  .nav-links{position:fixed;inset:var(--nav-h) 0 auto 0;flex-direction:column;align-items:stretch;gap:.2rem;background:var(--paper);border-bottom:1px solid var(--line);padding:.8rem var(--pad) 1.2rem;transform:translateY(-12px);opacity:0;pointer-events:none;transition:transform .25s var(--ease),opacity .25s ease}
+  .nav-links{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:.2rem;background:var(--paper);border-bottom:1px solid var(--line);padding:.8rem var(--pad) 1.2rem;transform:translateY(-12px);opacity:0;pointer-events:none;transition:transform .25s var(--ease),opacity .25s ease}
   .nav-links.open{transform:none;opacity:1;pointer-events:auto}
   .nav-links a{padding:.85rem 1rem;font-size:1rem}
   .nav-links a[aria-current="page"]:not(.cta)::after{display:none}
