@@ -29,115 +29,16 @@
   <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
 
-  <!-- ============================================================
-     WARTUNGSMODUS · mirkan-analysis.de
-     Kompletten Block direkt vor </body> einfügen.
-     Zum Deaktivieren: alles zwischen START und ENDE wieder löschen.
-     ============================================================ -->
-<style>
-  html, body { overflow: hidden !important; }
-
-  #wartung {
-    position: fixed;
-    inset: 0;
-    z-index: 2147483000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem 1.5rem;
-    text-align: center;
-    background: radial-gradient(1100px 700px at 50% 32%, #211c11 0%, #14110a 55%, #0d0b06 100%);
-    color: #f3ecdb;
-    font-family: 'Inter', system-ui, sans-serif;
-  }
-
-  #wartung .w-monogramm {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(3.4rem, 9vw, 5.2rem);
-    line-height: 1;
-    color: #dabc76;
-    letter-spacing: 0.05em;
-    opacity: 0;
-    animation:
-      w-rein 1.1s cubic-bezier(.22, 1, .36, 1) .2s forwards,
-      w-atmen 5s ease-in-out 1.8s infinite;
-  }
-
-  #wartung .w-titel {
-    margin: 1.5rem 0 0;
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-weight: 500;
-    font-size: clamp(1.75rem, 5vw, 2.7rem);
-    letter-spacing: 0.01em;
-    color: #f3ecdb;
-    opacity: 0;
-    animation: w-rein 1.1s cubic-bezier(.22, 1, .36, 1) .55s forwards;
-  }
-
-  #wartung .w-kurve {
-    width: min(320px, 72vw);
-    height: auto;
-    margin-top: 1.7rem;
-    opacity: 0;
-    animation: w-rein 1s ease .9s forwards;
-  }
-  #wartung .w-kurve path {
-    fill: none;
-    stroke: #dabc76;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-dasharray: 1;
-    stroke-dashoffset: 1;
-    animation: w-zeichnen 6s ease-in-out 1.2s infinite;
-  }
-
-  #wartung .w-text {
-    margin: 1.7rem 0 0;
-    max-width: 32rem;
-    font-size: clamp(.95rem, 2.6vw, 1.05rem);
-    line-height: 1.65;
-    color: rgba(243, 236, 219, 0.72);
-    opacity: 0;
-    animation: w-rein 1.1s ease 1.25s forwards;
-  }
-
-  @keyframes w-rein {
-    from { opacity: 0; transform: translateY(14px); }
-    to   { opacity: 1; transform: none; }
-  }
-  /* sanftes "Atmen" des Monogramms */
-  @keyframes w-atmen {
-    0%, 100% { text-shadow: 0 0 0 rgba(218, 188, 118, 0); }
-    50%      { text-shadow: 0 0 28px rgba(218, 188, 118, .45); }
-  }
-  /* Sinuskurve zeichnet sich selbst, hält kurz, läuft aus */
-  @keyframes w-zeichnen {
-    0%       { stroke-dashoffset: 1; }
-    45%, 62% { stroke-dashoffset: 0; }
-    100%     { stroke-dashoffset: -1; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    #wartung .w-monogramm,
-    #wartung .w-titel,
-    #wartung .w-kurve,
-    #wartung .w-text { animation: none; opacity: 1; }
-    #wartung .w-kurve path { animation: none; stroke-dashoffset: 0; }
-  }
-</style>
-
-<div id="wartung" role="status">
-  <div class="w-monogramm">&Sigma;M</div>
-  <h1 class="w-titel">Hier wird gerade gearbeitet</h1>
-  <svg class="w-kurve" viewBox="0 0 320 60" aria-hidden="true">
-    <path pathLength="1" d="M0,30 C26.7,0 53.3,0 80,30 S133.3,60 160,30 S213.3,0 240,30 S293.3,60 320,30" />
-  </svg>
-  <p class="w-text">Die Seite wird gerade &uuml;berarbeitet. Neue Inhalte sind in Arbeit &ndash; der Beweis folgt in K&uuml;rze.</p>
-</div>
-<!-- ===================== WARTUNGSMODUS ENDE ===================== -->
   
 <body id="top">
+  <!-- ===== WARTUNGSMODUS – zum Deaktivieren diesen Block bis ENDE löschen ===== -->
+  <div id="wartung" role="status">
+    <div class="w-monogramm">&Sigma;M</div>
+    <h1 class="w-titel">Hier wird gerade gearbeitet</h1>
+    <svg class="w-kurve" viewBox="0 0 320 60" aria-hidden="true"><path pathLength="1" d="M0,30 C26.7,0 53.3,0 80,30 S133.3,60 160,30 S213.3,0 240,30 S293.3,60 320,30" /></svg>
+    <p class="w-text">Die Seite wird gerade &uuml;berarbeitet. Neue Inhalte sind in Arbeit &ndash; der Beweis folgt in K&uuml;rze.</p>
+  </div>
+  <!-- ===== WARTUNGSMODUS ENDE ===== -->
   <a class="skip" href="#main">Zum Inhalt springen</a>
   <header class="nav">
     <div class="wrap nav-inner">
