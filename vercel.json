@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/kontakt.html", "destination": "https://morgenfels-com.vercel.app", "permanent": true },
+    { "source": "/kontakt", "destination": "https://morgenfels-com.vercel.app", "permanent": true }
+  ]
+}
