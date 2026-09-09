@@ -471,7 +471,7 @@ html:has(#wartung), html:has(#wartung) body { overflow: hidden !important; }
 .stat-num small{font-size:.55em;color:var(--gold);margin-left:.1em}
 .stat-label{margin-top:.45rem;font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute)}
 
-/* ---------- Roter Faden ---------- */
+/* ---------- Goldener Faden ---------- */
 .thread{margin-top:clamp(2rem,4vw,3rem);padding:clamp(1.4rem,3vw,2rem) clamp(1rem,2.5vw,1.8rem) 1.3rem;background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);position:relative;overflow:hidden}
 .thread::before{content:"";position:absolute;left:0;top:0;height:2px;width:100%;background:var(--gold);opacity:.65}
 .thread-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap}
@@ -481,8 +481,9 @@ html:has(#wartung), html:has(#wartung) body { overflow: hidden !important; }
 .thread-svg .path{fill:none;stroke:var(--gold);stroke-width:1.6;stroke-linecap:round}
 .thread-svg .node{fill:var(--paper-2);stroke:var(--gold);stroke-width:1.6}
 .thread-svg .node-core{fill:var(--gold);stroke:none}
-.thread-labels{display:grid;grid-template-columns:repeat(6,1fr);gap:.5rem;margin-top:.5rem}
-.thread-labels span{text-align:center;font-family:var(--sans);font-size:.78rem;line-height:1.35;color:var(--ink-soft)}
+.thread-labels{display:grid;grid-template-columns:repeat(var(--n,6),1fr);gap:.4rem;margin-top:.5rem}
+.thread-labels span{text-align:center;font-family:var(--sans);font-size:.76rem;line-height:1.35;color:var(--ink-soft);padding-inline:.1rem;hyphens:auto}
+.thread-labels[style*="--n:10"] span{font-size:.7rem}
 .thread-labels b{display:block;font-family:var(--serif);font-weight:600;font-style:italic;font-size:1.05rem;color:var(--gold);margin-bottom:.15rem}
 .js .thread-svg .path{stroke-dasharray:1;stroke-dashoffset:1}
 .js .thread-svg .node,.js .thread-svg .node-core{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.4)}
@@ -490,7 +491,7 @@ html:has(#wartung), html:has(#wartung) body { overflow: hidden !important; }
 .js .in .thread-svg .path{animation:sk-draw 2.2s var(--ease) forwards}
 .js .in .thread-svg .node,.js .in .thread-svg .node-core{animation:sk-pop .5s var(--ease) forwards}
 .js .in .thread-labels span{opacity:1;transform:none}
-.js .in .thread-labels span:nth-child(2){transition-delay:.35s}.js .in .thread-labels span:nth-child(3){transition-delay:.7s}.js .in .thread-labels span:nth-child(4){transition-delay:1.05s}.js .in .thread-labels span:nth-child(5){transition-delay:1.4s}.js .in .thread-labels span:nth-child(6){transition-delay:1.75s}
+.js .in .thread-labels span:nth-child(2){transition-delay:.25s}.js .in .thread-labels span:nth-child(3){transition-delay:.5s}.js .in .thread-labels span:nth-child(4){transition-delay:.75s}.js .in .thread-labels span:nth-child(5){transition-delay:1s}.js .in .thread-labels span:nth-child(6){transition-delay:1.25s}.js .in .thread-labels span:nth-child(7){transition-delay:1.5s}.js .in .thread-labels span:nth-child(8){transition-delay:1.75s}.js .in .thread-labels span:nth-child(9){transition-delay:2s}.js .in .thread-labels span:nth-child(10){transition-delay:2.25s}
 
 /* ---------- Abschnitts-Icons ---------- */
 .matcard,.access{padding-right:clamp(4.2rem,7vw,5.6rem)}
@@ -501,7 +502,8 @@ html:has(#wartung), html:has(#wartung) body { overflow: hidden !important; }
   .phero-grid{grid-template-columns:1fr;gap:2rem}
   .phero-visual{max-width:520px}
   .stats{grid-template-columns:repeat(2,1fr)}
-  .thread-labels{grid-template-columns:repeat(3,1fr);row-gap:1rem}
+  .thread-labels{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));row-gap:1rem}
+  .thread-svg{display:none}
 }
 @media (max-width:560px){
   .stats{gap:.7rem}
