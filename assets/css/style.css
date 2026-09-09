@@ -87,9 +87,9 @@ section[id]{scroll-margin-top:18px}
 .hero-title em,.phero-title em{font-style:italic;color:var(--gold)}
 .hero-lead{margin:1.7rem 0 0;font-size:1.12rem;line-height:1.85;color:var(--ink-soft);max-width:34em}
 .hero-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2rem}
-.hero-meta{margin:2.2rem 0 0;font-family:var(--sans);font-size:.8rem;letter-spacing:.04em;color:var(--ink-mute)}
+.hero-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.25rem .55rem;margin:2.2rem 0 0;font-family:var(--sans);font-size:.8rem;letter-spacing:.04em;color:var(--ink-mute)}
 .hero-meta span{white-space:nowrap}
-.hero-meta i{font-style:normal;margin:0 .55rem;color:var(--gold-soft)}
+.hero-meta i{font-style:normal;color:var(--gold-soft)}
 .hero-visual figure{margin:0;position:relative}
 .hero-frame{position:relative;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--paper-2);box-shadow:var(--shadow)}
 .hero-frame img{width:100%;height:auto;display:block}
