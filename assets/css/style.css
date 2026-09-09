@@ -445,10 +445,6 @@ html:has(#wartung), html:has(#wartung) body { overflow: hidden !important; }
 .sketch .lbl-gold{fill:var(--gold)}
 .sketch-caption{margin-top:.9rem;display:flex;justify-content:space-between;gap:1rem;font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute)}
 .sketch-caption b{font-weight:600;color:var(--gold)}
-.polaroid{position:absolute;right:-22px;bottom:-30px;width:34%;max-width:190px;padding:7px 7px 22px;background:#fff;border:1px solid var(--line);border-radius:6px;box-shadow:0 22px 40px -22px rgba(26,25,22,.45);transform:rotate(-5deg);transition:transform .35s var(--ease)}
-.polaroid img{display:block;width:100%;height:auto;border-radius:2px}
-.polaroid span{position:absolute;left:0;right:0;bottom:5px;text-align:center;font-family:var(--serif);font-style:italic;font-size:.78rem;color:var(--ink-soft)}
-.phero-visual:hover .polaroid{transform:rotate(-2deg) translateY(-3px)}
 
 /* Skizzen zeichnen sich beim Erscheinen */
 .js .sketch [pathLength]{stroke-dasharray:1;stroke-dashoffset:1}
@@ -508,7 +504,6 @@ html:has(#wartung), html:has(#wartung) body { overflow: hidden !important; }
   .thread-labels{grid-template-columns:repeat(3,1fr);row-gap:1rem}
 }
 @media (max-width:560px){
-  .polaroid{right:-6px;bottom:-22px;width:38%}
   .stats{gap:.7rem}
   .stat{padding:.9rem 1rem .8rem}
   .thread-labels{grid-template-columns:repeat(2,1fr)}
