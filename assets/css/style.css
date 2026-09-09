@@ -446,17 +446,32 @@ html:has(#wartung), html:has(#wartung) body { overflow: hidden !important; }
 .sketch-caption{margin-top:.9rem;display:flex;justify-content:space-between;gap:1rem;font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute)}
 .sketch-caption b{font-weight:600;color:var(--gold)}
 
+.sketch .bar{fill:var(--gold);opacity:.14;stroke:var(--gold);stroke-width:1}
+.js .sketch .bar{opacity:0}
+.js .in .sketch.is-active .bar{animation:sk-bar .7s ease forwards}
+@keyframes sk-bar{to{opacity:.14}}
+.sketch-stage{position:relative}
+.sketch-stage .sketch{position:absolute;left:0;top:0;width:100%;opacity:0;pointer-events:none;transition:opacity .35s ease}
+.sketch-stage .sketch.is-active{position:relative;opacity:1;pointer-events:auto}
+.sketch-nav{display:flex;align-items:center;justify-content:space-between;gap:.8rem;margin-top:.8rem}
+.sk-dots{display:flex;flex-wrap:wrap;justify-content:center;gap:.45rem}
+.sk-dot{width:8px;height:8px;border-radius:50%;background:var(--line-strong);border:0;padding:0;cursor:pointer;transition:transform .2s var(--ease),background-color .2s}
+.sk-dot:hover{background:var(--gold-soft)}
+.sk-dot.is-on{background:var(--gold);transform:scale(1.4)}
+.sk-btn{flex:none;width:30px;height:30px;border-radius:50%;border:1px solid var(--line-strong);background:transparent;color:var(--ink-soft);cursor:pointer;font-family:var(--serif);font-size:1.3rem;line-height:1;display:grid;place-items:center;padding:0 0 3px;transition:color .2s,border-color .2s}
+.sk-btn:hover{border-color:var(--gold);color:var(--gold)}
+
 /* Skizzen zeichnen sich beim Erscheinen */
 .js .sketch [pathLength]{stroke-dasharray:1;stroke-dashoffset:1}
 .js .sketch .dot{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.3)}
 .js .sketch .lbl{opacity:0}
 .js .sketch .band{opacity:0}
-.js .in .sketch [pathLength]{animation:sk-draw 1.4s var(--ease) forwards}
-.js .in .sketch .dot{animation:sk-pop .5s var(--ease) forwards}
-.js .in .sketch .lbl{animation:sk-fade .8s ease forwards}
-.js .in .sketch .band{animation:sk-band 1.2s ease forwards}
-.js .in .sketch .d1{animation-delay:.1s}.js .in .sketch .d2{animation-delay:.35s}.js .in .sketch .d3{animation-delay:.6s}.js .in .sketch .d4{animation-delay:.85s}.js .in .sketch .d5{animation-delay:1.1s}.js .in .sketch .d6{animation-delay:1.35s}.js .in .sketch .d7{animation-delay:1.6s}.js .in .sketch .d8{animation-delay:1.85s}.js .in .sketch .d9{animation-delay:2.1s}.js .in .sketch .d10{animation-delay:2.35s}.js .in .sketch .d11{animation-delay:2.6s}.js .in .sketch .d12{animation-delay:2.85s}
-.js .in .sketch .pulse{animation:sk-draw 1.4s var(--ease) forwards,sk-pulse 5s ease-in-out 3s infinite}
+.js .in .sketch.is-active [pathLength]{animation:sk-draw 1.4s var(--ease) forwards}
+.js .in .sketch.is-active .dot{animation:sk-pop .5s var(--ease) forwards}
+.js .in .sketch.is-active .lbl{animation:sk-fade .8s ease forwards}
+.js .in .sketch.is-active .band{animation:sk-band 1.2s ease forwards}
+.js .in .sketch.is-active .d1{animation-delay:.1s}.js .in .sketch.is-active .d2{animation-delay:.35s}.js .in .sketch.is-active .d3{animation-delay:.6s}.js .in .sketch.is-active .d4{animation-delay:.85s}.js .in .sketch.is-active .d5{animation-delay:1.1s}.js .in .sketch.is-active .d6{animation-delay:1.35s}.js .in .sketch.is-active .d7{animation-delay:1.6s}.js .in .sketch.is-active .d8{animation-delay:1.85s}.js .in .sketch.is-active .d9{animation-delay:2.1s}.js .in .sketch.is-active .d10{animation-delay:2.35s}.js .in .sketch.is-active .d11{animation-delay:2.6s}.js .in .sketch.is-active .d12{animation-delay:2.85s}
+.js .in .sketch.is-active .pulse{animation:sk-draw 1.4s var(--ease) forwards,sk-pulse 5s ease-in-out 3s infinite}
 @keyframes sk-draw{to{stroke-dashoffset:0}}
 @keyframes sk-pop{to{opacity:1;transform:scale(1)}}
 @keyframes sk-fade{to{opacity:1}}

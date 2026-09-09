@@ -104,6 +104,44 @@
     });
   }
 
+  /* ---------- Kapitel-Skizzen: blättern und automatisch weiterlaufen ---------- */
+  document.querySelectorAll('.sketch-frame').forEach(function (frame) {
+    var sketches = frame.querySelectorAll('.sketch-stage .sketch');
+    var dots = frame.querySelectorAll('.sk-dot');
+    var capL = frame.querySelector('.sk-cap-l');
+    var capR = frame.querySelector('.sk-cap-r b');
+    if (sketches.length < 2) return;
+    var cur = 0, timer = null, paused = false;
+    var show = function (i) {
+      i = (i + sketches.length) % sketches.length;
+      sketches[cur].classList.remove('is-active');
+      dots[cur].classList.remove('is-on');
+      cur = i;
+      var el = sketches[cur];
+      el.classList.add('is-active');
+      void el.offsetWidth; /* Animation neu starten */
+      dots[cur].classList.add('is-on');
+      if (capL) capL.textContent = 'Skizze · Kapitel ' + el.getAttribute('data-num');
+      if (capR) capR.textContent = el.getAttribute('data-title');
+    };
+    var restart = function () {
+      if (timer) clearInterval(timer);
+      if (reduce || paused) return;
+      timer = setInterval(function () { show(cur + 1); }, 7000);
+    };
+    dots.forEach(function (d, i) { d.addEventListener('click', function () { show(i); restart(); }); });
+    var prev = frame.querySelector('.sk-prev'), next = frame.querySelector('.sk-next');
+    if (prev) prev.addEventListener('click', function () { show(cur - 1); restart(); });
+    if (next) next.addEventListener('click', function () { show(cur + 1); restart(); });
+    frame.addEventListener('mouseenter', function () { paused = true; restart(); });
+    frame.addEventListener('mouseleave', function () { paused = false; restart(); });
+    frame.addEventListener('focusin', function () { paused = true; restart(); });
+    frame.addEventListener('focusout', function () { paused = false; restart(); });
+    document.addEventListener('visibilitychange', function () { if (document.hidden) { if (timer) clearInterval(timer); } else restart(); });
+    /* erst starten, wenn die Skizze im Bild ist */
+    whenVisible(frame, function () { restart(); }, 0);
+  });
+
   /* Direkt nach dem Start einmal prüfen, was bereits im Bild steht */
   setTimeout(sweep, 60);
 
