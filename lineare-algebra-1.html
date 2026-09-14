@@ -67,7 +67,11 @@
           <p class="eyebrow">Lineare Algebra I · Wintersemester 2026/27</p>
           <h1 class="phero-title">Lineare Algebra I<br /><em>zum Anfassen.</em></h1>
           <p class="phero-lead">Vektorräume, Matrizen und Eigenwerte sind keine Zahlenwüste, sondern Geometrie. Auf dieser Seite kannst du jedes Kapitel dreifach durchdringen: Idee lesen, Skizze anfassen, Wissen prüfen.</p>
-          <p class="pnote">Kapitelstruktur vorläufig – wird zum Semesterstart an die Vorlesung angepasst. Dein Fortschritt bei den Wissens-Checks wird nur in deinem Browser gespeichert – ohne Konto, ohne Server.</p>
+          <p class="pnote">Kapitelstruktur vorläufig – wird zum Semesterstart an die Vorlesung angepasst.</p>
+          <nav class="quicknav" aria-label="Abschnitte">
+            <a href="#materialien">Materialien</a>
+            <a href="#lernpfad">Verstehen &amp; Üben</a>
+          </nav>
         </div>
         <div class="phero-visual reveal">
           <div class="sketch-frame">
@@ -234,20 +238,7 @@
       </div>
     </section>
 
-    <div class="wrap">
-      <div class="lernpfad reveal">
-        <div class="lp-head">
-          <p class="eyebrow">Dein Lernpfad</p>
-          <p class="lp-text">0 von 2 Wissens-Checks bestanden</p>
-        </div>
-        <div class="lp-bar" aria-hidden="true"><div class="lp-fill"></div></div>
-        <div class="lp-chips">
-          <button class="lp-chip" type="button" data-quiz="la1-k2">Kapitel 2</button>
-          <button class="lp-chip" type="button" data-quiz="la1-k3">Kapitel 3</button>
-          <button class="lp-reset" type="button">Fortschritt zurücksetzen</button>
-        </div>
-      </div>
-
+    <div class="wrap" id="materialien">
       <div class="thread reveal">
         <div class="thread-head">
           <p class="eyebrow">Goldener Faden</p>
@@ -273,6 +264,83 @@
       </div>
 
       <div class="sections">
+        <article class="matcard reveal">
+          <svg class="card-icon" viewBox="0 0 40 40" aria-hidden="true"><rect x="5" y="7" width="30" height="21" rx="2"/><path d="M11 14h12M11 19h8M11 24h14"/><path d="M14 28l-3 7M26 28l3 7M20 28v7"/></svg>
+          <div class="mat-head">
+            <p class="eyebrow">Tutorium</p>
+            <h2>Tutoriumsunterlagen</h2>
+            <p class="mat-sub">Alle Materialien, die wir im Tutorium besprechen, sowie zusätzliche Dateien, die dich beim Verständnis und bei der Klausurvorbereitung unterstützen.</p>
+          </div>
+          <div class="modul-empty">Die ersten Tutoriumsblätter erscheinen hier in der ersten Semesterwoche – Woche für Woche kommt ein Blatt dazu.</div>
+        </article>
+        <article class="matcard reveal">
+          <svg class="card-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M10 9h15l6 6v18H10z"/><path d="M25 9v6h6"/><path d="M14 20h12M14 25h12M14 30h8"/><path d="M7 13v21a1 1 0 0 0 1 1h18" opacity=".55"/></svg>
+          <div class="mat-head">
+            <p class="eyebrow">Skripte</p>
+            <h2>Skripte</h2>
+            <p class="mat-sub">Skripte zur Vorlesung und frühere Skripte zum Vergleichen und Vertiefen – ausschließlich für das persönliche Selbststudium.</p>
+          </div>
+          <div class="modul-empty">Folgt zum Semesterstart.</div>
+        </article>
+        <article class="access reveal">
+          <svg class="card-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 12c-3-3-8-3.5-13-2.5v21c5-1 10-.5 13 2.5 3-3 8-3.5 13-2.5v-21c-5-1-10-.5-13 2.5z"/><path d="M20 12v21"/><path d="M11 15.5c2.5-.3 5-.2 7 .5M11 20.5c2.5-.3 5-.2 7 .5M22 16c2-.7 4.5-.8 7-.5M22 21c2-.7 4.5-.8 7-.5"/></svg>
+          <h2>Bücher</h2>
+          <p>Aus urheberrechtlichen Gründen dürfen die Bücher hier nicht veröffentlicht werden. LMU-Studierende können jedoch mit ihrer LMU-Kennung direkt beim Springer-Verlag (SpringerLink) auf die entsprechenden Lehrbücher zugreifen.</p>
+          <a class="btn btn-primary" href="https://link.springer.com/" target="_blank" rel="noopener noreferrer">Zu den Büchern bei Springer <span class="arr" aria-hidden="true">→</span></a>
+        </article>
+        <article class="matcard reveal">
+          <svg class="card-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 32l2-7L26 9l5 5L15 30z"/><path d="M23 12l5 5"/><path d="M10 25l5 5"/><path d="M8 32l5-2"/><path d="M22 33h11" opacity=".6"/></svg>
+          <div class="mat-head">
+            <p class="eyebrow">Übungen</p>
+            <h2>Übungsblätter &amp; Lösungen</h2>
+            <p class="mat-sub">Aufgaben und Lösungssammlungen zur gezielten Vorbereitung, zum Nachrechnen und zum eigenständigen Üben.</p>
+          </div>
+          <div class="modul-empty">Folgt zum Semesterstart.</div>
+        </article>
+        <article class="access reveal">
+          <svg class="card-icon" viewBox="0 0 40 40" aria-hidden="true"><rect x="9" y="18" width="22" height="16" rx="2"/><path d="M14 18v-4a6 6 0 0 1 12 0v4"/><circle cx="20" cy="26" r="2"/><path d="M20 28v2"/></svg>
+          <h2>Altklausuren</h2>
+          <p>Aus Datenschutzgründen dürfen die Altklausuren hier nicht veröffentlicht werden. LMU-Studierende haben jedoch weiterhin mit ihrer LMU-Kennung Zugriff auf die passwortgeschützte Klausurensammlung der Fachschaft (GAF).</p>
+          <a class="btn btn-primary" href="https://gaf.fs.lmu.de/klausuren" target="_blank" rel="noopener noreferrer">Zu den Altklausuren (GAF) <span class="arr" aria-hidden="true">→</span></a>
+        </article>
+        <article class="matcard reveal">
+          <svg class="card-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 9v3"/><circle cx="20" cy="7" r="2"/><path d="M20 12l-9 22M20 12l9 22"/><path d="M13.5 26.5c4 2.2 9 2.2 13 0"/><path d="M16 16h8"/></svg>
+          <div class="mat-head">
+            <p class="eyebrow">Hilfsmaterial</p>
+            <h2>Hilfsmaterialien</h2>
+            <p class="mat-sub">Formelsammlungen, Erklärblätter, Aufgaben mit Lösungen und thematische Übersichten – zum persönlichen Selbststudium.</p>
+          </div>
+          <div class="modul-empty">Folgt zum Semesterstart.</div>
+        </article>
+      </div>
+    </div>
+
+    <div class="rule" style="margin-top:clamp(3rem,6vw,4.5rem)"></div>
+
+    <section class="sec" id="lernpfad">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <p class="eyebrow">Verstehen &amp; Üben</p>
+        <h2 class="sec-title">Der Lernpfad</h2>
+        <p class="sec-sub">Zu jedem Kapitel dieselben drei Schritte: die Idee in einer Verständnisbox lesen, eine Skizze mit Reglern anfassen und das Wissen in einem kurzen Check prüfen – mit sofortiger Erklärung, warum eine Antwort stimmt oder nicht.</p>
+        <div class="sec-accent" aria-hidden="true"></div>
+      </header>
+
+      <div class="lernpfad reveal">
+        <div class="lp-head">
+          <p class="eyebrow">Dein Lernpfad</p>
+          <p class="lp-text">0 von 2 Wissens-Checks bestanden</p>
+        </div>
+        <p class="lp-note">Dein Fortschritt wird nur in deinem Browser gespeichert – ohne Konto, ohne Server.</p>
+        <div class="lp-bar" aria-hidden="true"><div class="lp-fill"></div></div>
+        <div class="lp-chips">
+          <button class="lp-chip" type="button" data-quiz="la1-k2">Kapitel 2</button>
+          <button class="lp-chip" type="button" data-quiz="la1-k3">Kapitel 3</button>
+          <button class="lp-reset" type="button">Fortschritt zurücksetzen</button>
+        </div>
+      </div>
+
+      <div class="sections" style="margin-top:1.4rem">
 <article class="modul reveal" id="kapitel-1">
           <header class="modul-head">
             <p class="eyebrow">Kapitel 1</p>
@@ -373,6 +441,7 @@
         </article>
       </div>
     </div>
+    </section>
   </main>
 
   <footer class="footer reveal">
