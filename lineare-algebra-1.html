@@ -4,8 +4,8 @@
   <script>document.documentElement.classList.add('js');</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lineare Algebra I für Informatiker · Materialien – Mirkan Deniz Günkaya</title>
-  <meta name="description" content="Lineare Algebra I für Informatiker – Materialien des Tutoriums im Wintersemester 2026/27. Die Seite befindet sich im Aufbau." />
+  <title>Lineare Algebra I für Informatiker · Lernpfad – Mirkan Deniz Günkaya</title>
+  <meta name="description" content="Lineare Algebra I für Informatiker – Lernpfad mit Verständnisboxen, interaktiven Skizzen und Wissens-Checks. Wintersemester 2026/27." />
   <meta name="theme-color" content="#f7f5f1" />
   <meta name="author" content="Mirkan Deniz Günkaya" />
   <meta name="robots" content="noindex, follow" />
@@ -18,13 +18,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/vendor/katex/katex.min.css" />
   <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
 
 <body id="top">
   <a class="skip" href="#main">Zum Inhalt springen</a>
 
-  <!-- ===== IM AUFBAU – Overlay; zum Freischalten der Seite diesen Block bis ENDE löschen ===== -->
+  <!-- ===== IM AUFBAU – Overlay; zum Freischalten der Seite diesen Block bis ENDE löschen. Vorschau: Seite mit #vorschau aufrufen. ===== -->
   <div id="wartung" role="status">
     <div class="w-monogramm">&Sigma;M</div>
     <p class="w-eyebrow">Lineare Algebra I &middot; Wintersemester 2026/27</p>
@@ -59,14 +60,319 @@
     </div>
   </header>
 
-  <main id="main">
+  <main id="main" class="lernbereich">
     <section class="phero">
-      <div class="wrap">
-        <p class="eyebrow">Lineare Algebra I &middot; Wintersemester 2026/27</p>
-        <h1 class="phero-title">Diese Seite ist<br /><em>im Aufbau.</em></h1>
-        <p class="phero-lead">Materialien, Tafelbilder und Hinweise zu Lineare Algebra I folgen zum Semesterstart. Bis dahin findest du die Unterlagen zu Analysis I und II weiterhin an gewohnter Stelle.</p>
+      <div class="wrap phero-grid">
+        <div class="phero-copy">
+          <p class="eyebrow">Lineare Algebra I · Wintersemester 2026/27</p>
+          <h1 class="phero-title">Lineare Algebra I<br /><em>zum Anfassen.</em></h1>
+          <p class="phero-lead">Vektorräume, Matrizen und Eigenwerte sind keine Zahlenwüste, sondern Geometrie. Auf dieser Seite kannst du jedes Kapitel dreifach durchdringen: Idee lesen, Skizze anfassen, Wissen prüfen.</p>
+          <p class="pnote">Kapitelstruktur vorläufig – wird zum Semesterstart an die Vorlesung angepasst. Dein Fortschritt bei den Wissens-Checks wird nur in deinem Browser gespeichert – ohne Konto, ohne Server.</p>
+        </div>
+        <div class="phero-visual reveal">
+          <div class="sketch-frame">
+            <div class="sketch-stage" aria-live="polite">
+<svg class="sketch is-active" data-num="1" data-title="Mengen, Abbildungen &amp; Körper" viewBox="0 0 420 260" role="img" aria-label="Skizze: Abbildung zwischen zwei Mengen">
+
+  <ellipse class="ln ln-soft d1" pathLength="1" cx="110" cy="135" rx="62" ry="88"/>
+  <ellipse class="ln ln-soft d2" pathLength="1" cx="310" cy="135" rx="62" ry="88"/>
+  <circle class="dot d3" cx="110" cy="80" r="3.4"/><circle class="dot d3" cx="110" cy="135" r="3.4"/><circle class="dot d3" cx="110" cy="190" r="3.4"/>
+  <circle class="dot dot-gold d4" cx="310" cy="95" r="3.4"/><circle class="dot dot-gold d4" cx="310" cy="160" r="3.4"/><circle class="dot d4" cx="310" cy="205" r="3.4"/>
+  <path class="ln ln-gold pulse d5" pathLength="1" d="M118 80 C200 70 240 90 300 95"/>
+  <path class="ln ln-gold pulse d6" pathLength="1" d="M118 135 C200 130 240 150 300 160"/>
+  <path class="ln ln-gold pulse d7" pathLength="1" d="M118 190 C200 190 240 170 300 160"/>
+  <text class="lbl d3" x="96" y="44">V</text><text class="lbl d4" x="296" y="44">W</text>
+  <text class="lbl lbl-gold d8" x="196" y="60">f</text>
+  <text class="lbl d9" x="150" y="250">nicht injektiv, nicht surjektiv</text>
+</svg>
+<svg class="sketch" data-num="2" data-title="Vektorräume &amp; Basen" viewBox="0 0 420 260" role="img" aria-label="Skizze: Zwei Basisvektoren spannen ein Gitter auf">
+
+  <circle class="dot d3" cx="80" cy="210" r="2.4"/>
+  <circle class="dot d4" cx="118" cy="210" r="2.4"/>
+  <circle class="dot d5" cx="156" cy="210" r="2.4"/>
+  <circle class="dot d6" cx="194" cy="210" r="2.4"/>
+  <circle class="dot d7" cx="232" cy="210" r="2.4"/>
+  <circle class="dot d8" cx="270" cy="210" r="2.4"/>
+  <circle class="dot d9" cx="308" cy="210" r="2.4"/>
+  <circle class="dot d10" cx="346" cy="210" r="2.4"/>
+  <circle class="dot d3" cx="99" cy="177" r="2.4"/>
+  <circle class="dot d4" cx="137" cy="177" r="2.4"/>
+  <circle class="dot d5" cx="175" cy="177" r="2.4"/>
+  <circle class="dot d6" cx="213" cy="177" r="2.4"/>
+  <circle class="dot d7" cx="251" cy="177" r="2.4"/>
+  <circle class="dot d8" cx="289" cy="177" r="2.4"/>
+  <circle class="dot d9" cx="327" cy="177" r="2.4"/>
+  <circle class="dot d10" cx="365" cy="177" r="2.4"/>
+  <circle class="dot d3" cx="118" cy="144" r="2.4"/>
+  <circle class="dot d4" cx="156" cy="144" r="2.4"/>
+  <circle class="dot d5" cx="194" cy="144" r="2.4"/>
+  <circle class="dot d6" cx="232" cy="144" r="2.4"/>
+  <circle class="dot d7" cx="270" cy="144" r="2.4"/>
+  <circle class="dot d8" cx="308" cy="144" r="2.4"/>
+  <circle class="dot d9" cx="346" cy="144" r="2.4"/>
+  <circle class="dot d10" cx="384" cy="144" r="2.4"/>
+  <circle class="dot d3" cx="137" cy="111" r="2.4"/>
+  <circle class="dot d4" cx="175" cy="111" r="2.4"/>
+  <circle class="dot d5" cx="213" cy="111" r="2.4"/>
+  <circle class="dot d6" cx="251" cy="111" r="2.4"/>
+  <circle class="dot d7" cx="289" cy="111" r="2.4"/>
+  <circle class="dot d8" cx="327" cy="111" r="2.4"/>
+  <circle class="dot d9" cx="365" cy="111" r="2.4"/>
+  <circle class="dot d3" cx="156" cy="78" r="2.4"/>
+  <circle class="dot d4" cx="194" cy="78" r="2.4"/>
+  <circle class="dot d5" cx="232" cy="78" r="2.4"/>
+  <circle class="dot d6" cx="270" cy="78" r="2.4"/>
+  <circle class="dot d7" cx="308" cy="78" r="2.4"/>
+  <circle class="dot d8" cx="346" cy="78" r="2.4"/>
+  <circle class="dot d9" cx="384" cy="78" r="2.4"/>
+  <circle class="dot d3" cx="175" cy="45" r="2.4"/>
+  <circle class="dot d4" cx="213" cy="45" r="2.4"/>
+  <circle class="dot d5" cx="251" cy="45" r="2.4"/>
+  <circle class="dot d6" cx="289" cy="45" r="2.4"/>
+  <circle class="dot d7" cx="327" cy="45" r="2.4"/>
+  <circle class="dot d8" cx="365" cy="45" r="2.4"/>
+  <path class="ln ln-gold pulse d2" pathLength="1" d="M80 210 L118 210"/><path class="ln ln-gold d2" pathLength="1" d="M111 205 L118 210 L111 215"/>
+  <path class="ln ln-gold pulse d2" pathLength="1" d="M80 210 L99 177"/><path class="ln ln-gold d2" pathLength="1" d="M91 181 L99 177 L98 186"/>
+  <path class="band d4" d="M80 210 L118 210 L137 177 L99 177 Z"/>
+  <text class="lbl lbl-gold d5" x="122" y="226">v₁</text><text class="lbl lbl-gold d5" x="86" y="172">v₂</text>
+  <text class="lbl d7" x="240" y="60">span(v₁, v₂) = ℝ²</text>
+  <text class="lbl d8" x="240" y="250">jeder Punkt: λ₁v₁ + λ₂v₂</text>
+</svg>
+<svg class="sketch" data-num="3" data-title="Lineare Abbildungen &amp; Matrizen" viewBox="0 0 420 260" role="img" aria-label="Skizze: Eine Matrix verzerrt das Koordinatengitter">
+  <path class="ln ln-soft d4" pathLength="1" d="M105.2 225.8 L198.8 85.4"/>
+  <path class="ln ln-soft d4" pathLength="1" d="M105.2 225.8 L261.2 194.6"/>
+  <path class="ln ln-soft d3" pathLength="1" d="M131.2 220.6 L224.8 80.2"/>
+  <path class="ln ln-soft d3" pathLength="1" d="M120.8 202.4 L276.8 171.2"/>
+  <path class="ln ln-soft d2" pathLength="1" d="M157.2 215.4 L250.8 75.0"/>
+  <path class="ln ln-soft d2" pathLength="1" d="M136.4 179.0 L292.4 147.8"/>
+  <path class="ln ln-soft d1" pathLength="1" d="M183.2 210.2 L276.8 69.8"/>
+  <path class="ln ln-soft d1" pathLength="1" d="M152.0 155.6 L308.0 124.4"/>
+  <path class="ln ln-soft d2" pathLength="1" d="M209.2 205.0 L302.8 64.6"/>
+  <path class="ln ln-soft d2" pathLength="1" d="M167.6 132.2 L323.6 101.0"/>
+  <path class="ln ln-soft d3" pathLength="1" d="M235.2 199.8 L328.8 59.4"/>
+  <path class="ln ln-soft d3" pathLength="1" d="M183.2 108.8 L339.2 77.6"/>
+  <path class="ln ln-soft d4" pathLength="1" d="M261.2 194.6 L354.8 54.2"/>
+  <path class="ln ln-soft d4" pathLength="1" d="M198.8 85.4 L354.8 54.2"/>
+
+  <polygon class="band d5" points="230.0,140.0 256.0,134.8 271.6,111.4 245.6,116.6"/>
+  <path class="ln ln-gold pulse d6" pathLength="1" d="M230.0 140.0 L256.0 134.8"/>
+  <path class="ln ln-gold pulse d6" pathLength="1" d="M230.0 140.0 L245.6 116.6"/>
+  <circle class="dot dot-gold d6" cx="230.0" cy="140.0" r="3.4"/>
+  <text class="lbl lbl-gold d7" x="262.0" y="150.8">A e₁</text>
+  <text class="lbl lbl-gold d7" x="215.6" y="110.6">A e₂</text>
+  <text class="lbl d8" x="24" y="40">x ↦ A x</text>
+</svg>
+<svg class="sketch" data-num="4" data-title="Lineare Gleichungssysteme" viewBox="0 0 420 260" role="img" aria-label="Skizze: Zeilenstufenform eines linearen Gleichungssystems">
+
+  <path class="ln ln-soft d1" pathLength="1" d="M92 62 L84 62 L84 190 L92 190"/>
+  <path class="ln ln-soft d1" pathLength="1" d="M300 62 L308 62 L308 190 L300 190"/>
+  <text class="lbl lbl-gold d2" x="110" y="95" font-style="normal">1</text>
+  <text class="lbl  d2" x="154" y="95" font-style="normal">2</text>
+  <text class="lbl  d2" x="198" y="95" font-style="normal">−1</text>
+  <text class="lbl  d2" x="242" y="95" font-style="normal">|</text>
+  <text class="lbl  d2" x="286" y="95" font-style="normal">3</text>
+  <text class="lbl  d3" x="110" y="135" font-style="normal">0</text>
+  <text class="lbl lbl-gold d3" x="154" y="135" font-style="normal">1</text>
+  <text class="lbl  d3" x="198" y="135" font-style="normal">4</text>
+  <text class="lbl  d3" x="242" y="135" font-style="normal">|</text>
+  <text class="lbl  d3" x="286" y="135" font-style="normal">2</text>
+  <text class="lbl  d4" x="110" y="175" font-style="normal">0</text>
+  <text class="lbl  d4" x="154" y="175" font-style="normal">0</text>
+  <text class="lbl lbl-gold d4" x="198" y="175" font-style="normal">1</text>
+  <text class="lbl  d4" x="242" y="175" font-style="normal">|</text>
+  <text class="lbl  d4" x="286" y="175" font-style="normal">−1</text>
+  <path class="ln ln-gold pulse d5" pathLength="1" d="M100 106 L140 106 L140 146 L184 146 L184 186 L228 186"/>
+  <text class="lbl d6" x="100" y="232">Stufen = Pivots</text>
+  <text class="lbl lbl-gold d7" x="250" y="232">Rang 3 ⇒ eindeutig lösbar</text>
+</svg>
+<svg class="sketch" data-num="5" data-title="Determinanten" viewBox="0 0 420 260" role="img" aria-label="Skizze: Determinante als Flächeninhalt eines Parallelogramms">
+
+  <path class="ln ln-soft" pathLength="1" d="M40 150 H400"/><path class="ln ln-soft" pathLength="1" d="M190 250 V30"/>
+  <polygon class="band d2" points="190,150 295.6,128.0 330.8,44.4 225.2,66.4"/>
+  <path class="ln ln-gold pulse d3" pathLength="1" d="M190 150 L295.6 128.0"/>
+  <path class="ln ln-gold pulse d3" pathLength="1" d="M190 150 L225.2 66.4"/>
+  <path class="ln ln-soft dash d4" pathLength="1" d="M295.6 128.0 L330.8 44.4 L225.2 66.4"/>
+  <text class="lbl lbl-gold d5" x="301.6" y="132.0">v</text>
+  <text class="lbl lbl-gold d5" x="211.2" y="60.400000000000006">w</text>
+  <text class="lbl d6" x="212.8" y="110.0">|det(v, w)|</text>
+  <text class="lbl d7" x="30" y="248">det = 0 ⇔ v ∥ w</text>
+</svg>
+<svg class="sketch" data-num="6" data-title="Eigenwerte &amp; Eigenvektoren" viewBox="0 0 420 260" role="img" aria-label="Skizze: Ein Eigenvektor bleibt unter der Abbildung auf seiner Geraden">
+
+  <path class="ln ln-soft dash d1" pathLength="1" d="M50 220 L370 60"/>
+  <path class="ln ln-soft d2" pathLength="1" d="M210 140 L266.0 188.0"/>
+  <path class="ln ln-soft d2" pathLength="1" d="M258.0 182.0 L266.0 188.0 L260.0 194.0"/>
+  <path class="ln ln-soft dash d3" pathLength="1" d="M210 140 L234.0 228.0"/>
+  <path class="ln ln-soft d3" pathLength="1" d="M228.0 222.0 L234.0 228.0 L236.0 220.0"/>
+  <path class="ln ln-gold pulse d4" pathLength="1" d="M210 140 L274.0 108.0"/>
+  <path class="ln ln-gold d4" pathLength="1" d="M268.0 108.0 L274.0 108.0 L270.0 112.8"/>
+  <path class="ln ln-gold pulse d5" pathLength="1" d="M210 140 L338.0 76.0"/>
+  <path class="ln ln-gold d5" pathLength="1" d="M332.0 76.0 L338.0 76.0 L334.0 80.8"/>
+  <circle class="dot d2" cx="210" cy="140" r="3.2"/>
+  <text class="lbl lbl-gold d6" x="266.0" y="98.0">v</text>
+  <text class="lbl lbl-gold d6" x="314.0" y="66.0">A v = λ v</text>
+  <text class="lbl d7" x="272.0" y="194.0">u</text>
+  <text class="lbl d7" x="240.0" y="234.0">A u</text>
+  <text class="lbl d8" x="26" y="250">Eigenrichtung: nur Länge ändert sich</text>
+</svg>
+            </div>
+            <div class="sketch-caption"><span class="sk-cap-l">Skizze · Kapitel 1</span><span class="sk-cap-r"><b>Mengen, Abbildungen &amp; Körper</b></span></div>
+            <div class="sketch-nav">
+              <button class="sk-btn sk-prev" type="button" aria-label="Vorheriges Kapitel">‹</button>
+              <div class="sk-dots">
+                <button class="sk-dot is-on" type="button" aria-label="Kapitel 1: Mengen, Abbildungen &amp; Körper"></button>
+                <button class="sk-dot" type="button" aria-label="Kapitel 2: Vektorräume &amp; Basen"></button>
+                <button class="sk-dot" type="button" aria-label="Kapitel 3: Lineare Abbildungen &amp; Matrizen"></button>
+                <button class="sk-dot" type="button" aria-label="Kapitel 4: Lineare Gleichungssysteme"></button>
+                <button class="sk-dot" type="button" aria-label="Kapitel 5: Determinanten"></button>
+                <button class="sk-dot" type="button" aria-label="Kapitel 6: Eigenwerte &amp; Eigenvektoren"></button>
+              </div>
+              <button class="sk-btn sk-next" type="button" aria-label="Nächstes Kapitel">›</button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
+
+    <div class="wrap">
+      <div class="lernpfad reveal">
+        <div class="lp-head">
+          <p class="eyebrow">Dein Lernpfad</p>
+          <p class="lp-text">0 von 2 Wissens-Checks bestanden</p>
+        </div>
+        <div class="lp-bar" aria-hidden="true"><div class="lp-fill"></div></div>
+        <div class="lp-chips">
+          <button class="lp-chip" type="button" data-quiz="la1-k2">Kapitel 2</button>
+          <button class="lp-chip" type="button" data-quiz="la1-k3">Kapitel 3</button>
+          <button class="lp-reset" type="button">Fortschritt zurücksetzen</button>
+        </div>
+      </div>
+
+      <div class="thread reveal">
+        <div class="thread-head">
+          <p class="eyebrow">Goldener Faden</p>
+          <p>Der goldene Faden durch das Semester – vorläufig, bis die Vorlesung beginnt.</p>
+        </div>
+        <svg class="thread-svg" viewBox="0 0 1000 70" aria-hidden="true">
+            <path class="path" pathLength="1" d="M83.3 24 C166.7 24 166.7 50 250.0 50 C333.4 50 333.4 24 416.7 24 C500.0 24 500.0 50 583.3 50 C666.6 50 666.6 24 750.0 24 C833.4 24 833.4 50 916.7 50"/>
+            <circle class="node d1" cx="83.3" cy="24" r="9"/><circle class="node-core d1" cx="83.3" cy="24" r="3.5"/>
+            <circle class="node d2" cx="250.0" cy="50" r="9"/><circle class="node-core d2" cx="250.0" cy="50" r="3.5"/>
+            <circle class="node d3" cx="416.7" cy="24" r="9"/><circle class="node-core d3" cx="416.7" cy="24" r="3.5"/>
+            <circle class="node d4" cx="583.3" cy="50" r="9"/><circle class="node-core d4" cx="583.3" cy="50" r="3.5"/>
+            <circle class="node d5" cx="750.0" cy="24" r="9"/><circle class="node-core d5" cx="750.0" cy="24" r="3.5"/>
+            <circle class="node d6" cx="916.7" cy="50" r="9"/><circle class="node-core d6" cx="916.7" cy="50" r="3.5"/>
+          </svg>
+        <div class="thread-labels" style="--n:6">
+            <span><b>1</b>Mengen, Abbildungen &amp; Körper</span>
+            <span><b>2</b>Vektorräume &amp; Basen</span>
+            <span><b>3</b>Lineare Abbildungen &amp; Matrizen</span>
+            <span><b>4</b>Lineare Gleichungssysteme</span>
+            <span><b>5</b>Determinanten</span>
+            <span><b>6</b>Eigenwerte &amp; Eigenvektoren</span>
+        </div>
+      </div>
+
+      <div class="sections">
+<article class="modul reveal" id="kapitel-1">
+          <header class="modul-head">
+            <p class="eyebrow">Kapitel 1</p>
+            <h2>Mengen, Abbildungen &amp; Körper</h2>
+            <p class="mat-sub">Die Sprache, in der alles Weitere formuliert wird: Mengen, Abbildungen, Injektivität und Surjektivität, Gruppen und Körper.</p>
+            <span class="tile-status is-soon">Materialien ab Semesterstart</span>
+          </header>
+          <div class="modul-empty">
+            <p>Verständnisbox, Skizze und Wissens-Check zu diesem Kapitel entstehen im Semester – Schritt für Schritt, passend zur Vorlesung.</p>
+          </div>
+        </article>
+<article class="modul reveal" id="kapitel-2">
+          <header class="modul-head">
+            <p class="eyebrow">Kapitel 2</p>
+            <h2>Vektorräume &amp; Basen</h2>
+            <p class="mat-sub">Was ein Vektorraum ist, wann Vektoren unabhängig sind und warum jede Basis gleich lang ist.</p>
+            <span class="tile-status is-soon">Materialien ab Semesterstart</span>
+          </header>
+<details class="box box-idee" open>
+              <summary><span class="box-icon" aria-hidden="true">◇</span><span class="box-kind">Idee</span><span class="box-title">Ein Vektorraum ist eine Menge, in der man addieren und strecken darf</span></summary>
+              <div class="box-body"><p>Mehr braucht es nicht: Vektoren lassen sich addieren und mit Zahlen multiplizieren, und beides verträgt sich mit den üblichen Rechenregeln. Pfeile in der Ebene, Polynome, Funktionen – alles Vektorräume. Eine <em>Basis</em> ist ein minimaler Satz Vektoren, aus dem sich jeder andere Vektor <strong>auf genau eine Weise</strong> zusammensetzen lässt: \(v = \lambda_1 v_1 + \dots + \lambda_n v_n\).</p></div>
+            </details>
+<details class="box box-achtung">
+              <summary><span class="box-icon" aria-hidden="true">!</span><span class="box-kind">Typischer Fehler</span><span class="box-title">„Der Nullvektor ist linear unabhängig“</span></summary>
+              <div class="box-body"><p>Nein: \(1\cdot 0 = 0\) ist eine nichttriviale Darstellung der Null. Jede Familie, die den Nullvektor enthält, ist linear abhängig. Genauso häufig: Untervektorraum prüfen und den Nullvektor vergessen – ohne \(0\) kein Untervektorraum.</p></div>
+            </details>
+<details class="box box-merke">
+              <summary><span class="box-icon" aria-hidden="true">≡</span><span class="box-kind">Merke</span><span class="box-title">Drei Sichten auf dieselbe Sache</span></summary>
+              <div class="box-body"><p>Für Vektoren \(v_1, \dots, v_k\) sind gleichwertig: (1) linear unabhängig, (2) \(\sum \lambda_i v_i = 0\) nur für alle \(\lambda_i = 0\), (3) keiner ist Linearkombination der anderen. Und: In \(\mathbb{R}^n\) sind mehr als \(n\) Vektoren immer abhängig.</p></div>
+            </details>
+<div class="quiz" id="check-la1-k2" data-quiz-id="la1-k2">
+              <div class="quiz-head"><p class="eyebrow">Wissens-Check</p><p class="quiz-sub">6 Fragen, gemischt. Nach jeder Antwort erfährst du, warum.</p></div>
+              <script type="application/json">[{"type": "tf", "q": "Die leere Menge ist ein Untervektorraum von \\(\\mathbb{R}^2\\).", "answer": false, "why": "Ein Untervektorraum enthält immer den Nullvektor – die leere Menge enthält gar nichts."}, {"type": "mc", "q": "Welche Menge ist ein Untervektorraum von \\(\\mathbb{R}^2\\)?", "options": ["\\(\\{(x,y): x + y = 0\\}\\)", "\\(\\{(x,y): x + y = 1\\}\\)", "\\(\\{(x,y): x \\cdot y = 0\\}\\)", "\\(\\{(x,y): x \\ge 0\\}\\)"], "answer": 0, "why": "Nur die Gerade durch den Ursprung ist abgeschlossen unter Addition und Skalierung. Die zweite enthält den Nullvektor nicht, die dritte ist ein Achsenkreuz (Summe zweier Achsenvektoren liegt nicht mehr darin), die vierte verträgt keine Multiplikation mit \\(-1\\)."}, {"type": "multi", "q": "Welche Aussagen gelten für linear unabhängige Vektoren \\(v_1, \\dots, v_k\\) in \\(V\\)?", "options": ["Kein \\(v_i\\) ist Linearkombination der anderen.", "\\(\\sum \\lambda_i v_i = 0\\) hat nur die triviale Lösung.", "Es gilt \\(k \\le \\dim V\\).", "Sie bilden stets eine Basis von \\(V\\)."], "answer": [0, 1, 2], "why": "Die ersten drei sind gleichwertige Beschreibungen bzw. Folgerungen. Eine Basis brauchen sie nicht zu bilden – dafür müssten sie zusätzlich \\(V\\) erzeugen."}, {"type": "num", "q": "Welche Dimension hat der Lösungsraum von \\(x_1 + x_2 + x_3 = 0\\) in \\(\\mathbb{R}^3\\)?", "answer": 2, "why": "Eine Gleichung, drei Unbekannte, Rang 1: Der Lösungsraum ist eine Ebene durch den Ursprung, also zweidimensional."}, {"type": "mc", "q": "Die Vektoren \\((1,2)\\) und \\((2,4)\\) in \\(\\mathbb{R}^2\\) sind …", "options": ["linear abhängig", "linear unabhängig", "eine Basis von \\(\\mathbb{R}^2\\)", "orthogonal"], "answer": 0, "why": "\\((2,4) = 2\\cdot(1,2)\\). Zwei Vielfache voneinander spannen nur eine Gerade auf."}, {"type": "tf", "q": "Jeder reelle Vektorraum \\(V \\neq \\{0\\}\\) besitzt unendlich viele verschiedene Basen.", "answer": true, "why": "Skaliert man einen Basisvektor mit einer beliebigen Zahl \\(\\neq 0\\), entsteht wieder eine Basis – und davon gibt es unendlich viele."}]</script>
+              <noscript><p>Für den Wissens-Check wird JavaScript benötigt.</p></noscript>
+            </div>
+        </article>
+<article class="modul reveal" id="kapitel-3">
+          <header class="modul-head">
+            <p class="eyebrow">Kapitel 3</p>
+            <h2>Lineare Abbildungen &amp; Matrizen</h2>
+            <p class="mat-sub">Eine Matrix ist eine Abbildung. Zieh an den Einträgen und sieh zu, was mit der Ebene passiert.</p>
+            <span class="tile-status is-soon">Materialien ab Semesterstart</span>
+          </header>
+<details class="box box-idee" open>
+              <summary><span class="box-icon" aria-hidden="true">◇</span><span class="box-kind">Idee</span><span class="box-title">Eine Matrix sagt nur, wohin die Basisvektoren gehen</span></summary>
+              <div class="box-body"><p>Eine lineare Abbildung \(f\) ist durch die Bilder der Basisvektoren vollständig bestimmt – denn \(f(\lambda_1 e_1 + \lambda_2 e_2) = \lambda_1 f(e_1) + \lambda_2 f(e_2)\). Die Spalten der Matrix \(A\) sind genau diese Bilder: \(A e_1 = \binom{a}{c}\), \(A e_2 = \binom{b}{d}\). Das gesamte Gitter folgt zwangsläufig.</p></div>
+            </details>
+          <div class="explorable">
+            <div class="ex-head"><p class="eyebrow">Zum Anfassen</p><p class="ex-title">Die Matrix \(A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\) verzerrt die Ebene</p><p class="ex-lead">Verschiebe die Regler oder wähle eine Vorlage. Das goldene Parallelogramm ist das Bild des Einheitsquadrats, die gestrichelten Linien sind Eigenrichtungen.</p></div>
+            <div data-explorable="matrix"></div>
+          </div>
+<details class="box box-achtung">
+              <summary><span class="box-icon" aria-hidden="true">!</span><span class="box-kind">Typischer Fehler</span><span class="box-title">Matrizen multiplizieren heißt Abbildungen hintereinander ausführen</span></summary>
+              <div class="box-body"><p>\(AB\) bedeutet: erst \(B\), dann \(A\). Deshalb ist die Reihenfolge nicht egal – erst scheren, dann drehen sieht anders aus als umgekehrt. Ein zweiter Klassiker: Der Rang ist die Anzahl <em>unabhängiger</em> Spalten, nicht die Anzahl der Spalten ungleich null.</p></div>
+            </details>
+<details class="box box-merke">
+              <summary><span class="box-icon" aria-hidden="true">≡</span><span class="box-kind">Merke</span><span class="box-title">Dimensionsformel</span></summary>
+              <div class="box-body"><p>Für \(f: V \to W\) linear gilt \(\dim \ker f + \dim \operatorname{Bild} f = \dim V\). Was der Kern schluckt, fehlt dem Bild – in der Skizze: Bei \(\det A = 0\) klappt die Ebene auf eine Gerade zusammen, der Kern wird eindimensional.</p></div>
+            </details>
+<div class="quiz" id="check-la1-k3" data-quiz-id="la1-k3">
+              <div class="quiz-head"><p class="eyebrow">Wissens-Check</p><p class="quiz-sub">8 Fragen, gemischt. Nach jeder Antwort erfährst du, warum.</p></div>
+              <script type="application/json">[{"type": "mc", "q": "Welche Abbildung ist linear?", "options": ["\\(f(x,y) = (x + y,\\; 2x)\\)", "\\(f(x) = x + 1\\)", "\\(f(x,y) = x\\cdot y\\)", "\\(f(x) = x^2\\)"], "answer": 0, "why": "Linear heißt: \\(f(u+v) = f(u)+f(v)\\) und \\(f(\\lambda u) = \\lambda f(u)\\). Verschiebungen, Produkte und Quadrate verletzen das – schon \\(f(0) \\neq 0\\) bei \\(x+1\\)."}, {"type": "tf", "q": "Eine lineare Abbildung bildet den Nullvektor stets auf den Nullvektor ab.", "answer": true, "why": "\\(f(0) = f(0\\cdot v) = 0\\cdot f(v) = 0\\)."}, {"type": "num", "q": "Welchen Rang hat die Matrix \\(\\begin{pmatrix}1 & 2\\\\ 2 & 4\\end{pmatrix}\\)?", "answer": 1, "why": "Die zweite Zeile ist das Doppelte der ersten – nur eine Zeile ist unabhängig."}, {"type": "mc", "q": "Die Matrix \\(\\begin{pmatrix}0 & -1\\\\ 1 & 0\\end{pmatrix}\\) beschreibt …", "options": ["eine Drehung um \\(90^\\circ\\)", "eine Spiegelung an der \\(x\\)-Achse", "eine Streckung um den Faktor 2", "eine Projektion auf die \\(y\\)-Achse"], "answer": 0, "why": "\\(e_1 \\mapsto (0,1)\\) und \\(e_2 \\mapsto (-1,0)\\): beide Basisvektoren werden um \\(90^\\circ\\) gegen den Uhrzeigersinn gedreht. Probiere es oben in der Skizze mit \\(a=0, b=-1, c=1, d=0\\)."}, {"type": "multi", "q": "Für \\(A \\in \\mathbb{R}^{n\\times n}\\): Welche Aussagen sind gleichwertig zu „\\(A\\) ist invertierbar“?", "options": ["\\(\\det A \\neq 0\\)", "\\(\\ker A = \\{0\\}\\)", "\\(\\operatorname{Rang} A = n\\)", "\\(A\\) ist symmetrisch"], "answer": [0, 1, 2], "why": "Determinante ungleich null, trivialer Kern und voller Rang sind drei Gesichter derselben Eigenschaft. Symmetrie hat damit nichts zu tun – die Nullmatrix ist symmetrisch und nicht invertierbar."}, {"type": "num", "q": "Berechne \\(\\det\\begin{pmatrix}2 & 1\\\\ 3 & 4\\end{pmatrix}\\).", "answer": 5, "why": "\\(2\\cdot 4 - 1\\cdot 3 = 5\\). In der Skizze oben ist das der Flächenfaktor des Einheitsquadrats."}, {"type": "tf", "q": "Für alle quadratischen Matrizen gilt \\(AB = BA\\).", "answer": false, "why": "Matrixmultiplikation ist im Allgemeinen nicht kommutativ. Beispiel: Erst scheren, dann drehen ergibt etwas anderes als erst drehen, dann scheren."}, {"type": "mc", "q": "Dimensionsformel für \\(f: V \\to W\\) linear: \\(\\dim \\ker f + \\dim \\operatorname{Bild} f = \\; ?\\)", "options": ["\\(\\dim V\\)", "\\(\\dim W\\)", "\\(\\dim V + \\dim W\\)", "\\(0\\)"], "answer": 0, "why": "Was im Kern verschwindet und was im Bild ankommt, zusammen ergibt die Dimension des Definitionsbereichs \\(V\\)."}]</script>
+              <noscript><p>Für den Wissens-Check wird JavaScript benötigt.</p></noscript>
+            </div>
+        </article>
+<article class="modul reveal" id="kapitel-4">
+          <header class="modul-head">
+            <p class="eyebrow">Kapitel 4</p>
+            <h2>Lineare Gleichungssysteme</h2>
+            <p class="mat-sub">Gauß-Verfahren, Zeilenstufenform, Lösungsmengen als affine Unterräume.</p>
+            <span class="tile-status is-soon">Materialien ab Semesterstart</span>
+          </header>
+          <div class="modul-empty">
+            <p>Verständnisbox, Skizze und Wissens-Check zu diesem Kapitel entstehen im Semester – Schritt für Schritt, passend zur Vorlesung.</p>
+          </div>
+        </article>
+<article class="modul reveal" id="kapitel-5">
+          <header class="modul-head">
+            <p class="eyebrow">Kapitel 5</p>
+            <h2>Determinanten</h2>
+            <p class="mat-sub">Fläche, Volumen, Orientierung – und warum \(\det A \neq 0\) Invertierbarkeit bedeutet.</p>
+            <span class="tile-status is-soon">Materialien ab Semesterstart</span>
+          </header>
+          <div class="modul-empty">
+            <p>Verständnisbox, Skizze und Wissens-Check zu diesem Kapitel entstehen im Semester – Schritt für Schritt, passend zur Vorlesung.</p>
+          </div>
+        </article>
+<article class="modul reveal" id="kapitel-6">
+          <header class="modul-head">
+            <p class="eyebrow">Kapitel 6</p>
+            <h2>Eigenwerte &amp; Eigenvektoren</h2>
+            <p class="mat-sub">Richtungen, die eine Matrix nur streckt. Charakteristisches Polynom, Diagonalisierung.</p>
+            <span class="tile-status is-soon">Materialien ab Semesterstart</span>
+          </header>
+          <div class="modul-empty">
+            <p>Verständnisbox, Skizze und Wissens-Check zu diesem Kapitel entstehen im Semester – Schritt für Schritt, passend zur Vorlesung.</p>
+          </div>
+        </article>
+      </div>
+    </div>
   </main>
 
   <footer class="footer reveal">
@@ -80,5 +386,8 @@
   </footer>
 
   <script src="/assets/js/main.js" defer></script>
+  <script src="/assets/vendor/katex/katex.min.js" defer></script>
+  <script src="/assets/vendor/katex/contrib/auto-render.min.js" defer></script>
+  <script src="/assets/js/lernen.js" defer></script>
 </body>
 </html>

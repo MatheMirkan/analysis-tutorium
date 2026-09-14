@@ -145,6 +145,23 @@
   /* Direkt nach dem Start einmal prüfen, was bereits im Bild steht */
   setTimeout(sweep, 60);
 
+  /* ---------- Vorschau: Aufbau-Overlay mit #vorschau ausblenden (für Mirkan) ---------- */
+  var wartung = document.getElementById('wartung');
+  if (wartung) {
+    var key = 'vorschau:' + location.pathname;
+    var wanted = location.hash === '#vorschau';
+    var remembered = false;
+    try { remembered = sessionStorage.getItem(key) === '1'; } catch (e) {}
+    if (wanted) { try { sessionStorage.setItem(key, '1'); } catch (e) {} }
+    if (wanted || remembered) {
+      wartung.remove();
+      var tag = document.createElement('div');
+      tag.className = 'vorschau-tag';
+      tag.textContent = 'Vorschau – nicht öffentlich';
+      document.body.appendChild(tag);
+    }
+  }
+
   /* ---------- Intro-Overlay (nur Startseite) ---------- */
   var intro = document.getElementById('intro');
   if (intro) {
