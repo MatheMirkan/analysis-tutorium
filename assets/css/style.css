@@ -458,6 +458,8 @@ html:has(#wartung), html:has(#wartung) body { overflow: hidden !important; }
 .sketch .lbl-gold{fill:var(--gold)}
 .sketch-caption{margin-top:.9rem;display:flex;justify-content:space-between;gap:1rem;font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute)}
 .sketch-caption b{font-weight:600;color:var(--gold)}
+.sk-cap-l{white-space:nowrap}
+.sk-cap-r{text-align:right}
 
 .sketch .bar{fill:var(--gold);opacity:.14;stroke:var(--gold);stroke-width:1}
 .js .sketch .bar{opacity:0}
@@ -681,3 +683,15 @@ html:has(#wartung), html:has(#wartung) body { overflow: hidden !important; }
 }
 
 .vorschau-tag{position:fixed;right:14px;bottom:14px;z-index:500;font-family:var(--sans);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#f3ecdb;background:#1a1916;padding:.5rem .8rem;border-radius:999px;opacity:.85;pointer-events:none}
+/* Lernseiten: offene Kapitel */
+.modul-note{margin-top:.9rem;padding:.7rem .95rem;border-left:2px solid var(--gold-soft);background:var(--paper);border-radius:0 8px 8px 0;font-family:var(--sans);font-size:.85rem;line-height:1.65;color:var(--ink-soft)}
+.modul-folgt{background:transparent;border-style:dashed;border-color:var(--line-strong)}
+.modul-folgt::before{display:none}
+.folgt-inner{text-align:center;max-width:56ch;margin:0 auto;padding:.4rem 0}
+.folgt-inner h2{font-size:clamp(1.5rem,2.4vw,1.9rem);font-weight:500;margin-top:.2rem}
+.folgt-inner p{margin-top:.8rem;color:var(--ink-soft);font-size:.97rem;line-height:1.75}
+.thread-open span.is-open{color:var(--ink-mute)}
+.thread-open span.is-open b{color:var(--gold-soft)}
+.thread-svg .node.d2,.thread-svg .node.d3,.thread-svg .node.d4,.thread-svg .node.d5,.thread-svg .node.d6{stroke-dasharray:3 3;opacity:.55}
+.thread-svg .node-core.d2,.thread-svg .node-core.d3,.thread-svg .node-core.d4,.thread-svg .node-core.d5,.thread-svg .node-core.d6{fill:var(--gold-soft)}
+.thread-open ~ .thread-svg .path{opacity:.6}
