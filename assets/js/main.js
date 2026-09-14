@@ -1,4 +1,4 @@
-/* Analysis Tutorium – gemeinsames Verhalten aller Seiten */
+/* Mathematik-Tutorium – gemeinsames Verhalten aller Seiten */
 (function () {
   'use strict';
 

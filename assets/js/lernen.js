@@ -1,4 +1,4 @@
-/* Analysis Tutorium – Lern-Engine für Analysis III und Lineare Algebra I
+/* Mathematik-Tutorium – Lern-Engine für Analysis III und Lineare Algebra I
    Bausteine: Formelsatz (KaTeX, lokal), Wissens-Checks, interaktive Skizzen,
    Lernpfad-Fortschritt (nur im Browser der Studierenden gespeichert). */
 (function () {
