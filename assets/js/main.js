@@ -142,6 +142,46 @@
     whenVisible(frame, function () { restart(); }, 0);
   });
 
+  /* ---------- Materialsuche: Liste beim Tippen filtern ---------- */
+  document.querySelectorAll('.matsearch').forEach(function (box) {
+    var input = box.querySelector('input');
+    var status = box.querySelector('.matsearch-status');
+    var items = Array.prototype.slice.call(document.querySelectorAll('.matlist li'));
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.matcard'));
+    if (!input) return;
+    if (!items.length) {
+      input.disabled = true;
+      input.placeholder = 'Suche wird aktiv, sobald Materialien online sind';
+      return;
+    }
+    var norm = function (s) { return s.toLowerCase().replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss'); };
+    items.forEach(function (li) { li.setAttribute('data-s', norm(li.textContent.replace(/\s+/g, ' '))); });
+    var apply = function () {
+      var q = norm(input.value.trim());
+      var hits = 0;
+      items.forEach(function (li) {
+        var show = !q || li.getAttribute('data-s').indexOf(q) >= 0;
+        li.hidden = !show;
+        if (show) hits++;
+      });
+      cards.forEach(function (card) {
+        var list = card.querySelector('.matlist');
+        if (!list) return;
+        var visible = list.querySelectorAll('li:not([hidden])').length;
+        var note = card.querySelector('.matsearch-empty');
+        if (!note) { note = document.createElement('p'); note.className = 'matsearch-empty'; note.textContent = 'Keine Treffer in diesem Abschnitt.'; list.parentNode.insertBefore(note, list.nextSibling); }
+        note.hidden = !(q && visible === 0);
+      });
+      box.classList.toggle('is-active', !!q);
+      if (status) status.textContent = q ? (hits === 1 ? '1 Treffer' : hits + ' Treffer') + ' für „' + input.value.trim() + '“' : '';
+    };
+    input.addEventListener('input', apply);
+    input.addEventListener('search', apply);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === '/' && document.activeElement !== input && !/INPUT|TEXTAREA/.test(document.activeElement.tagName)) { e.preventDefault(); input.focus(); }
+    });
+  });
+
   /* Direkt nach dem Start einmal prüfen, was bereits im Bild steht */
   setTimeout(sweep, 60);
 

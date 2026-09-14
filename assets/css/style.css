@@ -692,6 +692,37 @@ html:has(#wartung), html:has(#wartung) body { overflow: hidden !important; }
 .folgt-inner p{margin-top:.8rem;color:var(--ink-soft);font-size:.97rem;line-height:1.75}
 .thread-open span.is-open{color:var(--ink-mute)}
 .thread-open span.is-open b{color:var(--gold-soft)}
-.thread-svg .node.d2,.thread-svg .node.d3,.thread-svg .node.d4,.thread-svg .node.d5,.thread-svg .node.d6{stroke-dasharray:3 3;opacity:.55}
-.thread-svg .node-core.d2,.thread-svg .node-core.d3,.thread-svg .node-core.d4,.thread-svg .node-core.d5,.thread-svg .node-core.d6{fill:var(--gold-soft)}
-.thread-open ~ .thread-svg .path{opacity:.6}
+.thread-pending .node.d2,.thread-pending .node.d3,.thread-pending .node.d4,.thread-pending .node.d5,.thread-pending .node.d6{stroke-dasharray:3 3;opacity:.55}
+.thread-pending .node-core.d2,.thread-pending .node-core.d3,.thread-pending .node-core.d4,.thread-pending .node-core.d5,.thread-pending .node-core.d6{fill:var(--gold-soft)}
+.thread-pending .path{opacity:.6}
+
+/* ---------- Materialsuche ---------- */
+.matsearch{margin-top:clamp(1.4rem,3vw,2rem)}
+.matsearch-field{display:flex;align-items:center;gap:.7rem;padding:.55rem .9rem .55rem 1rem;background:var(--paper-2);border:1px solid var(--line-strong);border-radius:999px;transition:border-color .2s,box-shadow .2s}
+.matsearch-field:focus-within{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-faint)}
+.matsearch-field svg{flex:none;width:18px;height:18px;fill:none;stroke:var(--ink-mute);stroke-width:1.8;stroke-linecap:round}
+.matsearch-field input{flex:1;min-width:0;border:0;background:transparent;font-family:var(--sans);font-size:.98rem;color:var(--ink);padding:.3rem 0;outline:none}
+.matsearch-field input::placeholder{color:var(--ink-mute)}
+.matsearch-field input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;width:14px;height:14px;cursor:pointer;background:radial-gradient(circle,var(--ink-mute) 40%,transparent 44%)}
+.matsearch-field kbd{flex:none;font-family:var(--sans);font-size:.68rem;color:var(--ink-mute);border:1px solid var(--line-strong);border-radius:5px;padding:.1rem .4rem;background:var(--paper)}
+.matsearch-field input:disabled{color:var(--ink-mute)}
+.matsearch-status{margin:.5rem 0 0 1.1rem;font-family:var(--sans);font-size:.8rem;color:var(--ink-soft);min-height:1.2em}
+.matsearch-empty{margin-top:1rem;font-family:var(--sans);font-size:.9rem;color:var(--ink-mute);font-style:italic}
+@media (max-width:560px){.matsearch-field kbd{display:none}}
+
+/* ---------- Klausurmodus ---------- */
+.klausur{margin-top:1.1rem;padding:clamp(1.3rem,3vw,1.9rem);background:#1a1916;color:#f3ecdb;border-radius:var(--radius);position:relative;overflow:hidden}
+.klausur::before{content:"";position:absolute;inset:0;background:radial-gradient(900px 500px at 15% 0%,rgba(218,188,118,.16),transparent 60%);pointer-events:none}
+.klausur>*{position:relative}
+.klausur .eyebrow{color:#dabc76}
+.klausur h3{font-family:var(--serif);font-weight:500;font-size:clamp(1.5rem,2.6vw,2rem);color:#f3ecdb}
+.klausur-head p:last-child{margin-top:.6rem;color:rgba(243,236,219,.72);font-family:var(--sans);font-size:.95rem;line-height:1.75;max-width:64ch}
+.klausur-meta{display:flex;flex-wrap:wrap;gap:.6rem 1.6rem;margin-top:1rem;font-family:var(--sans);font-size:.8rem;color:rgba(243,236,219,.6)}
+.klausur-start{margin-top:1.2rem;background:#dabc76;color:#1a1916}
+.klausur-start:hover{background:#e6cb8e}
+.klausur-start:disabled{opacity:.4;cursor:default;transform:none}
+.klausur-stage{margin-top:1.4rem;background:var(--paper);color:var(--ink);border-radius:10px;padding:clamp(1rem,2.4vw,1.5rem)}
+.klausur-stage[hidden]{display:none}
+.qz-timer{font-family:var(--sans);font-variant-numeric:tabular-nums;font-size:.9rem;font-weight:600;color:var(--gold);letter-spacing:.06em}
+.qz-time{margin-top:.5rem;font-family:var(--sans);font-size:.9rem;color:var(--ink-soft)}
+.qz-rv-why{display:block;margin-top:.35rem;color:var(--ink-soft);font-size:.84rem;line-height:1.6}

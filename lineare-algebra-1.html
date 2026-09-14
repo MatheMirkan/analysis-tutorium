@@ -109,7 +109,7 @@
     </section>
 
     <div class="wrap" id="materialien">
-      <div class="thread reveal">
+      <div class="thread thread-pending reveal">
         <div class="thread-head">
           <p class="eyebrow">Goldener Faden</p>
           <p>Der goldene Faden durch das Semester – die Stationen füllen sich mit der Vorlesung.</p>
@@ -131,6 +131,15 @@
             <span class="is-open"><b>·</b>folgt</span>
             <span class="is-open"><b>·</b>folgt</span>
         </div>
+      </div>
+
+      <div class="matsearch reveal">
+        <label class="matsearch-field">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
+          <input type="search" placeholder="Materialien durchsuchen – z. B. Stetigkeit, Skript, Klausur" aria-label="Materialien durchsuchen" autocomplete="off" spellcheck="false" />
+          <kbd aria-hidden="true">/</kbd>
+        </label>
+        <p class="matsearch-status" aria-live="polite"></p>
       </div>
 
       <div class="sections">
@@ -198,6 +207,17 @@
           <button class="lp-chip" type="button" data-quiz="la1-k1">Kapitel 1</button>
           <button class="lp-reset" type="button">Fortschritt zurücksetzen</button>
         </div>
+      </div>
+
+      <div class="klausur reveal" id="klausurmodus">
+        <div class="klausur-head">
+          <p class="eyebrow">Klausurmodus</p>
+          <h3>Zehn Fragen, die Uhr läuft</h3>
+          <p>Zufällig gemischt aus allen freigeschalteten Kapiteln. Kein Feedback zwischendurch – die Auswertung mit Erklärungen kommt am Ende, wie in der Klausur.</p>
+        </div>
+        <div class="klausur-meta"><span data-k="pool"></span><span data-k="best"></span></div>
+        <button class="btn btn-primary klausur-start" type="button">Klausurmodus starten <span class="arr" aria-hidden="true">→</span></button>
+        <div class="klausur-stage" hidden></div>
       </div>
 
       <div class="sections" style="margin-top:1.4rem">
