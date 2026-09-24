@@ -726,3 +726,15 @@ html:has(#wartung), html:has(#wartung) body { overflow: hidden !important; }
 .qz-timer{font-family:var(--sans);font-variant-numeric:tabular-nums;font-size:.9rem;font-weight:600;color:var(--gold);letter-spacing:.06em}
 .qz-time{margin-top:.5rem;font-family:var(--sans);font-size:.9rem;color:var(--ink-soft)}
 .qz-rv-why{display:block;margin-top:.35rem;color:var(--ink-soft);font-size:.84rem;line-height:1.6}
+
+/* ---------- Wartungsmodus: schwebende Symbole und wandernde Linie ---------- */
+#wartung{overflow:hidden}
+#wartung>*{position:relative;z-index:1}
+#wartung .w-glyphs{position:absolute;inset:0;z-index:0;pointer-events:none}
+#wartung .w-glyphs span{position:absolute;left:var(--l);bottom:-12vh;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:calc(1.6rem * var(--s));color:#dabc76;opacity:0;animation:w-float var(--t) linear var(--d) infinite;will-change:transform,opacity}
+@keyframes w-float{0%{transform:translateY(0) rotate(-6deg);opacity:0}12%{opacity:.28}70%{opacity:.22}100%{transform:translateY(-118vh) rotate(8deg);opacity:0}}
+.w-line{width:min(320px,72vw);height:1px;margin-top:1.6rem;background:rgba(218,188,118,.18);position:relative;overflow:hidden;opacity:0;animation:w-rein 1s ease 1.4s forwards}
+.w-line i{position:absolute;top:0;left:-40%;width:40%;height:100%;background:linear-gradient(90deg,transparent,#dabc76,transparent);animation:w-sweep 2.6s ease-in-out 1.6s infinite}
+@keyframes w-sweep{0%{left:-40%}100%{left:100%}}
+.w-link{margin-top:1.4rem}
+@media (prefers-reduced-motion:reduce){.w-glyphs{display:none}.w-line{opacity:1}.w-line i{animation:none;left:30%}}
