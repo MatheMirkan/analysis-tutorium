@@ -182,6 +182,25 @@
     });
   });
 
+  /* ---------- Sprungmarke beim Laden (z. B. tipps_faq.html#impressum) ----------
+     Springt ohne Animation und korrigiert nach dem Laden der Schriften,
+     damit das Ziel nicht durch nachträgliche Layoutänderungen verrutscht. */
+  var hashId = location.hash.length > 1 ? decodeURIComponent(location.hash.slice(1)) : '';
+  var hashTarget = hashId && hashId !== 'vorschau' ? document.getElementById(hashId) : null;
+  if (hashTarget) {
+    var jumpToHash = function () {
+      var root = document.documentElement, prev = root.style.scrollBehavior;
+      root.style.scrollBehavior = 'auto';
+      var margin = parseFloat(getComputedStyle(hashTarget).scrollMarginTop) || 0;
+      window.scrollTo(0, hashTarget.getBoundingClientRect().top + window.pageYOffset - margin);
+      root.style.scrollBehavior = prev;
+      sweep();
+    };
+    jumpToHash();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(jumpToHash);
+    window.addEventListener('load', function () { setTimeout(jumpToHash, 50); });
+  }
+
   /* Direkt nach dem Start einmal prüfen, was bereits im Bild steht */
   setTimeout(sweep, 60);
 
