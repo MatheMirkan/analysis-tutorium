@@ -421,10 +421,195 @@
     draw();
   }
 
+  /* ---------- Interaktive Skizze: Fixpunktiteration (Spinnwebdiagramm) ---------- */
+  function cobwebExplorable(host) {
+    var W = 440, H = 320, pad = 34, lo = 0, hi = 2;
+    var s = (H - 2 * pad) / (hi - lo);
+    function P(x, y) { return [pad + (x - lo) * s + 40, H - pad - (y - lo) * s]; }
+    var maps = {
+      cos: { label: 'g(x) = cos x', g: function (x) { return Math.cos(x); }, d: function (x) { return -Math.sin(x); }, I: [0, 1],
+        hint: 'cos bildet [0, 1] in sich ab, |g′| ≤ sin 1 ≈ 0,84 < 1: Kontraktion. Der Fixpunkt x* ≈ 0,739 ist die Lösung von cos x = x.' },
+      lin: { label: 'g(x) = x/2 + 1/2', g: function (x) { return x / 2 + 0.5; }, d: function () { return 0.5; }, I: [0, 2],
+        hint: 'Lineare Kontraktion mit q = 1/2: Der Abstand zum Fixpunkt 1 halbiert sich in jedem Schritt.' },
+      heron: { label: 'g(x) = x/2 + 1/x', g: function (x) { return x / 2 + 1 / x; }, d: function (x) { return 0.5 - 1 / (x * x); }, I: [1, 2],
+        hint: 'Heron-Verfahren für √2: Kontraktion auf [1, 2]. Nahe x* ist g′(x*) = 0 – deshalb konvergiert es rasend schnell.' },
+      steep: { label: 'g(x) = 2,2 − 1,4 x', g: function (x) { return 2.2 - 1.4 * x; }, d: function () { return -1.4; }, I: [0, 2],
+        hint: 'Keine Kontraktion: |g′| = 1,4 > 1. Der Fixpunkt existiert (x* ≈ 0,917), aber die Iteration läuft spiralförmig davon.' }
+    };
+    host.innerHTML =
+      '<div class="ex-grid">' +
+      '<svg class="ex-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Spinnwebdiagramm der Fixpunktiteration"></svg>' +
+      '<div class="ex-panel">' +
+      '<div class="ex-presets">' + Object.keys(maps).map(function (k) { return '<button type="button" data-map="' + k + '">' + maps[k].label + '</button>'; }).join('') + '</div>' +
+      '<label class="ex-slider">Startwert x₀<input type="range" min="0.05" max="1.95" step="0.01" value="0.2"><output></output></label>' +
+      '<dl class="ex-read"><dt>g(I) ⊂ I</dt><dd data-r="self"></dd><dt>q = max |g′| auf I</dt><dd data-r="q"></dd><dt>x₁ … x₆</dt><dd data-r="iter"></dd><dt>Schritte für Fehler &lt; 10⁻⁶</dt><dd data-r="steps"></dd></dl>' +
+      '<p class="ex-hint" data-r="hint"></p>' +
+      '</div></div>';
+    var svg = host.querySelector('svg'), slider = host.querySelector('input[type=range]'), out = host.querySelector('output');
+    var reads = {}; host.querySelectorAll('[data-r]').forEach(function (r) { reads[r.getAttribute('data-r')] = r; });
+    var cur = 'cos';
+    function clampPt(x, y) { return P(Math.max(lo - 0.1, Math.min(hi + 0.1, x)), Math.max(lo - 0.1, Math.min(hi + 0.1, y))); }
+    function draw() {
+      var m = maps[cur], x0 = +slider.value;
+      out.value = fmt(x0);
+      var a = P(lo, lo), b = P(hi, hi), s1 = P(m.I[0], lo), s2 = P(m.I[1], hi);
+      var str = '<rect class="ex-band" x="' + s1[0].toFixed(1) + '" y="' + s2[1].toFixed(1) + '" width="' + (s2[0] - s1[0]).toFixed(1) + '" height="' + (s1[1] - s2[1]).toFixed(1) + '"/>';
+      str += '<line class="ex-axis" x1="' + a[0] + '" y1="' + a[1] + '" x2="' + (b[0] + 8) + '" y2="' + a[1] + '"/><line class="ex-axis" x1="' + a[0] + '" y1="' + a[1] + '" x2="' + a[0] + '" y2="' + (b[1] - 8) + '"/>';
+      str += '<line class="ex-diag" x1="' + a[0] + '" y1="' + a[1] + '" x2="' + b[0] + '" y2="' + b[1] + '"/>';
+      var pts = [];
+      for (var i = 0; i <= 120; i++) {
+        var x = lo + 0.02 + (hi - lo - 0.02) * i / 120, y = m.g(x);
+        if (y > hi + 0.3 || y < lo - 0.3) continue;
+        pts.push(P(x, y));
+      }
+      str += '<polyline class="ex-cob" points="' + pts.map(function (p) { return p[0].toFixed(1) + ',' + p[1].toFixed(1); }).join(' ') + '"/>';
+      // Iteration
+      var xs = [x0], web = [clampPt(x0, lo)];
+      for (var n = 0; n < 40; n++) {
+        var nx = m.g(xs[n]); xs.push(nx);
+        if (n < 14) { web.push(clampPt(xs[n], nx)); web.push(clampPt(nx, nx)); }
+        if (!isFinite(nx) || Math.abs(nx) > 50) break;
+      }
+      str += '<polyline class="ex-web" points="' + web.map(function (p) { return p[0].toFixed(1) + ',' + p[1].toFixed(1); }).join(' ') + '"/>';
+      var p0 = P(x0, lo);
+      str += '<circle class="ex-iter" cx="' + p0[0].toFixed(1) + '" cy="' + p0[1].toFixed(1) + '" r="4"/>';
+      // Fixpunkt (Bisektion auf g(x) − x)
+      var fl = lo + 0.02, fh = hi, fx = null;
+      if ((m.g(fl) - fl) * (m.g(fh) - fh) <= 0) {
+        for (var k = 0; k < 60; k++) { var mid = (fl + fh) / 2; if ((m.g(fl) - fl) * (m.g(mid) - mid) <= 0) fh = mid; else fl = mid; }
+        fx = (fl + fh) / 2;
+        var pf = P(fx, fx);
+        str += '<circle class="ex-fix" cx="' + pf[0].toFixed(1) + '" cy="' + pf[1].toFixed(1) + '" r="5"/>';
+        str += '<text class="ex-lbl" x="' + (pf[0] + 8).toFixed(1) + '" y="' + (pf[1] + 16).toFixed(1) + '">x*</text>';
+      }
+      str += '<text class="ex-lbl" x="' + (b[0] - 30) + '" y="' + (b[1] + 2) + '">y = x</text>';
+      svg.innerHTML = str;
+      // Kennzahlen auf I
+      var q = 0, selfmap = true;
+      for (var j = 0; j <= 200; j++) {
+        var t = m.I[0] + (m.I[1] - m.I[0]) * j / 200, gv = m.g(t);
+        q = Math.max(q, Math.abs(m.d(t)));
+        if (gv < m.I[0] - 1e-9 || gv > m.I[1] + 1e-9) selfmap = false;
+      }
+      reads.self.textContent = selfmap ? 'ja' : 'nein';
+      reads.q.textContent = fmt(q) + (q < 1 ? ' < 1' : ' ≥ 1');
+      reads.iter.textContent = xs.slice(1, 7).map(function (v) { return isFinite(v) && Math.abs(v) < 50 ? fmt(v) : '∞'; }).join(' · ');
+      var d01 = Math.abs(xs[1] - xs[0]);
+      if (q < 1 && selfmap && x0 >= m.I[0] && x0 <= m.I[1]) {
+        reads.steps.textContent = d01 < 1e-12 ? '0' : String(Math.max(0, Math.ceil(Math.log(1e-6 * (1 - q) / d01) / Math.log(q)))) + ' (A-priori-Schranke)';
+      } else {
+        reads.steps.textContent = q >= 1 ? 'keine Garantie – q ≥ 1' : 'x₀ liegt außerhalb von I';
+      }
+      reads.hint.textContent = m.hint;
+      reads.hint.classList.toggle('is-bad', q >= 1);
+      host.querySelectorAll('[data-map]').forEach(function (bt) { bt.classList.toggle('is-on', bt.getAttribute('data-map') === cur); });
+    }
+    slider.addEventListener('input', draw);
+    host.querySelectorAll('[data-map]').forEach(function (bt) {
+      bt.addEventListener('click', function () {
+        cur = bt.getAttribute('data-map');
+        var I = maps[cur].I; slider.value = Math.min(I[1], Math.max(I[0], +slider.value)).toFixed(2);
+        draw();
+      });
+    });
+    draw();
+  }
+
+  /* ---------- Interaktive Skizze: implizit definierte Funktionen ---------- */
+  function implicitExplorable(host) {
+    var W = 440, H = 300, u = 76, cx = W / 2, cy = H / 2;
+    function P(x, y) { return [cx + x * u, cy - y * u]; }
+    var curves = {
+      circle: { label: 'Kreis x² + y² = 1', t: [0, 2 * Math.PI], t0: 0.9,
+        p: function (t) { return [Math.cos(t), Math.sin(t)]; },
+        grad: function (x, y) { return [2 * x, 2 * y]; } },
+      cubic: { label: 'y³ + y − x = 0', t: [-1.15, 1.15], t0: 0.5,
+        p: function (t) { return [t * t * t + t, t]; },
+        grad: function () { return [-1, 0]; }, gradY: function (x, y) { return 3 * y * y + 1; } },
+      lemni: { label: 'Lemniskate (x² + y²)² = 2(x² − y²)', t: [0, 2 * Math.PI], t0: 0.6,
+        p: function (t) { var d = 1 + Math.sin(t) * Math.sin(t); return [Math.SQRT2 * Math.cos(t) / d, Math.SQRT2 * Math.sin(t) * Math.cos(t) / d]; },
+        grad: function (x, y) { var r = x * x + y * y; return [4 * x * r - 4 * x, 4 * y * r + 4 * y]; } }
+    };
+    host.innerHTML =
+      '<div class="ex-grid">' +
+      '<svg class="ex-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Kurve F(x,y) = 0 mit Punkt, Tangente und lokalem Funktionsgraphen"></svg>' +
+      '<div class="ex-panel">' +
+      '<div class="ex-presets">' + Object.keys(curves).map(function (k) { return '<button type="button" data-curve="' + k + '">' + curves[k].label + '</button>'; }).join('') + '</div>' +
+      '<label class="ex-slider">Punkt P auf der Kurve<input type="range" min="0" max="1000" step="1" value="200"><output></output></label>' +
+      '<dl class="ex-read"><dt>P = (x, y)</dt><dd data-r="p"></dd><dt>∂F/∂x, ∂F/∂y</dt><dd data-r="grad"></dd><dt>g′(x) = −F_x / F_y</dt><dd data-r="slope"></dd></dl>' +
+      '<p class="ex-hint" data-r="hint"></p>' +
+      '</div></div>';
+    var svg = host.querySelector('svg'), slider = host.querySelector('input[type=range]'), out = host.querySelector('output');
+    var reads = {}; host.querySelectorAll('[data-r]').forEach(function (r) { reads[r.getAttribute('data-r')] = r; });
+    var cur = 'circle';
+    function tOf(v) { var c = curves[cur]; return c.t[0] + (c.t[1] - c.t[0]) * v / 1000; }
+    function gradAt(c, x, y) { var g = c.grad(x, y); if (c.gradY) g = [g[0], c.gradY(x, y)]; return g; }
+    function draw() {
+      var c = curves[cur], t = tOf(+slider.value), pt = c.p(t), x = pt[0], y = pt[1];
+      var g = gradAt(c, x, y), gn = Math.hypot(g[0], g[1]);
+      out.value = Math.round(+slider.value / 10) + ' %';
+      var str = '<line class="ex-axis" x1="0" y1="' + cy + '" x2="' + W + '" y2="' + cy + '"/><line class="ex-axis" x1="' + cx + '" y1="0" x2="' + cx + '" y2="' + H + '"/>';
+      var pts = [];
+      for (var i = 0; i <= 400; i++) { var q = c.p(c.t[0] + (c.t[1] - c.t[0]) * i / 400); pts.push(P(q[0], q[1])); }
+      str += '<polyline class="ex-curve" points="' + pts.map(function (p) { return p[0].toFixed(1) + ',' + p[1].toFixed(1); }).join(' ') + '"/>';
+      var singular = gn < 0.15, vertical = !singular && Math.abs(g[1]) < 0.08 * gn;
+      if (!singular && !vertical) {
+        // Lokales Stück, solange x(t) streng monoton bleibt
+        var piece = [], dt = (c.t[1] - c.t[0]) / 600, sgn = Math.sign(c.p(t + dt)[0] - c.p(t - dt)[0]);
+        [-1, 1].forEach(function (dir) {
+          var part = [], tt = t, prev = c.p(t)[0];
+          for (var k = 0; k < 140; k++) {
+            tt += dir * dt;
+            if (tt < c.t[0] || tt > c.t[1]) break;
+            var q2 = c.p(tt);
+            if (Math.sign(q2[0] - prev) !== dir * sgn) break;
+            var gg = gradAt(c, q2[0], q2[1]);
+            if (Math.abs(gg[1]) < 0.08 * Math.hypot(gg[0], gg[1])) break;
+            prev = q2[0]; part.push(P(q2[0], q2[1]));
+          }
+          if (dir < 0) piece = part.reverse().concat([P(x, y)]); else piece = piece.concat(part);
+        });
+        str += '<polyline class="ex-piece" points="' + piece.map(function (p) { return p[0].toFixed(1) + ',' + p[1].toFixed(1); }).join(' ') + '"/>';
+      }
+      if (!singular) {
+        var tx = -g[1] / gn, ty = g[0] / gn, L = 1.1;
+        var a = P(x - tx * L, y - ty * L), b = P(x + tx * L, y + ty * L);
+        str += '<line class="ex-tangent" x1="' + a[0].toFixed(1) + '" y1="' + a[1].toFixed(1) + '" x2="' + b[0].toFixed(1) + '" y2="' + b[1].toFixed(1) + '"/>';
+      }
+      var pp = P(x, y);
+      str += '<circle class="ex-point' + (singular || vertical ? ' is-bad' : '') + '" cx="' + pp[0].toFixed(1) + '" cy="' + pp[1].toFixed(1) + '" r="5.5"/>';
+      str += '<text class="ex-lbl" x="' + (pp[0] + 9).toFixed(1) + '" y="' + (pp[1] - 9).toFixed(1) + '">P</text>';
+      svg.innerHTML = str;
+      reads.p.textContent = '(' + fmt(x) + '; ' + fmt(y) + ')';
+      reads.grad.textContent = fmt(g[0]) + ' ; ' + fmt(g[1]);
+      reads.slope.textContent = singular || vertical ? '— nicht definiert' : fmt(-g[0] / g[1]);
+      var hint;
+      if (singular) hint = 'Singulärer Punkt: ∇F = 0. Hier kreuzen sich zwei Kurvenäste – weder nach y noch nach x lokal auflösbar.';
+      else if (vertical) hint = '∂F/∂y = 0: Die Kurve steht senkrecht. Lokal gehören zu einem x zwei y-Werte – keine Funktion y = g(x). Nach x = h(y) wäre sie aber auflösbar, weil ∂F/∂x ≠ 0.';
+      else if (cur === 'cubic') hint = '∂F/∂y = 3y² + 1 > 0 überall: Die Gleichung ist an jeder Stelle nach y auflösbar – hier sogar global, obwohl man g nicht explizit hinschreiben möchte.';
+      else hint = '∂F/∂y ≠ 0: Nahe P ist die Kurve der Graph einer Funktion y = g(x) (gold). Die Tangente hat die Steigung g′(x) = −F_x/F_y.';
+      reads.hint.textContent = hint;
+      reads.hint.classList.toggle('is-bad', singular || vertical);
+      host.querySelectorAll('[data-curve]').forEach(function (bt) { bt.classList.toggle('is-on', bt.getAttribute('data-curve') === cur); });
+    }
+    slider.addEventListener('input', draw);
+    host.querySelectorAll('[data-curve]').forEach(function (bt) {
+      bt.addEventListener('click', function () {
+        cur = bt.getAttribute('data-curve');
+        var c = curves[cur]; slider.value = Math.round((c.t0 - c.t[0]) / (c.t[1] - c.t[0]) * 1000);
+        draw();
+      });
+    });
+    slider.value = Math.round((curves[cur].t0 - curves[cur].t[0]) / (curves[cur].t[1] - curves[cur].t[0]) * 1000);
+    draw();
+  }
+
   document.querySelectorAll('[data-explorable]').forEach(function (host) {
     var kind = host.getAttribute('data-explorable');
     if (kind === 'matrix') matrixExplorable(host);
     if (kind === 'ode') odeExplorable(host);
+    if (kind === 'cobweb') cobwebExplorable(host);
+    if (kind === 'implicit') implicitExplorable(host);
   });
 
   document.querySelectorAll('.lernbereich').forEach(math);

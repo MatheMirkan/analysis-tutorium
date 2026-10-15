@@ -740,3 +740,17 @@ html:has(#wartung), html:has(#wartung) body { overflow: hidden !important; }
 @keyframes w-sweep{0%{left:-40%}100%{left:100%}}
 .w-link{margin-top:1.4rem}
 @media (prefers-reduced-motion:reduce){.w-glyphs{display:none}.w-line{opacity:1}.w-line i{animation:none;left:30%}}
+
+/* ---------- Skizzen: Fixpunktiteration und implizite Funktionen ---------- */
+.ex-band{fill:var(--gold);opacity:.08}
+.ex-diag{stroke:var(--ink-mute);stroke-width:1;stroke-dasharray:4 5}
+.ex-cob{fill:none;stroke:var(--ink);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ex-web{fill:none;stroke:var(--gold);stroke-width:1.6;stroke-linejoin:round;opacity:.95}
+.ex-iter{fill:var(--gold)}
+.ex-fix{fill:var(--gold);stroke:var(--white);stroke-width:1.5}
+.ex-curve{fill:none;stroke:var(--ink-soft);stroke-width:1.6;stroke-linejoin:round}
+.ex-piece{fill:none;stroke:var(--gold);stroke-width:4;stroke-linecap:round;opacity:.55}
+.ex-tangent{stroke:var(--gold);stroke-width:1.4;stroke-dasharray:5 4}
+.ex-point{fill:var(--ink);stroke:var(--white);stroke-width:1.5}
+.ex-point.is-bad{fill:#a04a2a}
+.ex-hint.is-bad{border-left-color:rgba(160,74,42,.55)}
