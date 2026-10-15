@@ -23,9 +23,9 @@
   <link rel="icon" type="image/png" sizes="64x64" href="/assets/img/favicon-64.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" href="/assets/fonts/cormorant-garamond-normal-latin-74db058f.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/inter-normal-latin-f11d729b.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/css/fonts.css" />
   <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
 
@@ -48,7 +48,7 @@
         <a href="analysis-3.html">Analysis III</a>
         <a href="lineare-algebra-1.html">Lineare Algebra I</a>
         <a href="tipps_faq.html" aria-current="page">Tipps &amp; Datenschutz</a>
-        <a class="cta" href="https://morgenfels-com.vercel.app">Kontakt</a>
+        <a class="cta" href="mailto:M.Guenkaya@campus.lmu.de">Kontakt</a>
       </nav>
       <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navlinks">
         <span></span><span></span><span></span>
@@ -263,9 +263,8 @@
           </article>
           <article class="card reveal">
             <h3>6. Schriftarten (Webfonts)</h3>
-            <p>Zur einheitlichen Darstellung verwendet diese Webseite die Schriftarten „Cormorant Garamond“ und „Inter“.</p>
-            <p>Werden Web-Schriftarten über einen externen Dienst wie Google Fonts nachgeladen, kann dabei technisch bedingt die IP-Adresse des Endgeräts an dessen Server – im Fall von Google auch in die USA – übertragen werden. Um dies zu vermeiden, wird eine <span class="hl">lokale Einbindung der Schriftarten</span> auf dem eigenen Server angestrebt, sodass beim Seitenaufruf keine Verbindung zu externen Schriftarten-Servern hergestellt werden muss.</p>
-            <p>Soweit Schriftarten dennoch extern geladen werden, erfolgt dies zur ansprechenden und einheitlichen Darstellung der Seite (Art. 6 Abs. 1 lit. f DSGVO).</p>
+            <p>Zur einheitlichen Darstellung verwendet diese Webseite die Schriftarten „Cormorant Garamond“ und „Inter“ sowie für mathematische Formeln die Schriften der Bibliothek KaTeX.</p>
+            <p>Sämtliche Schriftarten und Skripte sind <span class="hl">lokal auf dem Server dieser Webseite</span> gespeichert und werden von dort ausgeliefert. Beim Seitenaufruf wird keine Verbindung zu Google Fonts oder anderen externen Schriftarten- oder Skript-Diensten hergestellt; es werden dabei insbesondere keine IP-Adressen an Dritte übermittelt.</p>
           </article>
           <article class="card reveal">
             <h3>7. TLS-/SSL-Verschlüsselung</h3>
@@ -278,8 +277,9 @@
           </article>
           <article class="card reveal">
             <h3>9. Cookies, Local Storage und ähnliche Technologien</h3>
-            <p>Diese Webseite ist nach ihrem derzeitigen Grundaufbau so angelegt, dass keine eigenen Cookies zu Werbe-, Profiling- oder klassischen Marketingzwecken gesetzt werden. Soweit technisch erforderliche Mechanismen eingesetzt werden, dienen diese ausschließlich der sicheren und funktionsfähigen Bereitstellung der Seite.</p>
-            <p>Soweit künftig zustimmungspflichtige Cookies, Einbindungen oder Tracking-Technologien ergänzt werden, richtet sich deren Zulässigkeit nach § 25 TDDDG; in diesem Fall wird die Datenschutzerklärung aktualisiert und – soweit erforderlich – eine Einwilligungslösung eingebunden.</p>
+            <p>Diese Webseite setzt keine Cookies und verwendet keine Werbe-, Profiling- oder Tracking-Technologien.</p>
+            <p>Auf den Seiten mit Lernpfad (derzeit Analysis III und Lineare Algebra I) wird der Fortschritt bei den Wissens-Checks und im Klausurmodus – etwa „Kapitel 1 bestanden“ oder das beste Klausurergebnis – im <span class="hl">lokalen Speicher deines Browsers</span> (Local Storage) abgelegt. Diese Angaben verlassen dein Gerät nicht, werden nicht an den Server übertragen und sind keiner Person zugeordnet. Sie dienen allein der von dir aktiv genutzten Lernfunktion (§ 25 Abs. 2 Nr. 2 TDDDG). Du kannst sie jederzeit über „Fortschritt zurücksetzen“ oder über die Einstellungen deines Browsers löschen.</p>
+            <p>Soweit künftig zustimmungspflichtige Technologien ergänzt werden, wird diese Datenschutzerklärung aktualisiert und – soweit erforderlich – eine Einwilligungslösung eingebunden.</p>
           </article>
           <article class="card reveal">
             <h3>10. Analyse- und Trackingdienste</h3>
@@ -383,7 +383,7 @@
           <article class="card reveal">
             <h3>30. Änderungen dieser Hinweise</h3>
             <p>Diese Hinweise können angepasst werden, wenn sich technische Funktionen, Inhalte, rechtliche Anforderungen oder organisatorische Abläufe ändern. Maßgeblich ist jeweils die auf dieser Seite veröffentlichte aktuelle Fassung.</p>
-            <p><span class="stand">Stand:</span> 16.06.2026</p>
+            <p><span class="stand">Stand:</span> 15.10.2026</p>
           </article>
           </div>
         </div>

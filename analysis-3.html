@@ -14,9 +14,9 @@
   <link rel="icon" type="image/png" sizes="64x64" href="/assets/img/favicon-64.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" href="/assets/fonts/cormorant-garamond-normal-latin-74db058f.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/inter-normal-latin-f11d729b.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/css/fonts.css" />
   <link rel="stylesheet" href="/assets/vendor/katex/katex.min.css" />
   <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
@@ -41,7 +41,7 @@
         <a href="analysis-3.html" aria-current="page">Analysis III</a>
         <a href="lineare-algebra-1.html">Lineare Algebra I</a>
         <a href="tipps_faq.html">Tipps &amp; Datenschutz</a>
-        <a class="cta" href="https://morgenfels-com.vercel.app">Kontakt</a>
+        <a class="cta" href="mailto:M.Guenkaya@campus.lmu.de">Kontakt</a>
       </nav>
       <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navlinks">
         <span></span><span></span><span></span>
@@ -56,7 +56,7 @@
           <p class="eyebrow">Analysis III · Wintersemester 2026/27</p>
           <h1 class="phero-title">Analysis III<br /><em>zum Anfassen.</em></h1>
           <p class="phero-lead">Differentialgleichungen, Maß und Integral, Integralsätze – die Analysis wird hier zum Werkzeug. Jedes Kapitel dreifach: Idee lesen, Skizze anfassen, Wissen prüfen.</p>
-          <p class="pnote">Die Seite ist im Aufbau: Kapitel 1 zeigt als Beispiel, wie jedes Kapitel aussehen wird. Die weiteren Kapitel kommen im Semester dazu, in der Reihenfolge der Vorlesung.</p>
+          <p class="pnote">Die Seite wächst mit dem Semester: Das Beispielkapitel zeigt, wie jedes Kapitel aussehen wird. Die Kapitel kommen in der Reihenfolge der Vorlesung dazu.</p>
           <nav class="quicknav" aria-label="Abschnitte">
             <a href="#materialien">Materialien</a>
             <a href="#lernpfad">Verstehen &amp; Üben</a>
@@ -176,7 +176,7 @@
             <h2>Tutoriumsunterlagen</h2>
             <p class="mat-sub">Alle Materialien, die wir im Tutorium besprechen, sowie zusätzliche Dateien, die dich beim Verständnis und bei der Klausurvorbereitung unterstützen.</p>
           </div>
-          <div class="modul-empty">Die ersten Tutoriumsblätter erscheinen hier in der ersten Semesterwoche – Woche für Woche kommt ein Blatt dazu.</div>
+          <div class="modul-empty">Die Tutoriumsblätter erscheinen hier nach den ersten Tutorien – Woche für Woche kommt ein Blatt dazu.</div>
         </article>
         <article class="matcard reveal">
           <svg class="card-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M10 9h15l6 6v18H10z"/><path d="M25 9v6h6"/><path d="M14 20h12M14 25h12M14 30h8"/><path d="M7 13v21a1 1 0 0 0 1 1h18" opacity=".55"/></svg>
@@ -185,7 +185,7 @@
             <h2>Skripte</h2>
             <p class="mat-sub">Skripte zur Vorlesung und frühere Skripte zum Vergleichen und Vertiefen – ausschließlich für das persönliche Selbststudium.</p>
           </div>
-          <div class="modul-empty">Folgt zum Semesterstart.</div>
+          <div class="modul-empty">Folgt im Laufe des Semesters.</div>
         </article>
         <article class="access reveal">
           <svg class="card-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 12c-3-3-8-3.5-13-2.5v21c5-1 10-.5 13 2.5 3-3 8-3.5 13-2.5v-21c-5-1-10-.5-13 2.5z"/><path d="M20 12v21"/><path d="M11 15.5c2.5-.3 5-.2 7 .5M11 20.5c2.5-.3 5-.2 7 .5M22 16c2-.7 4.5-.8 7-.5M22 21c2-.7 4.5-.8 7-.5"/></svg>
@@ -206,7 +206,7 @@
             <h2>Hilfsmaterialien</h2>
             <p class="mat-sub">Formelsammlungen, Erklärblätter, Aufgaben mit Lösungen und thematische Übersichten – zum persönlichen Selbststudium.</p>
           </div>
-          <div class="modul-empty">Folgt zum Semesterstart.</div>
+          <div class="modul-empty">Folgt im Laufe des Semesters.</div>
         </article>
       </div>
     </div>
@@ -252,7 +252,7 @@
             <p class="eyebrow">Kapitel 1 · Beispiel</p>
             <h2>Gewöhnliche Differentialgleichungen</h2>
             <p class="mat-sub">Eine Differentialgleichung schreibt an jedem Punkt eine Steigung vor. Die Lösung ist die Kurve, die überall gehorcht.</p>
-            <p class="modul-note">Beispielinhalt: Dieses Modul zeigt, wie ein fertiges Kapitel aussieht. Sobald die Vorlesung beginnt, wird es durch das echte Kapitel 1 ersetzt.</p>
+            <p class="modul-note">Beispielinhalt: Dieses Modul zeigt, wie ein fertiges Kapitel aussieht. Es wird in Kürze durch das erste Kapitel der Vorlesung ersetzt.</p>
           </header>
 <details class="box box-idee" open>
               <summary><span class="box-icon" aria-hidden="true">◇</span><span class="box-kind">Idee</span><span class="box-title">Das Richtungsfeld ist die Gleichung, die Lösungskurve ist die Antwort</span></summary>

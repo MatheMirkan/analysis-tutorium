@@ -1,6 +1,55 @@
 {
   "redirects": [
-    { "source": "/kontakt.html", "destination": "https://morgenfels-com.vercel.app", "permanent": true },
-    { "source": "/kontakt", "destination": "https://morgenfels-com.vercel.app", "permanent": true }
+    {
+      "source": "/kontakt.html",
+      "destination": "https://morgenfels-com.vercel.app",
+      "permanent": true
+    },
+    {
+      "source": "/kontakt",
+      "destination": "https://morgenfels-com.vercel.app",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+        }
+      ]
+    },
+    {
+      "source": "/assets/fonts/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/assets/vendor/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
   ]
 }
