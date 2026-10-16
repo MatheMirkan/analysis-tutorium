@@ -625,7 +625,7 @@
       '<div class="ex-presets">' + presets.map(function (p, i) { return '<button type="button" data-p="' + i + '">' + p[0] + '</button>'; }).join('') + '</div>' +
       '<p class="tt-parsed" data-r="parsed"></p>' +
       '<div class="tt-wrap" data-r="table"></div>' +
-      '<div class="tt-bar"><label><input type="checkbox" data-r="self" /> Letzte Spalte selbst ausfüllen</label><button class="tt-check" type="button" data-r="check" hidden>Prüfen</button></div>' +
+      '<div class="tt-bar"><label><input type="checkbox" data-r="self" checked /> Übungsmodus: Ergebnisspalte selbst ausfüllen</label><button class="tt-check" type="button" data-r="check" hidden>Prüfen</button></div>' +
       '<p class="ex-hint" data-r="hint"></p>' +
       '<p class="tt-parsed">Tastatur: Variablen sind einzelne Buchstaben; <code>!</code> oder <code>~</code> für ¬, <code>&amp;</code> für ∧, <code>|</code> für ∨, <code>-&gt;</code> oder <code>=&gt;</code> für ⇒, <code>&lt;-&gt;</code> oder <code>&lt;=&gt;</code> für ⇔.</p>' +
       '</div>';
@@ -763,7 +763,7 @@
       var total = st.rows.length, trues = st.rows.filter(function (env) { return ev(st.tree, env); }).length;
       var hint, bad = false;
       if (self && !checked) {
-        hint = 'Fülle die goldene Spalte aus (Klick wechselt zwischen w und f) und drücke dann „Prüfen“.';
+        hint = 'Du bist dran: Tippe in der goldenen Spalte auf jedes ?, um w oder f einzutragen, und drücke dann „Prüfen“. Die Spalten links helfen dir. Die fertige Lösung siehst du, wenn du den Übungsmodus ausschaltest.';
       } else if (self && checked) {
         bad = ok < total;
         hint = ok + ' von ' + total + ' Zeilen richtig.' + (bad ? ' Die rot markierten Zeilen noch einmal ansehen – Tipp: die Spalten links helfen.' : ' Perfekt – ' + verdict(trues, total));
