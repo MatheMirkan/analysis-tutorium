@@ -270,6 +270,10 @@
     var pool = [];
     document.querySelectorAll('.quiz').forEach(function (box) { pool = pool.concat(readPool(box)); });
     var n = Math.min(10, pool.length);
+    // Überschrift an die tatsächliche Fragenzahl anpassen, solange der Pool kleiner als zehn ist
+    var WORDS = ['', 'Eine Frage', 'Zwei Fragen', 'Drei Fragen', 'Vier Fragen', 'Fünf Fragen', 'Sechs Fragen', 'Sieben Fragen', 'Acht Fragen', 'Neun Fragen'];
+    var h3 = k.querySelector('.klausur-head h3');
+    if (h3 && n > 0 && n < 10) h3.textContent = WORDS[n] + ', die Uhr läuft';
     var elPool = k.querySelector('[data-k="pool"]');
     if (elPool) elPool.textContent = pool.length ? n + ' Fragen pro Durchgang · Fragenpool: ' + pool.length : 'Noch keine Fragen freigeschaltet.';
     var startBtn = k.querySelector('.klausur-start');
