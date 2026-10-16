@@ -76,6 +76,9 @@
     opts = opts || {};
     var id = opts.id || 'check';
     var order, idx, correct, answered, given, startTime, timerEl, timerHandle;
+    // Erst nach einer Aktion im Quiz den Fokus setzen – sonst springt die Seite beim Laden zum Wissens-Check
+    var acted = !!opts.exam;
+    function focusQuiet(node) { try { node.focus({ preventScroll: true }); } catch (e) { node.focus(); } }
     var ui = el('div', 'qz');
     host.appendChild(ui);
 
@@ -137,7 +140,7 @@
         wrap.appendChild(inp);
         if (q.unit) wrap.appendChild(el('span', 'qz-unit', q.unit));
         form.appendChild(wrap);
-        setTimeout(function () { inp.focus(); }, 50);
+        if (acted) setTimeout(function () { focusQuiet(inp); }, 50);
       }
       var actions = el('div', 'qz-actions');
       var check = el('button', 'btn btn-primary qz-check', opts.exam ? (idx + 1 < questions.length ? 'Weiter <span class="arr" aria-hidden="true">→</span>' : 'Abgeben <span class="arr" aria-hidden="true">→</span>') : 'Prüfen');
@@ -151,6 +154,7 @@
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
+        acted = true;
         var ok = evaluate(q, form);
         if (ok === null) { fb.className = 'qz-fb is-hint'; fb.innerHTML = 'Bitte wähle eine Antwort.'; return; }
         answered[idx] = ok;
@@ -170,7 +174,7 @@
         next.addEventListener('click', function () { idx++; if (idx < questions.length) renderQuestion(); else renderSummary(); });
         fb.appendChild(next);
         math(fb);
-        next.focus();
+        focusQuiet(next);
       });
     }
 
