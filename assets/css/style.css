@@ -754,3 +754,63 @@ html:has(#wartung), html:has(#wartung) body { overflow: hidden !important; }
 .ex-point{fill:var(--ink);stroke:var(--white);stroke-width:1.5}
 .ex-point.is-bad{fill:#a04a2a}
 .ex-hint.is-bad{border-left-color:rgba(160,74,42,.55)}
+
+/* ---------- Verständnisboxen: Listen und Formelzeilen ---------- */
+.box-list{margin:.6rem 0 0;padding-left:1.1rem}
+.box-list li{margin:.25rem 0}
+.box-list li::marker{color:var(--gold)}
+.box-formula{margin-top:.6rem;padding:.6rem .8rem;background:var(--paper);border-radius:8px;overflow-x:auto;line-height:2}
+
+/* ---------- Skizze: Wahrheitstafel-Labor ---------- */
+.ex-stack{margin-top:1.1rem;font-family:var(--sans);font-size:.88rem;color:var(--ink-soft)}
+.tt-input{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+.tt-input input{flex:1 1 16rem;min-width:0;font-family:var(--serif);font-size:1.25rem;color:var(--ink);background:var(--paper);border:1px solid var(--line-strong);border-radius:10px;padding:.45rem .8rem;outline:none;transition:border-color .2s}
+.tt-input input:focus{border-color:var(--gold)}
+.tt-keys{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.55rem}
+.tt-keys button{min-width:2.2rem;font-family:var(--serif);font-size:1.05rem;color:var(--ink);background:var(--white);border:1px solid var(--line-strong);border-radius:8px;padding:.2rem .5rem;cursor:pointer;transition:border-color .2s,color .2s}
+.tt-keys button:hover{border-color:var(--gold);color:var(--gold)}
+.tt-keys .tt-sep{width:.5rem}
+.tt-parsed{margin-top:.55rem;font-size:.8rem;color:var(--ink-mute)}
+.tt-parsed span{font-family:var(--serif);font-size:1rem;color:var(--ink-soft)}
+.tt-error{color:#a04a2a}
+.tt-parsed code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.78rem;font-variant-ligatures:none;color:var(--ink-soft);background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:0 .25rem}
+.tt-wrap{margin-top:.9rem;overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--paper)}
+.tt{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+.tt th,.tt td{padding:.42rem .7rem;text-align:center;white-space:nowrap;border-bottom:1px solid var(--line)}
+.tt th{font-family:var(--serif);font-size:1.02rem;font-weight:600;color:var(--ink);background:var(--white)}
+.tt tr:last-child td{border-bottom:0}
+.tt .tt-var{border-right:1px solid var(--line-strong)}
+.tt td{font-family:var(--sans);font-size:.86rem;color:var(--ink-soft)}
+.tt td.is-f{color:var(--ink-mute)}
+.tt .tt-final{background:var(--gold-faint);color:var(--ink);font-weight:600}
+.tt td.tt-final.is-f{color:#a04a2a}
+.tt-cell{min-width:2.2rem;font-family:var(--sans);font-size:.86rem;font-weight:600;color:var(--ink);background:var(--white);border:1px dashed var(--gold-soft);border-radius:6px;padding:.1rem .45rem;cursor:pointer}
+.tt-cell.is-ok{border-style:solid;border-color:var(--gold);color:var(--gold)}
+.tt-cell.is-wrong{border-style:solid;border-color:#a04a2a;color:#a04a2a}
+.tt-bar{display:flex;flex-wrap:wrap;gap:.6rem 1rem;align-items:center;margin-top:.8rem}
+.tt-bar label{display:inline-flex;gap:.45rem;align-items:center;cursor:pointer;color:var(--ink)}
+.tt-bar input{accent-color:var(--gold)}
+.tt-check{font-family:var(--sans);font-size:.78rem;font-weight:500;color:var(--paper);background:var(--ink);border:0;border-radius:999px;padding:.4rem .9rem;cursor:pointer}
+.tt-check[hidden]{display:none}
+
+/* ---------- Skizzen: Venn-Diagramm und Quantoren-Gitter ---------- */
+.ex-set{fill:none;stroke:var(--ink-soft);stroke-width:1.5}
+.ex-uni{fill:none;stroke:var(--line-strong);stroke-width:1.2}
+.ex-region{fill:var(--gold);opacity:.2}
+.ex-num{font-family:var(--sans);font-size:13px;fill:var(--ink-mute);text-anchor:middle;dominant-baseline:middle}
+.ex-num.is-in{fill:var(--gold);font-weight:700;font-size:14px}
+.ex-panel select{display:block;width:100%;font-family:var(--sans);font-size:.84rem;color:var(--ink);background:var(--paper);border:1px solid var(--line-strong);border-radius:8px;padding:.35rem .5rem;margin-top:.2rem}
+.ex-panel .ex-field-l{display:block;margin-top:.55rem;color:var(--ink)}
+.ex-read dd .mono{font-family:var(--serif);font-size:1rem}
+.ex-qdot{fill:var(--paper);stroke:var(--ink-mute);stroke-width:1.2}
+.ex-qdot.is-true{fill:var(--gold);stroke:var(--gold)}
+.ex-qmark{fill:none;stroke:var(--ink);stroke-width:1.6}
+.ex-qmark.is-bad{stroke:#a04a2a}
+.ex-qband{fill:var(--gold);opacity:.1}
+.ex-qband.is-bad{fill:#a04a2a;opacity:.08}
+.q-list{display:grid;gap:.4rem;margin-top:.8rem}
+.q-list button{display:flex;justify-content:space-between;align-items:center;gap:.6rem;text-align:left;font-family:var(--serif);font-size:1.02rem;color:var(--ink);background:var(--paper);border:1px solid var(--line-strong);border-radius:10px;padding:.4rem .7rem;cursor:pointer;transition:border-color .2s}
+.q-list button:hover,.q-list button.is-on{border-color:var(--gold)}
+.q-badge{flex:none;font-family:var(--sans);font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:.15rem .55rem;border:1px solid currentColor}
+.q-badge.is-w{color:var(--gold)}
+.q-badge.is-f{color:#a04a2a}

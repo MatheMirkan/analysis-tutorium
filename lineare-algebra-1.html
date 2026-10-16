@@ -55,8 +55,8 @@
         <div class="phero-copy">
           <p class="eyebrow">Lineare Algebra I · Wintersemester 2026/27</p>
           <h1 class="phero-title">Lineare Algebra I<br /><em>zum Anfassen.</em></h1>
-          <p class="phero-lead">Vektorräume, Matrizen und Eigenwerte sind keine Zahlenwüste, sondern Geometrie. Auf dieser Seite kannst du jedes Kapitel dreifach durchdringen: Idee lesen, Skizze anfassen, Wissen prüfen.</p>
-          <p class="pnote">Die Seite wächst mit dem Semester: Das Beispielkapitel zeigt, wie jedes Kapitel aussehen wird. Die Kapitel kommen in der Reihenfolge der Vorlesung dazu.</p>
+          <p class="phero-lead">Bevor es um Vektoren und Matrizen geht, kommt die Sprache, in der die ganze Vorlesung geschrieben ist: Logik und Mengen. Jedes Kapitel dreifach: Idee lesen, Skizze anfassen, Wissen prüfen.</p>
+          <p class="pnote">Die Seite wächst mit dem Semester: Kapitel für Kapitel, in der Reihenfolge der Vorlesung. Los geht es mit Aussagenlogik, logischen Verknüpfungen und Wahrheitstafeln – danach folgen die Grundlagen der Mengenlehre mit All- und Existenzaussagen.</p>
           <nav class="quicknav" aria-label="Abschnitte">
             <a href="#materialien">Materialien</a>
             <a href="#lernpfad">Verstehen &amp; Üben</a>
@@ -65,33 +65,60 @@
         <div class="phero-visual reveal">
           <div class="sketch-frame">
             <div class="sketch-stage" aria-live="polite">
-<svg class="sketch is-active" data-num="1" data-title="Lineare Abbildungen &amp; Matrizen" viewBox="0 0 420 260" role="img" aria-label="Skizze: Eine Matrix verzerrt das Koordinatengitter">
-  <path class="ln ln-soft d4" pathLength="1" d="M105.2 225.8 L198.8 85.4"/>
-  <path class="ln ln-soft d4" pathLength="1" d="M105.2 225.8 L261.2 194.6"/>
-  <path class="ln ln-soft d3" pathLength="1" d="M131.2 220.6 L224.8 80.2"/>
-  <path class="ln ln-soft d3" pathLength="1" d="M120.8 202.4 L276.8 171.2"/>
-  <path class="ln ln-soft d2" pathLength="1" d="M157.2 215.4 L250.8 75.0"/>
-  <path class="ln ln-soft d2" pathLength="1" d="M136.4 179.0 L292.4 147.8"/>
-  <path class="ln ln-soft d1" pathLength="1" d="M183.2 210.2 L276.8 69.8"/>
-  <path class="ln ln-soft d1" pathLength="1" d="M152.0 155.6 L308.0 124.4"/>
-  <path class="ln ln-soft d2" pathLength="1" d="M209.2 205.0 L302.8 64.6"/>
-  <path class="ln ln-soft d2" pathLength="1" d="M167.6 132.2 L323.6 101.0"/>
-  <path class="ln ln-soft d3" pathLength="1" d="M235.2 199.8 L328.8 59.4"/>
-  <path class="ln ln-soft d3" pathLength="1" d="M183.2 108.8 L339.2 77.6"/>
-  <path class="ln ln-soft d4" pathLength="1" d="M261.2 194.6 L354.8 54.2"/>
-  <path class="ln ln-soft d4" pathLength="1" d="M198.8 85.4 L354.8 54.2"/>
+<svg class="sketch is-active" data-num="1" data-title="Aussagenlogik: Verknüpfungen &amp; Wahrheitstafeln" viewBox="0 0 420 260" role="img" aria-label="Skizze: Wahrheitstafel der Implikation – sie ist nur dann falsch, wenn die Prämisse wahr und die Konklusion falsch ist">
 
-  <polygon class="band d5" points="230.0,140.0 256.0,134.8 271.6,111.4 245.6,116.6"/>
-  <path class="ln ln-gold pulse d6" pathLength="1" d="M230.0 140.0 L256.0 134.8"/>
-  <path class="ln ln-gold pulse d6" pathLength="1" d="M230.0 140.0 L245.6 116.6"/>
-  <circle class="dot dot-gold d6" cx="230.0" cy="140.0" r="3.4"/>
-  <text class="lbl lbl-gold d7" x="262.0" y="150.8">A e₁</text>
-  <text class="lbl lbl-gold d7" x="215.6" y="110.6">A e₂</text>
-  <text class="lbl d8" x="24" y="40">x ↦ A x</text>
+  <path class="band d6" d="M52 120 H272 V146 H52 Z"/>
+  <text class="lbl d1" x="79" y="62">ϕ</text>
+  <text class="lbl d1" x="145" y="62">ψ</text>
+  <text class="lbl lbl-gold d1" x="210" y="62">ϕ ⇒ ψ</text>
+  <path class="ln ln-soft d2" pathLength="1" d="M52 76 H272"/>
+  <path class="ln ln-soft d2" pathLength="1" d="M190 40 V222"/>
+  <text class="lbl d3" x="80" y="104" font-style="normal">w</text>
+  <text class="lbl d3" x="146" y="104" font-style="normal">w</text>
+  <text class="lbl d3" x="228" y="104" font-style="normal">w</text>
+  <text class="lbl d4" x="80" y="138" font-style="normal">w</text>
+  <text class="lbl d4" x="146" y="138" font-style="normal">f</text>
+  <text class="lbl lbl-gold d4" x="228" y="138" font-style="normal">f</text>
+  <text class="lbl d5" x="80" y="172" font-style="normal">f</text>
+  <text class="lbl d5" x="146" y="172" font-style="normal">w</text>
+  <text class="lbl d5" x="228" y="172" font-style="normal">w</text>
+  <text class="lbl d6" x="80" y="206" font-style="normal">f</text>
+  <text class="lbl d6" x="146" y="206" font-style="normal">f</text>
+  <text class="lbl d6" x="228" y="206" font-style="normal">w</text>
+  <path class="ln ln-gold pulse d7" pathLength="1" d="M278 133 H300"/>
+  <text class="lbl lbl-gold d7" x="306" y="138">nur hier falsch</text>
+  <path class="ln ln-soft dash d8" pathLength="1" d="M278 168 Q292 189 278 210"/>
+  <text class="lbl d8" x="300" y="186">Prämisse falsch:</text>
+  <text class="lbl d9" x="300" y="206">ex falso quodlibet</text>
+  <text class="lbl d10" x="52" y="250">Wahrheitstafel: alle Fälle, keine Halbwahrheiten</text>
+</svg>
+<svg class="sketch" data-num="2" data-title="Mengenlehre, All- &amp; Existenzaussagen" viewBox="0 0 420 260" role="img" aria-label="Skizze: Venn-Diagramm zweier Mengen A und B in der Grundmenge M, der Durchschnitt ist hervorgehoben">
+
+  <path class="ln ln-soft d1" pathLength="1" d="M40 30 H380 V222 H40 Z"/>
+  <path class="band d5" d="M210 71.4 A70 70 0 0 1 210 178.6 A70 70 0 0 1 210 71.4 Z"/>
+  <circle class="ln d2" pathLength="1" cx="165" cy="125" r="70"/>
+  <circle class="ln d3" pathLength="1" cx="255" cy="125" r="70"/>
+  <path class="ln ln-gold pulse d5" pathLength="1" d="M210 71.4 A70 70 0 0 1 210 178.6 A70 70 0 0 1 210 71.4 Z"/>
+  <circle class="dot d4" cx="130" cy="110" r="3.2"/><circle class="dot d4" cx="140" cy="150" r="3.2"/>
+  <circle class="dot d4" cx="290" cy="105" r="3.2"/><circle class="dot d4" cx="280" cy="150" r="3.2"/>
+  <circle class="dot dot-gold d6" cx="210" cy="112" r="3.6"/><circle class="dot dot-gold d6" cx="210" cy="140" r="3.6"/>
+  <circle class="dot d4" cx="72" cy="200" r="3.2"/><circle class="dot d4" cx="350" cy="58" r="3.2"/>
+  <text class="lbl d3" x="104" y="72">A</text>
+  <text class="lbl d3" x="304" y="72">B</text>
+  <text class="lbl d2" x="52" y="54">M</text>
+  <text class="lbl lbl-gold d7" x="186" y="200">A ∩ B</text>
+  <text class="lbl d8" x="40" y="250">x ∈ A ∩ B ⇔ x ∈ A ∧ x ∈ B</text>
 </svg>
             </div>
-            <div class="sketch-caption"><span class="sk-cap-l">Skizze · Kapitel 1</span><span class="sk-cap-r"><b>Lineare Abbildungen &amp; Matrizen</b></span></div>
-
+            <div class="sketch-caption"><span class="sk-cap-l">Skizze · Kapitel 1</span><span class="sk-cap-r"><b>Aussagenlogik: Verknüpfungen &amp; Wahrheitstafeln</b></span></div>
+            <div class="sketch-nav">
+              <button class="sk-btn sk-prev" type="button" aria-label="Vorheriges Kapitel">‹</button>
+              <div class="sk-dots">
+                <button class="sk-dot is-on" type="button" aria-label="Kapitel 1: Aussagenlogik: Verknüpfungen &amp; Wahrheitstafeln"></button>
+                <button class="sk-dot" type="button" aria-label="Kapitel 2: Mengenlehre, All- &amp; Existenzaussagen"></button>
+              </div>
+              <button class="sk-btn sk-next" type="button" aria-label="Nächstes Kapitel">›</button>
+            </div>
           </div>
         </div>
       </div>
@@ -113,8 +140,8 @@
             <circle class="node d6" cx="916.7" cy="50" r="9"/><circle class="node-core d6" cx="916.7" cy="50" r="3.5"/>
           </svg>
         <div class="thread-labels thread-open" style="--n:6">
-            <span><b>1</b>Lineare Abbildungen &amp; Matrizen</span>
-            <span class="is-open"><b>·</b>folgt</span>
+            <span><b>1</b>Aussagenlogik: Verknüpfungen &amp; Wahrheitstafeln</span>
+            <span><b>2</b>Mengenlehre, All- &amp; Existenzaussagen</span>
             <span class="is-open"><b>·</b>folgt</span>
             <span class="is-open"><b>·</b>folgt</span>
             <span class="is-open"><b>·</b>folgt</span>
@@ -188,12 +215,13 @@
       <div class="lernpfad reveal">
         <div class="lp-head">
           <p class="eyebrow">Dein Lernpfad</p>
-          <p class="lp-text">0 von 1 Wissens-Checks bestanden</p>
+          <p class="lp-text">0 von 2 Wissens-Checks bestanden</p>
         </div>
         <p class="lp-note">Dein Fortschritt wird nur in deinem Browser gespeichert – ohne Konto, ohne Server.</p>
         <div class="lp-bar" aria-hidden="true"><div class="lp-fill"></div></div>
         <div class="lp-chips">
           <button class="lp-chip" type="button" data-quiz="la1-k1">Kapitel 1</button>
+          <button class="lp-chip" type="button" data-quiz="la1-k2">Kapitel 2</button>
           <button class="lp-reset" type="button">Fortschritt zurücksetzen</button>
         </div>
       </div>
@@ -212,30 +240,67 @@
       <div class="sections" style="margin-top:1.4rem">
 <article class="modul reveal" id="kapitel-1">
           <header class="modul-head">
-            <p class="eyebrow">Kapitel 1 · Beispiel</p>
-            <h2>Lineare Abbildungen &amp; Matrizen</h2>
-            <p class="mat-sub">Eine Matrix ist eine Abbildung. Zieh an den Einträgen und sieh zu, was mit der Ebene passiert.</p>
-            <p class="modul-note">Beispielinhalt: Dieses Modul zeigt, wie ein fertiges Kapitel aussieht. Es wird in Kürze durch das erste Kapitel der Vorlesung ersetzt.</p>
+            <p class="eyebrow">Kapitel 1</p>
+            <h2>Aussagenlogik: Verknüpfungen &amp; Wahrheitstafeln</h2>
+            <p class="mat-sub">Die Sprache, in der jeder Satz der Vorlesung geschrieben ist: Aussagen, ihre Wahrheitswerte und die fünf Verknüpfungen \(\neg, \wedge, \vee, \Rightarrow, \Leftrightarrow\) – und warum Tautologien die Bausteine jedes Beweises sind.</p>
+            
           </header>
 <details class="box box-idee" open>
-              <summary><span class="box-icon" aria-hidden="true">◇</span><span class="box-kind">Idee</span><span class="box-title">Eine Matrix sagt nur, wohin die Basisvektoren gehen</span></summary>
-              <div class="box-body"><p>Eine lineare Abbildung \(f\) ist durch die Bilder der Basisvektoren vollständig bestimmt – denn \(f(\lambda_1 e_1 + \lambda_2 e_2) = \lambda_1 f(e_1) + \lambda_2 f(e_2)\). Die Spalten der Matrix \(A\) sind genau diese Bilder: \(A e_1 = \binom{a}{c}\), \(A e_2 = \binom{b}{d}\). Das gesamte Gitter folgt zwangsläufig.</p></div>
+              <summary><span class="box-icon" aria-hidden="true">◇</span><span class="box-kind">Idee</span><span class="box-title">Eine Aussage ist wahr oder falsch – sonst nichts</span></summary>
+              <div class="box-body"><p>Eine <em>Aussage</em> ist ein Satz, dem man sinnvoll und objektiv einen Wahrheitswert zuordnen kann: wahr (w) oder falsch (f). \(1 + 1 = 2\) ist eine wahre, \(1 + 1 = 3\) eine falsche Aussage. Keine Aussagen sind dagegen Aufforderungen, Terme wie \(x^3 - 3x^2 - 3x + 1\) oder vage Sätze wie „\(10^{100}\) ist eine große Zahl“.</p><p>Ein Satz wie \(a^2 + b^2 = c^2\) ist ein <em>Aussagenschema</em>: Er wird erst zur Aussage, wenn man die Parameter \(a, b, c\) belegt. Daraus folgt die wichtigste Schreibregel überhaupt: <strong>Keine Bezeichnung benutzen, die vorher nicht festgelegt wurde.</strong></p><p>Aussagen werden mit \(\neg\) (nicht), \(\wedge\) (und), \(\vee\) (oder), \(\Rightarrow\) (daraus folgt) und \(\Leftrightarrow\) (genau dann, wenn) verknüpft. Der Wahrheitswert des Ganzen hängt <em>nur</em> von den Wahrheitswerten der Teile ab – und genau das hält eine Wahrheitstafel fest.</p></div>
             </details>
           <div class="explorable">
-            <div class="ex-head"><p class="eyebrow">Zum Anfassen</p><p class="ex-title">Die Matrix \(A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\) verzerrt die Ebene</p><p class="ex-lead">Verschiebe die Regler oder wähle eine Vorlage. Das goldene Parallelogramm ist das Bild des Einheitsquadrats, die gestrichelten Linien sind Eigenrichtungen.</p></div>
-            <div data-explorable="matrix"></div>
+            <div class="ex-head"><p class="eyebrow">Zum Anfassen</p><p class="ex-title">Das Wahrheitstafel-Labor</p><p class="ex-lead">Tippe eine Formel ein oder wähle eine Vorlage. Das Labor liest sie nach den Bindungsregeln der Vorlesung, legt für jede Teilformel eine Spalte an und sagt dir, ob eine Tautologie vorliegt. Mit „Selbst ausfüllen“ trägst du die letzte Spalte zuerst selbst ein.</p></div>
+            <div data-explorable="truth"></div>
           </div>
 <details class="box box-achtung">
-              <summary><span class="box-icon" aria-hidden="true">!</span><span class="box-kind">Typischer Fehler</span><span class="box-title">Matrizen multiplizieren heißt Abbildungen hintereinander ausführen</span></summary>
-              <div class="box-body"><p>\(AB\) bedeutet: erst \(B\), dann \(A\). Deshalb ist die Reihenfolge nicht egal – erst scheren, dann drehen sieht anders aus als umgekehrt. Ein zweiter Klassiker: Der Rang ist die Anzahl <em>unabhängiger</em> Spalten, nicht die Anzahl der Spalten ungleich null.</p></div>
+              <summary><span class="box-icon" aria-hidden="true">!</span><span class="box-kind">Typischer Fehler</span><span class="box-title">\(\phi \Rightarrow \psi\) ist nicht dasselbe wie \(\psi \Rightarrow \phi\)</span></summary>
+              <div class="box-body"><p>\(x = 3 \Rightarrow x^2 = 9\) gilt für alle reellen \(x\), die Umkehrung \(x^2 = 9 \Rightarrow x = 3\) aber nicht – für \(x = -3\) ist die Prämisse wahr und die Konklusion falsch. Wer beim Umformen von \((x - 4)^2 = 9\) nur auf \(x - 4 = 3\) schließt, verliert die Lösung \(x = 1\). Hinreichend (\(\phi\) für \(\psi\)) und notwendig (\(\psi\) für \(\phi\)) sind zwei verschiedene Dinge.</p><p>Zweiter Stolperstein: Eine Implikation braucht keinen inhaltlichen Zusammenhang. Ist die Prämisse falsch, ist \(\phi \Rightarrow \psi\) automatisch wahr.</p></div>
             </details>
 <details class="box box-merke">
-              <summary><span class="box-icon" aria-hidden="true">≡</span><span class="box-kind">Merke</span><span class="box-title">Dimensionsformel</span></summary>
-              <div class="box-body"><p>Für \(f: V \to W\) linear gilt \(\dim \ker f + \dim \operatorname{Bild} f = \dim V\). Was der Kern schluckt, fehlt dem Bild – in der Skizze: Bei \(\det A = 0\) klappt die Ebene auf eine Gerade zusammen, der Kern wird eindimensional.</p></div>
+              <summary><span class="box-icon" aria-hidden="true">≡</span><span class="box-kind">Merke</span><span class="box-title">Tautologien sind die Bausteine von Beweisen</span></summary>
+              <div class="box-body"><p>Eine <em>Tautologie</em> ist immer wahr, ganz egal, wie die Teilaussagen belegt sind. \(\psi\) folgt durch einen <em>logischen Schluss</em> aus \(\phi_1, \dots, \phi_n\), wenn \(\phi_1 \wedge \dots \wedge \phi_n \Rightarrow \psi\) eine Tautologie ist. Die vier wichtigsten:</p><ul class="box-list"><li><strong>Modus ponens:</strong> \(\phi \wedge (\phi \Rightarrow \psi) \Rightarrow \psi\)</li><li><strong>Kontraposition:</strong> \((\phi \Rightarrow \psi) \Leftrightarrow (\neg \psi \Rightarrow \neg \phi)\)</li><li><strong>Widerspruch:</strong> \((\neg \phi \Rightarrow \chi \wedge \neg \chi) \Rightarrow \phi\)</li><li><strong>Ringschluss:</strong> aus \(\phi \Rightarrow \chi\), \(\chi \Rightarrow \psi\), \(\psi \Rightarrow \phi\) folgt, dass alle drei äquivalent sind.</li></ul><p>Bindungsstärke, von stark nach schwach: \(\neg\), \(\wedge\), \(\vee\), \(\Rightarrow\), \(\Leftrightarrow\). Im Zweifel: Klammern setzen.</p></div>
             </details>
 <div class="quiz" id="check-la1-k1" data-quiz-id="la1-k1">
               <div class="quiz-head"><p class="eyebrow">Wissens-Check</p><p class="quiz-sub">8 Fragen, gemischt. Nach jeder Antwort erfährst du, warum.</p></div>
-              <script type="application/json">[{"type": "mc", "q": "Welche Abbildung ist linear?", "options": ["\\(f(x,y) = (x + y,\\; 2x)\\)", "\\(f(x) = x + 1\\)", "\\(f(x,y) = x\\cdot y\\)", "\\(f(x) = x^2\\)"], "answer": 0, "why": "Linear heißt: \\(f(u+v) = f(u)+f(v)\\) und \\(f(\\lambda u) = \\lambda f(u)\\). Verschiebungen, Produkte und Quadrate verletzen das – schon \\(f(0) \\neq 0\\) bei \\(x+1\\)."}, {"type": "tf", "q": "Eine lineare Abbildung bildet den Nullvektor stets auf den Nullvektor ab.", "answer": true, "why": "\\(f(0) = f(0\\cdot v) = 0\\cdot f(v) = 0\\)."}, {"type": "num", "q": "Welchen Rang hat die Matrix \\(\\begin{pmatrix}1 & 2\\\\ 2 & 4\\end{pmatrix}\\)?", "answer": 1, "why": "Die zweite Zeile ist das Doppelte der ersten – nur eine Zeile ist unabhängig."}, {"type": "mc", "q": "Die Matrix \\(\\begin{pmatrix}0 & -1\\\\ 1 & 0\\end{pmatrix}\\) beschreibt …", "options": ["eine Drehung um \\(90^\\circ\\)", "eine Spiegelung an der \\(x\\)-Achse", "eine Streckung um den Faktor 2", "eine Projektion auf die \\(y\\)-Achse"], "answer": 0, "why": "\\(e_1 \\mapsto (0,1)\\) und \\(e_2 \\mapsto (-1,0)\\): beide Basisvektoren werden um \\(90^\\circ\\) gegen den Uhrzeigersinn gedreht. Probiere es oben in der Skizze mit \\(a=0, b=-1, c=1, d=0\\)."}, {"type": "multi", "q": "Für \\(A \\in \\mathbb{R}^{n\\times n}\\): Welche Aussagen sind gleichwertig zu „\\(A\\) ist invertierbar“?", "options": ["\\(\\det A \\neq 0\\)", "\\(\\ker A = \\{0\\}\\)", "\\(\\operatorname{Rang} A = n\\)", "\\(A\\) ist symmetrisch"], "answer": [0, 1, 2], "why": "Determinante ungleich null, trivialer Kern und voller Rang sind drei Gesichter derselben Eigenschaft. Symmetrie hat damit nichts zu tun – die Nullmatrix ist symmetrisch und nicht invertierbar."}, {"type": "num", "q": "Berechne \\(\\det\\begin{pmatrix}2 & 1\\\\ 3 & 4\\end{pmatrix}\\).", "answer": 5, "why": "\\(2\\cdot 4 - 1\\cdot 3 = 5\\). In der Skizze oben ist das der Flächenfaktor des Einheitsquadrats."}, {"type": "tf", "q": "Für alle quadratischen Matrizen gilt \\(AB = BA\\).", "answer": false, "why": "Matrixmultiplikation ist im Allgemeinen nicht kommutativ. Beispiel: Erst scheren, dann drehen ergibt etwas anderes als erst drehen, dann scheren."}, {"type": "mc", "q": "Dimensionsformel für \\(f: V \\to W\\) linear: \\(\\dim \\ker f + \\dim \\operatorname{Bild} f = \\; ?\\)", "options": ["\\(\\dim V\\)", "\\(\\dim W\\)", "\\(\\dim V + \\dim W\\)", "\\(0\\)"], "answer": 0, "why": "Was im Kern verschwindet und was im Bild ankommt, zusammen ergibt die Dimension des Definitionsbereichs \\(V\\)."}]</script>
+              <script type="application/json">[{"type": "mc", "q": "Welcher der folgenden Sätze ist eine Aussage im Sinne der Vorlesung?", "options": ["\\(1 + 1 = 3\\)", "\\(x^2 - 3x + 1\\)", "„Mach endlich deine Hausaufgaben!“", "\\(a^2 + b^2 = c^2\\), ohne dass \\(a, b, c\\) festgelegt sind"], "answer": 0, "why": "Eine Aussage muss objektiv wahr oder falsch sein – und \\(1 + 1 = 3\\) ist eindeutig falsch, also eine (falsche) Aussage. Ein Term hat keinen Wahrheitswert, eine Aufforderung auch nicht, und \\(a^2+b^2=c^2\\) ist nur ein Aussagenschema, solange \\(a, b, c\\) nicht belegt sind."}, {"type": "tf", "q": "Die Implikation „Wenn \\(1 + 1 = 3\\) ist, dann ist \\(2 + 2 = 5\\).“ ist eine wahre Aussage.", "answer": true, "why": "Die Prämisse ist falsch – laut letzter Zeile der Wahrheitstafel ist \\(\\phi \\Rightarrow \\psi\\) dann immer wahr, egal was die Konklusion sagt: <em>ex falso quodlibet</em>."}, {"type": "mc", "q": "Bei welcher Belegung ist \\(\\phi \\Rightarrow \\psi\\) falsch?", "options": ["\\(\\phi\\) wahr, \\(\\psi\\) falsch", "\\(\\phi\\) falsch, \\(\\psi\\) wahr", "\\(\\phi\\) falsch, \\(\\psi\\) falsch", "\\(\\phi\\) wahr, \\(\\psi\\) wahr"], "answer": 0, "why": "Eine Implikation ist nur widerlegt, wenn die Prämisse gilt und die Konklusion trotzdem nicht. In allen anderen drei Fällen ist sie wahr."}, {"type": "tf", "q": "Sind \\(\\phi\\) und \\(\\psi\\) beide wahr, dann ist \\(\\phi \\vee \\psi\\) falsch – „oder“ heißt ja „entweder – oder“.", "answer": false, "why": "Das mathematische „oder“ ist <em>nicht</em> ausschließend: \\(\\phi \\vee \\psi\\) ist wahr, sobald mindestens eine der beiden Aussagen wahr ist – also auch, wenn beide gelten."}, {"type": "mc", "q": "Wie ist \\(\\neg \\phi \\vee \\psi \\wedge \\rho\\) nach den Bindungsregeln zu lesen?", "options": ["\\((\\neg \\phi) \\vee (\\psi \\wedge \\rho)\\)", "\\(\\neg (\\phi \\vee \\psi) \\wedge \\rho\\)", "\\(((\\neg \\phi) \\vee \\psi) \\wedge \\rho\\)", "\\(\\neg (\\phi \\vee (\\psi \\wedge \\rho))\\)"], "answer": 0, "why": "\\(\\neg\\) bindet am stärksten, dann \\(\\wedge\\), dann \\(\\vee\\), \\(\\Rightarrow\\), \\(\\Leftrightarrow\\) – wie „Punkt vor Strich“. Also erst \\(\\neg\\phi\\) und \\(\\psi \\wedge \\rho\\), danach das \\(\\vee\\)."}, {"type": "multi", "q": "Welche der folgenden Aussagen sind Tautologien?", "options": ["\\(\\phi \\vee \\neg \\phi\\)", "\\((\\phi \\Rightarrow \\psi) \\Leftrightarrow (\\neg \\psi \\Rightarrow \\neg \\phi)\\)", "\\((\\phi \\Rightarrow \\psi) \\Leftrightarrow (\\psi \\Rightarrow \\phi)\\)", "\\(\\phi \\wedge \\neg \\phi\\)"], "answer": [0, 1], "why": "Die erste ist immer wahr, die zweite ist die Kontraposition. Die dritte verwechselt eine Implikation mit ihrer Umkehrung – für \\(\\phi\\) wahr, \\(\\psi\\) falsch ist sie falsch. Die vierte ist sogar immer falsch. Prüfe es im Wahrheitstafel-Labor oben."}, {"type": "num", "q": "Eine zusammengesetzte Aussage besteht aus vier Teilaussagen \\(\\phi_1, \\dots, \\phi_4\\). Wie viele Zeilen hat ihre vollständige Wahrheitstafel?", "answer": 16, "why": "Jede Teilaussage ist wahr oder falsch, also \\(2 \\cdot 2 \\cdot 2 \\cdot 2 = 2^4 = 16\\) mögliche Belegungen – eine Zeile pro Belegung."}, {"type": "mc", "q": "Was ist die Kontraposition von „Wenn \\(n\\) durch \\(4\\) teilbar ist, dann ist \\(n\\) gerade.“?", "options": ["Wenn \\(n\\) ungerade ist, dann ist \\(n\\) nicht durch \\(4\\) teilbar.", "Wenn \\(n\\) gerade ist, dann ist \\(n\\) durch \\(4\\) teilbar.", "Wenn \\(n\\) nicht durch \\(4\\) teilbar ist, dann ist \\(n\\) ungerade.", "\\(n\\) ist durch \\(4\\) teilbar und ungerade."], "answer": 0, "why": "Aus \\(\\phi \\Rightarrow \\psi\\) wird \\(\\neg\\psi \\Rightarrow \\neg\\phi\\) – gleichwertig zur ursprünglichen Aussage. Die zweite Option ist die Umkehrung (falsch, z. B. \\(n = 2\\)), die dritte die Umkehrung der Kontraposition (ebenso falsch)."}]</script>
+              <noscript><p>Für den Wissens-Check wird JavaScript benötigt.</p></noscript>
+            </div>
+        </article>
+<article class="modul reveal" id="kapitel-2">
+          <header class="modul-head">
+            <p class="eyebrow">Kapitel 2</p>
+            <h2>Mengenlehre, All- &amp; Existenzaussagen</h2>
+            <p class="mat-sub">Fast jedes mathematische Objekt ist eine Menge. Hier geht es um Elemente und Teilmengen, die Mengenoperationen – und um die Quantoren \(\forall\) und \(\exists\), mit denen fast jeder Satz der Vorlesung formuliert ist.</p>
+            
+          </header>
+<details class="box box-idee" open>
+              <summary><span class="box-icon" aria-hidden="true">◇</span><span class="box-kind">Idee</span><span class="box-title">Eine Menge ist durch ihre Elemente bestimmt</span></summary>
+              <div class="box-body"><p>Nach Cantor ist eine Menge eine Zusammenfassung wohlunterschiedener Objekte – ihrer <em>Elemente</em>. Zwei Mengen sind genau dann gleich, wenn sie dieselben Elemente haben; Reihenfolge und Wiederholung spielen keine Rolle. \(x \in M\) heißt „\(x\) ist Element von \(M\)“, \(M \subseteq N\) heißt „jedes Element von \(M\) liegt auch in \(N\)“.</p><p>Mengen beschreibt man durch Aufzählen, \(\{1, 2, \dots, 7\}\), oder durch eine <em>definierende Bedingung</em>: \(\{c \in M \mid \phi(c)\}\) enthält genau die \(c \in M\), für die \(\phi(c)\) wahr ist. So übersetzen sich die Mengenoperationen direkt in Logik:</p><p class="box-formula">\(x \in A \cap B \Leftrightarrow x \in A \wedge x \in B\) &nbsp;·&nbsp; \(x \in A \cup B \Leftrightarrow x \in A \vee x \in B\) &nbsp;·&nbsp; \(x \in A \setminus B \Leftrightarrow x \in A \wedge x \notin B\)</p><p>Dazu kommen das kartesische Produkt \(A \times B = \{(a, b) \mid a \in A \wedge b \in B\}\) und die Potenzmenge \(\mathcal{P}(A) = \{B \mid B \subseteq A\}\).</p></div>
+            </details>
+          <div class="explorable">
+            <div class="ex-head"><p class="eyebrow">Zum Anfassen</p><p class="ex-title">Mengen aus Bedingungen – im Venn-Diagramm</p><p class="ex-lead">Die Grundmenge ist \(M = \{1, \dots, 12\}\). Wähle für \(A\) und \(B\) je eine definierende Bedingung und eine Operation. Jede Zahl landet in ihrem Bereich, die Ergebnismenge leuchtet golden – samt logischer Übersetzung.</p></div>
+            <div data-explorable="venn"></div>
+          </div>
+<details class="box box-idee" open>
+              <summary><span class="box-icon" aria-hidden="true">◇</span><span class="box-kind">Idee</span><span class="box-title">Für alle und es gibt</span></summary>
+              <div class="box-body"><p>Ist \(\phi(x)\) ein Aussagenschema, entstehen mit den Quantoren zwei Aussagen: \(\forall x \in M : \phi(x)\) heißt, \(\phi(c)\) ist für <em>jedes</em> \(c \in M\) wahr, also \(\{c \in M \mid \phi(c)\} = M\). \(\exists x \in M : \phi(x)\) heißt, \(\phi(c)\) ist für <em>mindestens ein</em> \(c \in M\) wahr, also \(\{c \in M \mid \phi(c)\} \neq \emptyset\).</p><p>Daraus ergeben sich die Beweisstrategien: Für „\(\forall\)“ beginnt man mit <em>„Sei \(c \in M\).“</em> und benutzt danach nur, dass \(c\) in \(M\) liegt. Für „\(\exists\)“ genügt ein einziger, konkret angegebener Zeuge. Beim Verneinen tauschen die Quantoren die Rollen: \(\neg \forall x \in M : \phi(x) \Leftrightarrow \exists x \in M : \neg \phi(x)\) und \(\neg \exists x \in M : \phi(x) \Leftrightarrow \forall x \in M : \neg \phi(x)\).</p></div>
+            </details>
+          <div class="explorable">
+            <div class="ex-head"><p class="eyebrow">Zum Anfassen</p><p class="ex-title">Auf die Reihenfolge der Quantoren kommt es an</p><p class="ex-lead">Jeder Punkt \((x, y)\) mit \(x, y \in M = \{1, \dots, 6\}\) ist golden, wenn \(\phi(x, y)\) wahr ist. Wähle eine Bedingung und tippe eine der Aussagen an – das Gitter zeigt dir den Zeugen oder das Gegenbeispiel.</p></div>
+            <div data-explorable="quantor"></div>
+          </div>
+<details class="box box-achtung">
+              <summary><span class="box-icon" aria-hidden="true">!</span><span class="box-kind">Typischer Fehler</span><span class="box-title">Element oder Teilmenge? Und: \(\forall\exists\) ist nicht \(\exists\forall\)</span></summary>
+              <div class="box-body"><p>Für \(A = \{1, 2, 3\}\) ist \(\{1\} \in \mathcal{P}(A)\), aber \(1 \notin \mathcal{P}(A)\) – die Elemente der Potenzmenge sind selbst Mengen. Ebenso ist \(1 \in A\), aber \(\{1\} \subseteq A\). Klingt haarspalterisch, wird aber später bei komplizierteren Konstruktionen entscheidend.</p><p>\(\forall y \in \mathbb{R} : \exists x \in \mathbb{R} : x < y\) ist wahr (nimm \(x = y - 1\)), \(\exists x \in \mathbb{R} : \forall y \in \mathbb{R} : x < y\) ist falsch – es gibt keine kleinste reelle Zahl. Beim ersten darf \(x\) von \(y\) abhängen, beim zweiten muss <em>ein</em> \(x\) für alle \(y\) gleichzeitig passen.</p></div>
+            </details>
+<details class="box box-merke">
+              <summary><span class="box-icon" aria-hidden="true">≡</span><span class="box-kind">Merke</span><span class="box-title">Mengengleichheit in zwei Richtungen – und vollständige Induktion</span></summary>
+              <div class="box-body"><p>\(M = N\) zeigt man meist in zwei Schritten: <em>„Sei \(x \in M\) …, also \(x \in N\)“</em> liefert \(M \subseteq N\), die Rückrichtung \(N \subseteq M\). Eine Kette von Äquivalenzumformungen geht auch – dann muss aber jeder Schritt in <em>beide</em> Richtungen stimmen.</p><p><strong>Vollständige Induktion</strong> beweist \(\forall n \in \mathbb{N} : \phi(n)\) in zwei Teilen: Induktionsanfang \(\phi(1)\) und Induktionsschritt \(\phi(n) \Rightarrow \phi(n+1)\) für beliebiges \(n \in \mathbb{N}\). Klassiker: \(1 + 2 + \dots + n = \frac12 n(n+1)\). Mach im Schritt sichtbar, wo du die Induktionsvoraussetzung \(\phi(n)\) benutzt.</p></div>
+            </details>
+<div class="quiz" id="check-la1-k2" data-quiz-id="la1-k2">
+              <div class="quiz-head"><p class="eyebrow">Wissens-Check</p><p class="quiz-sub">8 Fragen, gemischt. Nach jeder Antwort erfährst du, warum.</p></div>
+              <script type="application/json">[{"type": "mc", "q": "Welche der folgenden Gleichungen ist <em>falsch</em>?", "options": ["\\((3, 5) = (5, 3)\\)", "\\(\\{3, 5\\} = \\{5, 3\\}\\)", "\\(\\{1, 2\\} \\cup \\{2, 3\\} = \\{1, 2, 3\\}\\)", "\\(\\{1, 2, 3\\} \\setminus \\{2\\} = \\{1, 3\\}\\)"], "answer": 0, "why": "Bei Paaren zählt die Reihenfolge: \\((a, b) = (c, d)\\) nur für \\(a = c\\) und \\(b = d\\). Eine Menge ist dagegen allein durch ihre Elemente bestimmt – die Reihenfolge der Aufzählung spielt keine Rolle."}, {"type": "num", "q": "Wie viele Elemente hat die Potenzmenge \\(\\mathcal{P}(\\{1, 2, 3, 4\\})\\)?", "answer": 16, "why": "Jedes der vier Elemente ist in einer Teilmenge enthalten oder nicht – das ergibt \\(2^4 = 16\\) Teilmengen, von \\(\\emptyset\\) bis \\(\\{1,2,3,4\\}\\). Bei \\(\\{1, 2, 3\\}\\) sind es \\(2^3 = 8\\)."}, {"type": "multi", "q": "Sei \\(A = \\{1, 2, 3\\}\\). Welche Aussagen sind wahr?", "options": ["\\(\\{1\\} \\in \\mathcal{P}(A)\\)", "\\(1 \\in \\mathcal{P}(A)\\)", "\\(\\emptyset \\subseteq A\\)", "\\(\\{1, 2\\} \\subseteq A\\)"], "answer": [0, 2, 3], "why": "Die Elemente von \\(\\mathcal{P}(A)\\) sind Teilmengen von \\(A\\) – also \\(\\{1\\}\\), aber nicht die Zahl \\(1\\). Die leere Menge ist Teilmenge jeder Menge, denn „\\(x \\in \\emptyset \\Rightarrow x \\in A\\)“ ist für jedes \\(x\\) wahr (Prämisse falsch)."}, {"type": "num", "q": "Die Menge \\(A\\) hat \\(3\\) Elemente, die Menge \\(B\\) hat \\(5\\) Elemente. Wie viele Elemente hat \\(A \\times B\\)?", "answer": 15, "why": "\\(A \\times B\\) besteht aus allen Paaren \\((a, b)\\) mit \\(a \\in A\\), \\(b \\in B\\): zu jedem der \\(3\\) ersten Einträge passen \\(5\\) zweite, also \\(3 \\cdot 5 = 15\\) Paare."}, {"type": "mc", "q": "Was ist die Negation von \\(\\forall x \\in M : \\phi(x)\\)?", "options": ["\\(\\exists x \\in M : \\neg \\phi(x)\\)", "\\(\\forall x \\in M : \\neg \\phi(x)\\)", "\\(\\exists x \\in M : \\phi(x)\\)", "\\(\\neg \\exists x \\in M : \\phi(x)\\)"], "answer": 0, "why": "„Nicht für alle“ heißt „für mindestens eines nicht“: Ein einziges Gegenbeispiel genügt. Beim Verneinen wird \\(\\forall\\) zu \\(\\exists\\) und die innere Aussage wird verneint (Satz 2.3)."}, {"type": "mc", "q": "Welche Aussage ist wahr? (Wie in der Vorlesung ist \\(\\mathbb{N} = \\{1, 2, 3, \\dots\\}\\).)", "options": ["\\(\\forall x \\in \\mathbb{N} : \\exists y \\in \\mathbb{N} : y > x\\)", "\\(\\exists y \\in \\mathbb{N} : \\forall x \\in \\mathbb{N} : y > x\\)", "\\(\\forall x \\in \\mathbb{N} : \\forall y \\in \\mathbb{N} : y > x\\)", "\\(\\exists x \\in \\mathbb{N} : \\forall y \\in \\mathbb{N} : x > y\\)"], "answer": 0, "why": "Zu jedem \\(x\\) gibt es ein größeres \\(y\\), etwa \\(y = x + 1\\). Aber es gibt kein \\(y\\), das größer ist als <em>alle</em> \\(x\\) – sonst wäre \\(y > y\\). Die Reihenfolge der Quantoren entscheidet."}, {"type": "mc", "q": "Wie beweist man eine Aussage der Form \\(\\exists x \\in M : \\phi(x)\\)?", "options": ["Ein konkretes \\(c \\in M\\) angeben und \\(\\phi(c)\\) nachweisen.", "Mit „Sei \\(c \\in M\\) beliebig“ beginnen und \\(\\phi(c)\\) zeigen.", "\\(\\phi(c)\\) für die ersten drei Elemente von \\(M\\) prüfen.", "Zeigen, dass \\(\\neg \\phi(c)\\) für ein \\(c \\in M\\) gilt."], "answer": 0, "why": "Für eine Existenzaussage reicht ein einziger Zeuge. „Sei \\(c \\in M\\) beliebig“ ist der Beginn eines Beweises einer <em>All</em>aussage – und Beispiele prüfen beweist nie ein „für alle“."}, {"type": "num", "q": "Berechne mit Satz 2.4: \\(1 + 2 + 3 + \\dots + 20 = \\; ?\\)", "answer": 210, "why": "\\(\\sum_{k=1}^{n} k = \\frac12 n(n+1)\\), also \\(\\frac12 \\cdot 20 \\cdot 21 = 210\\). Bewiesen wird die Formel durch vollständige Induktion."}]</script>
               <noscript><p>Für den Wissens-Check wird JavaScript benötigt.</p></noscript>
             </div>
         </article>

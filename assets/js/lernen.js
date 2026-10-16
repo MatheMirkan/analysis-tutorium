@@ -604,12 +604,376 @@
     draw();
   }
 
+  /* ---------- Interaktive Skizze: Wahrheitstafel-Labor ---------- */
+  function truthExplorable(host) {
+    var PREC = { iff: 1, imp: 2, or: 3, and: 4, not: 5, v: 6 };
+    var SYM = { iff: '⇔', imp: '⇒', or: '∨', and: '∧' };
+    var presets = [
+      ['Implikation', 'ϕ ⇒ ψ'],
+      ['Modus ponens', 'ϕ ∧ (ϕ ⇒ ψ) ⇒ ψ'],
+      ['Kontraposition', '(ϕ ⇒ ψ) ⇔ (¬ψ ⇒ ¬ϕ)'],
+      ['Umkehrung?', '(ϕ ⇒ ψ) ⇔ (ψ ⇒ ϕ)'],
+      ['Bauernregel', 'ϕ ⇒ ψ ∨ ¬ψ'],
+      ['Widerspruch', '(¬ϕ ⇒ χ ∧ ¬χ) ⇒ ϕ']
+    ];
+    host.innerHTML =
+      '<div class="ex-stack">' +
+      '<div class="tt-input"><input type="text" spellcheck="false" autocomplete="off" aria-label="Formel eingeben" /></div>' +
+      '<div class="tt-keys">' + ['ϕ', 'ψ', 'χ'].map(function (k) { return '<button type="button" data-ins="' + k + '">' + k + '</button>'; }).join('') +
+      '<span class="tt-sep"></span>' + ['¬', '∧', '∨', '⇒', '⇔', '(', ')'].map(function (k) { return '<button type="button" data-ins="' + k + '" aria-label="' + k + ' einfügen">' + k + '</button>'; }).join('') +
+      '<span class="tt-sep"></span><button type="button" data-ins="back" aria-label="Zeichen löschen">⌫</button><button type="button" data-ins="clear" aria-label="Formel leeren">C</button></div>' +
+      '<div class="ex-presets">' + presets.map(function (p, i) { return '<button type="button" data-p="' + i + '">' + p[0] + '</button>'; }).join('') + '</div>' +
+      '<p class="tt-parsed" data-r="parsed"></p>' +
+      '<div class="tt-wrap" data-r="table"></div>' +
+      '<div class="tt-bar"><label><input type="checkbox" data-r="self" /> Letzte Spalte selbst ausfüllen</label><button class="tt-check" type="button" data-r="check" hidden>Prüfen</button></div>' +
+      '<p class="ex-hint" data-r="hint"></p>' +
+      '<p class="tt-parsed">Tastatur: Variablen sind einzelne Buchstaben; <code>!</code> oder <code>~</code> für ¬, <code>&amp;</code> für ∧, <code>|</code> für ∨, <code>-&gt;</code> oder <code>=&gt;</code> für ⇒, <code>&lt;-&gt;</code> oder <code>&lt;=&gt;</code> für ⇔.</p>' +
+      '</div>';
+    var input = host.querySelector('input[type=text]');
+    var reads = {}; host.querySelectorAll('[data-r]').forEach(function (r) { reads[r.getAttribute('data-r')] = r; });
+    var guesses = {};
+
+    function tokenize(str) {
+      var t = [], i = 0;
+      var map = [['<->', 'iff'], ['<=>', 'iff'], ['->', 'imp'], ['=>', 'imp'], ['&&', 'and'], ['||', 'or'],
+        ['⇔', 'iff'], ['↔', 'iff'], ['⇒', 'imp'], ['→', 'imp'], ['∧', 'and'], ['&', 'and'], ['∨', 'or'], ['|', 'or'],
+        ['¬', 'not'], ['!', 'not'], ['~', 'not'], ['(', '('], [')', ')']];
+      outer: while (i < str.length) {
+        var ch = str[i];
+        if (/\s/.test(ch)) { i++; continue; }
+        for (var k = 0; k < map.length; k++) {
+          if (str.substr(i, map[k][0].length) === map[k][0]) { t.push({ t: map[k][1] }); i += map[k][0].length; continue outer; }
+        }
+        if (/[A-Za-zα-ωϕϑϱ]/.test(ch)) { t.push({ t: 'v', n: ch }); i++; continue; }
+        throw new Error('Unbekanntes Zeichen „' + ch + '“');
+      }
+      return t;
+    }
+    function parse(tokens) {
+      var pos = 0;
+      function peek() { return tokens[pos] && tokens[pos].t; }
+      function iff() { var l = imp(); while (peek() === 'iff') { pos++; l = { op: 'iff', a: l, b: imp() }; } return l; }
+      function imp() { var l = or(); if (peek() === 'imp') { pos++; return { op: 'imp', a: l, b: imp() }; } return l; }
+      function or() { var l = and(); while (peek() === 'or') { pos++; l = { op: 'or', a: l, b: and() }; } return l; }
+      function and() { var l = not(); while (peek() === 'and') { pos++; l = { op: 'and', a: l, b: not() }; } return l; }
+      function not() { if (peek() === 'not') { pos++; return { op: 'not', a: not() }; } return atom(); }
+      function atom() {
+        var tk = tokens[pos];
+        if (!tk) throw new Error('Die Formel endet zu früh');
+        if (tk.t === 'v') { pos++; return { op: 'v', n: tk.n }; }
+        if (tk.t === '(') { pos++; var e = iff(); if (peek() !== ')') throw new Error('Es fehlt eine schließende Klammer'); pos++; return e; }
+        throw new Error('An Stelle ' + (pos + 1) + ' wird eine Variable oder „(“ erwartet');
+      }
+      if (!tokens.length) throw new Error('empty');
+      var e = iff();
+      if (pos < tokens.length) throw new Error(tokens[pos].t === ')' ? 'Eine Klammer „)“ zu viel' : 'Zwischen zwei Teilformeln fehlt eine Verknüpfung');
+      return e;
+    }
+    function show(e) {
+      if (e.op === 'v') return e.n;
+      if (e.op === 'not') { var s = show(e.a); return '¬' + (PREC[e.a.op] < PREC.not ? '(' + s + ')' : s); }
+      var p = PREC[e.op], l = show(e.a), r = show(e.b);
+      // ⇒ und ⇔ untereinander immer klammern – formal unnötig, aber besser lesbar
+      if (PREC[e.a.op] < p || (e.op === 'imp' && PREC[e.a.op] === p) || (p <= 2 && PREC[e.a.op] <= 2)) l = '(' + l + ')';
+      if (PREC[e.b.op] < p || (e.op !== 'imp' && PREC[e.b.op] === p) || (p <= 2 && PREC[e.b.op] <= 2)) r = '(' + r + ')';
+      return l + ' ' + SYM[e.op] + ' ' + r;
+    }
+    function full(e, top) {
+      if (e.op === 'v') return e.n;
+      if (e.op === 'not') return '¬' + full(e.a, false);
+      var s = full(e.a, false) + ' ' + SYM[e.op] + ' ' + full(e.b, false);
+      return top ? s : '(' + s + ')';
+    }
+    function ev(e, env) {
+      switch (e.op) {
+        case 'v': return env[e.n];
+        case 'not': return !ev(e.a, env);
+        case 'and': return ev(e.a, env) && ev(e.b, env);
+        case 'or': return ev(e.a, env) || ev(e.b, env);
+        case 'imp': return !ev(e.a, env) || ev(e.b, env);
+        case 'iff': return ev(e.a, env) === ev(e.b, env);
+      }
+    }
+    function wf(b) { return b ? 'w' : 'f'; }
+
+    var state = null;
+    function build() {
+      var str = input.value;
+      guesses = {};
+      reads.check.hidden = !reads.self.checked;
+      try {
+        var tree = parse(tokenize(str));
+      } catch (err) {
+        state = null;
+        reads.table.innerHTML = '';
+        reads.parsed.innerHTML = err.message === 'empty' ? 'Gib eine Formel ein – zum Beispiel ϕ ⇒ ψ.' : '<span class="tt-error">' + err.message + '</span>';
+        reads.hint.textContent = '';
+        reads.hint.classList.remove('is-bad');
+        return;
+      }
+      var vars = [], cols = [], seen = {};
+      (function walk(e) {
+        if (e.op === 'v') { if (vars.indexOf(e.n) < 0) vars.push(e.n); return; }
+        walk(e.a); if (e.b) walk(e.b);
+        var k = show(e); if (!seen[k]) { seen[k] = 1; cols.push(e); }
+      })(tree);
+      if (vars.length > 4) {
+        state = null; reads.table.innerHTML = '';
+        reads.parsed.innerHTML = '<span class="tt-error">Höchstens vier verschiedene Variablen – sonst wird die Tafel unübersichtlich.</span>';
+        reads.hint.textContent = ''; return;
+      }
+      if (!cols.length) cols.push(tree);
+      var rows = [], n = vars.length;
+      for (var r = 0; r < (1 << n); r++) {
+        var env = {};
+        vars.forEach(function (v, i) { env[v] = !((r >> (n - 1 - i)) & 1); });
+        rows.push(env);
+      }
+      state = { tree: tree, vars: vars, cols: cols, rows: rows };
+      reads.parsed.innerHTML = 'Gelesen als: <span>' + full(tree, true) + '</span>';
+      render(false);
+    }
+    function render(checked) {
+      var st = state, self = reads.self.checked;
+      var h = '<table class="tt"><thead><tr>' + st.vars.map(function (v, i) { return '<th' + (i === st.vars.length - 1 ? ' class="tt-var"' : '') + '>' + v + '</th>'; }).join('') +
+        st.cols.map(function (c, i) { return '<th' + (i === st.cols.length - 1 ? ' class="tt-final"' : '') + '>' + show(c) + '</th>'; }).join('') + '</tr></thead><tbody>';
+      var ok = 0;
+      st.rows.forEach(function (env, r) {
+        h += '<tr>' + st.vars.map(function (v, i) { var b = env[v]; return '<td class="' + (b ? '' : 'is-f') + (i === st.vars.length - 1 ? ' tt-var' : '') + '">' + wf(b) + '</td>'; }).join('');
+        st.cols.forEach(function (c, i) {
+          var b = ev(c, env), last = i === st.cols.length - 1;
+          if (last && self) {
+            var g = guesses[r], cls = 'tt-cell';
+            if (checked && g !== undefined) { cls += (g === b ? ' is-ok' : ' is-wrong'); if (g === b) ok++; }
+            h += '<td class="tt-final"><button type="button" class="' + cls + '" data-row="' + r + '" aria-label="Zeile ' + (r + 1) + ' ausfüllen">' + (g === undefined ? '?' : wf(g)) + '</button></td>';
+          } else {
+            h += '<td class="' + (b ? '' : 'is-f') + (last ? ' tt-final' : '') + '">' + wf(b) + '</td>';
+          }
+        });
+        h += '</tr>';
+      });
+      reads.table.innerHTML = h + '</tbody></table>';
+      reads.table.querySelectorAll('.tt-cell').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var r = +b.getAttribute('data-row');
+          guesses[r] = guesses[r] === undefined ? true : !guesses[r];
+          render(false);
+        });
+      });
+      var total = st.rows.length, trues = st.rows.filter(function (env) { return ev(st.tree, env); }).length;
+      var hint, bad = false;
+      if (self && !checked) {
+        hint = 'Fülle die goldene Spalte aus (Klick wechselt zwischen w und f) und drücke dann „Prüfen“.';
+      } else if (self && checked) {
+        bad = ok < total;
+        hint = ok + ' von ' + total + ' Zeilen richtig.' + (bad ? ' Die rot markierten Zeilen noch einmal ansehen – Tipp: die Spalten links helfen.' : ' Perfekt – ' + verdict(trues, total));
+      } else {
+        hint = verdict(trues, total);
+      }
+      reads.hint.textContent = hint;
+      reads.hint.classList.toggle('is-bad', bad);
+    }
+    function verdict(trues, total) {
+      if (trues === total) return 'Tautologie: In jeder der ' + total + ' Zeilen steht w. Damit taugt die Formel als logischer Schluss.';
+      if (trues === 0) return 'Kontradiktion: Die Formel ist in jeder Zeile falsch.';
+      return 'Keine Tautologie: wahr in ' + trues + ' von ' + total + ' Zeilen. Schon eine Zeile mit f genügt als Gegenbeispiel.';
+    }
+    host.querySelectorAll('[data-ins]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var k = b.getAttribute('data-ins'), v = input.value, s = input.selectionStart == null ? v.length : input.selectionStart, e = input.selectionEnd == null ? v.length : input.selectionEnd;
+        if (k === 'clear') { input.value = ''; s = 0; }
+        else if (k === 'back') { if (s === e && s > 0) s--; input.value = v.slice(0, s) + v.slice(e); }
+        else {
+          var ins = /[¬()]/.test(k) ? k : (/[ϕψχ]/.test(k) ? k : ' ' + k + ' ');
+          input.value = v.slice(0, s) + ins + v.slice(e); s += ins.length;
+        }
+        input.focus(); try { input.setSelectionRange(s, s); } catch (err) {}
+        build();
+      });
+    });
+    host.querySelectorAll('[data-p]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        input.value = presets[+b.getAttribute('data-p')][1];
+        host.querySelectorAll('[data-p]').forEach(function (x) { x.classList.toggle('is-on', x === b); });
+        build();
+      });
+    });
+    input.addEventListener('input', function () { host.querySelectorAll('[data-p]').forEach(function (x) { x.classList.remove('is-on'); }); build(); });
+    reads.self.addEventListener('change', function () { guesses = {}; reads.check.hidden = !reads.self.checked; if (state) render(false); });
+    reads.check.addEventListener('click', function () { if (state) render(true); });
+    input.value = presets[0][1];
+    host.querySelector('[data-p="0"]').classList.add('is-on');
+    build();
+  }
+
+  /* ---------- Interaktive Skizze: Venn-Diagramm mit definierenden Bedingungen ---------- */
+  function vennExplorable(host) {
+    var W = 420, H = 300, CA = [150, 150], CB = [270, 150], R = 95;
+    var conds = {
+      even: { label: 'n ist gerade', f: function (n) { return n % 2 === 0; } },
+      odd: { label: 'n ist ungerade', f: function (n) { return n % 2 === 1; } },
+      three: { label: 'n ist durch 3 teilbar', f: function (n) { return n % 3 === 0; } },
+      prime: { label: 'n ist eine Primzahl', f: function (n) { return [2, 3, 5, 7, 11].indexOf(n) >= 0; } },
+      small: { label: 'n < 7', f: function (n) { return n < 7; } },
+      square: { label: 'n ist eine Quadratzahl', f: function (n) { return [1, 4, 9].indexOf(n) >= 0; } }
+    };
+    var ops = {
+      cap: { label: 'A ∩ B', logic: 'x ∈ A ∧ x ∈ B', f: function (a, b) { return a && b; } },
+      cup: { label: 'A ∪ B', logic: 'x ∈ A ∨ x ∈ B', f: function (a, b) { return a || b; } },
+      amb: { label: 'A \\ B', logic: 'x ∈ A ∧ x ∉ B', f: function (a, b) { return a && !b; } },
+      bma: { label: 'B \\ A', logic: 'x ∈ B ∧ x ∉ A', f: function (a, b) { return b && !a; } }
+    };
+    var slots = {
+      ab: [[198, 118], [222, 118], [192, 150], [228, 150], [198, 182], [222, 182]],
+      a: [[92, 125], [92, 175], [126, 95], [126, 150], [126, 205], [160, 118], [160, 182]],
+      b: [[328, 125], [328, 175], [294, 95], [294, 150], [294, 205], [260, 118], [260, 182]],
+      o: [[40, 34], [110, 30], [210, 36], [310, 30], [380, 34], [110, 272], [210, 266], [310, 272], [380, 270], [30, 110], [30, 190], [390, 110], [390, 190]]
+    };
+    function opts(sel) { return Object.keys(conds).map(function (k) { return '<option value="' + k + '"' + (k === sel ? ' selected' : '') + '>' + conds[k].label + '</option>'; }).join(''); }
+    host.innerHTML =
+      '<div class="ex-grid">' +
+      '<svg class="ex-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Venn-Diagramm der Mengen A und B in M = {1, …, 12}"></svg>' +
+      '<div class="ex-panel">' +
+      '<label class="ex-field-l">A = { n ∈ M | Bedingung }<select data-s="A">' + opts('even') + '</select></label>' +
+      '<label class="ex-field-l">B = { n ∈ M | Bedingung }<select data-s="B">' + opts('three') + '</select></label>' +
+      '<div class="ex-presets">' + Object.keys(ops).map(function (k) { return '<button type="button" data-op="' + k + '">' + ops[k].label + '</button>'; }).join('') + '</div>' +
+      '<dl class="ex-read"><dt>A</dt><dd data-r="A"></dd><dt>B</dt><dd data-r="B"></dd><dt data-r="opl"></dt><dd data-r="res"></dd><dt>A ⊆ B?</dt><dd data-r="sub"></dd></dl>' +
+      '<p class="ex-hint" data-r="hint"></p>' +
+      '</div></div>';
+    var svg = host.querySelector('svg'), selA = host.querySelector('[data-s=A]'), selB = host.querySelector('[data-s=B]');
+    var reads = {}; host.querySelectorAll('[data-r]').forEach(function (r) { reads[r.getAttribute('data-r')] = r; });
+    var cur = 'cap';
+    var uid = 'v' + Math.random().toString(36).slice(2, 7);
+    function setStr(arr) { return arr.length ? '{' + arr.join(', ') + '}' : '∅'; }
+    function draw() {
+      var fa = conds[selA.value].f, fb = conds[selB.value].f, op = ops[cur];
+      var circA = '<circle cx="' + CA[0] + '" cy="' + CA[1] + '" r="' + R + '"/>', circB = '<circle cx="' + CB[0] + '" cy="' + CB[1] + '" r="' + R + '"/>';
+      var s = '<defs><clipPath id="' + uid + 'ca">' + circA + '</clipPath><clipPath id="' + uid + 'cb">' + circB + '</clipPath>' +
+        '<mask id="' + uid + 'ma"><rect width="' + W + '" height="' + H + '" fill="#fff"/><circle cx="' + CA[0] + '" cy="' + CA[1] + '" r="' + R + '" fill="#000"/></mask>' +
+        '<mask id="' + uid + 'mb"><rect width="' + W + '" height="' + H + '" fill="#fff"/><circle cx="' + CB[0] + '" cy="' + CB[1] + '" r="' + R + '" fill="#000"/></mask></defs>';
+      s += '<rect class="ex-uni" x="14" y="14" width="' + (W - 28) + '" height="' + (H - 28) + '" rx="10"/>';
+      var reg = function (c, attr) { return '<circle class="ex-region" cx="' + c[0] + '" cy="' + c[1] + '" r="' + R + '" ' + attr + '/>'; };
+      if (cur === 'cap') s += reg(CA, 'clip-path="url(#' + uid + 'cb)"');
+      if (cur === 'cup') s += '<g style="opacity:1">' + reg(CA, 'mask="url(#' + uid + 'mb)"') + reg(CB, '') + '</g>';
+      if (cur === 'amb') s += reg(CA, 'mask="url(#' + uid + 'mb)"');
+      if (cur === 'bma') s += reg(CB, 'mask="url(#' + uid + 'ma)"');
+      s += '<circle class="ex-set" cx="' + CA[0] + '" cy="' + CA[1] + '" r="' + R + '"/><circle class="ex-set" cx="' + CB[0] + '" cy="' + CB[1] + '" r="' + R + '"/>';
+      s += '<text class="ex-lbl" x="62" y="70">A</text><text class="ex-lbl" x="350" y="70">B</text><text class="ex-lbl" x="24" y="282">M</text>';
+      var used = { ab: 0, a: 0, b: 0, o: 0 }, A = [], B = [], res = [];
+      for (var n = 1; n <= 12; n++) {
+        var ia = fa(n), ib = fb(n), key = ia && ib ? 'ab' : ia ? 'a' : ib ? 'b' : 'o';
+        var p = slots[key][used[key]++], inn = op.f(ia, ib);
+        if (ia) A.push(n); if (ib) B.push(n); if (inn) res.push(n);
+        s += '<text class="ex-num' + (inn ? ' is-in' : '') + '" x="' + p[0] + '" y="' + p[1] + '">' + n + '</text>';
+      }
+      svg.innerHTML = s;
+      reads.A.textContent = setStr(A);
+      reads.B.textContent = setStr(B);
+      reads.opl.textContent = op.label;
+      reads.res.textContent = setStr(res);
+      var bad = A.filter(function (x) { return B.indexOf(x) < 0; });
+      reads.sub.textContent = bad.length ? 'nein – ' + bad[0] + ' ∈ A, aber ' + bad[0] + ' ∉ B' : 'ja – jedes Element von A liegt in B';
+      reads.hint.textContent = op.label + ' = { x ∈ M | ' + op.logic + ' }' + (res.length ? '' : ' – hier ist das die leere Menge.') + (selA.value === selB.value ? ' Gleiche Bedingungen: A = B.' : '');
+      host.querySelectorAll('[data-op]').forEach(function (bt) { bt.classList.toggle('is-on', bt.getAttribute('data-op') === cur); });
+    }
+    selA.addEventListener('change', draw); selB.addEventListener('change', draw);
+    host.querySelectorAll('[data-op]').forEach(function (bt) { bt.addEventListener('click', function () { cur = bt.getAttribute('data-op'); draw(); }); });
+    draw();
+  }
+
+  /* ---------- Interaktive Skizze: Quantoren auf einem Gitter ---------- */
+  function quantorExplorable(host) {
+    var N = 6, W = 380, H = 330, ox = 62, oy = 286, st = 48;
+    function P(x, y) { return [ox + (x - 1) * st, oy - (y - 1) * st]; }
+    var rels = {
+      sum7: { label: 'x + y = 7', f: function (x, y) { return x + y === 7; } },
+      le: { label: 'x ≤ y', f: function (x, y) { return x <= y; } },
+      lt: { label: 'x < y', f: function (x, y) { return x < y; }, note: { ae: ' Auf ℝ wäre diese Aussage wahr (nimm y = x + 1) – in der endlichen Menge M fehlt zu x = 6 ein größeres y.' } },
+      div: { label: 'x teilt y', f: function (x, y) { return y % x === 0; } },
+      eq: { label: 'x = y', f: function (x, y) { return x === y; } }
+    };
+    var stm = [
+      { k: 'aa', txt: '∀x ∈ M : ∀y ∈ M : ϕ(x, y)', neg: '∃x ∈ M : ∃y ∈ M : ¬ϕ(x, y)' },
+      { k: 'ae', txt: '∀x ∈ M : ∃y ∈ M : ϕ(x, y)', neg: '∃x ∈ M : ∀y ∈ M : ¬ϕ(x, y)' },
+      { k: 'ea', txt: '∃y ∈ M : ∀x ∈ M : ϕ(x, y)', neg: '∀y ∈ M : ∃x ∈ M : ¬ϕ(x, y)' },
+      { k: 'ee', txt: '∃x ∈ M : ∃y ∈ M : ϕ(x, y)', neg: '∀x ∈ M : ∀y ∈ M : ¬ϕ(x, y)' }
+    ];
+    host.innerHTML =
+      '<div class="ex-grid">' +
+      '<svg class="ex-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Gitter aller Paare (x, y) mit x, y aus {1, …, 6}"></svg>' +
+      '<div class="ex-panel">' +
+      '<div class="ex-presets">' + Object.keys(rels).map(function (k) { return '<button type="button" data-rel="' + k + '">ϕ(x, y): ' + rels[k].label + '</button>'; }).join('') + '</div>' +
+      '<div class="q-list">' + stm.map(function (s, i) { return '<button type="button" data-q="' + i + '"><span>' + s.txt + '</span><span class="q-badge"></span></button>'; }).join('') + '</div>' +
+      '<p class="ex-hint" data-r="hint"></p>' +
+      '</div></div>';
+    var svg = host.querySelector('svg'), hint = host.querySelector('[data-r=hint]');
+    var cur = 'sum7', sel = 1;
+    function range() { var a = []; for (var i = 1; i <= N; i++) a.push(i); return a; }
+    function evalAll(f) {
+      var M = range();
+      var colHas = M.map(function (x) { return M.filter(function (y) { return f(x, y); }); });
+      var rowAll = M.filter(function (y) { return M.every(function (x) { return f(x, y); }); });
+      var firstFalse = null, firstTrue = null;
+      M.forEach(function (x) { M.forEach(function (y) { if (f(x, y)) { if (!firstTrue) firstTrue = [x, y]; } else if (!firstFalse) firstFalse = [x, y]; }); });
+      return {
+        aa: !firstFalse, ae: colHas.every(function (c) { return c.length; }), ea: rowAll.length > 0, ee: !!firstTrue,
+        colHas: colHas, rowAll: rowAll, firstFalse: firstFalse, firstTrue: firstTrue
+      };
+    }
+    function mark(x, y, bad) { var p = P(x, y); return '<circle class="ex-qmark' + (bad ? ' is-bad' : '') + '" cx="' + p[0] + '" cy="' + p[1] + '" r="13"/>'; }
+    function colBand(x, bad) { var p = P(x, N); return '<rect class="ex-qband' + (bad ? ' is-bad' : '') + '" x="' + (p[0] - 20) + '" y="' + (p[1] - 20) + '" width="40" height="' + ((N - 1) * st + 40) + '" rx="10"/>'; }
+    function rowBand(y, bad) { var p = P(1, y); return '<rect class="ex-qband' + (bad ? ' is-bad' : '') + '" x="' + (p[0] - 20) + '" y="' + (p[1] - 20) + '" width="' + ((N - 1) * st + 40) + '" height="40" rx="10"/>'; }
+    function draw() {
+      var f = rels[cur].f, r = evalAll(f), M = range(), s = '', h = '', bad = false;
+      var k = stm[sel].k;
+      // Hervorhebungen (unter den Punkten)
+      if (k === 'ae') {
+        if (r.ae) { M.forEach(function (x) { s += mark(x, r.colHas[x - 1][0], false); }); h = 'Wahr: In jeder Spalte x gibt es mindestens einen goldenen Punkt – markiert ist je ein passendes y. Das y darf von x abhängen.'; }
+        else { var x0 = M.filter(function (x) { return !r.colHas[x - 1].length; })[0]; s += colBand(x0, true); bad = true; h = 'Falsch: In der Spalte x = ' + x0 + ' ist kein Punkt golden – für x = ' + x0 + ' gibt es kein passendes y. Das ist der Zeuge für die Negation.'; }
+      } else if (k === 'ea') {
+        if (r.ea) { s += rowBand(r.rowAll[0], false); h = 'Wahr: Die ganze Zeile y = ' + r.rowAll[0] + ' ist golden – dieses eine y passt für alle x gleichzeitig.'; }
+        else { M.forEach(function (y) { var x = M.filter(function (x) { return !f(x, y); })[0]; s += mark(x, y, true); }); bad = true; h = 'Falsch: Keine Zeile ist komplett golden. In jeder Zeile y ist ein Gegenbeispiel x markiert – kein einzelnes y passt für alle x.'; }
+      } else if (k === 'aa') {
+        if (r.aa) h = 'Wahr: Alle 36 Punkte sind golden.';
+        else { s += mark(r.firstFalse[0], r.firstFalse[1], true); bad = true; h = 'Falsch: Ein einziges Gegenbeispiel genügt – ϕ(' + r.firstFalse[0] + ', ' + r.firstFalse[1] + ') ist falsch.'; }
+      } else {
+        if (r.ee) { s += mark(r.firstTrue[0], r.firstTrue[1], false); h = 'Wahr: Ein Zeuge genügt – ϕ(' + r.firstTrue[0] + ', ' + r.firstTrue[1] + ') ist wahr.'; }
+        else { bad = true; h = 'Falsch: Kein einziger Punkt ist golden.'; }
+      }
+      // Achsen und Punkte
+      M.forEach(function (i) {
+        var px = P(i, 1), py = P(1, i);
+        s += '<text class="ex-num" x="' + px[0] + '" y="' + (oy + 26) + '">' + i + '</text>';
+        s += '<text class="ex-num" x="' + (ox - 30) + '" y="' + py[1] + '">' + i + '</text>';
+      });
+      s += '<text class="ex-lbl" x="' + (ox + (N - 1) * st + 22) + '" y="' + (oy + 30) + '">x</text><text class="ex-lbl" x="' + (ox - 36) + '" y="' + (oy - (N - 1) * st - 26) + '">y</text>';
+      M.forEach(function (x) { M.forEach(function (y) { var p = P(x, y); s += '<circle class="ex-qdot' + (f(x, y) ? ' is-true' : '') + '" cx="' + p[0] + '" cy="' + p[1] + '" r="7"/>'; }); });
+      svg.innerHTML = s;
+      host.querySelectorAll('[data-q]').forEach(function (b, i) {
+        var v = r[stm[i].k], badge = b.querySelector('.q-badge');
+        badge.textContent = v ? 'wahr' : 'falsch';
+        badge.className = 'q-badge ' + (v ? 'is-w' : 'is-f');
+        b.classList.toggle('is-on', i === sel);
+      });
+      if (rels[cur].note && rels[cur].note[k]) h += rels[cur].note[k];
+      hint.textContent = h + ' Negation: ¬(' + stm[sel].txt + ') ⇔ ' + stm[sel].neg + '.';
+      hint.classList.toggle('is-bad', bad);
+      host.querySelectorAll('[data-rel]').forEach(function (b) { b.classList.toggle('is-on', b.getAttribute('data-rel') === cur); });
+    }
+    host.querySelectorAll('[data-rel]').forEach(function (b) { b.addEventListener('click', function () { cur = b.getAttribute('data-rel'); draw(); }); });
+    host.querySelectorAll('[data-q]').forEach(function (b) { b.addEventListener('click', function () { sel = +b.getAttribute('data-q'); draw(); }); });
+    draw();
+  }
+
   document.querySelectorAll('[data-explorable]').forEach(function (host) {
     var kind = host.getAttribute('data-explorable');
     if (kind === 'matrix') matrixExplorable(host);
     if (kind === 'ode') odeExplorable(host);
     if (kind === 'cobweb') cobwebExplorable(host);
     if (kind === 'implicit') implicitExplorable(host);
+    if (kind === 'truth') truthExplorable(host);
+    if (kind === 'venn') vennExplorable(host);
+    if (kind === 'quantor') quantorExplorable(host);
   });
 
   document.querySelectorAll('.lernbereich').forEach(math);
