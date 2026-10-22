@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <script>document.documentElement.classList.add('js');</script>
+  <script>document.documentElement.classList.add('js');(function(){var t;try{t=localStorage.getItem('theme')}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})();</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lineare Algebra I für Informatiker · Lernpfad – Mirkan Deniz Günkaya</title>
@@ -43,9 +43,12 @@
         <a href="tipps_faq.html">Tipps &amp; Datenschutz</a>
         <a class="cta" href="mailto:M.Guenkaya@campus.lmu.de">Kontakt</a>
       </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Dunkles Design einschalten" title="Hell / Dunkel"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg></button>
       <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navlinks">
         <span></span><span></span><span></span>
       </button>
+      </div>
     </div>
   </header>
 
@@ -60,6 +63,8 @@
           <nav class="quicknav" aria-label="Abschnitte">
             <a href="#materialien">Materialien</a>
             <a href="#lernpfad">Verstehen &amp; Üben</a>
+            <a href="#ueben">Locker üben</a>
+            <a href="#begleitung">Zum Skript</a>
           </nav>
         </div>
         <div class="phero-visual reveal">
@@ -206,7 +211,7 @@
       <div class="matsearch reveal">
         <label class="matsearch-field">
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
-          <input type="search" placeholder="Materialien durchsuchen – z. B. Stetigkeit, Skript, Klausur" aria-label="Materialien durchsuchen" autocomplete="off" spellcheck="false" />
+          <input type="search" placeholder="Seite durchsuchen – Materialien, Kapitel, Lesehilfe" aria-label="Materialien durchsuchen" autocomplete="off" spellcheck="false" />
           <kbd aria-hidden="true">/</kbd>
         </label>
         <p class="matsearch-status" aria-live="polite"></p>
@@ -304,7 +309,7 @@
             <p class="mat-sub">Die Sprache, in der jeder Satz der Vorlesung geschrieben ist: Aussagen, ihre Wahrheitswerte und die fünf Verknüpfungen \(\neg, \wedge, \vee, \Rightarrow, \Leftrightarrow\) – und warum Tautologien die Bausteine jedes Beweises sind.</p>
             
           </header>
-<details class="box box-idee" open>
+<details class="box box-idee" id="box-1" data-search="1" open>
               <summary><span class="box-icon" aria-hidden="true">◇</span><span class="box-kind">Idee</span><span class="box-title">Eine Aussage ist wahr oder falsch – sonst nichts</span></summary>
               <div class="box-body"><p>Eine <em>Aussage</em> ist ein Satz, dem man sinnvoll und objektiv einen Wahrheitswert zuordnen kann: wahr (w) oder falsch (f). \(1 + 1 = 2\) ist eine wahre, \(1 + 1 = 3\) eine falsche Aussage. Keine Aussagen sind dagegen Aufforderungen, Terme wie \(x^3 - 3x^2 - 3x + 1\) oder vage Sätze wie „\(10^{100}\) ist eine große Zahl“.</p><p>Ein Satz wie \(a^2 + b^2 = c^2\) ist ein <em>Aussagenschema</em>: Er wird erst zur Aussage, wenn man die Parameter \(a, b, c\) belegt. Daraus folgt die wichtigste Schreibregel überhaupt: <strong>Keine Bezeichnung benutzen, die vorher nicht festgelegt wurde.</strong></p><p>Aussagen werden mit \(\neg\) (nicht), \(\wedge\) (und), \(\vee\) (oder), \(\Rightarrow\) (daraus folgt) und \(\Leftrightarrow\) (genau dann, wenn) verknüpft. Der Wahrheitswert des Ganzen hängt <em>nur</em> von den Wahrheitswerten der Teile ab – und genau das hält eine Wahrheitstafel fest.</p></div>
             </details>
@@ -312,13 +317,17 @@
             <div class="ex-head"><p class="eyebrow">Zum Anfassen</p><p class="ex-title">Das Wahrheitstafel-Labor</p><p class="ex-lead">Wähle eine Vorlage oder tippe eine eigene Formel ein. Das Labor liest sie nach den Bindungsregeln der Vorlesung und legt für jede Teilformel eine Spalte an – die Ergebnisspalte füllst du selbst aus und lässt sie prüfen. Ist es eine Tautologie?</p></div>
             <div data-explorable="truth"></div>
           </div>
-<details class="box box-achtung">
+<details class="box box-achtung" id="box-2" data-search="1">
               <summary><span class="box-icon" aria-hidden="true">!</span><span class="box-kind">Typischer Fehler</span><span class="box-title">\(\phi \Rightarrow \psi\) ist nicht dasselbe wie \(\psi \Rightarrow \phi\)</span></summary>
               <div class="box-body"><p>\(x = 3 \Rightarrow x^2 = 9\) gilt für alle reellen \(x\), die Umkehrung \(x^2 = 9 \Rightarrow x = 3\) aber nicht – für \(x = -3\) ist die Prämisse wahr und die Konklusion falsch. Wer beim Umformen von \((x - 4)^2 = 9\) nur auf \(x - 4 = 3\) schließt, verliert die Lösung \(x = 1\). Hinreichend (\(\phi\) für \(\psi\)) und notwendig (\(\psi\) für \(\phi\)) sind zwei verschiedene Dinge.</p><p>Zweiter Stolperstein: Eine Implikation braucht keinen inhaltlichen Zusammenhang. Ist die Prämisse falsch, ist \(\phi \Rightarrow \psi\) automatisch wahr.</p></div>
             </details>
-<details class="box box-merke">
+<details class="box box-merke" id="box-3" data-search="1">
               <summary><span class="box-icon" aria-hidden="true">≡</span><span class="box-kind">Merke</span><span class="box-title">Tautologien sind die Bausteine von Beweisen</span></summary>
               <div class="box-body"><p>Eine <em>Tautologie</em> ist immer wahr, ganz egal, wie die Teilaussagen belegt sind. \(\psi\) folgt durch einen <em>logischen Schluss</em> aus \(\phi_1, \dots, \phi_n\), wenn \(\phi_1 \wedge \dots \wedge \phi_n \Rightarrow \psi\) eine Tautologie ist. Die vier wichtigsten:</p><ul class="box-list"><li><strong>Modus ponens:</strong> \(\phi \wedge (\phi \Rightarrow \psi) \Rightarrow \psi\)</li><li><strong>Kontraposition:</strong> \((\phi \Rightarrow \psi) \Leftrightarrow (\neg \psi \Rightarrow \neg \phi)\)</li><li><strong>Widerspruch:</strong> \((\neg \phi \Rightarrow \chi \wedge \neg \chi) \Rightarrow \phi\)</li><li><strong>Ringschluss:</strong> aus \(\phi \Rightarrow \chi\), \(\chi \Rightarrow \psi\), \(\psi \Rightarrow \phi\) folgt, dass alle drei äquivalent sind.</li></ul><p>Bindungsstärke, von stark nach schwach: \(\neg\), \(\wedge\), \(\vee\), \(\Rightarrow\), \(\Leftrightarrow\). Im Zweifel: Klammern setzen.</p></div>
+            </details>
+<details class="box box-praxis" id="box-4" data-search="1">
+              <summary><span class="box-icon" aria-hidden="true">&lt;/&gt;</span><span class="box-kind">Informatik</span><span class="box-title">Logik steckt in jeder if-Abfrage</span></summary>
+              <div class="box-body"><p>Eine Bedingung wie <code>x &gt; 0 and not fertig</code> ist nichts anderes als \(\phi \wedge \neg \psi\). Wer Bedingungen vereinfacht, rechnet mit Tautologien: Nach De Morgan ist <code>not (a and b)</code> dasselbe wie <code>not a or not b</code>, und eine Implikation \(\phi \Rightarrow \psi\) schreibt man im Code als <code>not phi or psi</code> – etwa bei Vorbedingungen und <code>assert</code>.</p><p>Wahrheitstafeln sind das systematische Testen aller Fälle. In der Hardware werden aus \(\wedge, \vee, \neg\) Logikgatter, und SAT-Solver entscheiden, ob eine Formel mit tausenden Variablen erfüllbar ist – ein Werkzeug der Softwareverifikation.</p></div>
             </details>
 <div class="quiz" id="check-la1-k1" data-quiz-id="la1-k1">
               <div class="quiz-head"><p class="eyebrow">Wissens-Check</p><p class="quiz-sub">8 Fragen, gemischt. Nach jeder Antwort erfährst du, warum.</p></div>
@@ -333,7 +342,7 @@
             <p class="mat-sub">Fast jedes mathematische Objekt ist eine Menge. Hier geht es um Elemente und Teilmengen, die Mengenoperationen – und um die Quantoren \(\forall\) und \(\exists\), mit denen fast jeder Satz der Vorlesung formuliert ist.</p>
             
           </header>
-<details class="box box-idee" open>
+<details class="box box-idee" id="box-5" data-search="1" open>
               <summary><span class="box-icon" aria-hidden="true">◇</span><span class="box-kind">Idee</span><span class="box-title">Eine Menge ist durch ihre Elemente bestimmt</span></summary>
               <div class="box-body"><p>Nach Cantor ist eine Menge eine Zusammenfassung wohlunterschiedener Objekte – ihrer <em>Elemente</em>. Zwei Mengen sind genau dann gleich, wenn sie dieselben Elemente haben; Reihenfolge und Wiederholung spielen keine Rolle. \(x \in M\) heißt „\(x\) ist Element von \(M\)“, \(M \subseteq N\) heißt „jedes Element von \(M\) liegt auch in \(N\)“.</p><p>Mengen beschreibt man durch Aufzählen, \(\{1, 2, \dots, 7\}\), oder durch eine <em>definierende Bedingung</em>: \(\{c \in M \mid \phi(c)\}\) enthält genau die \(c \in M\), für die \(\phi(c)\) wahr ist. So übersetzen sich die Mengenoperationen direkt in Logik:</p><p class="box-formula">\(x \in A \cap B \Leftrightarrow x \in A \wedge x \in B\) &nbsp;·&nbsp; \(x \in A \cup B \Leftrightarrow x \in A \vee x \in B\) &nbsp;·&nbsp; \(x \in A \setminus B \Leftrightarrow x \in A \wedge x \notin B\)</p><p>Dazu kommen das kartesische Produkt \(A \times B = \{(a, b) \mid a \in A \wedge b \in B\}\) und die Potenzmenge \(\mathcal{P}(A) = \{B \mid B \subseteq A\}\).</p></div>
             </details>
@@ -341,7 +350,7 @@
             <div class="ex-head"><p class="eyebrow">Zum Anfassen</p><p class="ex-title">Mengen aus Bedingungen – im Venn-Diagramm</p><p class="ex-lead">Die Grundmenge ist \(M = \{1, \dots, 12\}\). Wähle für \(A\) und \(B\) je eine definierende Bedingung und eine Operation. Jede Zahl landet in ihrem Bereich, die Ergebnismenge leuchtet golden – samt logischer Übersetzung.</p></div>
             <div data-explorable="venn"></div>
           </div>
-<details class="box box-idee" open>
+<details class="box box-idee" id="box-6" data-search="1" open>
               <summary><span class="box-icon" aria-hidden="true">◇</span><span class="box-kind">Idee</span><span class="box-title">Für alle und es gibt</span></summary>
               <div class="box-body"><p>Ist \(\phi(x)\) ein Aussagenschema, entstehen mit den Quantoren zwei Aussagen: \(\forall x \in M : \phi(x)\) heißt, \(\phi(c)\) ist für <em>jedes</em> \(c \in M\) wahr, also \(\{c \in M \mid \phi(c)\} = M\). \(\exists x \in M : \phi(x)\) heißt, \(\phi(c)\) ist für <em>mindestens ein</em> \(c \in M\) wahr, also \(\{c \in M \mid \phi(c)\} \neq \emptyset\).</p><p>Daraus ergeben sich die Beweisstrategien: Für „\(\forall\)“ beginnt man mit <em>„Sei \(c \in M\).“</em> und benutzt danach nur, dass \(c\) in \(M\) liegt. Für „\(\exists\)“ genügt ein einziger, konkret angegebener Zeuge. Beim Verneinen tauschen die Quantoren die Rollen: \(\neg \forall x \in M : \phi(x) \Leftrightarrow \exists x \in M : \neg \phi(x)\) und \(\neg \exists x \in M : \phi(x) \Leftrightarrow \forall x \in M : \neg \phi(x)\).</p></div>
             </details>
@@ -349,13 +358,17 @@
             <div class="ex-head"><p class="eyebrow">Zum Anfassen</p><p class="ex-title">Auf die Reihenfolge der Quantoren kommt es an</p><p class="ex-lead">Jeder Punkt \((x, y)\) mit \(x, y \in M = \{1, \dots, 6\}\) ist golden, wenn \(\phi(x, y)\) wahr ist. Wähle eine Bedingung und tippe eine der Aussagen an – das Gitter zeigt dir den Zeugen oder das Gegenbeispiel.</p></div>
             <div data-explorable="quantor"></div>
           </div>
-<details class="box box-achtung">
+<details class="box box-achtung" id="box-7" data-search="1">
               <summary><span class="box-icon" aria-hidden="true">!</span><span class="box-kind">Typischer Fehler</span><span class="box-title">Element oder Teilmenge? Und: \(\forall\exists\) ist nicht \(\exists\forall\)</span></summary>
               <div class="box-body"><p>Für \(A = \{1, 2, 3\}\) ist \(\{1\} \in \mathcal{P}(A)\), aber \(1 \notin \mathcal{P}(A)\) – die Elemente der Potenzmenge sind selbst Mengen. Ebenso ist \(1 \in A\), aber \(\{1\} \subseteq A\). Klingt haarspalterisch, wird aber später bei komplizierteren Konstruktionen entscheidend.</p><p>\(\forall y \in \mathbb{R} : \exists x \in \mathbb{R} : x < y\) ist wahr (nimm \(x = y - 1\)), \(\exists x \in \mathbb{R} : \forall y \in \mathbb{R} : x < y\) ist falsch – es gibt keine kleinste reelle Zahl. Beim ersten darf \(x\) von \(y\) abhängen, beim zweiten muss <em>ein</em> \(x\) für alle \(y\) gleichzeitig passen.</p></div>
             </details>
-<details class="box box-merke">
+<details class="box box-merke" id="box-8" data-search="1">
               <summary><span class="box-icon" aria-hidden="true">≡</span><span class="box-kind">Merke</span><span class="box-title">Mengengleichheit in zwei Richtungen – und vollständige Induktion</span></summary>
               <div class="box-body"><p>\(M = N\) zeigt man meist in zwei Schritten: <em>„Sei \(x \in M\) …, also \(x \in N\)“</em> liefert \(M \subseteq N\), die Rückrichtung \(N \subseteq M\). Eine Kette von Äquivalenzumformungen geht auch – dann muss aber jeder Schritt in <em>beide</em> Richtungen stimmen.</p><p><strong>Vollständige Induktion</strong> beweist \(\forall n \in \mathbb{N} : \phi(n)\) in zwei Teilen: Induktionsanfang \(\phi(1)\) und Induktionsschritt \(\phi(n) \Rightarrow \phi(n+1)\) für beliebiges \(n \in \mathbb{N}\). Klassiker: \(1 + 2 + \dots + n = \frac12 n(n+1)\). Mach im Schritt sichtbar, wo du die Induktionsvoraussetzung \(\phi(n)\) benutzt.</p></div>
+            </details>
+<details class="box box-praxis" id="box-9" data-search="1">
+              <summary><span class="box-icon" aria-hidden="true">&lt;/&gt;</span><span class="box-kind">Informatik</span><span class="box-title">Mengen und Quantoren im Code</span></summary>
+              <div class="box-body"><p>In Python sind Mengen ein eingebauter Datentyp: <code>A &amp; B</code>, <code>A | B</code> und <code>A - B</code> sind Durchschnitt, Vereinigung und Differenz. Eine Menge mit definierender Bedingung \(\{x \in M \mid \phi(x)\}\) ist eine Mengen-Abstraktion <code>{x for x in M if phi(x)}</code> – oder eine SQL-Abfrage mit <code>WHERE</code>.</p><p>Die Quantoren heißen dort <code>all(...)</code> und <code>any(...)</code>, und die Verneinungsregel gilt eins zu eins: <code>not all(p(x) for x in M)</code> ist dasselbe wie <code>any(not p(x) for x in M)</code>. Das kartesische Produkt entspricht einem Join, und die \(2^n\) Teilmengen einer \(n\)-elementigen Menge sind genau die \(n\)-stelligen Bitmasken.</p></div>
             </details>
 <div class="quiz" id="check-la1-k2" data-quiz-id="la1-k2">
               <div class="quiz-head"><p class="eyebrow">Wissens-Check</p><p class="quiz-sub">8 Fragen, gemischt. Nach jeder Antwort erfährst du, warum.</p></div>
@@ -370,7 +383,7 @@
             <p class="mat-sub">Eine Relation ist nichts als eine Teilmenge von \(X \times X\). Mit vier Eigenschaften wird daraus entweder eine Ordnung, mit der man vergleicht, oder eine Äquivalenzrelation, mit der man eine Menge in Klassen zerlegt.</p>
             
           </header>
-<details class="box box-idee" open>
+<details class="box box-idee" id="box-10" data-search="1" open>
               <summary><span class="box-icon" aria-hidden="true">◇</span><span class="box-kind">Idee</span><span class="box-title">Eine Relation ist eine Teilmenge – und vier Eigenschaften entscheiden</span></summary>
               <div class="box-body"><p>Eine <em>Relation</em> auf \(X\) ist eine Teilmenge \(R \subseteq X \times X\); statt \((x, y) \in R\) schreibt man \(xRy\). Bei endlichem \(X\) passt sie in eine Tabelle: ein Kreuz an der Stelle \((x, y)\), wenn \(xRy\) gilt. Entscheidend sind vier Eigenschaften:</p><ul class="box-list"><li><strong>reflexiv:</strong> \(xRx\) für alle \(x\) – die ganze Diagonale ist angekreuzt.</li><li><strong>symmetrisch:</strong> \(xRy \Rightarrow yRx\) – die Tabelle ist spiegelbildlich zur Diagonale.</li><li><strong>anti-symmetrisch:</strong> \(xRy \wedge yRx \Rightarrow x = y\) – außerhalb der Diagonale nie beide Kreuze.</li><li><strong>transitiv:</strong> \(xRy \wedge yRz \Rightarrow xRz\).</li></ul><p>Reflexiv, anti-symmetrisch und transitiv ergibt eine <em>Halbordnung</em>; sind zusätzlich je zwei Elemente vergleichbar, eine <em>Totalordnung</em>. Reflexiv, symmetrisch und transitiv ergibt eine <em>Äquivalenzrelation</em>.</p></div>
             </details>
@@ -378,17 +391,21 @@
             <div class="ex-head"><p class="eyebrow">Zum Anfassen</p><p class="ex-title">Das Relationen-Labor</p><p class="ex-lead">Die Tabelle zeigt eine Relation auf \(X = \{1, \dots, 6\}\): Ein goldenes Feld in Zeile \(x\), Spalte \(y\) bedeutet \(xRy\). Wähle eine Vorlage oder schalte Felder per Klick an und aus. Das Labor prüft alle vier Eigenschaften, nennt Gegenbeispiele und zeigt bei Äquivalenzrelationen die Klassen.</p></div>
             <div data-explorable="relation"></div>
           </div>
-<details class="box box-idee" open>
+<details class="box box-idee" id="box-11" data-search="1" open>
               <summary><span class="box-icon" aria-hidden="true">◇</span><span class="box-kind">Idee</span><span class="box-title">Äquivalenzrelationen zerlegen eine Menge</span></summary>
               <div class="box-body"><p>Ist \(\sim\) eine Äquivalenzrelation, so heißt \([x]_\sim = \{y \in X \mid x \sim y\}\) die <em>Äquivalenzklasse</em> von \(x\). Zwei Klassen sind entweder gleich oder disjunkt, und jedes Element liegt in seiner eigenen Klasse – die Klassen bilden also eine <em>Zerlegung</em> von \(X\). Umgekehrt liefert jede Zerlegung eine Äquivalenzrelation: „liegen in derselben Teilmenge“.</p><p>Das wichtigste Beispiel ist die <em>Kongruenz modulo \(n\)</em>: \(a \equiv_n b \Leftrightarrow n \mid (a - b)\). Ihre Klassen sind die Restklassen \(a + n\mathbb{Z}\), und \(\mathbb{Z}/n\mathbb{Z} = \{\bar 0, \bar 1, \dots, \overline{n-1}\}\) hat genau \(n\) Elemente.</p></div>
             </details>
-<details class="box box-achtung">
+<details class="box box-achtung" id="box-12" data-search="1">
               <summary><span class="box-icon" aria-hidden="true">!</span><span class="box-kind">Typischer Fehler</span><span class="box-title">Anti-symmetrisch ist nicht das Gegenteil von symmetrisch</span></summary>
               <div class="box-body"><p>Eine Relation kann beides sein (die Gleichheit \(=\)) oder keins von beiden. „Nicht symmetrisch“ heißt nur: Es gibt <em>ein</em> Paar mit \(xRy\), aber nicht \(yRx\). Auch Transitivität ist leicht übersehen: Sie muss für <em>alle</em> Ketten \(xRy\), \(yRz\) gelten, auch für \(x = z\). Ein einziges Gegenbeispiel genügt, um eine Eigenschaft zu widerlegen.</p></div>
             </details>
-<details class="box box-merke">
+<details class="box box-merke" id="box-13" data-search="1">
               <summary><span class="box-icon" aria-hidden="true">≡</span><span class="box-kind">Merke</span><span class="box-title">Ordnung vergleicht, Äquivalenz sortiert</span></summary>
               <div class="box-body"><p><strong>Halbordnung</strong> = reflexiv + anti-symmetrisch + transitiv. Beispiele: \(\le\) auf \(\mathbb{R}\) (sogar total), die Teilerrelation auf \(\mathbb{N}\), \(\subseteq\) auf \(\mathcal{P}(X)\).</p><p><strong>Äquivalenzrelation</strong> = reflexiv + symmetrisch + transitiv. Ihre Klassen zerlegen \(X\); es gilt \(a \equiv_n b \Leftrightarrow a + n\mathbb{Z} = b + n\mathbb{Z}\).</p></div>
+            </details>
+<details class="box box-praxis" id="box-14" data-search="1">
+              <summary><span class="box-icon" aria-hidden="true">&lt;/&gt;</span><span class="box-kind">Informatik</span><span class="box-title">Relationen: von Datenbanken bis zum Sortieren</span></summary>
+              <div class="box-body"><p>Relationale Datenbanken heißen so, weil eine Tabelle eine Relation ist – eine Menge von Tupeln. Halbordnungen beschreiben Abhängigkeiten: Welches Modul muss vor welchem gebaut, welches Paket vor welchem installiert werden? Eine <em>topologische Sortierung</em> bringt sie in eine passende Reihenfolge. Sortieralgorithmen wiederum setzen eine <em>Totalordnung</em> voraus – sonst ist „sortiert“ gar nicht definiert.</p><p>Äquivalenzrelationen stecken überall, wo gruppiert wird: <code>GROUP BY</code> in SQL, Union-Find-Strukturen, Hashtabellen mit <code>x % n</code>. Restklassen begegnen dir bei Ringpuffern, bei der Uhrzeit und bei Prüfziffern – die IBAN wird mit einer Rechnung modulo \(97\) geprüft.</p></div>
             </details>
 <div class="quiz" id="check-la1-k3" data-quiz-id="la1-k3">
               <div class="quiz-head"><p class="eyebrow">Wissens-Check</p><p class="quiz-sub">8 Fragen, gemischt. Nach jeder Antwort erfährst du, warum.</p></div>
@@ -403,7 +420,7 @@
             <p class="mat-sub">Eine Abbildung ordnet jedem \(x\) genau ein \(f(x)\) zu. Injektiv, surjektiv, bijektiv – und mit Bijektionen lässt sich sogar vergleichen, wie groß unendliche Mengen sind.</p>
             
           </header>
-<details class="box box-idee" open>
+<details class="box box-idee" id="box-15" data-search="1" open>
               <summary><span class="box-icon" aria-hidden="true">◇</span><span class="box-kind">Idee</span><span class="box-title">Eine Abbildung: zu jedem x genau ein Bild</span></summary>
               <div class="box-body"><p>Eine <em>Abbildung</em> \(f\colon X \to Y\) ist eine Relation zwischen \(X\) und \(Y\), bei der zu jedem \(x \in X\) <strong>genau ein</strong> \(y\) mit \((x, y) \in f\) existiert – dieses \(y\) heißt \(f(x)\). \(f\) heißt <em>injektiv</em>, wenn aus \(f(x_1) = f(x_2)\) stets \(x_1 = x_2\) folgt; <em>surjektiv</em>, wenn jedes \(y \in Y\) getroffen wird; <em>bijektiv</em>, wenn beides gilt.</p><p>Genau die bijektiven Abbildungen haben eine <em>Umkehrabbildung</em> \(f^{-1}\) mit \(f^{-1} \circ f = \mathrm{id}_X\) und \(f \circ f^{-1} = \mathrm{id}_Y\) (Satz 4.8). Bild und Urbild von Teilmengen gibt es dagegen immer: \(f(U) = \{f(x) \mid x \in U\}\) und \(f^{-1}(V) = \{x \in X \mid f(x) \in V\}\).</p></div>
             </details>
@@ -411,17 +428,21 @@
             <div class="ex-head"><p class="eyebrow">Zum Anfassen</p><p class="ex-title">Das Abbildungs-Labor</p><p class="ex-lead">Klicke links ein Element aus \(X\) an und dann rechts sein Bild in \(Y\). Ändere die Größe von \(Y\) und beobachte, wann \(f\) injektiv, surjektiv oder bijektiv sein kann – und wann es eine Umkehrabbildung gibt.</p></div>
             <div data-explorable="mapping"></div>
           </div>
-<details class="box box-idee" open>
+<details class="box box-idee" id="box-16" data-search="1" open>
               <summary><span class="box-icon" aria-hidden="true">◇</span><span class="box-kind">Idee</span><span class="box-title">Wie viele Elemente? Mächtigkeiten zählen</span></summary>
               <div class="box-body"><p>Eine Menge \(A\) hat \(n\) Elemente, wenn es eine Bijektion \(\{1, \dots, n\} \to A\) gibt. Für endliche Mengen gilt</p><p class="box-formula">\(|A \cup B| = |A| + |B| - |A \cap B|\) &nbsp;·&nbsp; \(|A \times B| = |A| \cdot |B|\) &nbsp;·&nbsp; \(|\mathcal{P}(A)| = 2^{|A|}\) &nbsp;·&nbsp; \(\binom{n}{k} = \frac{n!}{k!\,(n-k)!}\)</p><p>Für unendliche Mengen heißen \(A\) und \(B\) <em>gleichmächtig</em>, wenn es eine Bijektion \(A \to B\) gibt. \(A\) ist <em>abzählbar unendlich</em>, wenn \(A\) gleichmächtig zu \(\mathbb{N}\) ist, und <em>überabzählbar</em>, wenn \(A\) nicht einmal höchstens abzählbar ist. Überraschend: \(\mathbb{N} \times \mathbb{N}\) ist abzählbar – man zählt diagonal –, und abzählbare Vereinigungen abzählbarer Mengen bleiben abzählbar.</p></div>
             </details>
-<details class="box box-achtung">
+<details class="box box-achtung" id="box-17" data-search="1">
               <summary><span class="box-icon" aria-hidden="true">!</span><span class="box-kind">Typischer Fehler</span><span class="box-title">\(f^{-1}(V)\) heißt nicht, dass es \(f^{-1}\) gibt</span></summary>
               <div class="box-body"><p>Das Urbild \(f^{-1}(V)\) ist für <em>jede</em> Abbildung definiert, auch ohne Umkehrabbildung. Und Bild und Urbild heben sich im Allgemeinen nicht auf: Es gilt nur \(f(f^{-1}(V)) \subseteq V\) und \(U \subseteq f^{-1}(f(U))\). Gleichheit gibt es erst mit Surjektivität bzw. Injektivität.</p></div>
             </details>
-<details class="box box-merke">
+<details class="box box-merke" id="box-18" data-search="1">
               <summary><span class="box-icon" aria-hidden="true">≡</span><span class="box-kind">Merke</span><span class="box-title">Injektiv, surjektiv, bijektiv – auf einen Blick</span></summary>
               <div class="box-body"><ul class="box-list"><li><strong>injektiv</strong> \(\Leftrightarrow\) es gibt \(g\) mit \(g \circ f = \mathrm{id}_X\) (für \(X \ne \emptyset\)) – höchstens ein Pfeil pro Ziel.</li><li><strong>surjektiv</strong> \(\Leftrightarrow\) es gibt \(g\) mit \(f \circ g = \mathrm{id}_Y\) – mindestens ein Pfeil pro Ziel.</li><li><strong>bijektiv</strong> \(\Leftrightarrow\) genau ein Pfeil pro Ziel; dann ist \(f^{-1}\) eindeutig, und \((g \circ f)^{-1} = f^{-1} \circ g^{-1}\).</li><li>Für endliche Mengen mit \(|X| = |Y|\) sind injektiv, surjektiv und bijektiv gleichwertig.</li></ul></div>
+            </details>
+<details class="box box-praxis" id="box-19" data-search="1">
+              <summary><span class="box-icon" aria-hidden="true">&lt;/&gt;</span><span class="box-kind">Informatik</span><span class="box-title">Injektiv, bijektiv, abzählbar – und was nicht berechenbar ist</span></summary>
+              <div class="box-body"><p>Eine verlustfreie Kodierung muss <em>injektiv</em> sein, sonst lassen sich zwei Eingaben nicht mehr unterscheiden; eine umkehrbare Verschlüsselung ist <em>bijektiv</em>. Hashfunktionen bilden riesige Mengen auf wenige Werte ab und können deshalb nie injektiv sein – Kollisionen sind nach dem Schubfachprinzip unvermeidbar.</p><p>Und eine der wichtigsten Einsichten der Informatik folgt aus den Mächtigkeiten: Jedes Programm ist eine endliche Zeichenkette, also gibt es nur <em>abzählbar</em> viele Programme. Die Funktionen \(\mathbb{N} \to \{0, 1\}\) sind dagegen überabzählbar. Es muss also Funktionen geben, die kein Programm berechnen kann.</p></div>
             </details>
 <div class="quiz" id="check-la1-k4" data-quiz-id="la1-k4">
               <div class="quiz-head"><p class="eyebrow">Wissens-Check</p><p class="quiz-sub">8 Fragen, gemischt. Nach jeder Antwort erfährst du, warum.</p></div>
@@ -435,6 +456,61 @@
             <h2>Folgt im Semester</h2>
             <p>Die Reihenfolge der Kapitel richtet sich nach der Vorlesung. Sobald ein Kapitel behandelt wurde, erscheint hier sein Modul: Idee, Skizze zum Anfassen und Wissens-Check – Woche für Woche eines mehr.</p>
           </div>
+        </article>
+      </div>
+    </div>
+    </section>
+    <section class="sec" id="ueben">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <p class="eyebrow">Üben &amp; Wiederholen</p>
+        <h2 class="sec-title">Locker üben</h2>
+        <p class="sec-sub">Ohne Uhr und ohne Punkte: Zufallsaufgaben, die jedes Mal neu entstehen, Karteikarten für die Definitionen und eine Beweis-Werkstatt, in der du Beweise aus ihren Schritten zusammensetzt. Dein Stand bleibt nur in deinem Browser.</p>
+        <div class="sec-accent" aria-hidden="true"></div>
+      </header>
+      <div class="ueben reveal">
+        <div class="tabs" role="tablist" aria-label="Übungsarten">
+          <button class="tab is-on" type="button" role="tab" aria-selected="true" data-tab="trainer">Zufallsaufgaben</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="karten">Karteikarten</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="beweis">Beweis-Werkstatt</button>
+        </div>
+        <div class="tabpanel" data-panel="trainer"><div data-uebung="trainer" data-fach="la"></div></div>
+        <div class="tabpanel" data-panel="karten" hidden><div data-uebung="karten"><script type="application/json">[{"k": "1", "f": "Aussage", "b": "Ein Satz, dem man sinnvoll und objektiv genau einen Wahrheitswert zuordnen kann: wahr (w) oder falsch (f)."}, {"k": "1", "f": "Aussagenschema", "b": "Ein Satz mit Parametern, z. B. \\(a^2 + b^2 = c^2\\). Er wird erst zur Aussage, wenn man die Parameter belegt."}, {"k": "1", "f": "Wann ist \\(\\phi \\Rightarrow \\psi\\) falsch?", "b": "Nur wenn \\(\\phi\\) wahr und \\(\\psi\\) falsch ist. Bei falscher Prämisse ist die Implikation immer wahr."}, {"k": "1", "f": "Mathematisches „oder“ \\(\\phi \\vee \\psi\\)", "b": "Wahr, sobald mindestens eine der beiden Aussagen wahr ist – auch wenn beide wahr sind. Kein „entweder – oder“."}, {"k": "1", "f": "Tautologie", "b": "Eine zusammengesetzte Aussage, die bei jeder Belegung der Teilaussagen wahr ist."}, {"k": "1", "f": "Logischer Schluss", "b": "\\(\\psi\\) folgt aus \\(\\phi_1, \\dots, \\phi_n\\), wenn \\(\\phi_1 \\wedge \\dots \\wedge \\phi_n \\Rightarrow \\psi\\) eine Tautologie ist."}, {"k": "1", "f": "Kontraposition", "b": "\\((\\phi \\Rightarrow \\psi) \\Leftrightarrow (\\neg \\psi \\Rightarrow \\neg \\phi)\\). Statt „aus A folgt B“ zeigt man „aus nicht B folgt nicht A“."}, {"k": "1", "f": "Bindungsstärke der Junktoren", "b": "Von stark nach schwach: \\(\\neg\\), \\(\\wedge\\), \\(\\vee\\), \\(\\Rightarrow\\), \\(\\Leftrightarrow\\)."}, {"k": "2", "f": "\\(M \\subseteq N\\)", "b": "Jedes Element von \\(M\\) ist auch Element von \\(N\\): \\(x \\in M \\Rightarrow x \\in N\\) für alle \\(x\\)."}, {"k": "2", "f": "Mengengleichheit zeigen", "b": "In zwei Richtungen: \\(M \\subseteq N\\) und \\(N \\subseteq M\\) – jeweils mit „Sei \\(x \\in \\dots\\)“."}, {"k": "2", "f": "Kartesisches Produkt \\(A \\times B\\)", "b": "Alle Paare \\((a, b)\\) mit \\(a \\in A\\), \\(b \\in B\\). Bei Paaren zählt die Reihenfolge."}, {"k": "2", "f": "Potenzmenge \\(\\mathcal{P}(A)\\)", "b": "Die Menge aller Teilmengen von \\(A\\). Für \\(|A| = n\\) gilt \\(|\\mathcal{P}(A)| = 2^n\\)."}, {"k": "2", "f": "\\(\\forall x \\in M : \\phi(x)\\)", "b": "\\(\\phi(c)\\) ist für <em>jedes<\/em> \\(c \\in M\\) wahr. Beweis: „Sei \\(c \\in M\\) beliebig …“"}, {"k": "2", "f": "\\(\\exists x \\in M : \\phi(x)\\)", "b": "\\(\\phi(c)\\) ist für <em>mindestens ein<\/em> \\(c \\in M\\) wahr. Beweis: einen Zeugen angeben."}, {"k": "2", "f": "Quantoren verneinen", "b": "\\(\\neg \\forall x : \\phi(x) \\Leftrightarrow \\exists x : \\neg \\phi(x)\\) und \\(\\neg \\exists x : \\phi(x) \\Leftrightarrow \\forall x : \\neg \\phi(x)\\)."}, {"k": "2", "f": "Vollständige Induktion", "b": "Induktionsanfang \\(\\phi(1)\\) und Induktionsschritt \\(\\phi(n) \\Rightarrow \\phi(n+1)\\) für jedes \\(n \\in \\mathbb{N}\\) ergeben \\(\\phi(n)\\) für alle \\(n\\)."}, {"k": "3", "f": "Relation auf \\(X\\)", "b": "Eine Teilmenge \\(R \\subseteq X \\times X\\). Man schreibt \\(xRy\\) statt \\((x, y) \\in R\\)."}, {"k": "3", "f": "reflexiv · symmetrisch", "b": "reflexiv: \\(xRx\\) für alle \\(x\\). symmetrisch: \\(xRy \\Rightarrow yRx\\)."}, {"k": "3", "f": "anti-symmetrisch · transitiv", "b": "anti-symmetrisch: \\(xRy \\wedge yRx \\Rightarrow x = y\\). transitiv: \\(xRy \\wedge yRz \\Rightarrow xRz\\)."}, {"k": "3", "f": "Halbordnung", "b": "Reflexiv, anti-symmetrisch und transitiv. Beispiele: \\(\\le\\), Teilerrelation auf \\(\\mathbb{N}\\), \\(\\subseteq\\)."}, {"k": "3", "f": "Totalordnung", "b": "Eine Halbordnung, in der je zwei Elemente vergleichbar sind: \\(x \\le y\\) oder \\(y \\le x\\)."}, {"k": "3", "f": "Äquivalenzrelation", "b": "Reflexiv, symmetrisch und transitiv. Ihre Klassen bilden eine Zerlegung der Menge."}, {"k": "3", "f": "Äquivalenzklasse \\([x]_\\sim\\)", "b": "\\(\\{y \\in X \\mid x \\sim y\\}\\). Zwei Klassen sind entweder gleich oder disjunkt."}, {"k": "3", "f": "Kongruenz modulo \\(n\\)", "b": "\\(a \\equiv_n b \\Leftrightarrow n \\mid (a - b)\\). Die Klassen sind \\(a + n\\mathbb{Z}\\); \\(\\mathbb{Z}/n\\mathbb{Z}\\) hat genau \\(n\\) Elemente."}, {"k": "4", "f": "Abbildung \\(f\\colon X \\to Y\\)", "b": "Eine Relation, bei der zu jedem \\(x \\in X\\) genau ein \\(y \\in Y\\) mit \\((x, y) \\in f\\) existiert."}, {"k": "4", "f": "Bild und Urbild", "b": "\\(f(U) = \\{f(x) \\mid x \\in U\\}\\), \\(f^{-1}(V) = \\{x \\mid f(x) \\in V\\}\\). Das Urbild gibt es für jede Abbildung."}, {"k": "4", "f": "injektiv", "b": "Aus \\(f(x_1) = f(x_2)\\) folgt \\(x_1 = x_2\\) – jedes Ziel wird höchstens einmal getroffen."}, {"k": "4", "f": "surjektiv", "b": "Zu jedem \\(y \\in Y\\) gibt es ein \\(x\\) mit \\(f(x) = y\\) – jedes Ziel wird mindestens einmal getroffen."}, {"k": "4", "f": "bijektiv und Umkehrabbildung", "b": "Injektiv und surjektiv. Genau dann gibt es \\(f^{-1}\\) mit \\(f^{-1} \\circ f = \\mathrm{id}_X\\) und \\(f \\circ f^{-1} = \\mathrm{id}_Y\\)."}, {"k": "4", "f": "Binomialkoeffizient \\(\\binom{n}{k}\\)", "b": "Anzahl der \\(k\\)-elementigen Teilmengen einer \\(n\\)-elementigen Menge: \\(\\frac{n!}{k!\\,(n-k)!}\\)."}, {"k": "4", "f": "gleichmächtig", "b": "\\(A\\) und \\(B\\) sind gleichmächtig, wenn es eine Bijektion \\(A \\to B\\) gibt."}, {"k": "4", "f": "abzählbar unendlich · überabzählbar", "b": "Abzählbar unendlich: gleichmächtig zu \\(\\mathbb{N}\\) (z. B. \\(\\mathbb{Z}\\), \\(\\mathbb{N} \\times \\mathbb{N}\\)). Überabzählbar: nicht einmal höchstens abzählbar."}]</script></div></div>
+        <div class="tabpanel" data-panel="beweis" hidden><div data-uebung="beweis"><script type="application/json">[{"title": "Kontraposition", "claim": "Für alle \\(n \\in \\mathbb{Z}\\) gilt: Ist \\(n^2\\) gerade, so ist \\(n\\) gerade.", "steps": ["Wir zeigen die Kontraposition: Ist \\(n\\) ungerade, so ist \\(n^2\\) ungerade.", "Sei also \\(n \\in \\mathbb{Z}\\) ungerade.", "Dann gibt es ein \\(k \\in \\mathbb{Z}\\) mit \\(n = 2k + 1\\).", "Es folgt \\(n^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1\\).", "Also ist \\(n^2\\) ungerade. Damit ist die Kontraposition und so die Aussage bewiesen."]}, {"title": "Vollständige Induktion", "claim": "Für alle \\(n \\in \\mathbb{N}\\) gilt \\(1 + 3 + 5 + \\dots + (2n - 1) = n^2\\).", "steps": ["Induktionsanfang: Für \\(n = 1\\) steht links \\(1\\) und rechts \\(1^2 = 1\\).", "Induktionsschritt: Sei \\(n \\in \\mathbb{N}\\), und es gelte \\(1 + 3 + \\dots + (2n - 1) = n^2\\) (Induktionsvoraussetzung).", "Dann ist \\(1 + 3 + \\dots + (2n - 1) + (2n + 1) = n^2 + (2n + 1)\\) nach Induktionsvoraussetzung.", "Und \\(n^2 + 2n + 1 = (n + 1)^2\\), also gilt die Aussage auch für \\(n + 1\\).", "Nach dem Induktionsprinzip gilt die Formel für alle \\(n \\in \\mathbb{N}\\)."]}, {"title": "Widerspruchsbeweis", "claim": "Es gibt keine größte natürliche Zahl.", "steps": ["Angenommen, es gibt eine größte natürliche Zahl \\(N\\).", "Dann gilt \\(n \\le N\\) für alle \\(n \\in \\mathbb{N}\\).", "Aber auch \\(N + 1\\) ist eine natürliche Zahl, also müsste \\(N + 1 \\le N\\) gelten.", "Das ist unmöglich, denn \\(N + 1 > N\\) – ein Widerspruch.", "Also war die Annahme falsch: Es gibt keine größte natürliche Zahl."]}, {"title": "Mengen: zwei Inklusionen", "claim": "Für Mengen \\(A, B\\) mit \\(A \\subseteq B\\) gilt \\(A \\cap B = A\\).", "steps": ["Wir zeigen \\(A \\cap B \\subseteq A\\) und \\(A \\subseteq A \\cap B\\).", "„\\(\\subseteq\\)“: Sei \\(x \\in A \\cap B\\). Dann ist insbesondere \\(x \\in A\\).", "„\\(\\supseteq\\)“: Sei nun \\(x \\in A\\).", "Wegen \\(A \\subseteq B\\) gilt auch \\(x \\in B\\), also \\(x \\in A \\cap B\\).", "Beide Inklusionen zusammen ergeben \\(A \\cap B = A\\)."]}, {"title": "Relation: symmetrisch", "claim": "Die Relation \\(a \\sim b \\Leftrightarrow 3 \\mid (a + 2b)\\) auf \\(\\mathbb{Z}\\) ist symmetrisch.", "steps": ["Seien \\(a, b \\in \\mathbb{Z}\\) mit \\(a \\sim b\\).", "Dann gibt es ein \\(k \\in \\mathbb{Z}\\) mit \\(a + 2b = 3k\\).", "Es folgt \\(b + 2a = 3(a + b) - (a + 2b) = 3(a + b - k)\\).", "Also gilt \\(3 \\mid (b + 2a)\\), das heißt \\(b \\sim a\\).", "Da \\(a, b\\) beliebig waren, ist \\(\\sim\\) symmetrisch."]}, {"title": "Abbildungen: Komposition", "claim": "Sind \\(f\\colon X \\to Y\\) und \\(g\\colon Y \\to Z\\) injektiv, so ist \\(g \\circ f\\) injektiv.", "steps": ["Seien \\(x_1, x_2 \\in X\\) mit \\((g \\circ f)(x_1) = (g \\circ f)(x_2)\\).", "Nach Definition der Komposition heißt das \\(g(f(x_1)) = g(f(x_2))\\).", "Weil \\(g\\) injektiv ist, folgt \\(f(x_1) = f(x_2)\\).", "Weil \\(f\\) injektiv ist, folgt \\(x_1 = x_2\\).", "Also ist \\(g \\circ f\\) injektiv."]}]</script></div></div>
+      </div>
+    </div>
+    </section>
+    <section class="sec" id="begleitung">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <p class="eyebrow">Begleitung zur Vorlesung</p>
+        <h2 class="sec-title">Zum Skript &amp; zu den Blättern</h2>
+        <p class="sec-sub">Eine Lesehilfe zu jedem Abschnitt des Vorlesungsskripts – was wichtig ist, wie die Beweise aufgebaut sind und worauf du achten solltest. Dazu ausführliche Erklärungen zu den Übungsblättern, jeweils nach der Abgabefrist.</p>
+        <div class="sec-accent" aria-hidden="true"></div>
+      </header>
+      <div class="sections">
+        <article class="modul reveal">
+          <header class="modul-head"><p class="eyebrow">Lesehilfe</p><h2>Durch das Skript</h2><p class="mat-sub">In eigenen Worten, zum Lesen neben dem Skript – kein Ersatz dafür.</p></header>
+          <details class="box box-idee lh-item" id="lesehilfe-1" data-search="1">
+            <summary><span class="box-icon" aria-hidden="true">§</span><span class="box-kind">Lesehilfe</span><span class="box-title">§ 1 Aussagenlogik</span></summary>
+            <div class="box-body"><p>Der Paragraph baut von unten auf: erst was eine <em>Aussage</em> ist, dann die fünf Verknüpfungen mit ihren Wahrheitstafeln, schließlich Tautologien und logische Schlüsse. Lies die Tafeln nicht als Tabelle zum Auswendiglernen – jede Zeile ist ein Fall, und die Tafel ist vollständig, weil sie <em>alle</em> Fälle aufzählt.</p><p>Die wichtigste Stelle ist die Implikation: Dass \(\phi \Rightarrow \psi\) bei falscher Prämisse wahr ist, wirkt zunächst seltsam, ist aber genau das, was man beim Beweisen braucht. Das Beispiel mit \(x^2 - 8x + 7 = 0\) zeigt, warum „notwendig“ und „hinreichend“ nicht verwechselt werden dürfen – rechne es einmal selbst nach.</p><p>Beim Lesen besonders beachten: die Bindungsregeln (\(\neg\) vor \(\wedge\) vor \(\vee\) vor \(\Rightarrow\) vor \(\Leftrightarrow\)) und die vier logischen Schlüsse am Ende. Sie sind die Werkzeuge für alle späteren Beweise.</p></div>
+          </details>
+          <details class="box box-idee lh-item" id="lesehilfe-2" data-search="1">
+            <summary><span class="box-icon" aria-hidden="true">§</span><span class="box-kind">Lesehilfe</span><span class="box-title">§ 2 Mengenlehre und Prädikatenlogik</span></summary>
+            <div class="box-body"><p>Hier kommen zwei Dinge zusammen: Mengen und Quantoren. Der rote Faden ist das Aussagenschema \(\phi(x)\) – es beschreibt Teilmengen \(\{c \in M \mid \phi(c)\}\) und steckt hinter \(\forall\) und \(\exists\).</p><p>Nimm dir den Beweis der Mengengleichung mit \((xy + 1)z = 0\) vor: Er ist ein Muster dafür, wie man \(M = N\) in zwei Inklusionen zerlegt und jede mit „Sei \(p \in \dots\)“ beginnt. Genau diesen Aufbau erwarten die Übungen.</p><p>Beim Lesen besonders beachten: die Negation quantifizierter Aussagen, die Reihenfolge verschachtelter Quantoren (das Beispiel mit \(x < y\)) und die Struktur eines Induktionsbeweises – Induktionsanfang, Induktionsvoraussetzung, Induktionsschritt. Markiere dir im Beweis von Satz 2.4, wo die Induktionsvoraussetzung benutzt wird.</p></div>
+          </details>
+          <details class="box box-idee lh-item" id="lesehilfe-3" data-search="1">
+            <summary><span class="box-icon" aria-hidden="true">§</span><span class="box-kind">Lesehilfe</span><span class="box-title">§ 3 Relationen</span></summary>
+            <div class="box-body"><p>Eine Relation ist einfach eine Teilmenge von \(X \times X\). Alles Weitere hängt an vier Eigenschaften (reflexiv, symmetrisch, anti-symmetrisch, transitiv), aus denen zwei Klassen entstehen: Halbordnungen zum Vergleichen und Äquivalenzrelationen zum Zerlegen.</p><p>Die Beispiele lohnen sich: Die Teilerrelation ist eine Halbordnung, aber keine Totalordnung – und das Skript zeigt sauber, wie man jede Eigenschaft einzeln nachweist. Beim Inklusions-Beispiel \(\subseteq\) auf \(\mathcal{P}(X)\) lohnt sich der Sonderfall \(|X| \le 1\).</p><p>Beim Lesen besonders beachten: Proposition 3.9 (Äquivalenzklassen bilden eine Zerlegung) und ihre Umkehrung 3.10, dann die Restklassen \(a + n\mathbb{Z}\) und warum \(\mathbb{Z}/n\mathbb{Z}\) genau \(n\) Elemente hat. Die Restklassen kommen später bei den algebraischen Strukturen wieder.</p></div>
+          </details>
+          <details class="box box-idee lh-item" id="lesehilfe-4" data-search="1">
+            <summary><span class="box-icon" aria-hidden="true">§</span><span class="box-kind">Lesehilfe</span><span class="box-title">§ 4 Abbildungen und Mächtigkeiten</span></summary>
+            <div class="box-body"><p>Eine Abbildung wird hier als spezielle Relation definiert – das ist genauer als „Zuordnungsvorschrift“ und erklärt, warum zu jedem \(x\) <em>genau ein</em> \(f(x)\) gehört. Danach kommen Einschränkung, Komposition, Bild und Urbild.</p><p>Satz 4.8 ist der Kern: Injektiv, surjektiv und bijektiv lassen sich über Abbildungen \(g\) mit \(g \circ f = \mathrm{id}\) bzw. \(f \circ g = \mathrm{id}\) beschreiben. Danach wird gezählt – Rechenregeln für Mächtigkeiten und Binomialkoeffizienten, bewiesen mit vollständiger Induktion.</p><p>Beim Lesen besonders beachten: Proposition 4.5 (Bild und Urbild heben sich nicht immer auf), die Definition von abzählbar und überabzählbar und die Idee hinter Satz 4.22: \(\mathbb{N} \times \mathbb{N}\) lässt sich diagonal durchnummerieren.</p></div>
+          </details>
+        </article>
+        <article class="modul reveal">
+          <header class="modul-head"><p class="eyebrow">Übungsblätter</p><h2>Erklärungen zu den Blättern</h2><p class="mat-sub">Ausführliche Erklärungen, Tipps und Tricks zu jedem Blatt – immer erst nach der Abgabefrist, damit die Abgabe eigene Arbeit bleibt.</p></header>
+          <div class="blatt-item"><span class="blatt-tag">Blatt 1</span><span class="blatt-note">Die Erklärungen erscheinen nach der Abgabefrist am 28. Oktober 2026.</span></div>
         </article>
       </div>
     </div>

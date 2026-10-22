@@ -1126,6 +1126,249 @@
     if (kind === 'mapping') mappingExplorable(host);
   });
 
+  /* =========================================================
+     Locker üben: Reiter, Zufallsaufgaben, Karteikarten, Beweis-Werkstatt
+     ========================================================= */
+  function rnd(a, b) { return a + Math.floor(Math.random() * (b - a + 1)); }
+  function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+  function de(x) { var r = Math.round(x * 1000) / 1000; return String(r).replace('.', ','); }
+  function frac(p, q) { // gekürzter Bruch als LaTeX
+    var g = function (a, b) { return b ? g(b, a % b) : Math.abs(a); }, d = g(p, q) || 1; p /= d; q /= d;
+    if (q < 0) { p = -p; q = -q; }
+    return q === 1 ? String(p) : (p < 0 ? '-' : '') + '\\tfrac{' + Math.abs(p) + '}{' + q + '}';
+  }
+  function parseNum(raw) {
+    raw = String(raw).trim().replace(/\s+/g, '').replace(',', '.');
+    var m = raw.match(/^(-?\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)$/);
+    if (m) return parseFloat(m[1]) / parseFloat(m[2]);
+    return /^-?\d+(\.\d+)?$/.test(raw) ? parseFloat(raw) : NaN;
+  }
+  function coef(p, q) { var f = frac(p, q); return f === '1' ? '' : f === '-1' ? '-' : f; }
+  function toFrac(x) { for (var q = 1; q <= 200; q++) { var p = Math.round(x * q); if (Math.abs(x * q - p) < 1e-9) return [p, q]; } return null; }
+  function deTex(x) { var f = toFrac(x); return f && f[1] > 1 ? (f[0] < 0 ? '-' : '') + '\\tfrac{' + Math.abs(f[0]) + '}{' + f[1] + '}' : de(x); }
+  function dePlain(x) { var f = toFrac(x); return f && f[1] > 1 ? f[0] + '/' + f[1] + ' ≈ ' + String(Math.round(x * 100) / 100).replace('.', ',') : de(x); }
+  function setStr(a) { return a.length ? '\\{' + a.join(', ') + '\\}' : '\\emptyset'; }
+
+  /* ---------- Aufgabengeneratoren ---------- */
+  var GEN = {
+    la: [
+      { id: 'wahr', label: 'Wahrheitswerte', make: function () {
+        var F = [['p \\wedge q', function (p, q) { return p && q; }], ['p \\vee q', function (p, q) { return p || q; }], ['p \\Rightarrow q', function (p, q) { return !p || q; }],
+          ['p \\Leftrightarrow q', function (p, q) { return p === q; }], ['\\neg p \\vee q', function (p, q) { return !p || q; }], ['\\neg (p \\wedge q)', function (p, q) { return !(p && q); }],
+          ['(p \\Rightarrow q) \\wedge p', function (p, q) { return (!p || q) && p; }], ['p \\vee \\neg q', function (p, q) { return p || !q; }], ['\\neg p \\Rightarrow \\neg q', function (p, q) { return p || !q; }]];
+        var f = pick(F), p = Math.random() < .5, q = Math.random() < .5, v = f[1](p, q);
+        return { q: 'Sei \\(p\\) ' + (p ? 'wahr' : 'falsch') + ' und \\(q\\) ' + (q ? 'wahr' : 'falsch') + '. Welchen Wahrheitswert hat \\(' + f[0] + '\\)?',
+          choices: ['wahr', 'falsch'], answer: v ? 'wahr' : 'falsch', why: 'Setze \\(p = ' + (p ? 'w' : 'f') + '\\) und \\(q = ' + (q ? 'w' : 'f') + '\\) ein und werte von innen nach außen aus: Ergebnis ' + (v ? 'w' : 'f') + '.' };
+      } },
+      { id: 'mod', label: 'Rechnen modulo n', make: function () {
+        var n = rnd(2, 9), a = rnd(-30, 99), r = ((a % n) + n) % n, qq = (a - r) / n;
+        return { q: 'Welcher Rest \\(r\\) mit \\(0 \\le r < ' + n + '\\) gehört zu \\(' + a + '\\), also \\(' + a + ' + ' + n + '\\mathbb{Z} = r + ' + n + '\\mathbb{Z}\\)?', num: r,
+          why: '\\(' + a + ' = ' + qq + ' \\cdot ' + n + ' + ' + r + '\\), also ist der Rest \\(' + r + '\\).' + (a < 0 ? ' Bei negativen Zahlen ist der Rest trotzdem nie negativ.' : '') };
+      } },
+      { id: 'kongr', label: 'Kongruent?', make: function () {
+        var n = rnd(2, 9), a = rnd(-20, 60), b = Math.random() < .5 ? a + n * rnd(-5, 5) : a + rnd(1, n - 1) + n * rnd(-3, 3), d = a - b, ok = d % n === 0;
+        return { q: 'Gilt \\(' + a + ' \\equiv ' + b + ' \\pmod{' + n + '}\\)?', choices: ['ja', 'nein'], answer: ok ? 'ja' : 'nein',
+          why: '\\(' + a + ' - (' + b + ') = ' + d + '\\) ist ' + (ok ? '' : 'nicht ') + 'durch \\(' + n + '\\) teilbar.' };
+      } },
+      { id: 'mengen', label: 'Mengen', make: function () {
+        var U = [1, 2, 3, 4, 5, 6, 7, 8], A = U.filter(function () { return Math.random() < .45; }), B = U.filter(function () { return Math.random() < .45; });
+        var ops = [['A \\cap B', A.filter(function (x) { return B.indexOf(x) >= 0; })], ['A \\cup B', U.filter(function (x) { return A.indexOf(x) >= 0 || B.indexOf(x) >= 0; })], ['A \\setminus B', A.filter(function (x) { return B.indexOf(x) < 0; })], ['B \\setminus A', B.filter(function (x) { return A.indexOf(x) < 0; })]];
+        var o = pick(ops);
+        return { q: 'Sei \\(A = ' + setStr(A) + '\\) und \\(B = ' + setStr(B) + '\\). Wie viele Elemente hat \\(' + o[0] + '\\)?', num: o[1].length, why: '\\(' + o[0] + ' = ' + setStr(o[1]) + '\\), also \\(' + o[1].length + '\\) Elemente.' };
+      } },
+      { id: 'zaehlen', label: 'Zählen', make: function () {
+        var t = rnd(0, 2);
+        if (t === 0) { var n = rnd(1, 6); return { q: 'Wie viele Elemente hat die Potenzmenge einer Menge mit \\(' + n + '\\) Elementen?', num: Math.pow(2, n), why: '\\(|\\mathcal{P}(A)| = 2^{' + n + '} = ' + Math.pow(2, n) + '\\).' }; }
+        if (t === 1) { var m = rnd(2, 6), k = rnd(2, 6); return { q: '\\(|A| = ' + m + '\\), \\(|B| = ' + k + '\\). Wie viele Elemente hat \\(A \\times B\\)?', num: m * k, why: '\\(|A \\times B| = ' + m + ' \\cdot ' + k + ' = ' + m * k + '\\).' }; }
+        var nn = rnd(3, 6), kk = rnd(1, nn - 1), c = 1; for (var i = 0; i < kk; i++) c = c * (nn - i) / (i + 1);
+        return { q: 'Berechne \\(\\binom{' + nn + '}{' + kk + '}\\).', num: c, why: '\\(\\binom{' + nn + '}{' + kk + '} = \\frac{' + nn + '!}{' + kk + '!\\,' + (nn - kk) + '!} = ' + c + '\\).' };
+      } },
+      { id: 'abb', label: 'Abbildungen', make: function () {
+        var Y = ['a', 'b', 'c', 'd'].slice(0, rnd(2, 4)), f = [1, 2, 3].map(function () { return pick(Y); });
+        var inj = f[0] !== f[1] && f[0] !== f[2] && f[1] !== f[2], sur = Y.every(function (y) { return f.indexOf(y) >= 0; });
+        var ask = pick(['injektiv', 'surjektiv']), v = ask === 'injektiv' ? inj : sur;
+        var why = ask === 'injektiv' ? (inj ? 'Alle drei Bilder sind verschieden.' : 'Zwei Elemente haben dasselbe Bild.') : (sur ? 'Jedes Element von \\(Y\\) wird getroffen.' : 'Nicht jedes Element von \\(Y\\) wird getroffen.');
+        return { q: '\\(f\\colon \\{1, 2, 3\\} \\to ' + setStr(Y) + '\\) mit \\(f(1) = ' + f[0] + '\\), \\(f(2) = ' + f[1] + '\\), \\(f(3) = ' + f[2] + '\\). Ist \\(f\\) ' + ask + '?', choices: ['ja', 'nein'], answer: v ? 'ja' : 'nein', why: why };
+      } },
+      { id: 'rel', label: 'Relationen', make: function () {
+        var X = [1, 2, 3], R = [];
+        X.forEach(function (x) { X.forEach(function (y) { if (Math.random() < (x === y ? .7 : .35)) R.push([x, y]); }); });
+        var has = function (x, y) { return R.some(function (p) { return p[0] === x && p[1] === y; }); };
+        var props = { reflexiv: X.every(function (x) { return has(x, x); }), symmetrisch: R.every(function (p) { return has(p[1], p[0]); }) };
+        var ask = pick(['reflexiv', 'symmetrisch']);
+        return { q: 'Ist die Relation \\(R = \\{' + R.map(function (p) { return '(' + p[0] + ', ' + p[1] + ')'; }).join(', ') + '\\}\\) auf \\(\\{1, 2, 3\\}\\) ' + ask + '?', choices: ['ja', 'nein'], answer: props[ask] ? 'ja' : 'nein',
+          why: ask === 'reflexiv' ? 'Reflexiv heißt: \\((1,1)\\), \\((2,2)\\) und \\((3,3)\\) liegen alle in \\(R\\).' : 'Symmetrisch heißt: Zu jedem Paar \\((x, y)\\) in \\(R\\) liegt auch \\((y, x)\\) in \\(R\\).' };
+      } }
+    ],
+    a3: [
+      { id: 'iter', label: 'Fixpunktiteration', make: function () {
+        var A = pick([[1, 2], [1, 3], [-1, 2], [1, 4]]), b = rnd(-3, 3) || 1, x0 = rnd(-2, 4);
+        var x1 = A[0] * x0 / A[1] + b, x2 = A[0] * x1 / A[1] + b, g = '\\(g(x) = ' + coef(A[0], A[1]) + 'x ' + (b < 0 ? '- ' + (-b) : '+ ' + b) + '\\)';
+        if (Math.random() < .5) return { q: 'Für ' + g + ' und \\(x_0 = ' + x0 + '\\): Berechne \\(x_2\\) der Iteration \\(x_{n+1} = g(x_n)\\).', num: x2, why: '\\(x_1 = g(' + x0 + ') = ' + deTex(x1) + '\\), \\(x_2 = g(x_1) = ' + deTex(x2) + '\\). Brüche wie 7/4 kannst du direkt eingeben.' };
+        var fp = b / (1 - A[0] / A[1]);
+        return { q: 'Welchen Fixpunkt hat ' + g + '?', num: fp, why: 'Aus \\(x = g(x)\\) folgt \\(x^* = \\frac{b}{1 - a} = \\frac{' + b + '}{1 - (' + frac(A[0], A[1]) + ')} = ' + deTex(fp) + '\\).' };
+      } },
+      { id: 'kontr', label: 'Kontraktion?', make: function () {
+        var a = pick([[1, 2], [3, 4], [-2, 3], [5, 4], [-3, 2], [1, 1], [-1, 1], [2, 5]]), lam = Math.abs(a[0] / a[1]), ok = lam < 1;
+        return { q: 'Ist \\(g(x) = ' + coef(a[0], a[1]) + 'x + 1\\) eine Kontraktion auf \\(\\mathbb{R}\\)?', choices: ['ja', 'nein'], answer: ok ? 'ja' : 'nein',
+          why: '\\(|g(x) - g(y)| = ' + frac(Math.abs(a[0]), a[1]) + '\\,|x - y|\\). ' + (ok ? 'Mit \\(\\lambda = ' + frac(Math.abs(a[0]), a[1]) + ' < 1\\) ist \\(g\\) eine Kontraktion.' : 'Die Konstante ist \\(\\ge 1\\) – keine Kontraktion.') };
+      } },
+      { id: 'norm', label: 'Matrixnormen', make: function () {
+        var v = function () { return (rnd(-6, 6)) / 10; }, M = [[v(), v()], [v(), v()]], zeile = Math.random() < .5;
+        var r = [Math.abs(M[0][0]) + Math.abs(M[0][1]), Math.abs(M[1][0]) + Math.abs(M[1][1])], s = [Math.abs(M[0][0]) + Math.abs(M[1][0]), Math.abs(M[0][1]) + Math.abs(M[1][1])];
+        var val = Math.max.apply(null, zeile ? r : s), tex = '\\begin{pmatrix} ' + de(M[0][0]) + ' & ' + de(M[0][1]) + ' \\\\ ' + de(M[1][0]) + ' & ' + de(M[1][1]) + ' \\end{pmatrix}';
+        return { q: 'Berechne die ' + (zeile ? 'Zeilensummennorm \\(\\|A\\|_\\infty\\)' : 'Spaltensummennorm \\(\\|A\\|_1\\)') + ' von \\(A = ' + tex + '\\).', num: Math.round(val * 10) / 10,
+          why: (zeile ? 'Betragssummen der Zeilen: ' + de(r[0]) + ' und ' + de(r[1]) : 'Betragssummen der Spalten: ' + de(s[0]) + ' und ' + de(s[1])) + '. Das Maximum ist ' + de(val) + (val < 1 ? ' – kleiner als 1, also ist \\(x \\mapsto Ax + b\\) eine Kontraktion.' : '.') };
+      } },
+      { id: 'impl', label: 'Implizite Ableitung', make: function () {
+        var T = pick([[3, 4, 5], [4, 3, 5], [6, 8, 10], [5, 12, 13], [8, 6, 10]]), sx = pick([1, -1]), sy = pick([1, -1]), x = sx * T[0], y = sy * T[1];
+        return { q: 'Die Gleichung \\(x^2 + y^2 = ' + T[2] * T[2] + '\\) legt nahe \\((' + x + ', ' + y + ')\\) eine Funktion \\(y = g(x)\\) fest. Wie groß ist \\(g\'(' + x + ')\\)?', num: -x / y,
+          why: '\\(g\'(x) = -\\frac{\\partial_x F}{\\partial_y F} = -\\frac{2x}{2y} = -\\frac{' + x + '}{' + y + '} = ' + deTex(-x / y) + '\\).' };
+      } },
+      { id: 'apriori', label: 'Fehlerschranke', make: function () {
+        var L = pick([[1, 2], [1, 3], [1, 4]]), d = rnd(1, 3), n = rnd(1, 3), lam = L[0] / L[1], val = Math.pow(lam, n) / (1 - lam) * d;
+        return { q: 'Kontraktion mit \\(\\lambda = ' + frac(L[0], L[1]) + '\\) und \\(\\|x_1 - x_0\\| = ' + d + '\\). Welche Schranke liefert die A-priori-Abschätzung für \\(\\|x_' + n + ' - x^*\\|\\)?', num: val,
+          why: '\\(\\frac{\\lambda^' + n + '}{1 - \\lambda}\\,\\|x_1 - x_0\\| = ' + deTex(val) + '\\).' };
+      } },
+      { id: 'neumann', label: 'Neumann-Reihe', make: function () {
+        var t = pick([[1, 2], [1, 3], [1, 4], [-1, 2], [2, 3], [-1, 3]]), val = 1 / (1 - t[0] / t[1]);
+        return { q: 'Für \\(t = ' + frac(t[0], t[1]) + '\\): Welchen Wert hat \\(\\sum_{k=0}^{\\infty} t^k = (1 - t)^{-1}\\)?', num: val,
+          why: '\\(\\frac{1}{1 - t} = ' + deTex(val) + '\\) – die eindimensionale Neumann-Reihe, also die geometrische Reihe.' };
+      } }
+    ]
+  };
+
+  function trainerUebung(host) {
+    var gens = GEN[host.getAttribute('data-fach')] || [];
+    host.innerHTML = '<div class="tr-topics"><button type="button" class="is-on" data-t="">Gemischt</button>' + gens.map(function (g) { return '<button type="button" data-t="' + g.id + '">' + g.label + '</button>'; }).join('') + '</div>' +
+      '<div class="tr-card"><p class="tr-topic"></p><p class="tr-q"></p><form class="tr-form" autocomplete="off"></form><div class="tr-fb" aria-live="polite"></div></div>' +
+      '<div class="tr-bar"><span class="tr-streak"></span><button type="button" class="btn btn-ghost tr-new">Neue Aufgabe <span class="arr" aria-hidden="true">↻</span></button></div>';
+    var topic = '', cur = null, done = false, streak = 0, total = 0;
+    var elTopic = host.querySelector('.tr-topic'), elQ = host.querySelector('.tr-q'), form = host.querySelector('.tr-form'), fb = host.querySelector('.tr-fb'), elStreak = host.querySelector('.tr-streak');
+    function next() {
+      var pool = topic ? gens.filter(function (g) { return g.id === topic; }) : gens, g = pick(pool);
+      cur = g.make(); cur.label = g.label; done = false;
+      elTopic.textContent = g.label; elQ.innerHTML = cur.q; fb.innerHTML = ''; fb.className = 'tr-fb';
+      if (cur.choices) form.innerHTML = cur.choices.map(function (c) { return '<button type="button" class="tr-choice" data-c="' + c + '">' + c + '</button>'; }).join('');
+      else form.innerHTML = '<input type="text" inputmode="decimal" aria-label="Antwort" placeholder="Zahl oder Bruch, z. B. 3/4" /><button type="submit" class="btn btn-primary">Prüfen</button>';
+      form.querySelectorAll('.tr-choice').forEach(function (b) { b.addEventListener('click', function () { check(b.getAttribute('data-c'), b); }); });
+      math(host);
+    }
+    function check(val, btn) {
+      if (done) return;
+      var ok;
+      if (cur.choices) ok = val === cur.answer;
+      else { var v = parseNum(val); if (isNaN(v)) { fb.className = 'tr-fb is-hint'; fb.textContent = 'Gib eine Zahl ein – auch als Bruch wie 3/4 oder mit Komma wie 0,75.'; return; } ok = Math.abs(v - cur.num) < (Math.abs(cur.num - Math.round(cur.num)) < 1e-9 ? 1e-6 : 0.0051); }
+      done = true; total++; streak = ok ? streak + 1 : 0;
+      if (btn) btn.classList.add(ok ? 'is-ok' : 'is-no');
+      form.querySelectorAll('button, input').forEach(function (e) { if (!e.classList.contains('tr-new')) e.disabled = true; });
+      fb.className = 'tr-fb ' + (ok ? 'is-ok' : 'is-no');
+      fb.innerHTML = '<strong>' + (ok ? 'Richtig!' : 'Nicht ganz.') + '</strong> ' + (ok ? '' : 'Richtig wäre: ' + (cur.choices ? cur.answer : dePlain(cur.num)) + '. ') + cur.why;
+      elStreak.textContent = streak >= 2 ? streak + ' richtig in Folge' : total + (total === 1 ? ' Aufgabe' : ' Aufgaben') + ' geübt';
+      math(fb);
+    }
+    form.addEventListener('submit', function (e) { e.preventDefault(); var i = form.querySelector('input'); if (i) check(i.value, null); });
+    host.querySelector('.tr-new').addEventListener('click', next);
+    host.querySelectorAll('[data-t]').forEach(function (b) { b.addEventListener('click', function () { topic = b.getAttribute('data-t'); host.querySelectorAll('[data-t]').forEach(function (x) { x.classList.toggle('is-on', x === b); }); next(); }); });
+    elStreak.textContent = 'Locker üben – ohne Punkte, ohne Uhr';
+    next();
+  }
+
+  /* ---------- Karteikarten (Leitner-Prinzip, Stand nur im Browser) ---------- */
+  function kartenUebung(host) {
+    var cards = readPool(host); if (!cards.length) return;
+    var KEY = 'karten:' + PAGE, boxes = load(KEY) || {};
+    var kap = Array.from(new Set(cards.map(function (c) { return c.k; })));
+    host.innerHTML = '<div class="tr-topics"><button type="button" class="is-on" data-k="">Alle Kapitel</button>' + kap.map(function (k) { return '<button type="button" data-k="' + k + '">Kapitel ' + k + '</button>'; }).join('') + '</div>' +
+      '<div class="kk-card" tabindex="0" role="button" aria-label="Karte umdrehen"><div class="kk-inner"><div class="kk-face kk-front"><span class="kk-tag"></span><p class="kk-term"></p><span class="kk-hint">Tippen zum Umdrehen</span></div>' +
+      '<div class="kk-face kk-back"><span class="kk-tag"></span><p class="kk-def"></p></div></div></div>' +
+      '<div class="kk-actions"><button type="button" class="btn btn-ghost kk-again">Nochmal</button><button type="button" class="btn btn-primary kk-know">Kann ich</button></div>' +
+      '<div class="kk-meta"><span class="kk-prog"></span><button type="button" class="lp-reset kk-reset">Karteikarten zurücksetzen</button></div>';
+    var card = host.querySelector('.kk-card'), filter = '', cur = null, last = null;
+    function id(c) { return c.k + ':' + c.f; }
+    function pool() { return cards.filter(function (c) { return !filter || c.k === filter; }); }
+    function next() {
+      var p = pool(), minBox = Math.min.apply(null, p.map(function (c) { return boxes[id(c)] || 0; }));
+      var cand = p.filter(function (c) { return (boxes[id(c)] || 0) <= minBox + (Math.random() < .25 ? 1 : 0) && c !== last; });
+      cur = pick(cand.length ? cand : p); last = cur;
+      card.classList.remove('is-flipped');
+      host.querySelectorAll('.kk-tag').forEach(function (t) { t.textContent = 'Kapitel ' + cur.k; });
+      host.querySelector('.kk-term').innerHTML = cur.f; host.querySelector('.kk-def').innerHTML = cur.b;
+      math(card); progress();
+    }
+    function progress() {
+      var p = pool(), sure = p.filter(function (c) { return (boxes[id(c)] || 0) >= 2; }).length;
+      host.querySelector('.kk-prog').textContent = sure + ' von ' + p.length + ' Karten sitzen sicher';
+    }
+    function flip() { card.classList.toggle('is-flipped'); }
+    card.addEventListener('click', flip);
+    card.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); } });
+    host.querySelector('.kk-know').addEventListener('click', function () { boxes[id(cur)] = Math.min((boxes[id(cur)] || 0) + 1, 3); store(KEY, boxes); next(); });
+    host.querySelector('.kk-again').addEventListener('click', function () { boxes[id(cur)] = 0; store(KEY, boxes); next(); });
+    host.querySelector('.kk-reset').addEventListener('click', function () { boxes = {}; store(KEY, boxes); next(); });
+    host.querySelectorAll('[data-k]').forEach(function (b) { b.addEventListener('click', function () { filter = b.getAttribute('data-k'); host.querySelectorAll('[data-k]').forEach(function (x) { x.classList.toggle('is-on', x === b); }); next(); }); });
+    next();
+  }
+
+  /* ---------- Beweis-Werkstatt: Schritte in die richtige Reihenfolge bringen ---------- */
+  function beweisUebung(host) {
+    var proofs = readPool(host); if (!proofs.length) return;
+    var idx = 0, placed = [], pool = [], checked = false;
+    host.innerHTML = '<div class="tr-topics">' + proofs.map(function (p, i) { return '<button type="button" data-p="' + i + '"' + (i === 0 ? ' class="is-on"' : '') + '>' + p.title + '</button>'; }).join('') + '</div>' +
+      '<div class="bw-claim"></div><p class="bw-lead">Tippe die Schritte in der richtigen Reihenfolge an. Ein Tipp auf einen eingesetzten Schritt legt ihn zurück.</p>' +
+      '<ol class="bw-proof"></ol><div class="bw-pool"></div>' +
+      '<div class="bw-actions"><button type="button" class="btn btn-primary bw-check">Prüfen</button><button type="button" class="btn btn-ghost bw-show">Lösung zeigen</button><button type="button" class="btn btn-ghost bw-reset">Neu mischen</button></div>' +
+      '<div class="tr-fb" aria-live="polite"></div>';
+    var elClaim = host.querySelector('.bw-claim'), elProof = host.querySelector('.bw-proof'), elPool = host.querySelector('.bw-pool'), fb = host.querySelector('.tr-fb');
+    function start(i) {
+      idx = i; placed = []; checked = false;
+      var n = proofs[i].steps.length;
+      do { pool = shuffle(proofs[i].steps.map(function (_, k) { return k; })); } while (n > 1 && pool.every(function (v, k) { return v === k; }));
+      elClaim.innerHTML = '<span class="bw-tag">Behauptung</span> ' + proofs[i].claim;
+      fb.innerHTML = ''; fb.className = 'tr-fb'; render();
+    }
+    function render() {
+      var steps = proofs[idx].steps;
+      elProof.innerHTML = placed.map(function (k, pos) { var cls = checked ? (k === pos ? ' is-ok' : ' is-no') : ''; return '<li><button type="button" class="bw-step' + cls + '" data-placed="' + pos + '">' + steps[k] + '</button></li>'; }).join('') +
+        (placed.length < steps.length ? '<li class="bw-slot">' + (placed.length ? 'nächster Schritt …' : 'Erster Schritt …') + '</li>' : '');
+      elPool.innerHTML = pool.map(function (k) { return '<button type="button" class="bw-step" data-pool="' + k + '">' + steps[k] + '</button>'; }).join('');
+      elProof.querySelectorAll('[data-placed]').forEach(function (b) { b.addEventListener('click', function () { var pos = +b.getAttribute('data-placed'); pool.push(placed.splice(pos, 1)[0]); checked = false; fb.innerHTML = ''; fb.className = 'tr-fb'; render(); }); });
+      elPool.querySelectorAll('[data-pool]').forEach(function (b) { b.addEventListener('click', function () { var k = +b.getAttribute('data-pool'); pool.splice(pool.indexOf(k), 1); placed.push(k); checked = false; render(); }); });
+      math(host);
+    }
+    host.querySelector('.bw-check').addEventListener('click', function () {
+      var n = proofs[idx].steps.length;
+      if (placed.length < n) { fb.className = 'tr-fb is-hint'; fb.textContent = 'Setze zuerst alle ' + n + ' Schritte ein.'; return; }
+      checked = true; render();
+      var ok = placed.every(function (k, pos) { return k === pos; }), right = placed.filter(function (k, pos) { return k === pos; }).length;
+      fb.className = 'tr-fb ' + (ok ? 'is-ok' : 'is-no');
+      fb.innerHTML = ok ? '<strong>Perfekt!</strong> Jeder Schritt folgt aus den vorherigen – genau so sieht ein sauberer Beweis aus.' : '<strong>' + right + ' von ' + n + ' Schritten stehen richtig.</strong> Rot markierte Schritte antippen, um sie zurückzulegen. Frag dich bei jedem Schritt: Was brauche ich, damit er gilt?';
+    });
+    host.querySelector('.bw-show').addEventListener('click', function () { placed = proofs[idx].steps.map(function (_, k) { return k; }); pool = []; checked = true; render(); fb.className = 'tr-fb is-ok'; fb.innerHTML = 'So geht der Beweis. Mische neu und versuche es selbst.'; });
+    host.querySelector('.bw-reset').addEventListener('click', function () { start(idx); });
+    host.querySelectorAll('[data-p]').forEach(function (b) { b.addEventListener('click', function () { host.querySelectorAll('[data-p]').forEach(function (x) { x.classList.toggle('is-on', x === b); }); start(+b.getAttribute('data-p')); }); });
+    start(0);
+  }
+
+  /* ---------- Reiter ---------- */
+  document.querySelectorAll('.ueben').forEach(function (u) {
+    var tabs = u.querySelectorAll('.tab'), panels = u.querySelectorAll('.tabpanel');
+    tabs.forEach(function (t) {
+      t.addEventListener('click', function () {
+        tabs.forEach(function (x) { x.classList.toggle('is-on', x === t); x.setAttribute('aria-selected', x === t ? 'true' : 'false'); });
+        panels.forEach(function (p) { p.hidden = p.getAttribute('data-panel') !== t.getAttribute('data-tab'); });
+      });
+    });
+  });
+  document.querySelectorAll('[data-uebung]').forEach(function (host) {
+    var k = host.getAttribute('data-uebung');
+    try {
+      if (k === 'trainer') trainerUebung(host);
+      if (k === 'karten') kartenUebung(host);
+      if (k === 'beweis') beweisUebung(host);
+    } catch (e) { host.textContent = 'Diese Übung konnte nicht geladen werden.'; }
+  });
+
   document.querySelectorAll('.lernbereich').forEach(math);
   updateLernpfad();
 })();

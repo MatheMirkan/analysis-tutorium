@@ -149,13 +149,34 @@
     var items = Array.prototype.slice.call(document.querySelectorAll('.matlist li'));
     var cards = Array.prototype.slice.call(document.querySelectorAll('.matcard'));
     if (!input) return;
-    if (!items.length) {
+    var extra = Array.prototype.slice.call(document.querySelectorAll('[data-search]'));
+    if (!items.length && !extra.length) {
       input.disabled = true;
       input.placeholder = 'Suche wird aktiv, sobald Materialien online sind';
       return;
     }
     var norm = function (s) { return s.toLowerCase().replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss'); };
     items.forEach(function (li) { li.setAttribute('data-s', norm(li.textContent.replace(/\s+/g, ' '))); });
+    var more = document.createElement('ul'); more.className = 'matsearch-more'; more.hidden = true; box.appendChild(more);
+    var index = extra.map(function (el) {
+      var t = el.querySelector('.box-title'), k = el.querySelector('.box-kind'), sec = el.closest('.modul');
+      var where = sec && sec.querySelector('.modul-head .eyebrow') ? sec.querySelector('.modul-head .eyebrow').textContent : '';
+      return { el: el, title: (t ? t.textContent : '').trim(), kind: (k ? k.textContent : '').trim(), where: where.trim(), s: norm(el.textContent.replace(/\s+/g, ' ')) };
+    });
+    var showMore = function (q) {
+      var hits = q.length >= 3 ? index.filter(function (it) { return it.s.indexOf(q) >= 0; }).slice(0, 6) : [];
+      more.innerHTML = hits.length ? '<li class="matsearch-more-h">Auf dieser Seite</li>' + hits.map(function (it, i) { return '<li><a href="#' + it.el.id + '" data-i="' + index.indexOf(it) + '"><span>' + (it.where && it.where !== it.kind ? it.where + ' · ' : '') + it.kind + '</span>' + it.title + '</a></li>'; }).join('') : '';
+      more.hidden = !hits.length;
+      more.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          e.preventDefault(); var it = index[+a.getAttribute('data-i')];
+          if (it.el.tagName === 'DETAILS') it.el.open = true;
+          it.el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          it.el.classList.add('is-hit'); setTimeout(function () { it.el.classList.remove('is-hit'); }, 1800);
+        });
+      });
+      return hits.length;
+    };
     var apply = function () {
       var q = norm(input.value.trim());
       var hits = 0;
@@ -172,8 +193,9 @@
         if (!note) { note = document.createElement('p'); note.className = 'matsearch-empty'; note.textContent = 'Keine Treffer in diesem Abschnitt.'; list.parentNode.insertBefore(note, list.nextSibling); }
         note.hidden = !(q && visible === 0);
       });
+      var extraHits = showMore(q);
       box.classList.toggle('is-active', !!q);
-      if (status) status.textContent = q ? (hits === 1 ? '1 Treffer' : hits + ' Treffer') + ' für „' + input.value.trim() + '“' : '';
+      if (status) status.textContent = q ? (hits === 1 ? '1 Treffer' : hits + ' Treffer') + ' in den Materialien' + (extraHits ? ', ' + extraHits + ' auf der Seite' : '') + ' für „' + input.value.trim() + '“' : '';
     };
     input.addEventListener('input', apply);
     input.addEventListener('search', apply);
@@ -245,4 +267,24 @@
     window.addEventListener('wheel', dismiss, { once: true, passive: true });
     window.addEventListener('touchstart', dismiss, { once: true, passive: true });
   }
+})();
+
+/* ---------- Hell / Dunkel ---------- */
+(function () {
+  var root = document.documentElement, btn = document.getElementById('themeToggle');
+  var meta = document.querySelector('meta[name="theme-color"]');
+  var mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+  function stored() { try { return localStorage.getItem('theme'); } catch (e) { return null; } }
+  function apply(t) {
+    root.setAttribute('data-theme', t);
+    if (meta) meta.setAttribute('content', t === 'dark' ? '#141311' : '#f7f5f1');
+    if (btn) { btn.setAttribute('aria-label', t === 'dark' ? 'Helles Design einschalten' : 'Dunkles Design einschalten'); btn.setAttribute('aria-pressed', t === 'dark'); }
+  }
+  apply(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+  if (btn) btn.addEventListener('click', function () {
+    var t = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    try { localStorage.setItem('theme', t); } catch (e) {}
+    apply(t);
+  });
+  if (mq && mq.addEventListener) mq.addEventListener('change', function (e) { if (!stored()) apply(e.matches ? 'dark' : 'light'); });
 })();
