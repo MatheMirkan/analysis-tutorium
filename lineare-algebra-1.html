@@ -55,8 +55,8 @@
         <div class="phero-copy">
           <p class="eyebrow">Lineare Algebra I · Wintersemester 2026/27</p>
           <h1 class="phero-title">Lineare Algebra I<br /><em>zum Anfassen.</em></h1>
-          <p class="phero-lead">Bevor es um Vektoren und Matrizen geht, kommt die Sprache, in der die ganze Vorlesung geschrieben ist: Logik und Mengen. Jedes Kapitel dreifach: Idee lesen, Skizze anfassen, Wissen prüfen.</p>
-          <p class="pnote">Die Seite wächst mit dem Semester: Kapitel für Kapitel, in der Reihenfolge der Vorlesung. Los geht es mit Aussagenlogik, logischen Verknüpfungen und Wahrheitstafeln – danach folgen die Grundlagen der Mengenlehre mit All- und Existenzaussagen.</p>
+          <p class="phero-lead">Bevor es um Vektoren und Matrizen geht, kommt die Sprache, in der die ganze Vorlesung geschrieben ist: Logik, Mengen, Relationen und Abbildungen. Jedes Kapitel dreifach: Idee lesen, Skizze anfassen, Wissen prüfen.</p>
+          <p class="pnote">Die Seite wächst mit dem Semester: Kapitel für Kapitel, nummeriert wie die Paragraphen des Vorlesungsskripts. Bisher: Aussagenlogik, Mengenlehre, Relationen sowie Abbildungen und Mächtigkeiten. Klausur laut Kursseite: voraussichtlich Donnerstag, 11. Februar 2027, 10–12 Uhr.</p>
           <nav class="quicknav" aria-label="Abschnitte">
             <a href="#materialien">Materialien</a>
             <a href="#lernpfad">Verstehen &amp; Üben</a>
@@ -109,6 +109,50 @@
   <text class="lbl lbl-gold d7" x="186" y="200">A ∩ B</text>
   <text class="lbl d8" x="40" y="250">x ∈ A ∩ B ⇔ x ∈ A ∧ x ∈ B</text>
 </svg>
+<svg class="sketch" data-num="3" data-title="Relationen: Ordnungen &amp; Äquivalenzrelationen" viewBox="0 0 420 260" role="img" aria-label="Skizze: Hasse-Diagramm der Teilerrelation auf den Teilern von 12">
+  <path class="ln ln-gold pulse d2" pathLength="1" d="M210 222 L150 168"/>
+  <path class="ln ln-gold pulse d3" pathLength="1" d="M210 222 L270 168"/>
+  <path class="ln ln-gold pulse d4" pathLength="1" d="M150 168 L110 106"/>
+  <path class="ln ln-gold pulse d5" pathLength="1" d="M150 168 L210 106"/>
+  <path class="ln ln-gold pulse d6" pathLength="1" d="M270 168 L210 106"/>
+  <path class="ln ln-gold pulse d7" pathLength="1" d="M110 106 L160 46"/>
+  <path class="ln ln-gold pulse d8" pathLength="1" d="M210 106 L160 46"/>
+  <circle class="dot dot-gold d1" cx="210" cy="222" r="4"/>
+  <text class="lbl d1" x="220" y="227">1</text>
+  <circle class="dot d2" cx="150" cy="168" r="4"/>
+  <text class="lbl d2" x="160" y="173">2</text>
+  <circle class="dot d3" cx="270" cy="168" r="4"/>
+  <text class="lbl d3" x="280" y="173">3</text>
+  <circle class="dot d4" cx="110" cy="106" r="4"/>
+  <text class="lbl d4" x="120" y="111">4</text>
+  <circle class="dot d5" cx="210" cy="106" r="4"/>
+  <text class="lbl d5" x="220" y="111">6</text>
+  <circle class="dot dot-gold d6" cx="160" cy="46" r="4"/>
+  <text class="lbl d6" x="170" y="51">12</text>
+
+  <text class="lbl lbl-gold d9" x="296" y="70">a | b</text>
+  <text class="lbl d9" x="296" y="94">Weg nach oben</text>
+  <text class="lbl d10" x="296" y="140">2 und 3:</text>
+  <text class="lbl d10" x="296" y="162">nicht vergleichbar</text>
+  <text class="lbl d11" x="40" y="252">Halbordnung, aber keine Totalordnung</text>
+</svg>
+<svg class="sketch" data-num="4" data-title="Abbildungen &amp; Mächtigkeiten" viewBox="0 0 420 260" role="img" aria-label="Skizze: eine bijektive Abbildung f von X nach Y – jedes Element rechts wird genau einmal getroffen">
+
+  <ellipse class="ln ln-soft d1" pathLength="1" cx="120" cy="145" rx="46" ry="100"/>
+  <ellipse class="ln ln-soft d1" pathLength="1" cx="304" cy="145" rx="46" ry="100"/>
+  <circle class="dot d2" cx="120" cy="70" r="3.6"/><circle class="dot dot-gold d3" cx="304" cy="70" r="3.6"/>
+  <circle class="dot d2" cx="120" cy="120" r="3.6"/><circle class="dot dot-gold d3" cx="304" cy="120" r="3.6"/>
+  <circle class="dot d2" cx="120" cy="170" r="3.6"/><circle class="dot dot-gold d3" cx="304" cy="170" r="3.6"/>
+  <circle class="dot d2" cx="120" cy="220" r="3.6"/><circle class="dot dot-gold d3" cx="304" cy="220" r="3.6"/>
+  <path class="ln ln-gold pulse d3" pathLength="1" d="M128 70 C200 64 240 114 296 120"/>
+  <path class="ln ln-gold pulse d4" pathLength="1" d="M128 120 C200 114 240 214 296 220"/>
+  <path class="ln ln-gold pulse d5" pathLength="1" d="M128 170 C200 164 240 64 296 70"/>
+  <path class="ln ln-gold pulse d6" pathLength="1" d="M128 220 C200 214 240 164 296 170"/>
+  <text class="lbl d2" x="108" y="34">X</text><text class="lbl d2" x="292" y="34">Y</text>
+  <text class="lbl lbl-gold d7" x="200" y="34">f</text>
+  <path class="ln ln-soft dash d8" pathLength="1" d="M296 248 C240 262 184 262 128 248"/>
+  <text class="lbl d8" x="178" y="252">f⁻¹</text>
+</svg>
             </div>
             <div class="sketch-caption"><span class="sk-cap-l">Skizze · Kapitel 1</span><span class="sk-cap-r"><b>Aussagenlogik: Verknüpfungen &amp; Wahrheitstafeln</b></span></div>
             <div class="sketch-nav">
@@ -116,6 +160,8 @@
               <div class="sk-dots">
                 <button class="sk-dot is-on" type="button" aria-label="Kapitel 1: Aussagenlogik: Verknüpfungen &amp; Wahrheitstafeln"></button>
                 <button class="sk-dot" type="button" aria-label="Kapitel 2: Mengenlehre, All- &amp; Existenzaussagen"></button>
+                <button class="sk-dot" type="button" aria-label="Kapitel 3: Relationen: Ordnungen &amp; Äquivalenzrelationen"></button>
+                <button class="sk-dot" type="button" aria-label="Kapitel 4: Abbildungen &amp; Mächtigkeiten"></button>
               </div>
               <button class="sk-btn sk-next" type="button" aria-label="Nächstes Kapitel">›</button>
             </div>
@@ -125,27 +171,35 @@
     </section>
 
     <div class="wrap" id="materialien">
-      <div class="thread thread-pending reveal">
+      <div class="thread reveal">
         <div class="thread-head">
           <p class="eyebrow">Goldener Faden</p>
-          <p>Der goldene Faden durch das Semester – die Stationen füllen sich mit der Vorlesung.</p>
+          <p>Der goldene Faden durch das Semester nach dem Plan der Vorlesung – golden ist schon da, hell folgt.</p>
         </div>
         <svg class="thread-svg" viewBox="0 0 1000 70" aria-hidden="true">
-            <path class="path" pathLength="1" d="M83.3 24 C166.7 24 166.7 50 250.0 50 C333.4 50 333.4 24 416.7 24 C500.0 24 500.0 50 583.3 50 C666.6 50 666.6 24 750.0 24 C833.4 24 833.4 50 916.7 50"/>
-            <circle class="node d1" cx="83.3" cy="24" r="9"/><circle class="node-core d1" cx="83.3" cy="24" r="3.5"/>
-            <circle class="node d2" cx="250.0" cy="50" r="9"/><circle class="node-core d2" cx="250.0" cy="50" r="3.5"/>
-            <circle class="node d3" cx="416.7" cy="24" r="9"/><circle class="node-core d3" cx="416.7" cy="24" r="3.5"/>
-            <circle class="node d4" cx="583.3" cy="50" r="9"/><circle class="node-core d4" cx="583.3" cy="50" r="3.5"/>
-            <circle class="node d5" cx="750.0" cy="24" r="9"/><circle class="node-core d5" cx="750.0" cy="24" r="3.5"/>
-            <circle class="node d6" cx="916.7" cy="50" r="9"/><circle class="node-core d6" cx="916.7" cy="50" r="3.5"/>
+            <path class="path" pathLength="1" d="M50.0 24 C100.0 24 100.0 50 150.0 50 C200.0 50 200.0 24 250.0 24 C300.0 24 300.0 50 350.0 50 C400.0 50 400.0 24 450.0 24 C500.0 24 500.0 50 550.0 50 C600.0 50 600.0 24 650.0 24 C700.0 24 700.0 50 750.0 50 C800.0 50 800.0 24 850.0 24 C900.0 24 900.0 50 950.0 50"/>
+            <circle class="node d1" cx="50.0" cy="24" r="9"/><circle class="node-core d1" cx="50.0" cy="24" r="3.5"/>
+            <circle class="node d2" cx="150.0" cy="50" r="9"/><circle class="node-core d2" cx="150.0" cy="50" r="3.5"/>
+            <circle class="node d3" cx="250.0" cy="24" r="9"/><circle class="node-core d3" cx="250.0" cy="24" r="3.5"/>
+            <circle class="node d4" cx="350.0" cy="50" r="9"/><circle class="node-core d4" cx="350.0" cy="50" r="3.5"/>
+            <circle class="node d5 is-open" cx="450.0" cy="24" r="9"/><circle class="node-core d5 is-open" cx="450.0" cy="24" r="3.5"/>
+            <circle class="node d6 is-open" cx="550.0" cy="50" r="9"/><circle class="node-core d6 is-open" cx="550.0" cy="50" r="3.5"/>
+            <circle class="node d7 is-open" cx="650.0" cy="24" r="9"/><circle class="node-core d7 is-open" cx="650.0" cy="24" r="3.5"/>
+            <circle class="node d8 is-open" cx="750.0" cy="50" r="9"/><circle class="node-core d8 is-open" cx="750.0" cy="50" r="3.5"/>
+            <circle class="node d9 is-open" cx="850.0" cy="24" r="9"/><circle class="node-core d9 is-open" cx="850.0" cy="24" r="3.5"/>
+            <circle class="node d10 is-open" cx="950.0" cy="50" r="9"/><circle class="node-core d10 is-open" cx="950.0" cy="50" r="3.5"/>
           </svg>
-        <div class="thread-labels thread-open" style="--n:6">
+        <div class="thread-labels thread-open" style="--n:10">
             <span><b>1</b>Aussagenlogik: Verknüpfungen &amp; Wahrheitstafeln</span>
             <span><b>2</b>Mengenlehre, All- &amp; Existenzaussagen</span>
-            <span class="is-open"><b>·</b>folgt</span>
-            <span class="is-open"><b>·</b>folgt</span>
-            <span class="is-open"><b>·</b>folgt</span>
-            <span class="is-open"><b>·</b>folgt</span>
+            <span><b>3</b>Relationen: Ordnungen &amp; Äquivalenzrelationen</span>
+            <span><b>4</b>Abbildungen &amp; Mächtigkeiten</span>
+            <span class="is-open"><b>·</b>Gruppen, Ringe, Körper</span>
+            <span class="is-open"><b>·</b>Vektorräume &amp; lineare Abbildungen</span>
+            <span class="is-open"><b>·</b>Matrizen &amp; Gauß-Verfahren</span>
+            <span class="is-open"><b>·</b>Basis, Dimension, Koordinaten</span>
+            <span class="is-open"><b>·</b>Skalarprodukt &amp; Determinanten</span>
+            <span class="is-open"><b>·</b>Eigenwerte &amp; Eigenvektoren</span>
         </div>
       </div>
 
@@ -218,13 +272,15 @@
       <div class="lernpfad reveal">
         <div class="lp-head">
           <p class="eyebrow">Dein Lernpfad</p>
-          <p class="lp-text">0 von 2 Wissens-Checks bestanden</p>
+          <p class="lp-text">0 von 4 Wissens-Checks bestanden</p>
         </div>
         <p class="lp-note">Dein Fortschritt wird nur in deinem Browser gespeichert – ohne Konto, ohne Server.</p>
         <div class="lp-bar" aria-hidden="true"><div class="lp-fill"></div></div>
         <div class="lp-chips">
           <button class="lp-chip" type="button" data-quiz="la1-k1">Kapitel 1</button>
           <button class="lp-chip" type="button" data-quiz="la1-k2">Kapitel 2</button>
+          <button class="lp-chip" type="button" data-quiz="la1-k3">Kapitel 3</button>
+          <button class="lp-chip" type="button" data-quiz="la1-k4">Kapitel 4</button>
           <button class="lp-reset" type="button">Fortschritt zurücksetzen</button>
         </div>
       </div>
@@ -304,6 +360,72 @@
 <div class="quiz" id="check-la1-k2" data-quiz-id="la1-k2">
               <div class="quiz-head"><p class="eyebrow">Wissens-Check</p><p class="quiz-sub">8 Fragen, gemischt. Nach jeder Antwort erfährst du, warum.</p></div>
               <script type="application/json">[{"type": "mc", "q": "Welche der folgenden Gleichungen ist <em>falsch</em>?", "options": ["\\((3, 5) = (5, 3)\\)", "\\(\\{3, 5\\} = \\{5, 3\\}\\)", "\\(\\{1, 2\\} \\cup \\{2, 3\\} = \\{1, 2, 3\\}\\)", "\\(\\{1, 2, 3\\} \\setminus \\{2\\} = \\{1, 3\\}\\)"], "answer": 0, "why": "Bei Paaren zählt die Reihenfolge: \\((a, b) = (c, d)\\) nur für \\(a = c\\) und \\(b = d\\). Eine Menge ist dagegen allein durch ihre Elemente bestimmt – die Reihenfolge der Aufzählung spielt keine Rolle."}, {"type": "num", "q": "Wie viele Elemente hat die Potenzmenge \\(\\mathcal{P}(\\{1, 2, 3, 4\\})\\)?", "answer": 16, "why": "Jedes der vier Elemente ist in einer Teilmenge enthalten oder nicht – das ergibt \\(2^4 = 16\\) Teilmengen, von \\(\\emptyset\\) bis \\(\\{1,2,3,4\\}\\). Bei \\(\\{1, 2, 3\\}\\) sind es \\(2^3 = 8\\)."}, {"type": "multi", "q": "Sei \\(A = \\{1, 2, 3\\}\\). Welche Aussagen sind wahr?", "options": ["\\(\\{1\\} \\in \\mathcal{P}(A)\\)", "\\(1 \\in \\mathcal{P}(A)\\)", "\\(\\emptyset \\subseteq A\\)", "\\(\\{1, 2\\} \\subseteq A\\)"], "answer": [0, 2, 3], "why": "Die Elemente von \\(\\mathcal{P}(A)\\) sind Teilmengen von \\(A\\) – also \\(\\{1\\}\\), aber nicht die Zahl \\(1\\). Die leere Menge ist Teilmenge jeder Menge, denn „\\(x \\in \\emptyset \\Rightarrow x \\in A\\)“ ist für jedes \\(x\\) wahr (Prämisse falsch)."}, {"type": "num", "q": "Die Menge \\(A\\) hat \\(3\\) Elemente, die Menge \\(B\\) hat \\(5\\) Elemente. Wie viele Elemente hat \\(A \\times B\\)?", "answer": 15, "why": "\\(A \\times B\\) besteht aus allen Paaren \\((a, b)\\) mit \\(a \\in A\\), \\(b \\in B\\): zu jedem der \\(3\\) ersten Einträge passen \\(5\\) zweite, also \\(3 \\cdot 5 = 15\\) Paare."}, {"type": "mc", "q": "Was ist die Negation von \\(\\forall x \\in M : \\phi(x)\\)?", "options": ["\\(\\exists x \\in M : \\neg \\phi(x)\\)", "\\(\\forall x \\in M : \\neg \\phi(x)\\)", "\\(\\exists x \\in M : \\phi(x)\\)", "\\(\\neg \\exists x \\in M : \\phi(x)\\)"], "answer": 0, "why": "„Nicht für alle“ heißt „für mindestens eines nicht“: Ein einziges Gegenbeispiel genügt. Beim Verneinen wird \\(\\forall\\) zu \\(\\exists\\) und die innere Aussage wird verneint (Satz 2.3)."}, {"type": "mc", "q": "Welche Aussage ist wahr? (Wie in der Vorlesung ist \\(\\mathbb{N} = \\{1, 2, 3, \\dots\\}\\).)", "options": ["\\(\\forall x \\in \\mathbb{N} : \\exists y \\in \\mathbb{N} : y > x\\)", "\\(\\exists y \\in \\mathbb{N} : \\forall x \\in \\mathbb{N} : y > x\\)", "\\(\\forall x \\in \\mathbb{N} : \\forall y \\in \\mathbb{N} : y > x\\)", "\\(\\exists x \\in \\mathbb{N} : \\forall y \\in \\mathbb{N} : x > y\\)"], "answer": 0, "why": "Zu jedem \\(x\\) gibt es ein größeres \\(y\\), etwa \\(y = x + 1\\). Aber es gibt kein \\(y\\), das größer ist als <em>alle</em> \\(x\\) – sonst wäre \\(y > y\\). Die Reihenfolge der Quantoren entscheidet."}, {"type": "mc", "q": "Wie beweist man eine Aussage der Form \\(\\exists x \\in M : \\phi(x)\\)?", "options": ["Ein konkretes \\(c \\in M\\) angeben und \\(\\phi(c)\\) nachweisen.", "Mit „Sei \\(c \\in M\\) beliebig“ beginnen und \\(\\phi(c)\\) zeigen.", "\\(\\phi(c)\\) für die ersten drei Elemente von \\(M\\) prüfen.", "Zeigen, dass \\(\\neg \\phi(c)\\) für ein \\(c \\in M\\) gilt."], "answer": 0, "why": "Für eine Existenzaussage reicht ein einziger Zeuge. „Sei \\(c \\in M\\) beliebig“ ist der Beginn eines Beweises einer <em>All</em>aussage – und Beispiele prüfen beweist nie ein „für alle“."}, {"type": "num", "q": "Berechne mit Satz 2.4: \\(1 + 2 + 3 + \\dots + 20 = \\; ?\\)", "answer": 210, "why": "\\(\\sum_{k=1}^{n} k = \\frac12 n(n+1)\\), also \\(\\frac12 \\cdot 20 \\cdot 21 = 210\\). Bewiesen wird die Formel durch vollständige Induktion."}]</script>
+              <noscript><p>Für den Wissens-Check wird JavaScript benötigt.</p></noscript>
+            </div>
+        </article>
+<article class="modul reveal" id="kapitel-3">
+          <header class="modul-head">
+            <p class="eyebrow">Kapitel 3</p>
+            <h2>Relationen: Ordnungen &amp; Äquivalenzrelationen</h2>
+            <p class="mat-sub">Eine Relation ist nichts als eine Teilmenge von \(X \times X\). Mit vier Eigenschaften wird daraus entweder eine Ordnung, mit der man vergleicht, oder eine Äquivalenzrelation, mit der man eine Menge in Klassen zerlegt.</p>
+            
+          </header>
+<details class="box box-idee" open>
+              <summary><span class="box-icon" aria-hidden="true">◇</span><span class="box-kind">Idee</span><span class="box-title">Eine Relation ist eine Teilmenge – und vier Eigenschaften entscheiden</span></summary>
+              <div class="box-body"><p>Eine <em>Relation</em> auf \(X\) ist eine Teilmenge \(R \subseteq X \times X\); statt \((x, y) \in R\) schreibt man \(xRy\). Bei endlichem \(X\) passt sie in eine Tabelle: ein Kreuz an der Stelle \((x, y)\), wenn \(xRy\) gilt. Entscheidend sind vier Eigenschaften:</p><ul class="box-list"><li><strong>reflexiv:</strong> \(xRx\) für alle \(x\) – die ganze Diagonale ist angekreuzt.</li><li><strong>symmetrisch:</strong> \(xRy \Rightarrow yRx\) – die Tabelle ist spiegelbildlich zur Diagonale.</li><li><strong>anti-symmetrisch:</strong> \(xRy \wedge yRx \Rightarrow x = y\) – außerhalb der Diagonale nie beide Kreuze.</li><li><strong>transitiv:</strong> \(xRy \wedge yRz \Rightarrow xRz\).</li></ul><p>Reflexiv, anti-symmetrisch und transitiv ergibt eine <em>Halbordnung</em>; sind zusätzlich je zwei Elemente vergleichbar, eine <em>Totalordnung</em>. Reflexiv, symmetrisch und transitiv ergibt eine <em>Äquivalenzrelation</em>.</p></div>
+            </details>
+          <div class="explorable">
+            <div class="ex-head"><p class="eyebrow">Zum Anfassen</p><p class="ex-title">Das Relationen-Labor</p><p class="ex-lead">Die Tabelle zeigt eine Relation auf \(X = \{1, \dots, 6\}\): Ein goldenes Feld in Zeile \(x\), Spalte \(y\) bedeutet \(xRy\). Wähle eine Vorlage oder schalte Felder per Klick an und aus. Das Labor prüft alle vier Eigenschaften, nennt Gegenbeispiele und zeigt bei Äquivalenzrelationen die Klassen.</p></div>
+            <div data-explorable="relation"></div>
+          </div>
+<details class="box box-idee" open>
+              <summary><span class="box-icon" aria-hidden="true">◇</span><span class="box-kind">Idee</span><span class="box-title">Äquivalenzrelationen zerlegen eine Menge</span></summary>
+              <div class="box-body"><p>Ist \(\sim\) eine Äquivalenzrelation, so heißt \([x]_\sim = \{y \in X \mid x \sim y\}\) die <em>Äquivalenzklasse</em> von \(x\). Zwei Klassen sind entweder gleich oder disjunkt, und jedes Element liegt in seiner eigenen Klasse – die Klassen bilden also eine <em>Zerlegung</em> von \(X\). Umgekehrt liefert jede Zerlegung eine Äquivalenzrelation: „liegen in derselben Teilmenge“.</p><p>Das wichtigste Beispiel ist die <em>Kongruenz modulo \(n\)</em>: \(a \equiv_n b \Leftrightarrow n \mid (a - b)\). Ihre Klassen sind die Restklassen \(a + n\mathbb{Z}\), und \(\mathbb{Z}/n\mathbb{Z} = \{\bar 0, \bar 1, \dots, \overline{n-1}\}\) hat genau \(n\) Elemente.</p></div>
+            </details>
+<details class="box box-achtung">
+              <summary><span class="box-icon" aria-hidden="true">!</span><span class="box-kind">Typischer Fehler</span><span class="box-title">Anti-symmetrisch ist nicht das Gegenteil von symmetrisch</span></summary>
+              <div class="box-body"><p>Eine Relation kann beides sein (die Gleichheit \(=\)) oder keins von beiden. „Nicht symmetrisch“ heißt nur: Es gibt <em>ein</em> Paar mit \(xRy\), aber nicht \(yRx\). Auch Transitivität ist leicht übersehen: Sie muss für <em>alle</em> Ketten \(xRy\), \(yRz\) gelten, auch für \(x = z\). Ein einziges Gegenbeispiel genügt, um eine Eigenschaft zu widerlegen.</p></div>
+            </details>
+<details class="box box-merke">
+              <summary><span class="box-icon" aria-hidden="true">≡</span><span class="box-kind">Merke</span><span class="box-title">Ordnung vergleicht, Äquivalenz sortiert</span></summary>
+              <div class="box-body"><p><strong>Halbordnung</strong> = reflexiv + anti-symmetrisch + transitiv. Beispiele: \(\le\) auf \(\mathbb{R}\) (sogar total), die Teilerrelation auf \(\mathbb{N}\), \(\subseteq\) auf \(\mathcal{P}(X)\).</p><p><strong>Äquivalenzrelation</strong> = reflexiv + symmetrisch + transitiv. Ihre Klassen zerlegen \(X\); es gilt \(a \equiv_n b \Leftrightarrow a + n\mathbb{Z} = b + n\mathbb{Z}\).</p></div>
+            </details>
+<div class="quiz" id="check-la1-k3" data-quiz-id="la1-k3">
+              <div class="quiz-head"><p class="eyebrow">Wissens-Check</p><p class="quiz-sub">8 Fragen, gemischt. Nach jeder Antwort erfährst du, warum.</p></div>
+              <script type="application/json">[{"type": "multi", "q": "Welche Eigenschaften hat die Relation \\(\\le\\) auf \\(\\mathbb{N}\\)?", "options": ["reflexiv", "anti-symmetrisch", "transitiv", "symmetrisch"], "answer": [0, 1, 2], "why": "\\(\\le\\) ist reflexiv, anti-symmetrisch und transitiv, also eine Halbordnung – und weil je zwei Zahlen vergleichbar sind, sogar eine Totalordnung. Symmetrisch ist sie nicht: \\(1 \\le 2\\), aber nicht \\(2 \\le 1\\)."}, {"type": "tf", "q": "Die Teilerrelation \\(|\\) auf \\(\\mathbb{N}\\) ist eine Totalordnung.", "answer": false, "why": "Sie ist eine Halbordnung, aber \\(2\\) und \\(3\\) sind nicht vergleichbar: Weder \\(2 \\mid 3\\) noch \\(3 \\mid 2\\)."}, {"type": "mc", "q": "Welche Relation auf \\(\\mathbb{Z}\\) ist eine Äquivalenzrelation?", "options": ["\\(a \\sim b \\Leftrightarrow 5 \\mid (a - b)\\)", "\\(a \\sim b \\Leftrightarrow a \\le b\\)", "\\(a \\sim b \\Leftrightarrow |a - b| \\le 1\\)", "\\(a \\sim b \\Leftrightarrow a < b\\)"], "answer": 0, "why": "Die Kongruenz modulo 5 ist reflexiv, symmetrisch und transitiv. \\(\\le\\) und \\(<\\) sind nicht symmetrisch; \\(|a-b| \\le 1\\) ist nicht transitiv: \\(0 \\sim 1\\), \\(1 \\sim 2\\), aber nicht \\(0 \\sim 2\\)."}, {"type": "num", "q": "Wie viele verschiedene Restklassen hat \\(\\mathbb{Z}/6\\mathbb{Z}\\)?", "answer": 6, "why": "Nach Proposition 3.13 sind es genau die Klassen \\(r + 6\\mathbb{Z}\\) mit \\(0 \\le r < 6\\), also \\(\\bar 0, \\bar 1, \\dots, \\bar 5\\)."}, {"type": "tf", "q": "In \\(\\mathbb{Z}/5\\mathbb{Z}\\) gilt \\(\\bar 2 = \\overline{-8}\\).", "answer": true, "why": "\\(2 - (-8) = 10\\) ist durch \\(5\\) teilbar, also \\(2 \\equiv_5 -8\\) und damit \\(2 + 5\\mathbb{Z} = -8 + 5\\mathbb{Z}\\)."}, {"type": "mc", "q": "Sei \\(X = \\{1, 2, 3, 4\\}\\). Welche Menge ist eine Zerlegung von \\(X\\)?", "options": ["\\(\\{\\{1, 4\\}, \\{2\\}, \\{3\\}\\}\\)", "\\(\\{\\{1, 2\\}, \\{2, 3, 4\\}\\}\\)", "\\(\\{\\{1, 2\\}, \\{4\\}\\}\\)", "\\(\\{\\emptyset, \\{1, 2\\}, \\{3, 4\\}\\}\\)"], "answer": 0, "why": "Eine Zerlegung besteht aus nichtleeren, paarweise disjunkten Mengen, die zusammen ganz \\(X\\) überdecken. Bei der zweiten überlappen sich die Mengen, bei der dritten fehlt die \\(3\\), die vierte enthält die leere Menge."}, {"type": "tf", "q": "Eine Relation, die nicht symmetrisch ist, ist automatisch anti-symmetrisch.", "answer": false, "why": "Die beiden Begriffe sind keine Gegenteile. Auf \\(\\{1,2,3\\}\\) ist \\(R = \\{(1,2), (2,1), (1,3)\\}\\) weder symmetrisch (\\((3,1)\\) fehlt) noch anti-symmetrisch (\\(1 R 2\\) und \\(2 R 1\\), aber \\(1 \\ne 2\\))."}, {"type": "num", "q": "Die Relation \\(A \\sim B \\Leftrightarrow |A| = |B|\\) auf \\(\\mathcal{P}(\\{1, 2, 3\\})\\) ist eine Äquivalenzrelation. Wie viele Äquivalenzklassen hat sie?", "answer": 4, "why": "Die Teilmengen haben \\(0, 1, 2\\) oder \\(3\\) Elemente – das ergibt vier Klassen mit \\(1 + 3 + 3 + 1 = 8\\) Mengen."}]</script>
+              <noscript><p>Für den Wissens-Check wird JavaScript benötigt.</p></noscript>
+            </div>
+        </article>
+<article class="modul reveal" id="kapitel-4">
+          <header class="modul-head">
+            <p class="eyebrow">Kapitel 4</p>
+            <h2>Abbildungen &amp; Mächtigkeiten</h2>
+            <p class="mat-sub">Eine Abbildung ordnet jedem \(x\) genau ein \(f(x)\) zu. Injektiv, surjektiv, bijektiv – und mit Bijektionen lässt sich sogar vergleichen, wie groß unendliche Mengen sind.</p>
+            
+          </header>
+<details class="box box-idee" open>
+              <summary><span class="box-icon" aria-hidden="true">◇</span><span class="box-kind">Idee</span><span class="box-title">Eine Abbildung: zu jedem x genau ein Bild</span></summary>
+              <div class="box-body"><p>Eine <em>Abbildung</em> \(f\colon X \to Y\) ist eine Relation zwischen \(X\) und \(Y\), bei der zu jedem \(x \in X\) <strong>genau ein</strong> \(y\) mit \((x, y) \in f\) existiert – dieses \(y\) heißt \(f(x)\). \(f\) heißt <em>injektiv</em>, wenn aus \(f(x_1) = f(x_2)\) stets \(x_1 = x_2\) folgt; <em>surjektiv</em>, wenn jedes \(y \in Y\) getroffen wird; <em>bijektiv</em>, wenn beides gilt.</p><p>Genau die bijektiven Abbildungen haben eine <em>Umkehrabbildung</em> \(f^{-1}\) mit \(f^{-1} \circ f = \mathrm{id}_X\) und \(f \circ f^{-1} = \mathrm{id}_Y\) (Satz 4.8). Bild und Urbild von Teilmengen gibt es dagegen immer: \(f(U) = \{f(x) \mid x \in U\}\) und \(f^{-1}(V) = \{x \in X \mid f(x) \in V\}\).</p></div>
+            </details>
+          <div class="explorable">
+            <div class="ex-head"><p class="eyebrow">Zum Anfassen</p><p class="ex-title">Das Abbildungs-Labor</p><p class="ex-lead">Klicke links ein Element aus \(X\) an und dann rechts sein Bild in \(Y\). Ändere die Größe von \(Y\) und beobachte, wann \(f\) injektiv, surjektiv oder bijektiv sein kann – und wann es eine Umkehrabbildung gibt.</p></div>
+            <div data-explorable="mapping"></div>
+          </div>
+<details class="box box-idee" open>
+              <summary><span class="box-icon" aria-hidden="true">◇</span><span class="box-kind">Idee</span><span class="box-title">Wie viele Elemente? Mächtigkeiten zählen</span></summary>
+              <div class="box-body"><p>Eine Menge \(A\) hat \(n\) Elemente, wenn es eine Bijektion \(\{1, \dots, n\} \to A\) gibt. Für endliche Mengen gilt</p><p class="box-formula">\(|A \cup B| = |A| + |B| - |A \cap B|\) &nbsp;·&nbsp; \(|A \times B| = |A| \cdot |B|\) &nbsp;·&nbsp; \(|\mathcal{P}(A)| = 2^{|A|}\) &nbsp;·&nbsp; \(\binom{n}{k} = \frac{n!}{k!\,(n-k)!}\)</p><p>Für unendliche Mengen heißen \(A\) und \(B\) <em>gleichmächtig</em>, wenn es eine Bijektion \(A \to B\) gibt. \(A\) ist <em>abzählbar unendlich</em>, wenn \(A\) gleichmächtig zu \(\mathbb{N}\) ist, und <em>überabzählbar</em>, wenn \(A\) nicht einmal höchstens abzählbar ist. Überraschend: \(\mathbb{N} \times \mathbb{N}\) ist abzählbar – man zählt diagonal –, und abzählbare Vereinigungen abzählbarer Mengen bleiben abzählbar.</p></div>
+            </details>
+<details class="box box-achtung">
+              <summary><span class="box-icon" aria-hidden="true">!</span><span class="box-kind">Typischer Fehler</span><span class="box-title">\(f^{-1}(V)\) heißt nicht, dass es \(f^{-1}\) gibt</span></summary>
+              <div class="box-body"><p>Das Urbild \(f^{-1}(V)\) ist für <em>jede</em> Abbildung definiert, auch ohne Umkehrabbildung. Und Bild und Urbild heben sich im Allgemeinen nicht auf: Es gilt nur \(f(f^{-1}(V)) \subseteq V\) und \(U \subseteq f^{-1}(f(U))\). Gleichheit gibt es erst mit Surjektivität bzw. Injektivität.</p></div>
+            </details>
+<details class="box box-merke">
+              <summary><span class="box-icon" aria-hidden="true">≡</span><span class="box-kind">Merke</span><span class="box-title">Injektiv, surjektiv, bijektiv – auf einen Blick</span></summary>
+              <div class="box-body"><ul class="box-list"><li><strong>injektiv</strong> \(\Leftrightarrow\) es gibt \(g\) mit \(g \circ f = \mathrm{id}_X\) (für \(X \ne \emptyset\)) – höchstens ein Pfeil pro Ziel.</li><li><strong>surjektiv</strong> \(\Leftrightarrow\) es gibt \(g\) mit \(f \circ g = \mathrm{id}_Y\) – mindestens ein Pfeil pro Ziel.</li><li><strong>bijektiv</strong> \(\Leftrightarrow\) genau ein Pfeil pro Ziel; dann ist \(f^{-1}\) eindeutig, und \((g \circ f)^{-1} = f^{-1} \circ g^{-1}\).</li><li>Für endliche Mengen mit \(|X| = |Y|\) sind injektiv, surjektiv und bijektiv gleichwertig.</li></ul></div>
+            </details>
+<div class="quiz" id="check-la1-k4" data-quiz-id="la1-k4">
+              <div class="quiz-head"><p class="eyebrow">Wissens-Check</p><p class="quiz-sub">8 Fragen, gemischt. Nach jeder Antwort erfährst du, warum.</p></div>
+              <script type="application/json">[{"type": "mc", "q": "Welche Abbildung \\(f\\colon \\mathbb{N} \\to \\mathbb{N}\\) ist injektiv, aber nicht surjektiv?", "options": ["\\(f(n) = 2n\\)", "\\(f(n) = n\\)", "\\(f(n) = 1\\)", "\\(f(1) = 1,\\ f(n) = n - 1\\) für \\(n \\ge 2\\)"], "answer": 0, "why": "\\(2n = 2m\\) erzwingt \\(n = m\\), aber ungerade Zahlen werden nie getroffen. Die Identität ist bijektiv, die konstante Abbildung weder injektiv noch (für \\(\\mathbb{N}\\)) surjektiv, die letzte ist surjektiv, aber nicht injektiv (\\(1\\) und \\(2\\) gehen beide auf \\(1\\))."}, {"type": "tf", "q": "Die Komposition zweier bijektiver Abbildungen ist bijektiv.", "answer": true, "why": "Das ist Satz 4.7: Injektivität und Surjektivität übertragen sich jeweils auf \\(g \\circ f\\). Die Umkehrabbildung ist \\(f^{-1} \\circ g^{-1}\\) – in umgekehrter Reihenfolge."}, {"type": "mc", "q": "Für \\(f\\colon \\mathbb{Z} \\to \\mathbb{Z}\\), \\(f(x) = x^2\\) ist das Urbild \\(f^{-1}(\\{4, 5\\})\\) gleich …", "options": ["\\(\\{-2, 2\\}\\)", "\\(\\{2\\}\\)", "\\(\\{16, 25\\}\\)", "nicht definiert, weil \\(f\\) nicht bijektiv ist"], "answer": 0, "why": "Das Urbild sammelt alle \\(x\\) mit \\(x^2 \\in \\{4, 5\\}\\): das sind \\(\\pm 2\\); \\(5\\) ist kein Quadrat einer ganzen Zahl. Urbildmengen gibt es für <em>jede</em> Abbildung – sie haben nichts mit einer Umkehrabbildung zu tun."}, {"type": "num", "q": "Wie viele Abbildungen gibt es von einer 3-elementigen Menge in eine 2-elementige Menge?", "answer": 8, "why": "Jedes der drei Elemente kann unabhängig auf eines von zwei Zielen gehen: \\(2 \\cdot 2 \\cdot 2 = 2^3 = 8\\). Keine davon ist injektiv – drei Elemente passen nicht verschieden auf zwei Plätze."}, {"type": "num", "q": "Berechne den Binomialkoeffizienten \\(\\binom{5}{2}\\), also die Anzahl der 2-elementigen Teilmengen von \\(\\{1, \\dots, 5\\}\\).", "answer": 10, "why": "\\(\\binom{5}{2} = \\frac{5!}{2!\\,3!} = \\frac{120}{2 \\cdot 6} = 10\\)."}, {"type": "num", "q": "Es gilt \\(|A| = 7\\), \\(|B| = 5\\) und \\(|A \\cap B| = 2\\). Wie groß ist \\(|A \\cup B|\\)?", "answer": 10, "why": "\\(|A \\cup B| = |A| + |B| - |A \\cap B| = 7 + 5 - 2 = 10\\) – sonst würden die gemeinsamen Elemente doppelt gezählt."}, {"type": "multi", "q": "Welche Mengen sind abzählbar unendlich?", "options": ["\\(\\mathbb{Z}\\)", "\\(\\mathbb{N} \\times \\mathbb{N}\\)", "die Menge der geraden natürlichen Zahlen", "\\(\\{1, 2, \\dots, 1000\\}\\)"], "answer": [0, 1, 2], "why": "\\(\\mathbb{Z}\\) lässt sich als \\(0, 1, -1, 2, -2, \\dots\\) durchnummerieren, \\(\\mathbb{N} \\times \\mathbb{N}\\) diagonal (Satz 4.22), und jede unendliche Teilmenge von \\(\\mathbb{N}\\) ist abzählbar unendlich (Lemma 4.20). Die letzte Menge ist endlich."}, {"type": "tf", "q": "Für jede Abbildung \\(f\\colon X \\to Y\\) und jedes \\(U \\subseteq X\\) gilt \\(f^{-1}(f(U)) = U\\).", "answer": false, "why": "Es gilt nur \\(U \\subseteq f^{-1}(f(U))\\) (Proposition 4.5). Gegenbeispiel: \\(f(x) = x^2\\) auf \\(\\mathbb{Z}\\), \\(U = \\{2\\}\\): \\(f^{-1}(f(U)) = f^{-1}(\\{4\\}) = \\{-2, 2\\}\\)."}]</script>
               <noscript><p>Für den Wissens-Check wird JavaScript benötigt.</p></noscript>
             </div>
         </article>

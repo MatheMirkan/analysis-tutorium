@@ -814,3 +814,32 @@ html:has(#wartung), html:has(#wartung) body { overflow: hidden !important; }
 .q-badge{flex:none;font-family:var(--sans);font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:.15rem .55rem;border:1px solid currentColor}
 .q-badge.is-w{color:var(--gold)}
 .q-badge.is-f{color:#a04a2a}
+
+/* ---------- Goldener Faden: geplante Stationen ---------- */
+.thread-svg .node.is-open{stroke-dasharray:3 3;opacity:.55}
+.thread-svg .node-core.is-open{fill:var(--gold-soft)}
+
+/* ---------- Skizzen: Relationen- und Abbildungs-Labor ---------- */
+.rel-wrap{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:1rem}
+.rel-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;max-width:360px;margin:0 auto}
+.rel-h{display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--ink-soft)}
+.rel-cell{aspect-ratio:1;border:1px solid var(--line-strong);border-radius:6px;background:var(--white);cursor:pointer;transition:background-color .15s,border-color .15s}
+.rel-cell.is-diag{border-color:var(--gold-soft)}
+.rel-cell.is-on{background:var(--gold);border-color:var(--gold)}
+.rel-cell:hover{border-color:var(--gold)}
+.rel-axis{margin-top:.7rem;text-align:center;font-family:var(--sans);font-size:.8rem;color:var(--ink-mute)}
+.rel-ok{color:var(--gold);font-weight:600}
+.rel-no{color:#a04a2a;font-weight:600}
+.rel-why{color:var(--ink-mute);font-size:.82rem}
+.ex-arrow{stroke:var(--gold);stroke-width:1.6}
+.ex-arrow-head{fill:var(--gold)}
+.map-node{cursor:pointer}
+.map-node circle{fill:var(--white);stroke:var(--ink-soft);stroke-width:1.4;transition:fill .15s,stroke .15s}
+.map-node text{font-family:var(--sans);font-size:13px;fill:var(--ink);text-anchor:middle;pointer-events:none}
+.map-node:hover circle,.map-node:focus-visible circle{stroke:var(--gold)}
+.map-node.is-sel circle{fill:var(--gold);stroke:var(--gold)}
+.map-node.is-sel text{fill:var(--white)}
+.map-y.is-target circle{stroke:var(--gold);stroke-dasharray:3 3}
+.map-y.is-miss circle{stroke:#a04a2a;stroke-dasharray:2 3}
+.map-y.is-multi circle{fill:var(--gold-faint)}
+.map-node:focus{outline:none}

@@ -438,7 +438,7 @@
       cos: { label: 'g(x) = cos x', g: function (x) { return Math.cos(x); }, d: function (x) { return -Math.sin(x); }, I: [0, 1],
         hint: 'cos bildet [0, 1] in sich ab, |g′| ≤ sin 1 ≈ 0,84 < 1: Kontraktion. Der Fixpunkt x* ≈ 0,739 ist die Lösung von cos x = x.' },
       lin: { label: 'g(x) = x/2 + 1/2', g: function (x) { return x / 2 + 0.5; }, d: function () { return 0.5; }, I: [0, 2],
-        hint: 'Lineare Kontraktion mit q = 1/2: Der Abstand zum Fixpunkt 1 halbiert sich in jedem Schritt.' },
+        hint: 'Lineare Kontraktion mit λ = 1/2: Der Abstand zum Fixpunkt 1 halbiert sich in jedem Schritt.' },
       heron: { label: 'g(x) = x/2 + 1/x', g: function (x) { return x / 2 + 1 / x; }, d: function (x) { return 0.5 - 1 / (x * x); }, I: [1, 2],
         hint: 'Heron-Verfahren für √2: Kontraktion auf [1, 2]. Nahe x* ist g′(x*) = 0 – deshalb konvergiert es rasend schnell.' },
       steep: { label: 'g(x) = 2,2 − 1,4 x', g: function (x) { return 2.2 - 1.4 * x; }, d: function () { return -1.4; }, I: [0, 2],
@@ -450,7 +450,7 @@
       '<div class="ex-panel">' +
       '<div class="ex-presets">' + Object.keys(maps).map(function (k) { return '<button type="button" data-map="' + k + '">' + maps[k].label + '</button>'; }).join('') + '</div>' +
       '<label class="ex-slider">Startwert x₀<input type="range" min="0.05" max="1.95" step="0.01" value="0.2"><output></output></label>' +
-      '<dl class="ex-read"><dt>g(I) ⊂ I</dt><dd data-r="self"></dd><dt>q = max |g′| auf I</dt><dd data-r="q"></dd><dt>x₁ … x₆</dt><dd data-r="iter"></dd><dt>Schritte für Fehler &lt; 10⁻⁶</dt><dd data-r="steps"></dd></dl>' +
+      '<dl class="ex-read"><dt>g(I) ⊂ I</dt><dd data-r="self"></dd><dt>λ = max |g′| auf I</dt><dd data-r="q"></dd><dt>x₁ … x₆</dt><dd data-r="iter"></dd><dt>Schritte für Fehler &lt; 10⁻⁶</dt><dd data-r="steps"></dd></dl>' +
       '<p class="ex-hint" data-r="hint"></p>' +
       '</div></div>';
     var svg = host.querySelector('svg'), slider = host.querySelector('input[type=range]'), out = host.querySelector('output');
@@ -973,6 +973,143 @@
     draw();
   }
 
+  /* ---------- Interaktive Skizze: Relationen-Labor ---------- */
+  function relationExplorable(host) {
+    var N = 6, X = [1, 2, 3, 4, 5, 6];
+    var presets = {
+      teiler: { label: 'Teilerrelation x | y', f: function (x, y) { return y % x === 0; } },
+      le: { label: 'x ≤ y', f: function (x, y) { return x <= y; } },
+      lt: { label: 'x < y', f: function (x, y) { return x < y; } },
+      mod2: { label: 'x ≡ y mod 2', f: function (x, y) { return (x - y) % 2 === 0; } },
+      mod3: { label: 'x ≡ y mod 3', f: function (x, y) { return (x - y) % 3 === 0; } },
+      eq: { label: 'x = y', f: function (x, y) { return x === y; } },
+      leer: { label: 'leer', f: function () { return false; } }
+    };
+    host.innerHTML =
+      '<div class="ex-grid">' +
+      '<div class="rel-wrap"><div class="rel-grid" role="grid" aria-label="Relationstabelle: Zeile x, Spalte y"></div><p class="rel-axis">Zeile \\(x\\), Spalte \\(y\\): golden heißt \\(xRy\\)</p></div>' +
+      '<div class="ex-panel">' +
+      '<div class="ex-presets">' + Object.keys(presets).map(function (k) { return '<button type="button" data-rel="' + k + '">' + presets[k].label + '</button>'; }).join('') + '</div>' +
+      '<dl class="ex-read"><dt>reflexiv</dt><dd data-r="refl"></dd><dt>symmetrisch</dt><dd data-r="sym"></dd><dt>anti-symmetrisch</dt><dd data-r="anti"></dd><dt>transitiv</dt><dd data-r="trans"></dd></dl>' +
+      '<p class="ex-hint" data-r="hint"></p>' +
+      '</div></div>';
+    var grid = host.querySelector('.rel-grid');
+    var reads = {}; host.querySelectorAll('[data-r]').forEach(function (r) { reads[r.getAttribute('data-r')] = r; });
+    var R = [];
+    function setPreset(k) { var f = presets[k].f; R = X.map(function (x) { return X.map(function (y) { return f(x, y); }); }); draw(k); }
+    function has(x, y) { return R[x - 1][y - 1]; }
+    function check() {
+      var res = { refl: null, sym: null, anti: null, trans: null, incomparable: null };
+      X.forEach(function (x) { if (!res.refl && !has(x, x)) res.refl = x; });
+      X.forEach(function (x) { X.forEach(function (y) {
+        if (!res.sym && has(x, y) && !has(y, x)) res.sym = [x, y];
+        if (!res.anti && x !== y && has(x, y) && has(y, x)) res.anti = [x, y];
+        if (!res.incomparable && x < y && !has(x, y) && !has(y, x)) res.incomparable = [x, y];
+        X.forEach(function (z) { if (!res.trans && has(x, y) && has(y, z) && !has(x, z)) res.trans = [x, y, z]; });
+      }); });
+      return res;
+    }
+    function ok(b, txt) { return '<span class="rel-' + (b ? 'ok' : 'no') + '">' + (b ? '✓ ja' : '✗ nein') + '</span>' + (txt ? ' <span class="rel-why">' + txt + '</span>' : ''); }
+    function draw(active) {
+      var h = '<span class="rel-h"></span>' + X.map(function (y) { return '<span class="rel-h">' + y + '</span>'; }).join('');
+      X.forEach(function (x) {
+        h += '<span class="rel-h">' + x + '</span>';
+        X.forEach(function (y) {
+          h += '<button type="button" class="rel-cell' + (has(x, y) ? ' is-on' : '') + (x === y ? ' is-diag' : '') + '" data-x="' + x + '" data-y="' + y + '" aria-pressed="' + has(x, y) + '" aria-label="(' + x + ', ' + y + ')"></button>';
+        });
+      });
+      grid.innerHTML = h;
+      grid.querySelectorAll('.rel-cell').forEach(function (c) {
+        c.addEventListener('click', function () {
+          var x = +c.getAttribute('data-x'), y = +c.getAttribute('data-y');
+          R[x - 1][y - 1] = !R[x - 1][y - 1]; draw(null);
+        });
+      });
+      var r = check();
+      reads.refl.innerHTML = ok(!r.refl, r.refl ? '(' + r.refl + ', ' + r.refl + ') fehlt' : '');
+      reads.sym.innerHTML = ok(!r.sym, r.sym ? r.sym[0] + 'R' + r.sym[1] + ', aber nicht ' + r.sym[1] + 'R' + r.sym[0] : '');
+      reads.anti.innerHTML = ok(!r.anti, r.anti ? r.anti[0] + 'R' + r.anti[1] + ' und ' + r.anti[1] + 'R' + r.anti[0] : '');
+      reads.trans.innerHTML = ok(!r.trans, r.trans ? r.trans[0] + 'R' + r.trans[1] + ', ' + r.trans[1] + 'R' + r.trans[2] + ', aber nicht ' + r.trans[0] + 'R' + r.trans[2] : '');
+      var hint;
+      if (!r.refl && !r.sym && !r.trans) {
+        var seen = {}, classes = [];
+        X.forEach(function (x) { if (seen[x]) return; var c = X.filter(function (y) { return has(x, y); }); c.forEach(function (y) { seen[y] = 1; }); classes.push('{' + c.join(', ') + '}'); });
+        hint = 'Äquivalenzrelation: reflexiv, symmetrisch und transitiv. Die ' + classes.length + ' Klassen ' + classes.join(', ') + ' zerlegen X.' + (!r.anti ? ' (Zugleich eine Halbordnung – das geht nur bei der Gleichheit.)' : '');
+      } else if (!r.refl && !r.anti && !r.trans) {
+        hint = r.incomparable ? 'Halbordnung, aber keine Totalordnung: ' + r.incomparable[0] + ' und ' + r.incomparable[1] + ' sind nicht vergleichbar.' : 'Totalordnung: eine Halbordnung, in der je zwei Elemente vergleichbar sind.';
+      } else if (r.refl && !r.anti && !r.trans && X.every(function (x) { return !has(x, x); })) {
+        hint = 'Keine Halbordnung, weil nicht reflexiv – eine sogenannte strikte Ordnung wie „<“.';
+      } else {
+        hint = 'Weder Halbordnung noch Äquivalenzrelation. Schalte Felder an oder aus, bis alle nötigen Eigenschaften erfüllt sind.';
+      }
+      reads.hint.textContent = hint;
+      host.querySelectorAll('[data-rel]').forEach(function (b) { b.classList.toggle('is-on', b.getAttribute('data-rel') === active); });
+    }
+    host.querySelectorAll('[data-rel]').forEach(function (b) { b.addEventListener('click', function () { setPreset(b.getAttribute('data-rel')); }); });
+    setPreset('teiler');
+  }
+
+  /* ---------- Interaktive Skizze: Abbildungs-Labor ---------- */
+  function mappingExplorable(host) {
+    var W = 360, H = 300, X = [1, 2, 3, 4], NAMES = ['a', 'b', 'c', 'd', 'e'];
+    var presets = {
+      bij: { label: 'bijektiv', n: 4, f: [1, 3, 0, 2] },
+      inj: { label: 'injektiv, nicht surjektiv', n: 5, f: [0, 2, 3, 4] },
+      sur: { label: 'surjektiv, nicht injektiv', n: 3, f: [0, 1, 2, 1] },
+      none: { label: 'weder noch', n: 4, f: [0, 0, 2, 2] }
+    };
+    host.innerHTML =
+      '<div class="ex-grid">' +
+      '<svg class="ex-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Abbildung f von X nach Y als Pfeildiagramm"></svg>' +
+      '<div class="ex-panel">' +
+      '<div class="ex-presets">' + Object.keys(presets).map(function (k) { return '<button type="button" data-map="' + k + '">' + presets[k].label + '</button>'; }).join('') + '</div>' +
+      '<label class="ex-slider">|Y|<input type="range" min="2" max="5" step="1" value="4"><output></output></label>' +
+      '<dl class="ex-read"><dt>f(X)</dt><dd data-r="img"></dd><dt>injektiv</dt><dd data-r="inj"></dd><dt>surjektiv</dt><dd data-r="sur"></dd><dt>f⁻¹</dt><dd data-r="inv"></dd></dl>' +
+      '<p class="ex-hint" data-r="hint"></p>' +
+      '</div></div>';
+    var svg = host.querySelector('svg'), slider = host.querySelector('input[type=range]'), out = host.querySelector('output');
+    var reads = {}; host.querySelectorAll('[data-r]').forEach(function (r) { reads[r.getAttribute('data-r')] = r; });
+    var n = 4, f = [1, 3, 0, 2], sel = null, active = 'bij';
+    function py(i, cnt) { var step = cnt > 1 ? Math.min(62, 210 / (cnt - 1)) : 0; return Math.round(160 + (i - (cnt - 1) / 2) * step); }
+    function draw() {
+      out.value = n;
+      var s = '<ellipse class="ex-set" cx="90" cy="160" rx="44" ry="122"/><ellipse class="ex-set" cx="270" cy="160" rx="44" ry="122"/>';
+      s += '<text class="ex-lbl" x="80" y="26">X</text><text class="ex-lbl" x="262" y="26">Y</text><text class="ex-lbl" x="174" y="26">f</text>';
+      X.forEach(function (x, i) {
+        var y1 = py(i, 4), y2 = py(f[i], n), dx = 270 - 90, len = Math.hypot(dx - 28, y2 - y1), ux = (dx - 28) / len, uy = (y2 - y1) / len;
+        var ex = 256, ey = y2, hx = ex - ux * 9, hy = ey - uy * 9;
+        s += '<line class="ex-arrow" x1="104" y1="' + y1 + '" x2="' + ex + '" y2="' + ey + '"/>';
+        s += '<polygon class="ex-arrow-head" points="' + ex + ',' + ey + ' ' + (hx - uy * 4).toFixed(1) + ',' + (hy + ux * 4).toFixed(1) + ' ' + (hx + uy * 4).toFixed(1) + ',' + (hy - ux * 4).toFixed(1) + '"/>';
+      });
+      var hits = NAMES.slice(0, n).map(function (_, j) { return f.filter(function (v) { return v === j; }).length; });
+      X.forEach(function (x, i) {
+        s += '<g class="map-node' + (sel === i ? ' is-sel' : '') + '" data-x="' + i + '" tabindex="0" role="button" aria-label="Element ' + x + ' auswählen"><circle cx="90" cy="' + py(i, 4) + '" r="13"/><text x="90" y="' + (py(i, 4) + 5) + '">' + x + '</text></g>';
+      });
+      NAMES.slice(0, n).forEach(function (nm, j) {
+        s += '<g class="map-node map-y' + (hits[j] === 0 ? ' is-miss' : hits[j] > 1 ? ' is-multi' : '') + (sel !== null ? ' is-target' : '') + '" data-y="' + j + '" tabindex="0" role="button" aria-label="Bild ' + nm + ' wählen"><circle cx="270" cy="' + py(j, n) + '" r="13"/><text x="270" y="' + (py(j, n) + 5) + '">' + nm + '</text></g>';
+      });
+      svg.innerHTML = s;
+      svg.querySelectorAll('[data-x]').forEach(function (g) { var a = function () { sel = +g.getAttribute('data-x'); active = null; draw(); }; g.addEventListener('click', a); g.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); a(); } }); });
+      svg.querySelectorAll('[data-y]').forEach(function (g) { var a = function () { if (sel === null) return; f[sel] = +g.getAttribute('data-y'); sel = null; active = null; draw(); }; g.addEventListener('click', a); g.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); a(); } }); });
+      var img = NAMES.slice(0, n).filter(function (_, j) { return hits[j] > 0; });
+      var dup = hits.indexOf(Math.max.apply(null, hits)), miss = hits.indexOf(0);
+      var inj = Math.max.apply(null, hits) <= 1, sur = miss < 0;
+      reads.img.textContent = '{' + img.join(', ') + '}';
+      reads.inj.innerHTML = inj ? '<span class="rel-ok">✓ ja</span>' : '<span class="rel-no">✗ nein</span> <span class="rel-why">' + X.filter(function (_, i) { return f[i] === dup; }).map(function (x) { return 'f(' + x + ')'; }).join(' = ') + ' = ' + NAMES[dup] + '</span>';
+      reads.sur.innerHTML = sur ? '<span class="rel-ok">✓ ja</span>' : '<span class="rel-no">✗ nein</span> <span class="rel-why">' + NAMES[miss] + ' wird nicht getroffen</span>';
+      reads.inv.textContent = inj && sur ? NAMES.slice(0, n).map(function (nm, j) { return nm + ' ↦ ' + X[f.indexOf(j)]; }).join(', ') : 'existiert nicht';
+      var hint = sel !== null ? 'Wähle rechts das Bild von ' + X[sel] + '.' :
+        n < 4 ? '|Y| < |X|: Zwei Elemente müssen dasselbe Bild haben – injektiv ist hier unmöglich.' :
+        n > 4 ? '|Y| > |X|: Mindestens ein Element von Y bleibt übrig – surjektiv ist hier unmöglich.' :
+        '|X| = |Y|: Hier sind injektiv, surjektiv und bijektiv gleichwertig – probiere es aus.';
+      reads.hint.textContent = hint;
+      host.querySelectorAll('[data-map]').forEach(function (b) { b.classList.toggle('is-on', b.getAttribute('data-map') === active); });
+    }
+    slider.addEventListener('input', function () { n = +slider.value; f = f.map(function (v, i) { return Math.min(v, n - 1); }); sel = null; active = null; draw(); });
+    host.querySelectorAll('[data-map]').forEach(function (b) { b.addEventListener('click', function () { var p = presets[b.getAttribute('data-map')]; n = p.n; slider.value = n; f = p.f.slice(); sel = null; active = b.getAttribute('data-map'); draw(); }); });
+    draw();
+  }
+
   document.querySelectorAll('[data-explorable]').forEach(function (host) {
     var kind = host.getAttribute('data-explorable');
     if (kind === 'matrix') matrixExplorable(host);
@@ -982,6 +1119,8 @@
     if (kind === 'truth') truthExplorable(host);
     if (kind === 'venn') vennExplorable(host);
     if (kind === 'quantor') quantorExplorable(host);
+    if (kind === 'relation') relationExplorable(host);
+    if (kind === 'mapping') mappingExplorable(host);
   });
 
   document.querySelectorAll('.lernbereich').forEach(math);
