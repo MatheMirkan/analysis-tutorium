@@ -947,3 +947,4 @@ body{transition:background-color .3s ease,color .3s ease}
 .box.is-hit{box-shadow:0 0 0 2px var(--gold)}
 @media (max-width:600px){.kk-inner{min-height:260px}.tr-q,.bw-claim{font-size:1.12rem}}
 @media (max-width:400px){.nav-inner{gap:.5rem}.brand{gap:.55rem}.brand-name{font-size:1.04rem}.brand-sub{font-size:.52rem;letter-spacing:.12em}.brand-mark{width:28px;height:28px}.nav-actions{gap:.35rem}.theme-toggle,.nav-toggle{width:40px;height:40px}}
+.blatt-note a{color:var(--gold);text-decoration:underline;text-underline-offset:2px}
