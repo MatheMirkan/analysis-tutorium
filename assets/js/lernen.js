@@ -196,7 +196,10 @@
       if (q.type === 'num') {
         var raw = form.querySelector('input').value.trim().replace(',', '.');
         if (!raw) return null;
-        var v = parseFloat(raw); if (isNaN(v)) return false;
+        // auch einfache Brüche wie 7/10 oder -3/4 zulassen
+        var frac = raw.match(/^(-?\d+(?:\.\d+)?)\s*\/\s*(\d+(?:\.\d+)?)$/);
+        var v = frac ? parseFloat(frac[1]) / parseFloat(frac[2]) : (/^-?\d+(\.\d+)?$/.test(raw) ? parseFloat(raw) : NaN);
+        if (isNaN(v) || !isFinite(v)) return false;
         return Math.abs(v - q.answer) <= (q.tol !== undefined ? q.tol : 1e-6);
       }
       return null;
