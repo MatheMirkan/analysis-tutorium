@@ -61,10 +61,9 @@
           <p class="phero-lead">Fixpunkte, implizite Funktionen und alles, was darauf aufbaut – die Analysis wird hier zum Werkzeug. Jedes Kapitel dreifach: Idee lesen, Skizze anfassen, Wissen prüfen.</p>
           <p class="pnote">Die Seite wächst mit dem Semester: Kapitel für Kapitel, nummeriert wie in der Vorlesung. Los geht es mit Kapitel 17: dem Fixpunktsatz von Banach und implizit definierten Funktionen.</p>
           <nav class="quicknav" aria-label="Abschnitte">
+            <a class="qn-primary" href="#testen">Teste dein Wissen <span class="arr" aria-hidden="true">→</span></a>
             <a href="#materialien">Materialien</a>
-            <a href="#lernpfad">Verstehen &amp; Üben</a>
-            <a href="#ueben">Locker üben</a>
-            <a href="#begleitung">Zum Skript</a>
+            <a href="#kapitel">Kapitel</a>
           </nav>
         </div>
         <div class="phero-visual reveal">
@@ -184,11 +183,43 @@
     <div class="wrap">
       <header class="sec-head reveal">
         <p class="eyebrow">Verstehen &amp; Üben</p>
-        <h2 class="sec-title">Der Lernpfad</h2>
-        <p class="sec-sub">Zu jedem Kapitel dieselben drei Schritte: die Idee in einer Verständnisbox lesen, eine Skizze mit Reglern anfassen und das Wissen in einem kurzen Check prüfen – mit sofortiger Erklärung, warum eine Antwort stimmt oder nicht.</p>
+        <h2 class="sec-title">Dein Lernbereich</h2>
+        <p class="sec-sub">Teste zuerst, wo du stehst – im Klausurmodus oder ganz locker. Danach jedes Kapitel in drei Schritten: die Idee in einer Verständnisbox lesen, eine Skizze mit Reglern anfassen und das Wissen in einem kurzen Check prüfen.</p>
         <div class="sec-accent" aria-hidden="true"></div>
       </header>
 
+      <div class="testen" id="testen">
+        <div class="testen-head reveal">
+          <p class="eyebrow">Teste dein Wissen</p>
+          <h3 class="testen-title">Klausurmodus oder locker üben?</h3>
+          <p class="testen-sub">Im Klausurmodus prüfst du dich unter Zeit, wie in der echten Klausur. Beim lockeren Üben gibt es Zufallsaufgaben und Karteikarten – ohne Uhr, mit Erklärung nach jeder Antwort.</p>
+        </div>
+      <div class="klausur reveal" id="klausurmodus">
+        <div class="klausur-head">
+          <p class="eyebrow">Klausurmodus</p>
+          <h3>Zehn Fragen, die Uhr läuft</h3>
+          <p>Zufällig gemischt aus allen freigeschalteten Kapiteln. Kein Feedback zwischendurch – die Auswertung mit Erklärungen kommt am Ende, wie in der Klausur.</p>
+        </div>
+        <div class="klausur-meta"><span data-k="pool"></span><span data-k="best"></span></div>
+        <button class="btn btn-primary klausur-start" type="button">Klausurmodus starten <span class="arr" aria-hidden="true">→</span></button>
+        <div class="klausur-stage" hidden></div>
+      </div>
+
+      <div class="ueben reveal" id="ueben">
+        <div class="ueben-head"><p class="eyebrow">Locker üben</p><p class="ueben-sub">Ohne Uhr und ohne Punkte – mit Erklärung nach jeder Antwort. Dein Stand bleibt nur in deinem Browser.</p></div>
+        <div class="tabs" role="tablist" aria-label="Übungsarten">
+          <button class="tab is-on" type="button" role="tab" aria-selected="true" data-tab="trainer">Zufallsaufgaben</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="karten">Karteikarten</button>
+        </div>
+        <div class="tabpanel" data-panel="trainer"><div data-uebung="trainer" data-fach="a3"></div></div>
+        <div class="tabpanel" data-panel="karten" hidden><div data-uebung="karten"><script type="application/json">[{"k": "17", "f": "Fixpunkt", "b": "Ein Punkt \\(x\\) mit \\(f(x) = x\\). Gleichungen \\(f(x) = b\\) lassen sich oft als Fixpunktgleichungen schreiben."}, {"k": "17", "f": "Banachraum", "b": "Ein normierter Vektorraum, in dem jede Cauchy-Folge konvergiert. Beispiele: \\((\\mathbb{R}^n, \\|\\cdot\\|)\\), \\((C(D), \\|\\cdot\\|_\\infty)\\) für kompaktes \\(D\\)."}, {"k": "17", "f": "Kontraktion", "b": "\\(\\|f(x) - f(y)\\| \\le \\lambda\\,\\|x - y\\|\\) für alle \\(x, y\\) mit einem festen \\(\\lambda < 1\\)."}, {"k": "17", "f": "Banachscher Fixpunktsatz", "b": "\\(U\\) abgeschlossen in einem Banachraum, \\(f\\colon U \\to U\\) Kontraktion \\(\\Rightarrow\\) genau ein Fixpunkt, und \\(x_{n+1} = f(x_n)\\) konvergiert von jedem Startwert dorthin."}, {"k": "17", "f": "A-priori-Abschätzung", "b": "\\(\\|x_n - x^*\\| \\le \\frac{\\lambda^n}{1 - \\lambda}\\,\\|x_1 - x_0\\|\\) – schon vor dem Rechnen weiß man, wie viele Schritte reichen."}, {"k": "17", "f": "A-posteriori-Abschätzung", "b": "\\(\\|x_n - x^*\\| \\le \\frac{\\lambda}{1 - \\lambda}\\,\\|x_n - x_{n-1}\\|\\) – aus den letzten zwei Iterierten."}, {"k": "17", "f": "Warum „abgeschlossen“ wichtig ist", "b": "\\(f(x) = x/2\\) ist auf \\((0, 1)\\) eine Kontraktion, hat dort aber keinen Fixpunkt – der Fixpunkt \\(0\\) liegt auf dem Rand."}, {"k": "17", "f": "Kontraktion über die Ableitung", "b": "\\(D\\) abgeschlossenes Intervall, \\(|f'| \\le \\lambda < 1\\) im Inneren \\(\\Rightarrow\\) Kontraktion (Mittelwertsatz). Im \\(\\mathbb{R}^n\\): \\(D\\) konvex und \\(\\|J_f\\| \\le \\lambda < 1\\)."}, {"k": "17", "f": "Zeilensummennorm", "b": "\\(\\|A\\|_\\infty = \\max_j \\sum_k |a_{jk}|\\) – die größte Betragssumme einer Zeile. Spaltensummennorm analog mit Spalten."}, {"k": "17", "f": "Neumann-Reihe", "b": "\\(\\|T\\| < 1 \\Rightarrow (I - T)^{-1} = \\sum_{k \\ge 0} T^k\\) und \\(\\|(I - T)^{-1}\\| \\le \\frac{1}{1 - \\|T\\|}\\)."}, {"k": "17", "f": "Ableitung der Inversion", "b": "\\(T \\mapsto T^{-1}\\) ist differenzierbar mit Ableitung \\(H \\mapsto -T_0^{-1} H\\, T_0^{-1}\\); eindimensional \\(\\big(\\frac1x\\big)' = -\\frac{1}{x^2}\\)."}, {"k": "17", "f": "Satz über implizite Funktionen", "b": "\\(F\\) stetig differenzierbar, \\(F(a, b) = 0\\), \\(D_yF(a, b)\\) invertierbar \\(\\Rightarrow\\) nahe \\((a, b)\\) gibt es genau eine Funktion \\(g\\) mit \\(F(x, g(x)) = 0\\)."}, {"k": "17", "f": "Ableitung der impliziten Funktion", "b": "\\(Dg(x) = -D_yF(x, g(x))^{-1}\\, D_xF(x, g(x))\\); eindimensional \\(g'(x) = -\\frac{\\partial_x F}{\\partial_y F}\\)."}, {"k": "17", "f": "Umkehrsatz", "b": "\\(f\\) stetig differenzierbar, \\(Df(a)\\) invertierbar \\(\\Rightarrow\\) \\(f\\) ist nahe \\(a\\) lokal umkehrbar, und \\(D(f^{-1})(f(x)) = Df(x)^{-1}\\)."}]</script></div></div>
+      </div>
+      </div>
+
+      <div class="kapitel-head reveal" id="kapitel">
+        <p class="eyebrow">Die Kapitel</p>
+        <h3 class="testen-title">Idee lesen, Skizze anfassen, Wissen prüfen</h3>
+      </div>
       <div class="lernpfad reveal">
         <div class="lp-head">
           <p class="eyebrow">Dein Lernpfad</p>
@@ -200,17 +231,6 @@
           <button class="lp-chip" type="button" data-quiz="a3-k17">Kapitel 17</button>
           <button class="lp-reset" type="button">Fortschritt zurücksetzen</button>
         </div>
-      </div>
-
-      <div class="klausur reveal" id="klausurmodus">
-        <div class="klausur-head">
-          <p class="eyebrow">Klausurmodus</p>
-          <h3>Zehn Fragen, die Uhr läuft</h3>
-          <p>Zufällig gemischt aus allen freigeschalteten Kapiteln. Kein Feedback zwischendurch – die Auswertung mit Erklärungen kommt am Ende, wie in der Klausur.</p>
-        </div>
-        <div class="klausur-meta"><span data-k="pool"></span><span data-k="best"></span></div>
-        <button class="btn btn-primary klausur-start" type="button">Klausurmodus starten <span class="arr" aria-hidden="true">→</span></button>
-        <div class="klausur-stage" hidden></div>
       </div>
 
       <div class="sections" style="margin-top:1.4rem">
@@ -269,44 +289,20 @@
       </div>
     </div>
     </section>
-    <section class="sec" id="ueben">
-    <div class="wrap">
-      <header class="sec-head reveal">
-        <p class="eyebrow">Üben &amp; Wiederholen</p>
-        <h2 class="sec-title">Locker üben</h2>
-        <p class="sec-sub">Ohne Uhr und ohne Punkte: Zufallsaufgaben, die jedes Mal neu entstehen, Karteikarten für die Definitionen. Dein Stand bleibt nur in deinem Browser.</p>
-        <div class="sec-accent" aria-hidden="true"></div>
-      </header>
-      <div class="ueben reveal">
-        <div class="tabs" role="tablist" aria-label="Übungsarten">
-          <button class="tab is-on" type="button" role="tab" aria-selected="true" data-tab="trainer">Zufallsaufgaben</button>
-          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="karten">Karteikarten</button>
-        </div>
-        <div class="tabpanel" data-panel="trainer"><div data-uebung="trainer" data-fach="a3"></div></div>
-        <div class="tabpanel" data-panel="karten" hidden><div data-uebung="karten"><script type="application/json">[{"k": "17", "f": "Fixpunkt", "b": "Ein Punkt \\(x\\) mit \\(f(x) = x\\). Gleichungen \\(f(x) = b\\) lassen sich oft als Fixpunktgleichungen schreiben."}, {"k": "17", "f": "Banachraum", "b": "Ein normierter Vektorraum, in dem jede Cauchy-Folge konvergiert. Beispiele: \\((\\mathbb{R}^n, \\|\\cdot\\|)\\), \\((C(D), \\|\\cdot\\|_\\infty)\\) für kompaktes \\(D\\)."}, {"k": "17", "f": "Kontraktion", "b": "\\(\\|f(x) - f(y)\\| \\le \\lambda\\,\\|x - y\\|\\) für alle \\(x, y\\) mit einem festen \\(\\lambda < 1\\)."}, {"k": "17", "f": "Banachscher Fixpunktsatz", "b": "\\(U\\) abgeschlossen in einem Banachraum, \\(f\\colon U \\to U\\) Kontraktion \\(\\Rightarrow\\) genau ein Fixpunkt, und \\(x_{n+1} = f(x_n)\\) konvergiert von jedem Startwert dorthin."}, {"k": "17", "f": "A-priori-Abschätzung", "b": "\\(\\|x_n - x^*\\| \\le \\frac{\\lambda^n}{1 - \\lambda}\\,\\|x_1 - x_0\\|\\) – schon vor dem Rechnen weiß man, wie viele Schritte reichen."}, {"k": "17", "f": "A-posteriori-Abschätzung", "b": "\\(\\|x_n - x^*\\| \\le \\frac{\\lambda}{1 - \\lambda}\\,\\|x_n - x_{n-1}\\|\\) – aus den letzten zwei Iterierten."}, {"k": "17", "f": "Warum „abgeschlossen“ wichtig ist", "b": "\\(f(x) = x/2\\) ist auf \\((0, 1)\\) eine Kontraktion, hat dort aber keinen Fixpunkt – der Fixpunkt \\(0\\) liegt auf dem Rand."}, {"k": "17", "f": "Kontraktion über die Ableitung", "b": "\\(D\\) abgeschlossenes Intervall, \\(|f'| \\le \\lambda < 1\\) im Inneren \\(\\Rightarrow\\) Kontraktion (Mittelwertsatz). Im \\(\\mathbb{R}^n\\): \\(D\\) konvex und \\(\\|J_f\\| \\le \\lambda < 1\\)."}, {"k": "17", "f": "Zeilensummennorm", "b": "\\(\\|A\\|_\\infty = \\max_j \\sum_k |a_{jk}|\\) – die größte Betragssumme einer Zeile. Spaltensummennorm analog mit Spalten."}, {"k": "17", "f": "Neumann-Reihe", "b": "\\(\\|T\\| < 1 \\Rightarrow (I - T)^{-1} = \\sum_{k \\ge 0} T^k\\) und \\(\\|(I - T)^{-1}\\| \\le \\frac{1}{1 - \\|T\\|}\\)."}, {"k": "17", "f": "Ableitung der Inversion", "b": "\\(T \\mapsto T^{-1}\\) ist differenzierbar mit Ableitung \\(H \\mapsto -T_0^{-1} H\\, T_0^{-1}\\); eindimensional \\(\\big(\\frac1x\\big)' = -\\frac{1}{x^2}\\)."}, {"k": "17", "f": "Satz über implizite Funktionen", "b": "\\(F\\) stetig differenzierbar, \\(F(a, b) = 0\\), \\(D_yF(a, b)\\) invertierbar \\(\\Rightarrow\\) nahe \\((a, b)\\) gibt es genau eine Funktion \\(g\\) mit \\(F(x, g(x)) = 0\\)."}, {"k": "17", "f": "Ableitung der impliziten Funktion", "b": "\\(Dg(x) = -D_yF(x, g(x))^{-1}\\, D_xF(x, g(x))\\); eindimensional \\(g'(x) = -\\frac{\\partial_x F}{\\partial_y F}\\)."}, {"k": "17", "f": "Umkehrsatz", "b": "\\(f\\) stetig differenzierbar, \\(Df(a)\\) invertierbar \\(\\Rightarrow\\) \\(f\\) ist nahe \\(a\\) lokal umkehrbar, und \\(D(f^{-1})(f(x)) = Df(x)^{-1}\\)."}]</script></div></div>
-      </div>
-    </div>
-    </section>
     <section class="sec" id="begleitung">
     <div class="wrap">
       <header class="sec-head reveal">
         <p class="eyebrow">Begleitung zur Vorlesung</p>
-        <h2 class="sec-title">Zum Skript &amp; zu den Blättern</h2>
-        <p class="sec-sub">Eine Lesehilfe zu jedem Abschnitt des Vorlesungsskripts – was wichtig ist, wie die Beweise aufgebaut sind und worauf du achten solltest. Dazu ausführliche Erklärungen zu den Übungsblättern, jeweils nach der Abgabefrist.</p>
+        <h2 class="sec-title">Lesehilfe zum Skript</h2>
+        <p class="sec-sub">Zu jedem Abschnitt des Vorlesungsskripts: was wichtig ist, welche Sätze und Definitionen zentral sind, wie die Beweise aufgebaut sind und worauf du beim Lesen achten solltest – in eigenen Worten, zum Lesen neben dem Skript.</p>
         <div class="sec-accent" aria-hidden="true"></div>
       </header>
       <div class="sections">
         <article class="modul reveal">
-          <header class="modul-head"><p class="eyebrow">Lesehilfe</p><h2>Durch das Skript</h2><p class="mat-sub">In eigenen Worten, zum Lesen neben dem Skript – kein Ersatz dafür.</p></header>
           <details class="box box-idee lh-item" id="lesehilfe-1" data-search="1">
             <summary><span class="box-icon" aria-hidden="true">§</span><span class="box-kind">Lesehilfe</span><span class="box-title">Kapitel 17 · Banachscher Fixpunktsatz und implizit definierte Funktionen</span></summary>
             <div class="box-body"><p>Das Kapitel beginnt mit einer Erinnerung an Banachräume und der Beobachtung, dass sich viele Gleichungen als Fixpunktgleichungen schreiben lassen. Die naheliegende Strategie „iterieren und hoffen“ wird dann durch den Fixpunktsatz abgesichert.</p><p>Im Beweis des Fixpunktsatzes lohnt es sich, die drei Schritte zu trennen: Die Iterierten bilden eine Cauchy-Folge (geometrische Reihe), der Grenzwert liegt in \(U\) (Abgeschlossenheit) und ist ein Fixpunkt (Stetigkeit). Die Eindeutigkeit folgt in einer Zeile aus der Kontraktion.</p><p>Danach geht es darum, die Kontraktion <em>nachzuweisen</em>: im Eindimensionalen mit dem Mittelwertsatz, im \(\mathbb{R}^n\) mit der Mittelwertungleichung und einer Matrixnorm der Jacobi-Matrix. Beim Lesen besonders beachten: wofür Konvexität gebraucht wird, und die Neumann-Reihe mit ihren Folgerungen – sie sind das Werkzeug für den Satz über implizite Funktionen.</p></div>
           </details>
-        </article>
-        <article class="modul reveal">
-          <header class="modul-head"><p class="eyebrow">Übungsblätter</p><h2>Erklärungen zu den Blättern</h2><p class="mat-sub">Ausführliche Erklärungen, Tipps und Tricks zu jedem Blatt – immer erst nach der Abgabefrist, damit die Abgabe eigene Arbeit bleibt.</p></header>
-          <div class="blatt-item"><span class="blatt-tag">Blatt 1</span><span class="blatt-note">Ausführlich erklärt im Begleitmaterial <a href="/analysis-3-material/Analysis-3-Blatt-1-erkl%C3%A4rt.pdf" target="_blank" rel="noopener noreferrer">„Blatt 1 erklärt“ (PDF)</a> – dazu die <a href="/analysis-3-material/Analysis-3-Tutorium-1-Tafelbilder.pdf" target="_blank" rel="noopener noreferrer">Tafelbilder aus dem Tutorium</a>.</span></div>
-          <div class="blatt-item"><span class="blatt-tag">Weitere Blätter</span><span class="blatt-note">Die Erklärungen erscheinen hier jeweils nach der Abgabefrist.</span></div>
         </article>
       </div>
     </div>

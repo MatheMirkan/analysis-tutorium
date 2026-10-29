@@ -948,3 +948,21 @@ body{transition:background-color .3s ease,color .3s ease}
 @media (max-width:600px){.kk-inner{min-height:260px}.tr-q,.bw-claim{font-size:1.12rem}}
 @media (max-width:400px){.nav-inner{gap:.5rem}.brand{gap:.55rem}.brand-name{font-size:1.04rem}.brand-sub{font-size:.52rem;letter-spacing:.12em}.brand-mark{width:28px;height:28px}.nav-actions{gap:.35rem}.theme-toggle,.nav-toggle{width:40px;height:40px}}
 .blatt-note a{color:var(--gold);text-decoration:underline;text-underline-offset:2px}
+
+/* ---------- Lernbereich: „Teste dein Wissen“ oben, Hauptknopf im Kopf ---------- */
+.quicknav a.qn-primary{background:var(--ink);border-color:var(--ink);color:var(--paper);font-weight:600;padding-inline:1.3rem;box-shadow:var(--shadow-soft)}
+.quicknav a.qn-primary:hover{background:var(--gold);border-color:var(--gold);color:var(--paper)}
+.quicknav a.qn-primary .arr{display:inline-block;transition:transform .2s var(--ease)}
+.quicknav a.qn-primary:hover .arr{transform:translateX(3px)}
+.testen{margin-top:clamp(1.6rem,3vw,2.4rem);scroll-margin-top:24px}
+.testen-head,.kapitel-head{margin-bottom:.9rem}
+.testen-head .eyebrow,.kapitel-head .eyebrow{margin-bottom:.4rem}
+.testen-title{font-size:clamp(1.45rem,2.4vw,1.9rem);font-weight:600}
+.testen-sub{margin-top:.5rem;color:var(--ink-soft);font-size:.97rem;line-height:1.75;max-width:70ch}
+.testen .klausur{margin-top:0}
+.testen .ueben{margin-top:1rem}
+.ueben-head{margin-bottom:.9rem}
+.ueben-head .eyebrow{margin-bottom:.3rem}
+.ueben-sub{font-family:var(--sans);font-size:.86rem;color:var(--ink-mute);margin:0}
+.kapitel-head{margin-top:clamp(2.2rem,4vw,3.2rem);scroll-margin-top:24px}
+.kapitel-head + .lernpfad{margin-top:0}
