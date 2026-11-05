@@ -1113,8 +1113,137 @@
     draw();
   }
 
+  /* ---------- Interaktive Skizze: Lagrange – Höhenlinien und Nebenbedingung ---------- */
+  function lagrangeExplorable(host) {
+    var W = 440, H = 300, u = 92, cx = W / 2, cy = H / 2;
+    function P(x, y) { return [cx + x * u, cy - y * u]; }
+    function pts(arr) { return arr.map(function (p) { var q = P(p[0], p[1]); return q[0].toFixed(1) + ',' + q[1].toFixed(1); }).join(' '); }
+    var funcs = {
+      lin: { label: 'f = x + y', f: function (x, y) { return x + y; }, g: function () { return [1, 1]; }, cs: [-2.5, -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2, 2.5],
+        level: function (c) { return [[[-3, c + 3], [3, c - 3]]]; }, t0: 0.3 },
+      prod: { label: 'f = x · y', f: function (x, y) { return x * y; }, g: function (x, y) { return [y, x]; }, cs: [-1, -0.5, -0.25, 0.25, 0.5, 1],
+        level: function (c) {
+          if (Math.abs(c) < 1e-9) return [[[-3, 0], [3, 0]], [[0, -2], [0, 2]]];
+          var a = [], b = [];
+          for (var i = 0; i <= 120; i++) { var x = 0.05 + 2.4 * i / 120, y = c / x; if (Math.abs(y) < 1.8) { a.push([x, y]); b.push([-x, -y]); } }
+          return [a, b];
+        }, t0: 0.4 },
+      quad: { label: 'f = x² + 2y²', f: function (x, y) { return x * x + 2 * y * y; }, g: function (x, y) { return [2 * x, 4 * y]; }, cs: [0.5, 1, 1.5, 2, 3, 4],
+        level: function (c) { var a = []; for (var i = 0; i <= 160; i++) { var s = 2 * Math.PI * i / 160; a.push([Math.sqrt(c) * Math.cos(s), Math.sqrt(c / 2) * Math.sin(s)]); } return [a]; }, t0: 0.6 }
+    };
+    host.innerHTML =
+      '<div class="ex-grid">' +
+      '<svg class="ex-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Höhenlinien von f, der Einheitskreis als Nebenbedingung und die Gradienten im Punkt P"></svg>' +
+      '<div class="ex-panel">' +
+      '<div class="ex-presets">' + Object.keys(funcs).map(function (k) { return '<button type="button" data-fn="' + k + '">' + funcs[k].label + '</button>'; }).join('') + '</div>' +
+      '<label class="ex-slider">Punkt P auf dem Kreis<input type="range" min="0" max="360" step="1" value="20"><output></output></label>' +
+      '<dl class="ex-read"><dt>P = (x, y)</dt><dd data-r="p"></dd><dt>f(P)</dt><dd data-r="f"></dd><dt>∇f(P)</dt><dd data-r="gf"></dd><dt>∇h(P)</dt><dd data-r="gh"></dd><dt>λ mit ∇f + λ∇h</dt><dd data-r="lam"></dd></dl>' +
+      '<p class="ex-hint" data-r="hint"></p>' +
+      '</div></div>';
+    var svg = host.querySelector('svg'), slider = host.querySelector('input[type=range]'), out = host.querySelector('output');
+    var reads = {}; host.querySelectorAll('[data-r]').forEach(function (r) { reads[r.getAttribute('data-r')] = r; });
+    var cur = 'lin';
+    function arrow(x, y, v, cls) {
+      var n = Math.hypot(v[0], v[1]); if (n < 1e-9) return '';
+      var L = 0.62, ex = x + v[0] / n * L, ey = y + v[1] / n * L, a = P(x, y), b = P(ex, ey);
+      var ang = Math.atan2(b[1] - a[1], b[0] - a[0]), s = 8;
+      var h1 = [b[0] - s * Math.cos(ang - 0.4), b[1] - s * Math.sin(ang - 0.4)], h2 = [b[0] - s * Math.cos(ang + 0.4), b[1] - s * Math.sin(ang + 0.4)];
+      return '<line class="' + cls + '" x1="' + a[0].toFixed(1) + '" y1="' + a[1].toFixed(1) + '" x2="' + b[0].toFixed(1) + '" y2="' + b[1].toFixed(1) + '"/>' +
+        '<polygon class="' + cls + '-head" points="' + b[0].toFixed(1) + ',' + b[1].toFixed(1) + ' ' + h1[0].toFixed(1) + ',' + h1[1].toFixed(1) + ' ' + h2[0].toFixed(1) + ',' + h2[1].toFixed(1) + '"/>';
+    }
+    function draw() {
+      var F = funcs[cur], t = +slider.value * Math.PI / 180, x = Math.cos(t), y = Math.sin(t);
+      var c = F.f(x, y), gf = F.g(x, y), gh = [2 * x, 2 * y];
+      out.value = slider.value + '°';
+      var str = '<line class="ex-axis" x1="0" y1="' + cy + '" x2="' + W + '" y2="' + cy + '"/><line class="ex-axis" x1="' + cx + '" y1="0" x2="' + cx + '" y2="' + H + '"/>';
+      F.cs.forEach(function (cc) { F.level(cc).forEach(function (seg) { str += '<polyline class="ex-level" points="' + pts(seg) + '"/>'; }); });
+      var circ = []; for (var i = 0; i <= 200; i++) circ.push([Math.cos(2 * Math.PI * i / 200), Math.sin(2 * Math.PI * i / 200)]);
+      str += '<polyline class="ex-curve ex-constraint" points="' + pts(circ) + '"/>';
+      F.level(c).forEach(function (seg) { str += '<polyline class="ex-level-cur" points="' + pts(seg) + '"/>'; });
+      str += arrow(x, y, gh, 'ex-gradh') + arrow(x, y, gf, 'ex-gradf');
+      var p = P(x, y);
+      var cross = gf[0] * gh[1] - gf[1] * gh[0], par = Math.abs(cross) / (Math.hypot(gf[0], gf[1]) * Math.hypot(gh[0], gh[1]) || 1) < 0.035;
+      str += '<circle class="ex-point' + (par ? ' is-good' : '') + '" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="5.5"/>';
+      str += '<text class="ex-lbl" x="' + (p[0] + (x > 0 ? -22 : 10)).toFixed(1) + '" y="' + (p[1] + (y > 0 ? 18 : -10)).toFixed(1) + '">P</text>';
+      str += '<text class="ex-lbl" x="' + (cx + 0.72 * u + 4) + '" y="' + (cy + 0.72 * u + 16) + '">h = x² + y² − 1 = 0</text>';
+      svg.innerHTML = str;
+      reads.p.textContent = '(' + fmt(x) + '; ' + fmt(y) + ')';
+      reads.f.textContent = fmt(c);
+      reads.gf.textContent = '(' + fmt(gf[0]) + '; ' + fmt(gf[1]) + ')';
+      reads.gh.textContent = '(' + fmt(gh[0]) + '; ' + fmt(gh[1]) + ')';
+      reads.lam.textContent = par ? fmt(-(gf[0] * gh[0] + gf[1] * gh[1]) / (gh[0] * gh[0] + gh[1] * gh[1])) : '— ∇f und ∇h nicht parallel';
+      reads.hint.textContent = par
+        ? '∇f ist parallel zu ∇h: Die Höhenlinie von f berührt den Kreis nur. Das ist ein Kandidat für ein Extremum unter der Nebenbedingung – genau hier hat die Lagrange-Funktion einen kritischen Punkt.'
+        : 'Die goldene Höhenlinie schneidet den Kreis. Läuft man auf dem Kreis weiter, wird f in eine Richtung größer und in die andere kleiner – also kein Extremum. Schiebe P, bis die Pfeile parallel sind.';
+      reads.hint.classList.toggle('is-good', par);
+      host.querySelectorAll('[data-fn]').forEach(function (b) { b.classList.toggle('is-on', b.getAttribute('data-fn') === cur); });
+    }
+    slider.addEventListener('input', draw);
+    host.querySelectorAll('[data-fn]').forEach(function (b) { b.addEventListener('click', function () { cur = b.getAttribute('data-fn'); slider.value = Math.round(funcs[cur].t0 * 57.3); draw(); }); });
+    draw();
+  }
+
+  /* ---------- Interaktive Skizze: erzeugte σ-Algebra auf einer endlichen Menge ---------- */
+  function sigmaExplorable(host) {
+    var OM = [1, 2, 3, 4], W = 440, H = 200;
+    var presets = {
+      eins: { label: 'eine Menge {1}', g: [[1], [], []] },
+      zwei: { label: '{1, 2} und {2, 3}', g: [[1, 2], [2, 3], []] },
+      zerl: { label: 'Zerlegung {1, 2}, {3, 4}', g: [[1, 2], [3, 4], []] },
+      punkte: { label: 'alle Punkte', g: [[1], [2], [3]] },
+      leer: { label: 'nichts', g: [[], [], []] }
+    };
+    var G = [[1, 2], [2, 3], []], active = 'zwei';
+    host.innerHTML =
+      '<div class="ex-grid">' +
+      '<svg class="ex-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Die Menge Ω = {1, 2, 3, 4}, eingefärbt nach den Atomen der erzeugten σ-Algebra"></svg>' +
+      '<div class="ex-panel">' +
+      '<div class="ex-presets">' + Object.keys(presets).map(function (k) { return '<button type="button" data-sg="' + k + '">' + presets[k].label + '</button>'; }).join('') + '</div>' +
+      [0, 1, 2].map(function (r) { return '<div class="sg-row"><span class="sg-name">E<sub>' + (r + 1) + '</sub></span>' + OM.map(function (x) { return '<button type="button" class="sg-el" data-row="' + r + '" data-el="' + x + '">' + x + '</button>'; }).join('') + '</div>'; }).join('') +
+      '<dl class="ex-read"><dt>Atome</dt><dd data-r="atoms"></dd><dt>Anzahl der Mengen</dt><dd data-r="count"></dd></dl>' +
+      '<p class="sg-list" data-r="list"></p>' +
+      '<p class="ex-hint" data-r="hint"></p>' +
+      '</div></div>';
+    var svg = host.querySelector('svg'), reads = {};
+    host.querySelectorAll('[data-r]').forEach(function (r) { reads[r.getAttribute('data-r')] = r; });
+    function setTxt(s) { return s.length ? '{' + s.join(', ') + '}' : '∅'; }
+    function draw() {
+      // Atome: Elemente mit gleicher Zugehörigkeit zu allen Erzeugern
+      var sig = {}, atoms = [];
+      OM.forEach(function (x) { var k = G.map(function (g) { return g.indexOf(x) >= 0 ? 1 : 0; }).join(''); if (!(k in sig)) { sig[k] = atoms.length; atoms.push([]); } atoms[sig[k]].push(x); });
+      var k = atoms.length, sets = [];
+      for (var m = 0; m < (1 << k); m++) { var s = []; atoms.forEach(function (a, i) { if (m & (1 << i)) s = s.concat(a); }); sets.push(s.sort()); }
+      sets.sort(function (a, b) { return a.length - b.length || (a.join() < b.join() ? -1 : 1); });
+      var cls = ['sg-a0', 'sg-a1', 'sg-a2', 'sg-a3'], str = '<rect class="ex-uni" x="20" y="22" width="' + (W - 40) + '" height="' + (H - 44) + '" rx="14"/>';
+      str += '<text class="ex-lbl" x="34" y="48">Ω</text>';
+      OM.forEach(function (x, i) {
+        var a = atoms.findIndex(function (A) { return A.indexOf(x) >= 0; }), px = 85 + i * 90, py = H / 2 + 6;
+        str += '<circle class="sg-dot ' + cls[a] + '" cx="' + px + '" cy="' + py + '" r="24"/><text class="ex-num" x="' + px + '" y="' + py + '">' + x + '</text>';
+        G.forEach(function (g, r) { if (g.indexOf(x) >= 0) str += '<text class="sg-tag" x="' + px + '" y="' + (py - 34 - r * 13) + '">E' + (r + 1) + '</text>'; });
+      });
+      svg.innerHTML = str;
+      reads.atoms.textContent = atoms.map(setTxt).join(', ');
+      reads.count.textContent = '2' + '⁰¹²³⁴'[k] + ' = ' + (1 << k);
+      reads.list.textContent = '⟨E⟩σ = { ' + sets.map(setTxt).join(', ') + ' }';
+      reads.hint.textContent = k === 1 ? 'Ohne echte Erzeuger bleibt nur die triviale σ-Algebra {∅, Ω}.' :
+        k === 4 ? 'Jedes Element ist ein eigenes Atom: Die erzeugte σ-Algebra ist die ganze Potenzmenge mit 16 Mengen.' :
+        'Auf einer endlichen Menge besteht ⟨E⟩σ genau aus allen Vereinigungen von Atomen. Atome sind die kleinsten Stücke, die die Erzeuger nicht mehr trennen – darum hat ⟨E⟩σ genau 2^(Anzahl Atome) Mengen.';
+      host.querySelectorAll('.sg-el').forEach(function (b) { b.classList.toggle('is-on', G[+b.getAttribute('data-row')].indexOf(+b.getAttribute('data-el')) >= 0); });
+      host.querySelectorAll('[data-sg]').forEach(function (b) { b.classList.toggle('is-on', b.getAttribute('data-sg') === active); });
+    }
+    host.querySelectorAll('.sg-el').forEach(function (b) { b.addEventListener('click', function () {
+      var r = +b.getAttribute('data-row'), x = +b.getAttribute('data-el'), i = G[r].indexOf(x);
+      if (i >= 0) G[r].splice(i, 1); else G[r].push(x);
+      active = null; draw();
+    }); });
+    host.querySelectorAll('[data-sg]').forEach(function (b) { b.addEventListener('click', function () { active = b.getAttribute('data-sg'); G = presets[active].g.map(function (g) { return g.slice(); }); draw(); }); });
+    draw();
+  }
+
   document.querySelectorAll('[data-explorable]').forEach(function (host) {
     var kind = host.getAttribute('data-explorable');
+    if (kind === 'lagrange') lagrangeExplorable(host);
+    if (kind === 'sigma') sigmaExplorable(host);
     if (kind === 'matrix') matrixExplorable(host);
     if (kind === 'ode') odeExplorable(host);
     if (kind === 'cobweb') cobwebExplorable(host);
@@ -1234,6 +1363,33 @@
         var t = pick([[1, 2], [1, 3], [1, 4], [-1, 2], [2, 3], [-1, 3]]), val = 1 / (1 - t[0] / t[1]);
         return { q: 'Für \\(t = ' + frac(t[0], t[1]) + '\\): Welchen Wert hat \\(\\sum_{k=0}^{\\infty} t^k = (1 - t)^{-1}\\)?', num: val,
           why: '\\(\\frac{1}{1 - t} = ' + deTex(val) + '\\) – die eindimensionale Neumann-Reihe, also die geometrische Reihe.' };
+      } },
+      { id: 'umkehr', label: 'Umkehrfunktion', make: function () {
+        var M, det;
+        do { M = [[rnd(-3, 3), rnd(-3, 3)], [rnd(-3, 3), rnd(-3, 3)]]; det = M[0][0] * M[1][1] - M[0][1] * M[1][0]; } while (det === 0 || Math.abs(det) > 4);
+        var inv = [[M[1][1] / det, -M[0][1] / det], [-M[1][0] / det, M[0][0] / det]], pos = pick([[0, 0, 'links oben'], [0, 1, 'rechts oben'], [1, 0, 'links unten'], [1, 1, 'rechts unten']]);
+        var tex = function (A) { return '\\begin{pmatrix} ' + A[0][0] + ' & ' + A[0][1] + ' \\\\ ' + A[1][0] + ' & ' + A[1][1] + ' \\end{pmatrix}'; };
+        return { q: 'Es gilt \\(F(p) = q\\) und \\(J_F(p) = ' + tex(M) + '\\). Welchen Eintrag hat \\(J_{F^{-1}}(q)\\) ' + pos[2] + '?', num: inv[pos[0]][pos[1]],
+          why: '\\(J_{F^{-1}}(q) = J_F(p)^{-1} = \\frac{1}{' + det + '}\\begin{pmatrix} ' + M[1][1] + ' & ' + (-M[0][1]) + ' \\\\ ' + (-M[1][0]) + ' & ' + M[0][0] + ' \\end{pmatrix}\\): Diagonale tauschen, Nebendiagonale mit Vorzeichenwechsel, durch \\(\\det = ' + det + '\\) teilen. Der gesuchte Eintrag ist \\(' + deTex(inv[pos[0]][pos[1]]) + '\\).' };
+      } },
+      { id: 'lagrange', label: 'Lagrange', make: function () {
+        if (Math.random() < .5) {
+          var T = pick([[3, 4, 5], [4, 3, 5], [6, 8, 10], [5, 12, 13], [8, 6, 10]]), r = rnd(1, 3), mx = Math.random() < .5;
+          return { q: 'Bestimme das ' + (mx ? 'Maximum' : 'Minimum') + ' von \\(f(x, y) = ' + T[0] + 'x + ' + T[1] + 'y\\) unter der Nebenbedingung \\(x^2 + y^2 = ' + r * r + '\\).', num: (mx ? 1 : -1) * r * T[2],
+            why: '\\(\\nabla f = (' + T[0] + ', ' + T[1] + ')\\) muss parallel zu \\(\\nabla h = (2x, 2y)\\) sein, also \\((x, y) = \\pm\\frac{' + r + '}{' + T[2] + '}(' + T[0] + ', ' + T[1] + ')\\). Einsetzen gibt \\(f = \\pm ' + r + ' \\cdot \\frac{' + T[0] * T[0] + ' + ' + T[1] * T[1] + '}{' + T[2] + '} = \\pm ' + r * T[2] + '\\). ' + (mx ? 'Maximum' : 'Minimum') + ': \\(' + (mx ? '' : '-') + r * T[2] + '\\).' };
+        }
+        var s = pick([2, 4, 6, 8, 10, 3, 5]);
+        return { q: 'Bestimme das Maximum von \\(f(x, y) = xy\\) unter der Nebenbedingung \\(x + y = ' + s + '\\).', num: s * s / 4,
+          why: '\\(L = xy + \\lambda(x + y - ' + s + ')\\): \\(y + \\lambda = 0\\), \\(x + \\lambda = 0\\), also \\(x = y = \\frac{' + s + '}{2}\\) und \\(f = \\frac{' + s * s + '}{4} = ' + deTex(s * s / 4) + '\\). Dass es ein Maximum ist, sieht man an \\(f = x(' + s + ' - x)\\), einer nach unten geöffneten Parabel.' };
+      } },
+      { id: 'sigma', label: 'σ-Algebren', make: function () {
+        var n = rnd(3, 5), OM = []; for (var i = 1; i <= n; i++) OM.push(i);
+        var gens = [OM.filter(function () { return Math.random() < .5; }), OM.filter(function () { return Math.random() < .4; })];
+        var sig = {}, atoms = [];
+        OM.forEach(function (x) { var k = gens.map(function (g) { return g.indexOf(x) >= 0 ? 1 : 0; }).join(''); if (!(k in sig)) { sig[k] = atoms.length; atoms.push([]); } atoms[sig[k]].push(x); });
+        var S = function (a) { return a.length ? '\\{' + a.join(', ') + '\\}' : '\\emptyset'; };
+        return { q: 'Sei \\(\\Omega = \\{1, \\dots, ' + n + '\\}\\), \\(A = ' + S(gens[0]) + '\\) und \\(B = ' + S(gens[1]) + '\\). Wie viele Mengen enthält die erzeugte σ-Algebra \\(\\langle \\{A, B\\} \\rangle^\\sigma\\)?', num: Math.pow(2, atoms.length),
+          why: 'Zerlege \\(\\Omega\\) in Atome – Elemente, die \\(A\\) und \\(B\\) nicht trennen: ' + atoms.map(S).join(', ') + '. Jede Menge der σ-Algebra ist eine Vereinigung von Atomen, also gibt es \\(2^{' + atoms.length + '} = ' + Math.pow(2, atoms.length) + '\\) Stück.' };
       } }
     ]
   };
